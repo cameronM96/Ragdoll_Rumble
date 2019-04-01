@@ -1,0 +1,4 @@
+[Version 1.1]
+- All models share now the same pommels.
+- Axes and Hammers share now the same top and grip parts.
+- Fixed some UI minor bugs.
