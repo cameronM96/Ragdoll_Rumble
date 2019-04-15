@@ -229,7 +229,7 @@ GameObject:
   - component: {fileID: 189056851}
   m_Layer: 5
   m_Name: StatsDisplay
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 324895636}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 356447246}
   m_Layer: 5
   m_Name: HandSlot (2)
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -580,7 +580,7 @@ GameObject:
   - component: {fileID: 378339564}
   m_Layer: 5
   m_Name: HeadSlot (4)
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1164,7 +1164,7 @@ GameObject:
   - component: {fileID: 1026805850}
   m_Layer: 5
   m_Name: FeetSlot (3)
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 1158883219}
   m_Layer: 5
   m_Name: ChestSlot (5)
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1778,7 +1778,7 @@ GameObject:
   - component: {fileID: 1433229264}
   m_Layer: 5
   m_Name: HandSlot (1)
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2080,7 +2080,7 @@ GameObject:
   - component: {fileID: 1673830230}
   m_Layer: 5
   m_Name: Panel
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2195,7 +2195,7 @@ GameObject:
   - component: {fileID: 1790958628}
   m_Layer: 5
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2580,7 +2580,7 @@ GameObject:
   - component: {fileID: 2036605944}
   m_Layer: 5
   m_Name: DeckSlot
-  m_TagString: Deck
+  m_TagString: UIElement
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
