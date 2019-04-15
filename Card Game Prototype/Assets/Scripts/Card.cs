@@ -12,10 +12,10 @@ public class Card : ScriptableObject
     public Sprite background;
 
     public int damage;
-    public  int armour;
-    public  int hP;
-    public  float speed;
-    public  float atkSpeed;
+    public int armour;
+    public int hP;
+    public float speed;
+    public float atkSpeed;
 
     public string abilityDescription;
 
