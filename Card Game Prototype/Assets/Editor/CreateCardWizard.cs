@@ -7,6 +7,8 @@ public class CreateCardWizard : ScriptableWizard
 {
     public enum CardType { Weapon, Armour, Ability, Behaviour, Environmental};
     public CardType currentCardType = CardType.Weapon;
+    public enum PlayableSlot { Head, Chest, Hand, Feet};
+    public PlayableSlot playableSlots;
 
     public string cardName = "New Card";
     public string description = "Enter Card Description";
@@ -35,6 +37,8 @@ public class CreateCardWizard : ScriptableWizard
     {
         //Create Card Template
         GameObject newCard = Instantiate((GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Card_Template.prefab", typeof(GameObject)));
+        newCard.transform.SetParent(GameObject.FindGameObjectWithTag("CardCanvas").transform);
+        newCard.name = cardName;
 
         string localPath = "Assets/Prefabs/" + currentCardType + "/" + cardName + ".prefab";
 

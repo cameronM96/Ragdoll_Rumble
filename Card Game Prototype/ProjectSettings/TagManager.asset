@@ -7,6 +7,9 @@ TagManager:
   - Deck
   - DeckText
   - UIElement
+  - FxTemporaire
+  - Fire
+  - CardCanvas
   layers:
   - Default
   - TransparentFX
