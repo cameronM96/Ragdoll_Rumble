@@ -36,8 +36,8 @@ public class CardDisplay : MonoBehaviour
         if (card.atkSpeed != 0)
             cardInfoText.text += ("\nAttack Speed: " + card.atkSpeed);
 
-        if (card.abilityDescription != "")
-            cardInfoText.text += ("\n" + card.abilityDescription);
+        if (card.triggerCondition != null && card.ability != null)
+            cardInfoText.text += "<b>" + card.triggerCondition.tcName + ":</b>\n" + card.ability.aDescription;
 
         artworkImage.sprite = card.artwork;
         background.sprite = card.background;

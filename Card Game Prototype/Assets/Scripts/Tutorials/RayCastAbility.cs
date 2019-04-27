@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Abilities/RaycastAbility")]
+[CreateAssetMenu (menuName = "Card Elements/Abilities/RaycastAbility")]
 public class RayCastAbility : Ability
 {
     public int gunDamage = 1;

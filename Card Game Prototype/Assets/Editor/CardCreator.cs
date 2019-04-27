@@ -35,7 +35,10 @@ public class CardCreator : EditorWindow
     [MenuItem("Window/Card Creation")]
     static void ShowWindow()
     {
-        GetWindow<CardCreator>("Card Creation Tool");
+        var window = GetWindow<CardCreator>("Card Creation Tool");
+        window.titleContent.tooltip = "Card Creation Tool";
+        window.autoRepaintOnSceneChange = true;
+        window.Show();
     }
 
     private void OnEnable()

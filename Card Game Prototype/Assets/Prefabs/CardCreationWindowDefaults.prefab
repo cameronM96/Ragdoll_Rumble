@@ -51,3 +51,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: bc701468e77dbda49aa1d8e08fcedf4f, type: 3}
   - {fileID: 21300000, guid: 27f04da24b77edf40baa5fc47edbf46c, type: 3}
   - {fileID: 21300000, guid: c4d2c217b7ef8e24ebf62d61a2f6f229, type: 3}
+  previewWindowTexture: {fileID: 8400000, guid: b92b14b84ef312644bca1f82920ed532,
+    type: 2}

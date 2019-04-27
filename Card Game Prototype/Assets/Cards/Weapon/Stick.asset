@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
+  currentCardType: 0
+  playableSlots: 2
   cardName: Stick
   description: 
   artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
@@ -21,6 +23,7 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  abilityDescription: 
+  triggerCondition: {fileID: 0}
+  ability: {fileID: 0}
   item:
   - {fileID: 4081503627470519158, guid: 985974f56e41df4439f1ce444f568376, type: 3}

@@ -6,5 +6,5 @@ public class CardCreationWindowDefaultValues : MonoBehaviour
 {
     public GameObject cardTemplate;
     public Sprite[] backgrounds;
-    public Canvas previewWindowCanvas;
+    public RenderTexture previewWindowTexture;
 }

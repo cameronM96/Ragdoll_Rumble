@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: On Fire
   m_EditorClassIdentifier: 
+  currentCardType: 2
+  playableSlots: 1
   cardName: On Fire!
   description: AAAAAAHHHHHHHHHHHHH!!!!
   artwork: {fileID: 21300000, guid: c988e5a1f3fec9348a78f11a5946ccce, type: 3}
@@ -21,7 +23,7 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  abilityDescription: Deals a bit of damage every few seconds but burns enemies that
-    come near.
+  triggerCondition: {fileID: 11400000, guid: 9a9ca6f4e71f2db4ba70a365961939fb, type: 2}
+  ability: {fileID: 11400000, guid: a11601d0b7d70ca4d8c6b6339995d5ca, type: 2}
   item:
   - {fileID: 9143612396167574084, guid: 80ea1abdc0e0c254492be3ab046d8819, type: 3}

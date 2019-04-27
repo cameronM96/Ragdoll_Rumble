@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Shoes
   m_EditorClassIdentifier: 
+  currentCardType: 1
+  playableSlots: 3
   cardName: Boots
   description: They were made for walking
   artwork: {fileID: 21300000, guid: 18414d9d6bfda2045bda604eea0313c9, type: 3}
@@ -21,7 +23,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  abilityDescription: They also weight 500kg... each
+  triggerCondition: {fileID: 0}
+  ability: {fileID: 0}
   item:
   - {fileID: 7097438483534304117, guid: 39e35ff89ab2029499a37905013bdbe4, type: 3}
   - {fileID: 7097438483534304117, guid: 39e35ff89ab2029499a37905013bdbe4, type: 3}
