@@ -11,6 +11,10 @@ public class CardCreator_v2 : EditorWindow
     public enum PlayableSlot { Head, Chest, Hand, Feet };
     public PlayableSlot playableSlots = PlayableSlot.Head;
 
+    public int rarity = 1;
+    string[] rarityNames = new string[] { "Common", "Uncommon", "Rare" };
+    int[] rarityValues = { 1, 2, 3 };
+
     public string cardName = "New Card";
     public string description = "Enter Card Description";
 
@@ -152,6 +156,11 @@ public class CardCreator_v2 : EditorWindow
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.Space();
 
+        //Card Rarity
+        rarity = EditorGUILayout.IntPopup("Rarity: ", rarity, rarityNames, rarityValues);
+
+        EditorGUILayout.Space();
+
         // Card Info
         currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", currentCardType);
         playableSlots = (PlayableSlot)EditorGUILayout.EnumPopup("PlayableSlots: ", playableSlots);
@@ -261,18 +270,19 @@ public class CardCreator_v2 : EditorWindow
 
     private void DrawCard(Rect optionsRect ,Rect windowRect)
     {
+        //Draws the preview window into the card building window
         //Debug.Log("Rendering Preview Window!");
         GUI.DrawTexture(new Rect(optionsRect.width + 5, 20, windowRect.width - optionsRect.width - 10, windowRect.height), previewCamera.GetComponent<Camera>().targetTexture);
     }
 
     private void CreateNewCard(GameObject card, string localPath)
     {
-
+        // Creates a new prefab for the card they made
     }
 
     private void UpdateCard(GameObject card)
     {
-
+        // Updates an old prefab with new values
     }
 
     private void LoadNewValues(GameObject card)
@@ -362,7 +372,7 @@ public class CardCreator_v2 : EditorWindow
 
     private void UpdateCardDisplay()
     {
-
+        // Changes the visuals on the card in the preview window based on data from the options list
         Text nameText = previewTarget.transform.GetChild(0).GetComponent<Text>();
         nameText.text = cardName;
 
