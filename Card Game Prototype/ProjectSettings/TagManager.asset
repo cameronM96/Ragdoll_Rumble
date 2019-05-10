@@ -10,6 +10,8 @@ TagManager:
   - FxTemporaire
   - Fire
   - CardCanvas
+  - Team 1
+  - Team 2
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - 
   - PostProcessing
   - CardCreation
-  - 
-  - 
+  - Team 1
+  - Team 2
   - 
   - 
   - 
