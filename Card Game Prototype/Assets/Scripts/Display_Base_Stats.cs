@@ -15,7 +15,7 @@ public class Display_Base_Stats : MonoBehaviour
     {
         atktxt.text = ": " + bstats.damage;
         armourtxt.text = ": " + bstats.armour;
-        hPtxt.text = ": " + bstats.hP;
+        hPtxt.text = ": " + bstats.maxHP;
         mSpeedtxt.text = ": " + bstats.speed;
         atkSpeedtxt.text = ": " + bstats.atkSpeed;
     }

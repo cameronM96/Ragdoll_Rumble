@@ -524,7 +524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &324895636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3613,23 +3613,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cebb643c7fda4d7458f8f87dd0cc8729, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeking: 1
-  curve: 0
-  maxSteerForce: 5
-  viableTargetID: 0
-  constSpeed: 0
-  gravity: 1
-  bounce: 0
-  multiTargets: 1
-  MaxTargets: 8
-  piercing: 1
-  hitTargetOnly: 0
-  uniqueTargetsOnly: 1
-  alternateTeams: 1
+  viableTargetID: 2
+  friendlyTag: Team 1
+  lifeSpan: 0
+  constSpeed: 1
+  gravity: 0
   direction: {x: 0, y: 0, z: 1}
   speed: 10
-  lifeSpan: 0
-  friendlyTag: Team 1
+  bounce: 0
+  includeTargetsInBounce: 1
+  maxBounces: 0
+  piercing: 1
+  includeTargetsInPierce: 1
+  maxPierces: 0
+  multiTargets: 1
+  maxTargetsHit: 0
+  curve: 0
+  maxSteerForce: 5
+  uniqueTargetsOnly: 1
+  alternateTeams: 1
+  targetSelectionMethod: 2
+  getClosestTarget: 1
   currenttarget: {fileID: 654021742}
 --- !u!54 &2128940586
 Rigidbody:
@@ -3713,7 +3717,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2128940584}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20, y: 4.83, z: -3.76}
+  m_LocalPosition: {x: -20, y: 1.22, z: -3.76}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

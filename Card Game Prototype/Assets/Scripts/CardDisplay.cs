@@ -67,7 +67,7 @@ public class CardDisplay : MonoBehaviour
     {
         bStats.damage += card.damage;
         bStats.armour += card.armour;
-        bStats.hP += card.hP;
+        bStats.maxHP += card.hP;
         bStats.speed += card.speed;
         bStats.atkSpeed += card.atkSpeed;
     }
