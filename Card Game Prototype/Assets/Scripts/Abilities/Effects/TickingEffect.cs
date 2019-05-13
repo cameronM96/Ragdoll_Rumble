@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class TickingEffect : Effect
 {
-    // Start is called before the first frame update
-    void Start()
+    protected override void ApplyEffect()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

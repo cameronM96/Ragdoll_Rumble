@@ -9,4 +9,14 @@ public class Effect : MonoBehaviour
     public float effectLength = 0;
 
     protected float effectTimer = 0;
+
+    public void TriggerEffect()
+    {
+        ApplyEffect();
+    }
+
+    protected virtual void ApplyEffect()
+    {
+
+    }
 }
