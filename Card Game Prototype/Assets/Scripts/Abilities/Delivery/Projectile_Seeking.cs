@@ -42,7 +42,7 @@ public class Projectile_Seeking : Projectile
     {
         AdditionalUpdates();
 
-        if (constSpeed)
+        if (constSpeed && curving)
         {
             direction = acceleration;
         }
@@ -75,7 +75,7 @@ public class Projectile_Seeking : Projectile
 
     private void OnTriggerEnter(Collider other)
     {
-        AdditionalTriggerEvents(other);
+        AdditionalTriggerEvents(other.gameObject);
         //Debug.Log("Trigger Activated!");
         // if hit object is a player
         if ((other.gameObject.tag == "Team 1" || other.gameObject.tag == "Team 2"))

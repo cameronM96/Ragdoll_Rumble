@@ -9,13 +9,7 @@ public class Projectile : Delivery
 
     public Vector3 direction;
     public float speed = 5;
-    
-    public bool bounce = false;
-    public bool includeTargetsInBounce = true;
-    public int maxBounces = 0;
-    public bool piercing = true;
-    public bool includeTargetsInPierce = true;
-    public int maxPierces = 0;
+
     public bool multiTargets = false;
     public int maxTargetsHit = 0;
 
@@ -23,11 +17,9 @@ public class Projectile : Delivery
     protected bool forceapplied;
     protected bool curving;
 
-    protected int currentBounceNumb = 0;
-    protected int currentPierceNumb = 0;
     protected int currentTargetsHit = 0;
 
-    private float deathTimer = 0.2f;
+    protected float deathTimer = 0.2f;
 
     protected override void Initialize()
     {
@@ -40,7 +32,7 @@ public class Projectile : Delivery
 
     protected void Move()
     {
-        if (constSpeed)
+        if (constSpeed && curving)
         {
             // Curve Projectile
             rb.AddForce(direction * speed, ForceMode.Acceleration);
@@ -64,20 +56,14 @@ public class Projectile : Delivery
     {
         base.AdditionalUpdates();
 
-        if (currentBounceNumb >= maxBounces && maxBounces != 0)
-            Destroy(this.gameObject, deathTimer);
-
-        if (currentPierceNumb >= maxPierces && maxPierces != 0)
-            Destroy(this.gameObject, deathTimer);
-
         if (currentTargetsHit >= maxTargetsHit && maxTargetsHit != 0)
             Destroy(this.gameObject, deathTimer);
     }
 
-    protected void AdditionalTriggerEvents(Collider other)
+    protected void AdditionalTriggerEvents(GameObject other)
     {
         // if hit object is a player
-        if ((other.gameObject.tag == "Team 1" || other.gameObject.tag == "Team 2"))
+        if (other.tag == "Team 1" || other.tag == "Team 2")
         {
             if (multiTargets)
             {
@@ -92,13 +78,6 @@ public class Projectile : Delivery
                 //other.gameObject.GetComponent<Renderer>().material.color = Color.red;
                 Destroy(this.gameObject, deathTimer);
             }
-        }
-        else
-        {
-            //Debug.Log("Unknown Object!");
-            // if not piercing
-            if (!piercing)
-                Destroy(this.gameObject, deathTimer);
         }
     }
 }

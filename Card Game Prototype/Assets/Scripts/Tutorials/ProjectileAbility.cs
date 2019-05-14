@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Card Elements/Abilities/ProjectileAbility")]
+
 public class ProjectileAbility : Ability
 {
     public float projectileFore = 500f;

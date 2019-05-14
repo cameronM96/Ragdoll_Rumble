@@ -13,14 +13,6 @@ public class Delivery : MonoBehaviour
 
     protected float timer = 0;
 
-    public Triggers triggerEventScript;
-    public Effect triggerEffectScript;
-
-    private void OnEnable()
-    {
-        triggerEventScript.TriggeredEvent += TriggerEffect;
-    }
-
     protected virtual void Initialize()
     {
         //friendlyTag = this.gameObject.tag;
@@ -34,10 +26,5 @@ public class Delivery : MonoBehaviour
             if (timer >= lifeSpan)
                 Destroy(this.gameObject);
         }
-    }
-
-    public void TriggerEffect()
-    {
-        triggerEffectScript.ApplyEffect();
     }
 }

@@ -6,11 +6,11 @@ public class OnContact : Triggers
 {
     private void OnTriggerEnter(Collider other)
     {
-        Initialise();
+        ApplyEffect(other.gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter(Collision collision)
     {
-        Initialise();
+        //ApplyEffect(collision.gameObject);
     }
 }

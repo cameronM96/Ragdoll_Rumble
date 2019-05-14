@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class Triggers : MonoBehaviour
 {
-    public string triggerName;
-    public delegate void EventTrigger();
-    public event EventTrigger TriggeredEvent;
+    public enum TargetID { Enemies, Allies, All };
+    public TargetID viableTargetID = TargetID.Enemies;
 
-    public void Initialise()
+    public string triggerName;
+    public Effect[] effects;
+    
+    public void ApplyEffect(GameObject target)
     {
-        TriggeredEvent?.Invoke();
+        foreach (Effect effect in effects)
+        {
+            effect.TriggerEffect(target);
+        }
     }
 }

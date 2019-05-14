@@ -19,6 +19,7 @@ public class AppearOnTargets : Delivery
         base.Initialize();
 
         FindTargets();
+
     }
 
     // Update is called once per frame

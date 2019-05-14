@@ -524,7 +524,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &324895636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3594,7 +3594,6 @@ GameObject:
   - component: {fileID: 2128940587}
   - component: {fileID: 2128940586}
   - component: {fileID: 2128940592}
-  - component: {fileID: 2128940591}
   - component: {fileID: 2128940585}
   m_Layer: 0
   m_Name: ProjectileTest
@@ -3618,25 +3617,17 @@ MonoBehaviour:
   viableTargetID: 2
   friendlyTag: Team 1
   lifeSpan: 0
-  triggerEventScript: {fileID: 2128940592}
-  triggerEffectScript: {fileID: 2128940591}
   constSpeed: 1
   gravity: 0
   direction: {x: 0, y: 0, z: 1}
-  speed: 10
-  bounce: 0
-  includeTargetsInBounce: 1
-  maxBounces: 0
-  piercing: 1
-  includeTargetsInPierce: 1
-  maxPierces: 0
+  speed: 50
   multiTargets: 1
   maxTargetsHit: 0
   curve: 0
   maxSteerForce: 5
-  uniqueTargetsOnly: 1
+  uniqueTargetsOnly: 0
   alternateTeams: 1
-  targetSelectionMethod: 2
+  targetSelectionMethod: 1
   getClosestTarget: 1
   currenttarget: {fileID: 654021742}
 --- !u!54 &2128940586
@@ -3727,21 +3718,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2128940591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2128940584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125dbd647e0fec24387b247630bb0bde, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particleEffect: {fileID: 0}
-  lastForWholeRound: 0
-  effectLength: 0
 --- !u!114 &2128940592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3754,4 +3730,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9db89d62c0584a4389020a8e29411e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  viableTargetID: 0
   triggerName: On Contact
+  effects:
+  - {fileID: 11400000, guid: 3d8e72b882fd1e5429f518b0f53a3d31, type: 2}
+  - {fileID: 11400000, guid: 1dbb87099989a11469e509c962f462cd, type: 2}
+  - {fileID: 11400000, guid: d7de8b16ebcfd674a89e54bfdb70795a, type: 2}
