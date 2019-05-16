@@ -2,15 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Card Elements/Abilities/Trigger/OnContact")]
 public class OnContact : Triggers
 {
-    private void OnTriggerEnter(Collider other)
-    {
-        ApplyEffect(other.gameObject);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //ApplyEffect(collision.gameObject);
-    }
+    public bool trigger;
 }

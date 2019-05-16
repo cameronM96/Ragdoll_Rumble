@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Card Elements/Abilities/Trigger/OnButton")]
 public class OnButton : Triggers
 {
     private void OnGUI()

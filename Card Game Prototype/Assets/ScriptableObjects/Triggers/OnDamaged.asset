@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42973660de36cd04d9aff28879371baa, type: 3}
-  m_Name: Explode
+  m_Script: {fileID: 11500000, guid: b9001c9eb3a32c647b982321059e563f, type: 3}
+  m_Name: OnDamaged
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
-    type: 3}
-  lastForWholeRound: 0
-  effectLength: 0
+  viableTargetID: 1
+  effects:
+  - {fileID: 11400000, guid: 3d8e72b882fd1e5429f518b0f53a3d31, type: 2}
+  damageNeeded: 10

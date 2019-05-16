@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 125dbd647e0fec24387b247630bb0bde, type: 3}
-  m_Name: Ticking_Sparks
+  m_Script: {fileID: 11500000, guid: 42973660de36cd04d9aff28879371baa, type: 3}
+  m_Name: Explode
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f,
+  particleEffect: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
     type: 3}
-  lastForWholeRound: 0
-  effectLength: 5
-  effectFrequency: 1
+  effectLength: 0

@@ -17,6 +17,7 @@ public class TickingEffect : Effect
         if (checkIfExists == null)
             target.AddComponent<TickTimer>().SetTimer(1, effectFrequency, effectLength, this);
 
+        // Script exists but check if it's for this effect
         bool noneFound = true;
         foreach (TickTimer timer in checkIfExists)
         {
@@ -27,9 +28,9 @@ public class TickingEffect : Effect
             }
         }
 
+        // Script exist but it wasn't for this effect so add a new one
         if (noneFound)
             target.AddComponent<TickTimer>().SetTimer(1, effectFrequency, effectLength, this);
-
     }
 
     public void TickEffect(GameObject target)

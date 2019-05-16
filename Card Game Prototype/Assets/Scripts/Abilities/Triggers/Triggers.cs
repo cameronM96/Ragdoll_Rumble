@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Triggers : MonoBehaviour
+public class Triggers : ScriptableObject
 {
     public enum TargetID { Enemies, Allies, All };
     public TargetID viableTargetID = TargetID.Enemies;
 
-    public string triggerName;
     public Effect[] effects;
     
     public void ApplyEffect(GameObject target)

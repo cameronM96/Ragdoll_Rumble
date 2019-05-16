@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Base_Stats : MonoBehaviour
 {
@@ -12,8 +13,15 @@ public class Base_Stats : MonoBehaviour
 
     private int currentHP;
     public bool dead;
+    public GameObject hitText;
 
     public Display_Base_Stats statDisplay;
+    private List<GameObject> hitList = new List<GameObject>();
+    public float hitInterval = 1;
+    public List<Effect> onHitEffectsList = new List<Effect>();
+    public List<Effect> onGetHitEffectsList = new List<Effect>();
+    public List<OnDamaged> onDamagedList = new List<OnDamaged>();
+    public List<OnHealth> onHealthList = new List<OnHealth>();
 
     private void Start()
     {
@@ -30,49 +38,137 @@ public class Base_Stats : MonoBehaviour
         statDisplay.UpdateStatText(this);
     }
 
-    public void ChangeHealth(bool heal, int healthChange, bool ability)
+    // *************************** In Combat Events ***************************
+    // Only lets the player hit someone once every x seconds
+    IEnumerator RecentlyHit (float hitDelay, GameObject hitTarget)
     {
+        hitList.Add(hitTarget);
+        yield return new WaitForSeconds(hitDelay);
+        hitList.Remove(hitTarget);
+    }
 
-        if (!heal)
+    public void TakeDamage(int damage, bool ability)
+    {
+        int damageTaken = 0;
+        if (ability)
         {
-            // Taking Damage
-            if (ability)
+            // Taking Ability Damage (not reduced by armour)
+            currentHP -= damage;
+
+            SpawnHitText(Color.blue, damage);
+
+            if (currentHP <= 0)
             {
-                // Taking Ability Damage (not reduced by armour)
-                currentHP -= healthChange;
-
-                if (currentHP <= 0)
-                {
-                    currentHP = 0;
-                    Dead();
-                }
-            }
-            else
-            {
-                // Taking Weapon Damage (Reduced by armour)
-                int newDamageAmount = healthChange - armour;
-                if (newDamageAmount < 2)
-                    newDamageAmount = 2;
-
-                currentHP -= newDamageAmount;
-
-                if (currentHP <= 0)
-                {
-                    currentHP = 0;
-                    Dead();
-                }
+                currentHP = 0;
+                Dead();
+                return;
             }
 
+            damageTaken = damage;
         }
         else
         {
-            // Healing
-            if (!dead)
+            // Taking Weapon Damage (Reduced by armour, min 2)
+            int newDamageAmount = damage - armour;
+            if (newDamageAmount < 2)
+                newDamageAmount = 2;
+
+            currentHP -= newDamageAmount;
+
+            SpawnHitText(Color.red, newDamageAmount);
+
+            if (currentHP <= 0)
             {
-                currentHP += healthChange;
-                if (currentHP > maxHP)
-                    currentHP = maxHP;
+                currentHP = 0;
+                Dead();
+                return;
             }
+
+            damageTaken = newDamageAmount;
+        }
+
+        // Apply OnHit Events
+        OnGetHit();
+        OnDamaged(damageTaken);
+        OnHealth();
+    }
+
+    public void TakeHeal (int heal)
+    {
+        // Healing
+        if (!dead)
+        {
+            currentHP += heal;
+
+            SpawnHitText(Color.green, heal);
+
+            if (currentHP > maxHP)
+                currentHP = maxHP;
+        }
+    }
+
+    // Kill player
+    public void Dead()
+    {
+        dead = true;
+    }
+
+    // *************************** Trigger Events ***************************
+    public void OnHit(GameObject target)
+    {
+        // Deal damage if it is hurtable
+        if (target.GetComponent<Base_Stats>() != null)
+            target.GetComponent<Base_Stats>().TakeDamage(damage, false);
+
+        // Apply on hit effects
+        if (!hitList.Contains(target))
+        {
+            StartCoroutine(RecentlyHit(hitInterval, target));
+
+            if (onHitEffectsList.Count > 0)
+            {
+                foreach (Effect effect in onHitEffectsList)
+                    effect.TriggerEffect(target);
+            }
+        }
+    }
+
+    private void OnGetHit()
+    {
+        if (onGetHitEffectsList.Count > 0)
+        {
+            foreach (Effect effect in onGetHitEffectsList)
+                effect.TriggerEffect(this.gameObject);
+        }
+    }
+
+    private void OnDamaged(int damage)
+    {
+        if (onDamagedList.Count > 0)
+        {
+            foreach (OnDamaged trigger in onDamagedList)
+                trigger.CheckIfEnoughDamaged(this.gameObject, damage);
+        }
+    }
+
+    private void OnHealth()
+    {
+        if (onHealthList.Count > 0)
+        {
+            foreach (OnHealth trigger in onHealthList)
+                trigger.CheckIfTriggered(this.gameObject, currentHP, maxHP);
+        }
+    }
+
+    // *************************** Buffs/Debuffs/Card playing events ***************************
+    public void ChangeMaxHealth (int healthChange, bool changeCurrentHealth)
+    {
+        maxHP += healthChange;
+        if (changeCurrentHealth) {
+            if (healthChange > 0)
+                TakeHeal(healthChange);
+            else
+                TakeDamage(healthChange, true);
         }
     }
 
@@ -96,8 +192,12 @@ public class Base_Stats : MonoBehaviour
         atkSpeed += attackSpeedChange;
     }
 
-    public void Dead()
+    private void SpawnHitText(Color newColour, int value)
     {
-        dead = true;
+        GameObject newHitText = Instantiate(hitText);
+        newHitText.transform.position = this.transform.position;
+        Text TextElement = newHitText.transform.GetChild(0).GetComponentInChildren<Text>();
+        TextElement.text = value.ToString();
+        TextElement.color = newColour;
     }
 }

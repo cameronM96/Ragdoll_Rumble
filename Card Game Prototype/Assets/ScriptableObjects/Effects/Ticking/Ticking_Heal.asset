@@ -9,10 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42973660de36cd04d9aff28879371baa, type: 3}
-  m_Name: Sparks!
+  m_Script: {fileID: 11500000, guid: 125dbd647e0fec24387b247630bb0bde, type: 3}
+  m_Name: Ticking_Heal
   m_EditorClassIdentifier: 
-  particleEffect: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f,
-    type: 3}
-  lastForWholeRound: 0
-  effectLength: 0
+  particleEffect: {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
+  effectLength: 3
+  effectFrequency: 1

@@ -34,7 +34,7 @@ public class TickTimer : MonoBehaviour
         }
 
         tickTimer = null;
-        Debug.Log(this.gameObject + "was triggered " + x + " times");
+        //Debug.Log(this.gameObject + "was triggered " + x + " times");
         Destroy(this);
     }
 }
