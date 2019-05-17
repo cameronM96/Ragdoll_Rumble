@@ -222,7 +222,7 @@ PrefabInstance:
     - target: {fileID: 798544836497354836, guid: d701d5b9cff375e47902ad69128149cb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 798544836497354835, guid: d701d5b9cff375e47902ad69128149cb,
         type: 3}
@@ -570,10 +570,12 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
-  onHealthList: []
+  onHealthList:
+  - {fileID: 11400000, guid: 2b73583e3c01b9544b29eea21f9c8f34, type: 2}
 --- !u!54 &170042977
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -774,6 +776,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList:
@@ -1575,6 +1578,8 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList:
+  - {fileID: 11400000, guid: b77ceb0e1316e1849923b77cc4a0b44d, type: 2}
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -2468,6 +2473,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -2609,6 +2615,9 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList:
+  - {fileID: 11400000, guid: b77ceb0e1316e1849923b77cc4a0b44d, type: 2}
+  - {fileID: 11400000, guid: e71d72c67cf78a64f9ade886f2f7264b, type: 2}
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -3700,6 +3709,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -3926,6 +3936,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -4321,6 +4332,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -4745,6 +4757,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -5404,6 +5417,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -5858,6 +5872,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList:
   - {fileID: 11400000, guid: cb8567ce762274f4e9aab105a7c97340, type: 2}
@@ -6152,6 +6167,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -6471,6 +6487,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
   onDamagedList: []
@@ -6751,6 +6768,7 @@ MonoBehaviour:
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
   hitInterval: 1
+  onTimerList: []
   onHitEffectsList:
   - {fileID: 11400000, guid: 3d8e72b882fd1e5429f518b0f53a3d31, type: 2}
   - {fileID: 11400000, guid: d7de8b16ebcfd674a89e54bfdb70795a, type: 2}

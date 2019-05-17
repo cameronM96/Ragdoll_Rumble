@@ -18,6 +18,8 @@ public class Base_Stats : MonoBehaviour
     public Display_Base_Stats statDisplay;
     private List<GameObject> hitList = new List<GameObject>();
     public float hitInterval = 1;
+
+    public List<OnTimer> onTimerList = new List<OnTimer>();
     public List<Effect> onHitEffectsList = new List<Effect>();
     public List<Effect> onGetHitEffectsList = new List<Effect>();
     public List<OnDamaged> onDamagedList = new List<OnDamaged>();
@@ -31,6 +33,23 @@ public class Base_Stats : MonoBehaviour
     public void Initialise()
     {
         currentHP = maxHP;
+
+        // Initialise Triggers
+        if (onTimerList.Count > 0)
+        {
+            foreach (OnTimer onTimer in onTimerList)
+                onTimer.StartTimer(this.gameObject);
+        }
+        if (onDamagedList.Count > 0)
+        {
+            foreach (OnDamaged onDamaged in onDamagedList)
+                onDamaged.Initialise();
+        }
+        if (onHealthList.Count > 0)
+        {
+            foreach (OnHealth onHealth in onHealthList)
+                onHealth.Initialise();
+        }
     }
 
     public void UpdateStatDisplay()
@@ -147,7 +166,7 @@ public class Base_Stats : MonoBehaviour
         if (onDamagedList.Count > 0)
         {
             foreach (OnDamaged trigger in onDamagedList)
-                trigger.CheckIfEnoughDamaged(this.gameObject, damage);
+                trigger.CheckIfEnoughDamaged(this.gameObject, damage, maxHP);
         }
     }
 

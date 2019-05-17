@@ -8,7 +8,6 @@ public class TickTimer : MonoBehaviour
     [HideInInspector] public TickingEffect targetEffect;
 
     private int timer;
-    int x;
 
     public void SetTimer (int damage, int frequency, int duration, TickingEffect target)
     {
@@ -30,11 +29,9 @@ public class TickTimer : MonoBehaviour
             // Do effect here
             timer -= frequency;
             targetEffect.TickEffect(this.gameObject);
-            ++x;
         }
 
         tickTimer = null;
-        //Debug.Log(this.gameObject + "was triggered " + x + " times");
         Destroy(this);
     }
 }

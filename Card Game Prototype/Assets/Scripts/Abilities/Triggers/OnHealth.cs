@@ -11,6 +11,13 @@ public class OnHealth : Triggers
 
     private bool setoff = false;
 
+    public override void Initialise()
+    {
+        base.Initialise();
+
+        setoff = false;
+    }
+
     public void CheckIfTriggered (GameObject target, int currentHealth, int MaxHealth)
     {
         if (!setoff)
@@ -18,22 +25,28 @@ public class OnHealth : Triggers
             if (percent)
             {
                 // Get healthPercent
-                int currentPercent = currentHealth / MaxHealth;
-                if (currentHealth % MaxHealth != 0)
-                    ++currentPercent;
+                int currentPercent = (currentHealth * 100 / MaxHealth) ;
+
+                Debug.Log("Current %: " + currentPercent);
 
                 if (currentPercent <= healthValue)
                 {
-                    setoff = true;
+                    Debug.Log("Ability Triggered");
                     ApplyEffect(target);
+                    if (triggerOnce)
+                        setoff = true;
                 }
             }
             else
             {
-                if(currentHealth <= healthValue)
+                Debug.Log("Health: " + currentHealth);
+
+                if (currentHealth <= healthValue)
                 {
-                    setoff = true;
+                    Debug.Log("Ability Triggered");
                     ApplyEffect(target);
+                    if (triggerOnce)
+                        setoff = true;
                 }
             }
         }

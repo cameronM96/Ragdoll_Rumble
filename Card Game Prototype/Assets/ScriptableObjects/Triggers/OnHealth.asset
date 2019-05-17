@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83de7b924e979e49963365652e7a96a, type: 3}
+  m_Name: OnHealth
+  m_EditorClassIdentifier: 
+  viableTargetID: 1
+  effects:
+  - {fileID: 11400000, guid: cb8567ce762274f4e9aab105a7c97340, type: 2}
+  percent: 0
+  healthValue: 20
+  triggerOnce: 1

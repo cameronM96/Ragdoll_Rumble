@@ -8,6 +8,11 @@ public class Triggers : ScriptableObject
     public TargetID viableTargetID = TargetID.Enemies;
 
     public Effect[] effects;
+
+    public virtual void Initialise ()
+    {
+
+    }
     
     public void ApplyEffect(GameObject target)
     {
