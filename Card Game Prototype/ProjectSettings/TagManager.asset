@@ -12,6 +12,8 @@ TagManager:
   - CardCanvas
   - Team 1
   - Team 2
+  - Combat Phase HUD
+  - Card Phase HUD
   layers:
   - Default
   - TransparentFX

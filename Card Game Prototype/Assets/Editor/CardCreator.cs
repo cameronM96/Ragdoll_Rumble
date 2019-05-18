@@ -44,7 +44,7 @@ public class CardCreator : EditorWindow
     private void OnEnable()
     {
         // Load Defaults
-        GameObject defaultValuesObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/CardCreationWindowDefaults.prefab", typeof(GameObject));
+        GameObject defaultValuesObject = (GameObject)AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Templates(DO NOT TOUCH)/CardCreationWindowDefaults.prefab", typeof(GameObject));
         defaultValues = defaultValuesObject.GetComponent<CardCreationWindowDefaultValues>();
         previewTarget = defaultValues.cardTemplate;
         //previewWindowCanvas = ;

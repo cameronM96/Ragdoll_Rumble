@@ -27,11 +27,11 @@ public class OnHealth : Triggers
                 // Get healthPercent
                 int currentPercent = (currentHealth * 100 / MaxHealth) ;
 
-                Debug.Log("Current %: " + currentPercent);
+                //Debug.Log("Current %: " + currentPercent);
 
                 if (currentPercent <= healthValue)
                 {
-                    Debug.Log("Ability Triggered");
+                    //Debug.Log("Ability Triggered");
                     ApplyEffect(target);
                     if (triggerOnce)
                         setoff = true;
@@ -39,11 +39,11 @@ public class OnHealth : Triggers
             }
             else
             {
-                Debug.Log("Health: " + currentHealth);
+                //Debug.Log("Health: " + currentHealth);
 
                 if (currentHealth <= healthValue)
                 {
-                    Debug.Log("Ability Triggered");
+                    //Debug.Log("Ability Triggered");
                     ApplyEffect(target);
                     if (triggerOnce)
                         setoff = true;

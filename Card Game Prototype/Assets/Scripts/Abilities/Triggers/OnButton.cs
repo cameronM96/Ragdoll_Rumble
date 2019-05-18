@@ -1,15 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(menuName = "Card Elements/Abilities/Trigger/OnButton")]
 public class OnButton : Triggers
 {
-    private void OnGUI()
+    //public GameObject target;
+    public Sprite buttonImage;
+    public bool oncePerRound = false;
+    public float coolDown = 30f;
+
+    public override void Initialise()
     {
-        if(GUI.Button(new Rect (Screen.width / 2 - 50, 5, 100, 30), "Click"))
-        {
-            //ApplyEffect(this.gameObject);
-        }
+        base.Initialise();
+
+
     }
 }
