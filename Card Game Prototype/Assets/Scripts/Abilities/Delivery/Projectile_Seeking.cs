@@ -24,10 +24,8 @@ public class Projectile_Seeking : Projectile
         Initialize();
     }
 
-    protected override void Initialize()
+    public override void Initialize()
     {
-        base.Initialize();
-
         curving = curve;
 
         FindTargets();
@@ -36,6 +34,8 @@ public class Projectile_Seeking : Projectile
         // If not enough targets to bounce to or each target can only be hit once and there aren't enough.
         if (uniqueTargetsOnly && (targets.Count < maxTargetsHit || maxTargetsHit == 0))
             maxTargetsHit = targets.Count;
+
+        base.Initialize();
     }
 
     private void Update()

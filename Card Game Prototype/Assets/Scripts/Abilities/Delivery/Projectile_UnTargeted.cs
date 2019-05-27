@@ -19,14 +19,14 @@ public class Projectile_UnTargeted : Projectile
         Initialize();
     }
 
-    protected override void Initialize()
+    public override void Initialize()
     {
-        base.Initialize();
-
         if (bounce)
             GetComponent<Collider>().isTrigger = false;
         else
             GetComponent<Collider>().isTrigger = true;
+
+        base.Initialize();
     }
 
     // Update is called once per frame

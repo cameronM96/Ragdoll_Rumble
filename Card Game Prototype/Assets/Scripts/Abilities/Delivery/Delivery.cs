@@ -8,14 +8,19 @@ public class Delivery : MonoBehaviour
     public TargetID viableTargetID = TargetID.Enemies;
 
     public string friendlyTag = "Team 1";
+    public GameObject owner;
+    public GameObject TriggeringTarget;
 
     public float lifeSpan = 5;
 
     protected float timer = 0;
 
-    protected virtual void Initialize()
+    private bool initialised = false;
+
+    public virtual void Initialize()
     {
         //friendlyTag = this.gameObject.tag;
+        initialised = true;
     }
 
     protected virtual void AdditionalUpdates()

@@ -9,8 +9,8 @@ public class OnButtonTrigger : MonoBehaviour
     public float coolDown;
     public bool oncePerRound;
     public GameObject target;
+    public Image cooldownImage;
 
-    [SerializeField] private Image cooldownImage;
     private float timer;
     private bool ready;
     private bool used;

@@ -21,7 +21,7 @@ public class Projectile : Delivery
 
     protected float deathTimer = 0.2f;
 
-    protected override void Initialize()
+    public override void Initialize()
     {
         base.Initialize();
 
@@ -54,10 +54,10 @@ public class Projectile : Delivery
 
     protected override void AdditionalUpdates()
     {
-        base.AdditionalUpdates();
-
         if (currentTargetsHit >= maxTargetsHit && maxTargetsHit != 0)
             Destroy(this.gameObject, deathTimer);
+
+        base.AdditionalUpdates();
     }
 
     protected void AdditionalTriggerEvents(GameObject other)

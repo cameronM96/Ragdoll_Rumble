@@ -2,23 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AppearOnTargets : Delivery
+public class SO_AppearOnTargets : DeliverySO
 {
-    public enum DesiredTarget { Self, TriggeringTarget, MultiTarget};
+    public enum DesiredTarget { Self, TriggeringTarget, MultiTarget };
     public DesiredTarget desiredTargets = DesiredTarget.Self;
 
-    public Effect[] effects;
+    public List<Effect> effects;
 
     private List<GameObject> targets = new List<GameObject>();
 
-    // Start is called before the first frame update
-    void Start()
+    public override void ApplyDelivery()
     {
-        Initialize();
-    }
+        base.ApplyDelivery();
 
-    public override void Initialize()
-    {
         switch (desiredTargets)
         {
             case DesiredTarget.Self:
@@ -47,10 +43,6 @@ public class AppearOnTargets : Delivery
                 Debug.Log("Unknown 'Desired Target'!");
                 break;
         }
-
-        base.Initialize();
-
-        Destroy(this.gameObject);
     }
 
     void FindTargets()
