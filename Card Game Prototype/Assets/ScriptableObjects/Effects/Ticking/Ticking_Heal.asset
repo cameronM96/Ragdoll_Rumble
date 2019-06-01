@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125dbd647e0fec24387b247630bb0bde, type: 3}
   m_Name: Ticking_Heal
   m_EditorClassIdentifier: 
+  statChange: 2
+  statChangeValue: 2
+  changeCurrentHP: 0
+  multipler: 0
   particleEffect: {fileID: 100004, guid: 3af6f68141914ca43ba39b2403757bd0, type: 3}
   effectLength: 3
   effectFrequency: 1

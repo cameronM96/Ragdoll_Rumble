@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125dbd647e0fec24387b247630bb0bde, type: 3}
   m_Name: Ticking_Poison
   m_EditorClassIdentifier: 
+  statChange: 6
+  statChangeValue: -2
+  changeCurrentHP: 0
+  multipler: 0
   particleEffect: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
   effectLength: 10
   effectFrequency: 2

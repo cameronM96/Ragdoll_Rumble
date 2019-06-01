@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42973660de36cd04d9aff28879371baa, type: 3}
   m_Name: Explode
   m_EditorClassIdentifier: 
+  statChange: 1
+  statChangeValue: 3
+  changeCurrentHP: 0
+  multipler: 0
   particleEffect: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
     type: 3}
   effectLength: 0

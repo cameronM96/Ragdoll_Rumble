@@ -25,8 +25,8 @@ public class CardDisplay : MonoBehaviour
         if (card.description != "")
             cardInfoText.text = card.description + "\n";
 
-        if (card.damage != 0)
-            cardInfoText.text += ("\nAttack: " + card.damage);
+        if (card.attack != 0)
+            cardInfoText.text += ("\nAttack: " + card.attack);
         if (card.armour != 0)
             cardInfoText.text += ("\nArmour: " + card.armour);
         if (card.hP != 0)
@@ -65,7 +65,7 @@ public class CardDisplay : MonoBehaviour
 
     void UpdateStats (Base_Stats bStats)
     {
-        bStats.damage += card.damage;
+        bStats.attack += card.attack;
         bStats.armour += card.armour;
         bStats.maxHP += card.hP;
         bStats.speed += card.speed;

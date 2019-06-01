@@ -5,13 +5,13 @@ using UnityEngine.UI;
 
 public class Base_Stats : MonoBehaviour
 {
-    public int damage = 2;
+    public int attack = 2;
     public int armour;
     public int maxHP = 25;
     public float speed = 20f;
     public float atkSpeed = 1;
 
-    private int currentHP;
+    [SerializeField] private int currentHP;
     public bool dead;
     public GameObject hitText;
 
@@ -104,10 +104,12 @@ public class Base_Stats : MonoBehaviour
             }
 
             damageTaken = newDamageAmount;
+
+            // Apply OnHit Events
+            OnGetHit();
         }
 
         // Apply OnHit Events
-        OnGetHit();
         OnDamaged(damageTaken);
         OnHealth();
     }
@@ -129,7 +131,10 @@ public class Base_Stats : MonoBehaviour
     // Kill player
     public void Dead()
     {
+        Debug.Log(this.gameObject.name + " has Died!");
         dead = true;
+        GetComponent<Renderer>().material.color = Color.black;
+        //GetComponent<Collider>().enabled = false;
     }
 
     // *************************** Trigger Events ***************************
@@ -137,7 +142,7 @@ public class Base_Stats : MonoBehaviour
     {
         // Deal damage if it is hurtable
         if (target.GetComponent<Base_Stats>() != null)
-            target.GetComponent<Base_Stats>().TakeDamage(damage, false);
+            target.GetComponent<Base_Stats>().TakeDamage(attack, false);
 
         // Apply on hit effects
         if (!hitList.Contains(target))
@@ -180,35 +185,140 @@ public class Base_Stats : MonoBehaviour
     }
 
     // *************************** Buffs/Debuffs/Card playing events ***************************
-    public void ChangeMaxHealth (int healthChange, bool changeCurrentHealth)
+    public void ChangeMaxHealth(int healthChange)
     {
-        maxHP += healthChange;
-        if (changeCurrentHealth) {
-            if (healthChange > 0)
-                TakeHeal(healthChange);
-            else
-                TakeDamage(healthChange, true);
+        ChangeMaxHealth(healthChange, false, false);
+    }
+
+    public void ChangeMaxHealth(int healthChange, bool changeCurrentHealth)
+    {
+        ChangeMaxHealth(healthChange, changeCurrentHealth, false);
+    }
+
+    public void ChangeMaxHealth (int healthChange, bool changeCurrentHealth, bool multiplier)
+    {
+        if (multiplier)
+        {
+            maxHP *= healthChange;
+
+            // Change current health aswell
+            if (changeCurrentHealth)
+            {
+                // Damage or Heal?
+                if (healthChange > 0)
+                {
+                    int newHealth = (currentHP * healthChange) - currentHP;
+                    TakeHeal(newHealth);
+                }
+                else
+                {
+                    int newHealth = currentHP - (currentHP / Mathf.Abs(healthChange));
+                    TakeDamage(newHealth, true);
+                }
+            }
         }
+        else
+        {
+            maxHP += healthChange;
+
+            // Change current health aswell
+            if (changeCurrentHealth)
+            {
+                // Damage or Heal?
+                if (healthChange > 0)
+                    TakeHeal(healthChange);
+                else
+                    TakeDamage(Mathf.Abs(healthChange), true);
+            }
+        }
+
+        // Never let current HP be greater than maxHP
+        if (currentHP > maxHP)
+            currentHP = maxHP;
     }
 
     public void ChangeArmour(int armourChange)
     {
-        armour += armourChange;
+        ChangeArmour(armourChange, false);
     }
 
-    public void ChangeDamage(int damageChange)
+    public void ChangeArmour(int armourChange, bool multiplier)
     {
-        damage += damageChange;
+        if (multiplier)
+        {
+            // Damage or Heal?
+            if (armourChange > 0)
+                armour *= armourChange;
+            else
+                armour /= Mathf.Abs(armourChange);
+        }
+        else
+        {
+            armour += armourChange;
+        }
+    }
+
+    public void ChangeAttack(int attackChange)
+    {
+        ChangeAttack(attackChange, false);
+    }
+
+    public void ChangeAttack(int attackChange, bool multiplier)
+    {
+        if (multiplier)
+        {
+            // Damage or Heal?
+            if (attackChange > 0)
+                attack *= attackChange;
+            else
+                attack /= Mathf.Abs(attackChange);
+        }
+        else
+        {
+            attack += attackChange;
+        }
     }
 
     public void ChangeSpeed(int speedChange)
     {
-        speed += speedChange;
+        ChangeSpeed(speedChange, false);
+    }
+
+    public void ChangeSpeed(int speedChange, bool multiplier)
+    {
+        if (multiplier)
+        {
+            // Damage or Heal?
+            if (speedChange > 0)
+                speed *= speedChange;
+            else
+                speed /= Mathf.Abs(speedChange);
+        }
+        else
+        {
+            speed += speedChange;
+        }
     }
 
     public void ChangeAttackSpeed(int attackSpeedChange)
     {
-        atkSpeed += attackSpeedChange;
+        ChangeAttackSpeed(attackSpeedChange, false);
+    }
+
+    public void ChangeAttackSpeed(int attackSpeedChange, bool multiplier)
+    {
+        if (multiplier)
+        {
+            // Damage or Heal?
+            if (attackSpeedChange > 0)
+                atkSpeed *= attackSpeedChange;
+            else
+                atkSpeed /= Mathf.Abs(attackSpeedChange);
+        }
+        else
+        {
+            atkSpeed += attackSpeedChange;
+        }
     }
 
     private void SpawnHitText(Color newColour, int value)

@@ -21,7 +21,7 @@ public class CardCreator_v2 : EditorWindow
     public Sprite artwork;
     public Sprite background;
 
-    public int damage;
+    public int attack;
     public int armour;
     public int hP;
     public float speed;
@@ -201,7 +201,7 @@ public class CardCreator_v2 : EditorWindow
         EditorGUILayout.Space();
 
         // Base Stats
-        damage = EditorGUILayout.IntField("Damage: ", damage);
+        attack = EditorGUILayout.IntField("Damage: ", attack);
         armour = EditorGUILayout.IntField("Armour: ", armour);
         hP = EditorGUILayout.IntField("Health: ", hP);
         speed = EditorGUILayout.FloatField("Movement Speed: ", speed);
@@ -356,7 +356,7 @@ public class CardCreator_v2 : EditorWindow
         artwork = cardData.artwork;
         background = cardData.background;
 
-        damage = cardData.damage;
+        attack = cardData.attack;
         armour = cardData.armour;
         hP = cardData.hP;
         speed = cardData.speed;

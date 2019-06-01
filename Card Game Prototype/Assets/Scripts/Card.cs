@@ -15,7 +15,7 @@ public class Card : ScriptableObject
     public Sprite artwork;
     public Sprite background;
 
-    public int damage;
+    public int attack;
     public int armour;
     public int hP;
     public float speed;

@@ -7,6 +7,6 @@ public class InstantEffect : Effect
 {
     protected override void ApplyEffect(GameObject target)
     {
-
+        ChangeStat(target);
     }
 }

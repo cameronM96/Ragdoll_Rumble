@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 125dbd647e0fec24387b247630bb0bde, type: 3}
   m_Name: Burn
   m_EditorClassIdentifier: 
+  statChange: 1
+  statChangeValue: 1
+  changeCurrentHP: 0
+  multipler: 0
   particleEffect: {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}
   effectLength: 5
   effectFrequency: 1

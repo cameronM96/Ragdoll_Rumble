@@ -35,6 +35,8 @@ public class TickingEffect : Effect
 
     public void TickEffect(GameObject target)
     {
+        ChangeStat(target);
+
         GameObject tempParticle = Instantiate(particleEffect, target.transform);
         tempParticle.GetComponent<ParticleSystem>().Play();
         if (effectLength <= 0)

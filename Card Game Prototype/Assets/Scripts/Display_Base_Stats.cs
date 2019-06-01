@@ -13,7 +13,7 @@ public class Display_Base_Stats : MonoBehaviour
 
     public void UpdateStatText (Base_Stats bstats)
     {
-        atktxt.text = ": " + bstats.damage;
+        atktxt.text = ": " + bstats.attack;
         armourtxt.text = ": " + bstats.armour;
         hPtxt.text = ": " + bstats.maxHP;
         mSpeedtxt.text = ": " + bstats.speed;
