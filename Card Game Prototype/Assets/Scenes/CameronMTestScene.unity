@@ -2457,7 +2457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &558672179
 GameObject:
@@ -6376,9 +6376,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Deck
-
-    15'
+  m_Text: Deck 15
 --- !u!222 &1443747926
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7190,7 +7188,7 @@ PrefabInstance:
     - target: {fileID: 678182945977238469, guid: 242cf8a34e6688340adaf88f7efa414d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 678182945977238469, guid: 242cf8a34e6688340adaf88f7efa414d,
         type: 3}
@@ -8114,7 +8112,7 @@ Transform:
   - {fileID: 242671320}
   - {fileID: 59293228}
   m_Father: {fileID: 1955743110}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1800389005
 GameObject:
@@ -8309,8 +8307,8 @@ MonoBehaviour:
   onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList:
-  - {fileID: 11400000, guid: cb8567ce762274f4e9aab105a7c97340, type: 2}
-  - {fileID: 11400000, guid: 8364c8bf3b78e0a4ca5103557b02966f, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   onDamagedList: []
   onHealthList: []
 --- !u!54 &1854054958
@@ -8742,8 +8740,8 @@ Transform:
   m_LocalPosition: {x: -50, y: 0, z: -100}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1791625436}
   - {fileID: 2128940590}
+  - {fileID: 1791625436}
   - {fileID: 1095894151}
   - {fileID: 1585955265}
   - {fileID: 269962114}
@@ -9343,8 +9341,7 @@ MonoBehaviour:
   hitInterval: 1
   onTimerList: []
   onHitEffectsList:
-  - {fileID: 11400000, guid: 3d8e72b882fd1e5429f518b0f53a3d31, type: 2}
-  - {fileID: 11400000, guid: d7de8b16ebcfd674a89e54bfdb70795a, type: 2}
+  - {fileID: 11400000, guid: 91c108b0291c5bc42ab7697579eafadb, type: 2}
   onGetHitEffectsList: []
   onDamagedList: []
   onHealthList: []
@@ -9769,7 +9766,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1955743110}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2128940592
 MonoBehaviour:

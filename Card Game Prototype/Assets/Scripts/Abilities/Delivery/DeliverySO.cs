@@ -1,17 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 public class DeliverySO : ScriptableObject
 {
-    public GameObject templateObj;
+    public SO_Ability ability;
 
-    public enum TargetID { Enemies, Allies, All };
     public TargetID viableTargetID = TargetID.Enemies;
 
-    public string friendlyTag = "Team 1";
-    public GameObject owner;
-    public GameObject TriggeringTarget;
+    [HideInInspector] public string friendlyTag = "Team 1";
+    [HideInInspector] public GameObject owner;
+    [HideInInspector] public GameObject triggeringTarget;
 
     public float lifeSpan = 5;
 

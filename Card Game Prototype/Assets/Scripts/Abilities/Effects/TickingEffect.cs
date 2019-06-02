@@ -6,6 +6,8 @@ using UnityEngine;
 public class TickingEffect : Effect
 {
     public int effectFrequency = 0;
+    public bool applyTickOnStart = false;
+    public bool applyTickOnEnd = false;
     // Scriptable Objects don't have update so Coroutines don't work here.
     // Extend to a monoBehaviour to get to work.
     protected override void ApplyEffect(GameObject target)
@@ -37,11 +39,6 @@ public class TickingEffect : Effect
     {
         ChangeStat(target);
 
-        GameObject tempParticle = Instantiate(particleEffect, target.transform);
-        tempParticle.GetComponent<ParticleSystem>().Play();
-        if (effectLength <= 0)
-            Destroy(tempParticle, tempParticle.GetComponent<ParticleSystem>().main.duration);
-        else
-            Destroy(tempParticle, effectLength);
+        SpawnParticleEffect(target);
     }
 }

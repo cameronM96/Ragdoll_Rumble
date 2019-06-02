@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class ProjectileSO : DeliverySO
 {
+    public GameObject templateObj;
+
     public bool constSpeed = true;
     public bool gravity = false;
 

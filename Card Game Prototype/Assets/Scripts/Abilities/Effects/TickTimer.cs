@@ -16,6 +16,9 @@ public class TickTimer : MonoBehaviour
 
         if (tickTimer == null)
         {
+            if (targetEffect.applyTickOnStart)
+                targetEffect.TickEffect(this.gameObject);
+
             tickTimer = ITickTimer(damage, frequency);
             StartCoroutine(tickTimer);
         }
@@ -30,6 +33,9 @@ public class TickTimer : MonoBehaviour
             timer -= frequency;
             targetEffect.TickEffect(this.gameObject);
         }
+
+        if (targetEffect.applyTickOnEnd)
+            targetEffect.TickEffect(this.gameObject);
 
         tickTimer = null;
         Destroy(this);

@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
-public class SO_AppearOnTargets : DeliverySO
+[CreateAssetMenu(menuName = "Card Elements/Abilities/Delivery/ApplyToTarget")]
+public class SO_ApplyToTarget : DeliverySO
 {
-    public enum DesiredTarget { Self, TriggeringTarget, MultiTarget };
     public DesiredTarget desiredTargets = DesiredTarget.Self;
-
-    public List<Effect> effects;
 
     private List<GameObject> targets = new List<GameObject>();
 
@@ -20,22 +19,22 @@ public class SO_AppearOnTargets : DeliverySO
             case DesiredTarget.Self:
                 if (owner != null)
                 {
-                    foreach (Effect effect in effects)
+                    foreach (Effect effect in ability.effects)
                         effect.TriggerEffect(owner);
                 }
                 break;
             case DesiredTarget.TriggeringTarget:
-                if (TriggeringTarget != null)
+                if (triggeringTarget != null)
                 {
-                    foreach (Effect effect in effects)
-                        effect.TriggerEffect(TriggeringTarget);
+                    foreach (Effect effect in ability.effects)
+                        effect.TriggerEffect(triggeringTarget);
                 }
                 break;
             case DesiredTarget.MultiTarget:
                 FindTargets();
                 foreach (GameObject target in targets)
                 {
-                    foreach (Effect effect in effects)
+                    foreach (Effect effect in ability.effects)
                         effect.TriggerEffect(target);
                 }
                 break;
@@ -49,6 +48,7 @@ public class SO_AppearOnTargets : DeliverySO
     {
         // Find Targets
         GameObject[] findingTargets;
+        targets = new List<GameObject>();
         switch (viableTargetID)
         {
             case TargetID.All:

@@ -16,6 +16,8 @@ MonoBehaviour:
   statChangeValue: -2
   changeCurrentHP: 0
   multipler: 0
-  particleEffect: {fileID: 100006, guid: 2a474af3f4c27be4e9bdce39cfe4315d, type: 3}
+  particleEffect: {fileID: 100004, guid: 7867af58a6ec48846ae807eb4022fbaa, type: 3}
   effectLength: 10
   effectFrequency: 2
+  applyTickOnStart: 0
+  applyTickOnEnd: 0

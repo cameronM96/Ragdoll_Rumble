@@ -17,20 +17,23 @@ public class Effect : ScriptableObject
 
     public void TriggerEffect(GameObject target)
     {
-        // Spawn Particle effect
-        GameObject tempParticle = Instantiate(particleEffect,target.transform);
-        tempParticle.GetComponent<ParticleSystem>().Play();
-        if (effectLength <= 0)
-            Destroy(tempParticle, tempParticle.GetComponent<ParticleSystem>().main.duration);
-        else
-            Destroy(tempParticle, effectLength);
-
         ApplyEffect(target);
     }
 
     protected virtual void ApplyEffect(GameObject target)
     {
 
+    }
+
+    protected void SpawnParticleEffect (GameObject target)
+    {
+        // Spawn Particle effect
+        GameObject tempParticle = Instantiate(particleEffect, target.transform);
+        tempParticle.GetComponent<ParticleSystem>().Play();
+        if (effectLength <= 0)
+            Destroy(tempParticle, tempParticle.GetComponent<ParticleSystem>().main.duration);
+        else
+            Destroy(tempParticle, effectLength);
     }
 
     // Change the stats of the target

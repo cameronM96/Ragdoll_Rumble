@@ -20,8 +20,8 @@ public class Base_Stats : MonoBehaviour
     public float hitInterval = 1;
 
     public List<OnTimer> onTimerList = new List<OnTimer>();
-    public List<Effect> onHitEffectsList = new List<Effect>();
-    public List<Effect> onGetHitEffectsList = new List<Effect>();
+    public List<DeliverySO> onHitEffectsList = new List<DeliverySO>();
+    public List<DeliverySO> onGetHitEffectsList = new List<DeliverySO>();
     public List<OnDamaged> onDamagedList = new List<OnDamaged>();
     public List<OnHealth> onHealthList = new List<OnHealth>();
 
@@ -151,8 +151,12 @@ public class Base_Stats : MonoBehaviour
 
             if (onHitEffectsList.Count > 0)
             {
-                foreach (Effect effect in onHitEffectsList)
-                    effect.TriggerEffect(target);
+                foreach (DeliverySO deliveryMethod in onHitEffectsList)
+                {
+                    deliveryMethod.owner = this.gameObject;
+                    deliveryMethod.triggeringTarget = target;
+                    deliveryMethod.ApplyDelivery();
+                }
             }
         }
     }
@@ -161,8 +165,12 @@ public class Base_Stats : MonoBehaviour
     {
         if (onGetHitEffectsList.Count > 0)
         {
-            foreach (Effect effect in onGetHitEffectsList)
-                effect.TriggerEffect(this.gameObject);
+            foreach (DeliverySO deliveryMethod in onHitEffectsList)
+            {
+                deliveryMethod.owner = this.gameObject;
+                //deliveryMethod.triggeringTarget = target;
+                deliveryMethod.ApplyDelivery();
+            }
         }
     }
 
@@ -298,6 +306,8 @@ public class Base_Stats : MonoBehaviour
         {
             speed += speedChange;
         }
+
+        SpawnHitText(Color.blue, speedChange);
     }
 
     public void ChangeAttackSpeed(int attackSpeedChange)
