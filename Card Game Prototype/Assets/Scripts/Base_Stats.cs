@@ -38,17 +38,40 @@ public class Base_Stats : MonoBehaviour
         if (onTimerList.Count > 0)
         {
             foreach (OnTimer onTimer in onTimerList)
+            {
+                onTimer.ability.deliveryMethod.owner = this.gameObject;
                 onTimer.StartTimer(this.gameObject);
+            }
         }
+
         if (onDamagedList.Count > 0)
         {
             foreach (OnDamaged onDamaged in onDamagedList)
+            {
+                onDamaged.ability.deliveryMethod.owner = this.gameObject;
                 onDamaged.Initialise();
+            }
         }
+
         if (onHealthList.Count > 0)
         {
             foreach (OnHealth onHealth in onHealthList)
+            {
+                onHealth.ability.deliveryMethod.owner = this.gameObject;
                 onHealth.Initialise();
+            }
+        }
+
+        if (onHitEffectsList.Count > 0)
+        {
+            foreach (DeliverySO delivery in onHitEffectsList)
+                delivery.owner = this.gameObject;
+        }
+
+        if (onGetHitEffectsList.Count > 0)
+        {
+            foreach (DeliverySO delivery in onGetHitEffectsList)
+                delivery.owner = this.gameObject;
         }
     }
 
@@ -66,7 +89,7 @@ public class Base_Stats : MonoBehaviour
         hitList.Remove(hitTarget);
     }
 
-    public void TakeDamage(int damage, bool ability)
+    public void TakeDamage(int damage, bool ability, GameObject target)
     {
         int damageTaken = 0;
         if (ability)
@@ -106,12 +129,12 @@ public class Base_Stats : MonoBehaviour
             damageTaken = newDamageAmount;
 
             // Apply OnHit Events
-            OnGetHit();
+            OnGetHit(target);
         }
 
         // Apply OnHit Events
-        OnDamaged(damageTaken);
-        OnHealth();
+        OnDamaged(damageTaken, target);
+        OnHealth(target);
     }
 
     public void TakeHeal (int heal)
@@ -142,7 +165,7 @@ public class Base_Stats : MonoBehaviour
     {
         // Deal damage if it is hurtable
         if (target.GetComponent<Base_Stats>() != null)
-            target.GetComponent<Base_Stats>().TakeDamage(attack, false);
+            target.GetComponent<Base_Stats>().TakeDamage(attack, false, target);
 
         // Apply on hit effects
         if (!hitList.Contains(target))
@@ -154,54 +177,64 @@ public class Base_Stats : MonoBehaviour
                 foreach (DeliverySO deliveryMethod in onHitEffectsList)
                 {
                     deliveryMethod.triggeringTarget = target;
-                    deliveryMethod.ApplyDelivery();
+                    deliveryMethod.ApplyDelivery(target);
                 }
             }
         }
     }
 
-    private void OnGetHit()
+    private void OnGetHit(GameObject target)
     {
         if (onGetHitEffectsList.Count > 0)
         {
             foreach (DeliverySO deliveryMethod in onHitEffectsList)
             {
-                //deliveryMethod.triggeringTarget = target;
-                deliveryMethod.ApplyDelivery();
+                deliveryMethod.ApplyDelivery(target);
             }
         }
     }
 
-    private void OnDamaged(int damage)
+    private void OnDamaged(int damage, GameObject target)
     {
         if (onDamagedList.Count > 0)
         {
             foreach (OnDamaged trigger in onDamagedList)
+            {
+                trigger.ability.deliveryMethod.triggeringTarget = target;
                 trigger.CheckIfEnoughDamaged(this.gameObject, damage, maxHP);
+            }
         }
     }
 
-    private void OnHealth()
+    private void OnHealth(GameObject target)
     {
         if (onHealthList.Count > 0)
         {
             foreach (OnHealth trigger in onHealthList)
+            {
+                trigger.ability.deliveryMethod.triggeringTarget = target;
                 trigger.CheckIfTriggered(this.gameObject, currentHP, maxHP);
+            }
         }
     }
 
     // *************************** Buffs/Debuffs/Card playing events ***************************
     public void ChangeMaxHealth(int healthChange)
     {
-        ChangeMaxHealth(healthChange, false, false);
+        ChangeMaxHealth(healthChange, false, false, null);
     }
 
-    public void ChangeMaxHealth(int healthChange, bool changeCurrentHealth)
+    public void ChangeMaxHealth(int healthChange, bool multiplier)
     {
-        ChangeMaxHealth(healthChange, changeCurrentHealth, false);
+        ChangeMaxHealth(healthChange, false, multiplier, null);
     }
 
-    public void ChangeMaxHealth (int healthChange, bool changeCurrentHealth, bool multiplier)
+    public void ChangeMaxHealth(int healthChange, bool changeCurrentHealth, GameObject target)
+    {
+        ChangeMaxHealth(healthChange, changeCurrentHealth, false, target);
+    }
+
+    public void ChangeMaxHealth(int healthChange, bool multiplier, bool changeCurrentHealth, GameObject target)
     {
         if (multiplier)
         {
@@ -219,7 +252,7 @@ public class Base_Stats : MonoBehaviour
                 else
                 {
                     int newHealth = currentHP - (currentHP / Mathf.Abs(healthChange));
-                    TakeDamage(newHealth, true);
+                    TakeDamage(newHealth, true, target);
                 }
             }
         }
@@ -234,7 +267,7 @@ public class Base_Stats : MonoBehaviour
                 if (healthChange > 0)
                     TakeHeal(healthChange);
                 else
-                    TakeDamage(Mathf.Abs(healthChange), true);
+                    TakeDamage(Mathf.Abs(healthChange), true, target);
             }
         }
 

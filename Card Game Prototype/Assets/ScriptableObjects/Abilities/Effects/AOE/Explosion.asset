@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 164cb0937785cbd4dbfdf94e20ac53d1, type: 3}
+  m_Name: Explosion
+  m_EditorClassIdentifier: 
+  statChange: 1
+  statChangeValue: 3
+  changeCurrentHP: 0
+  multipler: 0
+  particleEffect: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
+  effectLength: 0
+  viableTargetID: 2
+  radius: 5
+  aoeParticleEffect: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+    type: 3}

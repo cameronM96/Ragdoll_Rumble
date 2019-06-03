@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 public class AppearOnTargets : Delivery
 {
-    public enum DesiredTarget { Self, TriggeringTarget, MultiTarget};
     public DesiredTarget desiredTargets = DesiredTarget.Self;
 
 

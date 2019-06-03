@@ -9,7 +9,7 @@ public class OnHealth : Triggers
     public int healthValue;
     public bool triggerOnce = true;
 
-    [SerializeField] private bool setoff = false;
+    [System.NonSerialized] private bool setoff = false;
 
     public override void Initialise()
     {

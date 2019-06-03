@@ -16,8 +16,8 @@ public class Triggers : ScriptableObject
     
     public void ApplyEffect(GameObject target)
     {
-        ability.deliveryMethod.triggeringTarget = target;
-        ability.deliveryMethod.ApplyDelivery();
+        if (target != null)
+            ability.deliveryMethod.ApplyDelivery(target);
 
         //foreach (DeliverySO delivery in ability.deliveryMethod)
         //{

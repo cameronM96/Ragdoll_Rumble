@@ -28,18 +28,21 @@ public class Effect : ScriptableObject
     protected void SpawnParticleEffect (GameObject target)
     {
         // Spawn Particle effect
-        GameObject tempParticle = Instantiate(particleEffect, target.transform);
-        tempParticle.GetComponent<ParticleSystem>().Play();
-        if (effectLength <= 0)
-            Destroy(tempParticle, tempParticle.GetComponent<ParticleSystem>().main.duration);
-        else
-            Destroy(tempParticle, effectLength);
+        if (particleEffect != null)
+        {
+            GameObject tempParticle = Instantiate(particleEffect, target.transform);
+            tempParticle.GetComponent<ParticleSystem>().Play();
+            if (effectLength <= 0)
+                Destroy(tempParticle, tempParticle.GetComponent<ParticleSystem>().main.duration);
+            else
+                Destroy(tempParticle, effectLength);
+        }
     }
 
     // Change the stats of the target
     protected void ChangeStat (GameObject target)
     {
-        if (target.GetComponent<Base_Stats>() != null)
+        if (target.GetComponent<Base_Stats>() != null && statChangeValue != 0)
         {
             Base_Stats targetStats = target.GetComponent<Base_Stats>();
             switch (statChange)
@@ -47,13 +50,13 @@ public class Effect : ScriptableObject
                 case StatChange.None:
                     break;
                 case StatChange.Damage:
-                    targetStats.TakeDamage(statChangeValue, true);
+                    targetStats.TakeDamage(statChangeValue, true, target);
                     break;
                 case StatChange.Heal:
                     targetStats.TakeHeal(statChangeValue);
                     break;
                 case StatChange.MaxHealth:
-                    targetStats.ChangeMaxHealth(statChangeValue,changeCurrentHP,multipler);
+                    targetStats.ChangeMaxHealth(statChangeValue, multipler, changeCurrentHP, target);
                     break;
                 case StatChange.Attack:
                     targetStats.ChangeAttack(statChangeValue, multipler);

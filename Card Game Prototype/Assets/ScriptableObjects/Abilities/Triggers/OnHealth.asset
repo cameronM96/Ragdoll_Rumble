@@ -16,5 +16,4 @@ MonoBehaviour:
   viableTargetID: 1
   percent: 0
   healthValue: 20
-  triggerOnce: 0
-  setoff: 0
+  triggerOnce: 1

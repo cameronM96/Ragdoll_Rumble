@@ -15,8 +15,8 @@ public class DeliverySO : ScriptableObject
 
     public float lifeSpan = 5;
 
-    public virtual void ApplyDelivery ()
+    public virtual void ApplyDelivery (GameObject target)
     {
-
+        triggeringTarget = target;
     }
 }

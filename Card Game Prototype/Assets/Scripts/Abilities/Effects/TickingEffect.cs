@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Card Elements/Abilities/Effect/TickingEffect")]
+[CreateAssetMenu(menuName = "Card Elements/Abilities/Effect/Ticking_Effect")]
 public class TickingEffect : Effect
 {
     public int effectFrequency = 0;

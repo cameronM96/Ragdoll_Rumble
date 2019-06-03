@@ -11,26 +11,35 @@ public class SO_ApplyToTarget : DeliverySO
 
     private List<GameObject> targets = new List<GameObject>();
 
-    public override void ApplyDelivery()
+    public override void ApplyDelivery(GameObject newTarget)
     {
-        base.ApplyDelivery();
+        base.ApplyDelivery(newTarget);
 
         switch (desiredTargets)
         {
+            // Target the self/owner of this ability.
             case DesiredTarget.Self:
                 if (owner != null)
                 {
                     foreach (Effect effect in ability.effects)
                         effect.TriggerEffect(owner);
                 }
+                else
+                    Debug.Log("No owner found!");
                 break;
+
+            // Target the player who triggered this.
             case DesiredTarget.TriggeringTarget:
                 if (triggeringTarget != null)
                 {
                     foreach (Effect effect in ability.effects)
                         effect.TriggerEffect(triggeringTarget);
                 }
+                else
+                    Debug.Log("No triggering target found!");
                 break;
+
+            // Target multiple targets based on Viable Targets (DeliverySO).
             case DesiredTarget.MultiTarget:
                 FindTargets();
                 int currentTargetCount = 0;
@@ -46,6 +55,7 @@ public class SO_ApplyToTarget : DeliverySO
                     }
                 }
                 break;
+
             default:
                 Debug.Log("Unknown 'Desired Target'!");
                 break;
