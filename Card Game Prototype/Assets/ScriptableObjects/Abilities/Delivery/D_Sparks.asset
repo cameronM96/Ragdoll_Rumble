@@ -9,10 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a60eea16bd4d2a74889da334d8ed23e1, type: 3}
-  m_Name: OnTimer2
+  m_Script: {fileID: 11500000, guid: 42194ecc44d7fca4883f68bfcc3a5688, type: 3}
+  m_Name: D_Sparks
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 351ccbfac2e80094d8d1ac09864cd9fa, type: 2}
   viableTargetID: 0
-  effects:
-  - {fileID: 11400000, guid: 8364c8bf3b78e0a4ca5103557b02966f, type: 2}
-  delay: 5
+  friendlyTag: Team 1
+  owner: {fileID: 0}
+  triggeringTarget: {fileID: 0}
+  lifeSpan: 5
+  desiredTargets: 2
+  maxTargets: 0

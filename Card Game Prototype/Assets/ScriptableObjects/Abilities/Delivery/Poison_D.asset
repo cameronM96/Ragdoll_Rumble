@@ -19,3 +19,4 @@ MonoBehaviour:
   triggeringTarget: {fileID: 0}
   lifeSpan: 5
   desiredTargets: 1
+  maxTargets: 0

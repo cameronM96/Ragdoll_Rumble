@@ -7,6 +7,7 @@ using EnumTypes;
 public class SO_ApplyToTarget : DeliverySO
 {
     public DesiredTarget desiredTargets = DesiredTarget.Self;
+    public int maxTargets = 0;
 
     private List<GameObject> targets = new List<GameObject>();
 
@@ -32,10 +33,17 @@ public class SO_ApplyToTarget : DeliverySO
                 break;
             case DesiredTarget.MultiTarget:
                 FindTargets();
+                int currentTargetCount = 0;
                 foreach (GameObject target in targets)
                 {
-                    foreach (Effect effect in ability.effects)
-                        effect.TriggerEffect(target);
+                    if (currentTargetCount <= 0)
+                    {
+                        foreach (Effect effect in ability.effects)
+                            effect.TriggerEffect(target);
+
+                        if (maxTargets != 0)
+                            ++currentTargetCount;
+                    }
                 }
                 break;
             default:
@@ -75,7 +83,7 @@ public class SO_ApplyToTarget : DeliverySO
                 if (friendlyTag == "Team 1")
                 {
                     findingTargets = GameObject.FindGameObjectsWithTag("Team 2");
-                    Debug.Log(findingTargets.Length);
+                    //Debug.Log(findingTargets.Length);
                     if (findingTargets == null)
                     {
                         Debug.Log("No Targets Found!");

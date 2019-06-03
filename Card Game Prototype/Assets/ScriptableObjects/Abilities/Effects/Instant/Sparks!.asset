@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f83de7b924e979e49963365652e7a96a, type: 3}
-  m_Name: OnHealth
+  m_Script: {fileID: 11500000, guid: 42973660de36cd04d9aff28879371baa, type: 3}
+  m_Name: Sparks!
   m_EditorClassIdentifier: 
-  viableTargetID: 1
-  effects:
-  - {fileID: 11400000, guid: cb8567ce762274f4e9aab105a7c97340, type: 2}
-  percent: 0
-  healthValue: 20
-  triggerOnce: 1
+  statChange: 5
+  statChangeValue: 3
+  changeCurrentHP: 0
+  multipler: 0
+  particleEffect: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f,
+    type: 3}
+  effectLength: 0

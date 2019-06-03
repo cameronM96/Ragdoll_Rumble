@@ -9,7 +9,7 @@ public class OnHealth : Triggers
     public int healthValue;
     public bool triggerOnce = true;
 
-    private bool setoff = false;
+    [SerializeField] private bool setoff = false;
 
     public override void Initialise()
     {
@@ -31,7 +31,7 @@ public class OnHealth : Triggers
 
                 if (currentPercent <= healthValue)
                 {
-                    //Debug.Log("Ability Triggered");
+                    //Debug.Log("OnHealth Triggered");
                     ApplyEffect(target);
                     if (triggerOnce)
                         setoff = true;
@@ -43,7 +43,7 @@ public class OnHealth : Triggers
 
                 if (currentHealth <= healthValue)
                 {
-                    //Debug.Log("Ability Triggered");
+                    //Debug.Log("OnHealth Triggered");
                     ApplyEffect(target);
                     if (triggerOnce)
                         setoff = true;

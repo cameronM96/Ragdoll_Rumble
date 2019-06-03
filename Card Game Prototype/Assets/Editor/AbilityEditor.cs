@@ -28,29 +28,28 @@ public class AbilityEditor : Editor
         switch (ability.triggerMethod)
         {
             case TriggerMethod.OnStart:
-                ability.deliveryMethod = EditorGUILayout.ObjectField("Delivery Method:", ability.deliveryMethod, typeof(DeliverySO), false) as DeliverySO;
                 break;
             case TriggerMethod.OnHit:
-                ability.deliveryMethod = EditorGUILayout.ObjectField("Delivery Method:", ability.deliveryMethod, typeof(DeliverySO), false) as DeliverySO;
                 break;
             case TriggerMethod.OnGetHit:
-                ability.deliveryMethod = EditorGUILayout.ObjectField("Delivery Method:", ability.deliveryMethod, typeof(DeliverySO), false) as DeliverySO;
                 break;
             case TriggerMethod.OnDamaged:
-                ability.onDamaged = EditorGUILayout.ObjectField("Delivery Method:", ability.onDamaged, typeof(OnDamaged), false) as OnDamaged;
+                ability.onDamaged = EditorGUILayout.ObjectField("OnDamaged Trigger:", ability.onDamaged, typeof(OnDamaged), false) as OnDamaged;
                 break;
             case TriggerMethod.OnHealth:
-                ability.onHealth = EditorGUILayout.ObjectField("Delivery Method:", ability.onHealth, typeof(OnHealth), false) as OnHealth;
+                ability.onHealth = EditorGUILayout.ObjectField("OnHealth Trigger:", ability.onHealth, typeof(OnHealth), false) as OnHealth;
                 break;
             case TriggerMethod.OnTimer:
-                ability.onTimer = EditorGUILayout.ObjectField("Delivery Method:", ability.onTimer, typeof(OnTimer), false) as OnTimer;
+                ability.onTimer = EditorGUILayout.ObjectField("OnTimer Trigger:", ability.onTimer, typeof(OnTimer), false) as OnTimer;
                 break;
             case TriggerMethod.OnButton:
-                ability.onButton = EditorGUILayout.ObjectField("Delivery Method:", ability.onButton, typeof(OnButton), false) as OnButton;
+                ability.onButton = EditorGUILayout.ObjectField("OnButton Trigger:", ability.onButton, typeof(OnButton), false) as OnButton;
                 break;
             default:
                 break;
         }
+
+        ability.deliveryMethod = EditorGUILayout.ObjectField("Delivery Method:", ability.deliveryMethod, typeof(DeliverySO), false) as DeliverySO;
 
         SerializedObject so = new SerializedObject(target);
         SerializedProperty effectsProperty = so.FindProperty("effects");

@@ -153,7 +153,6 @@ public class Base_Stats : MonoBehaviour
             {
                 foreach (DeliverySO deliveryMethod in onHitEffectsList)
                 {
-                    deliveryMethod.owner = this.gameObject;
                     deliveryMethod.triggeringTarget = target;
                     deliveryMethod.ApplyDelivery();
                 }
@@ -167,7 +166,6 @@ public class Base_Stats : MonoBehaviour
         {
             foreach (DeliverySO deliveryMethod in onHitEffectsList)
             {
-                deliveryMethod.owner = this.gameObject;
                 //deliveryMethod.triggeringTarget = target;
                 deliveryMethod.ApplyDelivery();
             }

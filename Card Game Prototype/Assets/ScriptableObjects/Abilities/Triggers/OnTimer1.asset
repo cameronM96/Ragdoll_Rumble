@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a60eea16bd4d2a74889da334d8ed23e1, type: 3}
+  m_Name: OnTimer1
+  m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 5c0cdeede5c22264c85fc21f974626c5, type: 2}
+  viableTargetID: 0
+  delay: 8

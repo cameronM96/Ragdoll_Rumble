@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c0709f4681164c9849cc8d76bb18b, type: 3}
+  m_Name: A_Heal
+  m_EditorClassIdentifier: 
+  abName: Heal
+  abDescription: 'When health drops below 20, heal for 6
+
+    health over 3 seconds'
+  triggerMethod: 4
+  onDamaged: {fileID: 0}
+  onHealth: {fileID: 11400000, guid: 2b73583e3c01b9544b29eea21f9c8f34, type: 2}
+  onTimer: {fileID: 0}
+  onButton: {fileID: 0}
+  deliveryMethod: {fileID: 11400000, guid: a3e958cd5467812409f477328af2b630, type: 2}
+  effects:
+  - {fileID: 11400000, guid: cb8567ce762274f4e9aab105a7c97340, type: 2}

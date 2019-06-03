@@ -7,6 +7,7 @@ public class AppearOnTargets : Delivery
     public enum DesiredTarget { Self, TriggeringTarget, MultiTarget};
     public DesiredTarget desiredTargets = DesiredTarget.Self;
 
+
     public Effect[] effects;
 
     private List<GameObject> targets = new List<GameObject>();

@@ -21,17 +21,18 @@ public class SO_Ability : ScriptableObject
 
     public void LoadAbility (Base_Stats targetPlayer)
     {
+        deliveryMethod.ability = this;
+        deliveryMethod.owner = targetPlayer.GetComponent<GameObject>();
+
         switch (triggerMethod)
         {
             case TriggerMethod.OnStart:
                 // Apply on Start effect (define what this means! On start of round or On card played?)
                 break;
             case TriggerMethod.OnHit:
-                deliveryMethod.ability = this;
                 targetPlayer.onHitEffectsList.Add(deliveryMethod);
                 break;
             case TriggerMethod.OnGetHit:
-                deliveryMethod.ability = this;
                 targetPlayer.onGetHitEffectsList.Add(deliveryMethod);
                 break;
             case TriggerMethod.OnDamaged:

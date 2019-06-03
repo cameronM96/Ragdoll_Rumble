@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c0709f4681164c9849cc8d76bb18b, type: 3}
+  m_Name: A_BoomBoom
+  m_EditorClassIdentifier: 
+  abName: BoomBoom
+  abDescription: "Every 8 seconds cause all enemies to \nexplode dealing 3 damage."
+  triggerMethod: 5
+  onDamaged: {fileID: 0}
+  onHealth: {fileID: 0}
+  onTimer: {fileID: 11400000, guid: b77ceb0e1316e1849923b77cc4a0b44d, type: 2}
+  onButton: {fileID: 0}
+  deliveryMethod: {fileID: 11400000, guid: 84ad733d75d9765449f18168d2115e5b, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 3d8e72b882fd1e5429f518b0f53a3d31, type: 2}

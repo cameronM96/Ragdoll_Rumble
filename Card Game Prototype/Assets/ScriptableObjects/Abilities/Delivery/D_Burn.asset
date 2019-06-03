@@ -9,12 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f27e4b967ceec45a6932f753b789ca, type: 3}
-  m_Name: OnButton
+  m_Script: {fileID: 11500000, guid: 42194ecc44d7fca4883f68bfcc3a5688, type: 3}
+  m_Name: D_Burn
   m_EditorClassIdentifier: 
+  ability: {fileID: 11400000, guid: 7f7df03d577d1b347ad3418e3b7828cb, type: 2}
   viableTargetID: 0
-  effects:
-  - {fileID: 11400000, guid: 5e1732fdbac37f0499ac6b18b4256304, type: 2}
-  buttonImage: {fileID: 21300000, guid: c988e5a1f3fec9348a78f11a5946ccce, type: 3}
-  oncePerRound: 0
-  coolDown: 10
+  friendlyTag: Team 1
+  owner: {fileID: 0}
+  triggeringTarget: {fileID: 0}
+  lifeSpan: 5
+  desiredTargets: 2
+  maxTargets: 0

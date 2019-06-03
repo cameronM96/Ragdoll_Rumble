@@ -9,8 +9,6 @@ public class Triggers : ScriptableObject
     public enum TargetID { Enemies, Allies, All };
     public TargetID viableTargetID = TargetID.Enemies;
 
-    public DeliverySO[] deliveryMethods;
-
     public virtual void Initialise ()
     {
 
@@ -18,11 +16,14 @@ public class Triggers : ScriptableObject
     
     public void ApplyEffect(GameObject target)
     {
-        foreach (DeliverySO delivery in deliveryMethods)
-        {
-            delivery.ability = ability;
-            delivery.triggeringTarget = target;
-            delivery.ApplyDelivery();
-        }
+        ability.deliveryMethod.triggeringTarget = target;
+        ability.deliveryMethod.ApplyDelivery();
+
+        //foreach (DeliverySO delivery in ability.deliveryMethod)
+        //{
+        //    delivery.ability = ability;
+        //    delivery.triggeringTarget = target;
+        //    delivery.ApplyDelivery();
+        //}
     }
 }

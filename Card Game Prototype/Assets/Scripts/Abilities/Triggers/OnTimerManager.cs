@@ -13,6 +13,7 @@ public class OnTimerManager : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTimer);
         TimerTarget.ApplyEffect(intendedTarget);
+        Debug.Log("Timer Triggered!");
         SetTimer(TimerTarget, waitTimer, intendedTarget);
     }
 }
