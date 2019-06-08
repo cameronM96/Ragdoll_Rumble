@@ -6,6 +6,7 @@ using EnumTypes;
 [CreateAssetMenu(menuName = "New Card")]
 public class Card : ScriptableObject
 {
+    [HideInInspector] public Rarity rarity = Rarity.Common;
     [HideInInspector] public CardType currentCardType = CardType.Weapon;
     [HideInInspector] public PlayableSlot playableSlots = PlayableSlot.None;
 
@@ -20,8 +21,6 @@ public class Card : ScriptableObject
     public int hP;
     public float speed;
     public float atkSpeed;
-
-    public TriggerCondition triggerCondition;
 
     public SO_Ability ability;
 

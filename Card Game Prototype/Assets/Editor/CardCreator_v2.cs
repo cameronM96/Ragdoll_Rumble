@@ -7,14 +7,10 @@ using EnumTypes;
 
 public class CardCreator_v2 : EditorWindow
 {
-    public enum CardType { Weapon, Armour, Ability, Behaviour, Environmental };
+    public Rarity rarity = Rarity.Common;
     public CardType currentCardType = CardType.Weapon;
     public PlayableSlot playableSlots = PlayableSlot.None;
-
-    public int rarity = 1;
-    string[] rarityNames = new string[] { "Common", "Uncommon", "Rare" };
-    int[] rarityValues = { 1, 2, 3 };
-
+    
     public string cardName = "New Card";
     public string description = "Enter Card Description";
 
@@ -80,7 +76,8 @@ public class CardCreator_v2 : EditorWindow
         //Debug.Log("Canvas: " + previewCanvas.name);
 
         // Set up Card Template
-        previewTarget = (GameObject)PrefabUtility.InstantiatePrefab(defaultValues.cardTemplate);
+        //previewTarget = (GameObject)PrefabUtility.InstantiatePrefab(defaultValues.cardTemplate);
+        previewTarget = Instantiate(defaultValues.cardTemplate);
         previewTarget.transform.SetParent(previewCanvas.transform);
         previewTarget.GetComponent<RectTransform>().position = new Vector3(0, 0, 175);
         foreach (Transform child in previewTarget.transform)
@@ -101,19 +98,25 @@ public class CardCreator_v2 : EditorWindow
         previewCamera.hideFlags = HideFlags.HideAndDontSave;
         previewCanvas.hideFlags = HideFlags.HideAndDontSave;
         previewTarget.hideFlags = HideFlags.HideAndDontSave;
-        DestroyImmediate(previewCamera,true);
-        DestroyImmediate(previewTarget, true);
-        DestroyImmediate(previewCanvas, true);
 
         Tools.visibleLayers |= ((int)Mathf.Pow(2, LayerMask.NameToLayer("CardCreation")));
-    }
 
-    private void Update()
-    {
-        Repaint();
+        Debug.Log("Ignore the error below this comment. I think it's a bug which has be filed with Unity - Cameron M");
+        DestroyImmediate(previewTarget, true);
+        DestroyImmediate(previewCanvas, true);
+        DestroyImmediate(previewCamera, true);
+
+        previewCamera = null;
+        previewCanvas = null;
+        previewTarget = null;
     }
 
     public void OnGUI()
+    {
+        LoadUI();
+    }
+
+    private void LoadUI()
     {
         EditorGUILayout.Space();
         windowGroup = (Rect)EditorGUILayout.BeginHorizontal();
@@ -157,7 +160,7 @@ public class CardCreator_v2 : EditorWindow
         EditorGUILayout.Space();
 
         //Card Rarity
-        rarity = EditorGUILayout.IntPopup("Rarity: ", rarity, rarityNames, rarityValues);
+        rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity: ", rarity);
 
         EditorGUILayout.Space();
 
@@ -166,7 +169,8 @@ public class CardCreator_v2 : EditorWindow
         playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", playableSlots);
 
         cardName = EditorGUILayout.TextField("Card Name: ", cardName);
-        description = EditorGUILayout.TextField("Descption: ", description);
+        EditorGUILayout.LabelField("Description:");
+        description = EditorGUILayout.TextArea(description);
 
         EditorGUILayout.Space();
 
@@ -208,11 +212,6 @@ public class CardCreator_v2 : EditorWindow
 
         EditorGUILayout.Space();
 
-        // Trigger Condition (What triggers the ability)
-        triggerCondition = (TriggerCondition)EditorGUILayout.ObjectField("Trigger Condition: ", triggerCondition, typeof(TriggerCondition), true);
-
-        EditorGUILayout.Space();
-
         // Abilities
         ability = (SO_Ability)EditorGUILayout.ObjectField("Ability: ", ability, typeof(SO_Ability), true);
 
@@ -221,10 +220,10 @@ public class CardCreator_v2 : EditorWindow
         // In-Game model
         item = (GameObject)EditorGUILayout.ObjectField("Item: ", item, typeof(GameObject), true);
 
-        EditorGUILayout.Space();
+        GUILayout.FlexibleSpace();
 
         // Load Selected Card button
-        if (GUILayout.Button("Load Card"))
+        if (GUILayout.Button("Load Card", GUILayout.Height(40)))
         {
             // No card selected
             if (Selection.gameObjects.Length == 0)
@@ -244,6 +243,8 @@ public class CardCreator_v2 : EditorWindow
             }
         }
 
+        EditorGUILayout.Space();
+
         EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical(GUILayout.MinWidth(300), GUILayout.MaxWidth(800));
         // Preview Window
@@ -256,10 +257,34 @@ public class CardCreator_v2 : EditorWindow
         if (windowGroup.width != 0 || optionsGroup.width != 0)
             DrawCard(optionsGroup, windowGroup);
 
+        GUILayout.FlexibleSpace();
+
+        // Reload UI
+        if (GUILayout.Button("Reload UI", GUILayout.Height(40)))
+        {
+            Repaint();
+            LoadUI();
+
+            if (windowGroup.width != 0 || optionsGroup.width != 0)
+                DrawCard(optionsGroup, windowGroup);
+
+            Debug.Log("Reloading UI");
+        }
+
+        EditorGUILayout.Space();
+
         EditorGUILayout.EndVertical();
         EditorGUILayout.EndHorizontal();
 
+        //New Selection (updates the card visuals)
+        //Object[] currentSelection = Selection.objects;
+        //Object[] newSelection = new Object[1];
+        //newSelection[0] = previewTarget;
+        //Selection.objects = newSelection;
+
         UpdateCardDisplay();
+
+        //Selection.objects = currentSelection;
     }
 
     private void InitialisePreviewRenderer()
@@ -272,7 +297,12 @@ public class CardCreator_v2 : EditorWindow
     {
         //Draws the preview window into the card building window
         //Debug.Log("Rendering Preview Window!");
-        GUI.DrawTexture(new Rect(optionsRect.width + 5, 20, windowRect.width - optionsRect.width - 10, windowRect.height), previewCamera.GetComponent<Camera>().targetTexture);
+        GUI.DrawTexture(new Rect(
+            optionsRect.width + 5, 
+            20, 
+            windowRect.width - optionsRect.width - 10, 
+            Mathf.Clamp(windowRect.height,300,450)), 
+            previewCamera.GetComponent<Camera>().targetTexture);
     }
 
     private void CreateNewCard(GameObject card, string localPath)
@@ -361,17 +391,14 @@ public class CardCreator_v2 : EditorWindow
         speed = cardData.speed;
         atkSpeed = cardData.atkSpeed;
 
-        triggerCondition = cardData.triggerCondition;
-
         ability = cardData.ability;
 
         item = cardData.item[0];
-
-
 }
 
     private void UpdateCardDisplay()
     {
+        //Debug.Log("Updating Display!");
         // Changes the visuals on the card in the preview window based on data from the options list
         Text nameText = previewTarget.transform.GetChild(0).GetComponent<Text>();
         nameText.text = cardName;

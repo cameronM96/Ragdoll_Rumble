@@ -13,21 +13,21 @@ namespace EnumTypes
         OnHealth,
         OnTimer,
         OnButton
-    }
+    };
 
     public enum TargetID
     {
         Enemies,
         Allies,
         All
-    }
+    };
 
     public enum DesiredTarget
     {
         Self,
         TriggeringTarget,
         MultiTarget
-    }
+    };
 
     public enum PlayableSlot
     {
@@ -36,7 +36,7 @@ namespace EnumTypes
         Chest = 1 << 1,
         Hand = 1 << 2,
         Feet = 1 << 3
-    }
+    };
 
     public enum CardType
     {
@@ -45,5 +45,12 @@ namespace EnumTypes
         Ability,
         Behaviour,
         Environmental
+    };
+
+    public enum Rarity
+    {
+        Common,
+        Uncommon,
+        Rare
     };
 }
