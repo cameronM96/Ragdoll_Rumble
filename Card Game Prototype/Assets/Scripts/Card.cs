@@ -1,13 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
+[CreateAssetMenu(menuName = "New Card")]
 public class Card : ScriptableObject
 {
-    private enum CardType { Weapon, Armour, Ability, Behaviour, Environmental };
-    [SerializeField] private CardType currentCardType = CardType.Weapon;
-    private enum PlayableSlot { Head, Chest, Hand, Feet };
-    [SerializeField] private PlayableSlot playableSlots = PlayableSlot.Head;
+    [HideInInspector] public CardType currentCardType = CardType.Weapon;
+    [HideInInspector] public PlayableSlot playableSlots = PlayableSlot.None;
 
     public string cardName;
     public string description;
@@ -23,7 +23,7 @@ public class Card : ScriptableObject
 
     public TriggerCondition triggerCondition;
 
-    public Ability2 ability;
+    public SO_Ability ability;
 
     public GameObject[] item;
 
@@ -82,5 +82,30 @@ public class Card : ScriptableObject
         }
 
         return slotNumb;
+    }
+
+    public void PlayCard (Base_Stats bStats)
+    {
+        UpdateStats(bStats);
+
+        ability.LoadAbility(bStats);
+    }
+
+    void UpdateStats(Base_Stats bStats)
+    {
+        if (attack != 0)
+            bStats.attack += attack;
+
+        if (armour != 0)
+            bStats.armour += armour;
+
+        if (hP != 0)
+            bStats.maxHP += hP;
+
+        if (speed != 0)
+            bStats.speed += speed;
+
+        if (atkSpeed != 0)
+            bStats.atkSpeed += atkSpeed;
     }
 }

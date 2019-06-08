@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
+using EnumTypes;
 
 public class CardCreator_v2 : EditorWindow
 {
     public enum CardType { Weapon, Armour, Ability, Behaviour, Environmental };
     public CardType currentCardType = CardType.Weapon;
-    public enum PlayableSlot { Head, Chest, Hand, Feet };
-    public PlayableSlot playableSlots = PlayableSlot.Head;
+    public PlayableSlot playableSlots = PlayableSlot.None;
 
     public int rarity = 1;
     string[] rarityNames = new string[] { "Common", "Uncommon", "Rare" };
@@ -29,7 +29,7 @@ public class CardCreator_v2 : EditorWindow
 
     public TriggerCondition triggerCondition;
 
-    public Ability2 ability;
+    public SO_Ability ability;
 
     public GameObject item;
 
@@ -110,7 +110,6 @@ public class CardCreator_v2 : EditorWindow
 
     private void Update()
     {
-
         Repaint();
     }
 
@@ -164,7 +163,7 @@ public class CardCreator_v2 : EditorWindow
 
         // Card Info
         currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", currentCardType);
-        playableSlots = (PlayableSlot)EditorGUILayout.EnumPopup("PlayableSlots: ", playableSlots);
+        playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", playableSlots);
 
         cardName = EditorGUILayout.TextField("Card Name: ", cardName);
         description = EditorGUILayout.TextField("Descption: ", description);
@@ -215,7 +214,7 @@ public class CardCreator_v2 : EditorWindow
         EditorGUILayout.Space();
 
         // Abilities
-        ability = (Ability2)EditorGUILayout.ObjectField("Ability: ", ability, typeof(Ability2), true);
+        ability = (SO_Ability)EditorGUILayout.ObjectField("Ability: ", ability, typeof(SO_Ability), true);
 
         EditorGUILayout.Space();
 
@@ -386,7 +385,7 @@ public class CardCreator_v2 : EditorWindow
         if (triggerCondition != null && ability != null)
         {
             Text infoText = previewTarget.transform.GetChild(2).GetComponent<Text>();
-            infoText.text = "<b>" + triggerCondition.tcName + ":</b>\n" + ability.aDescription;
+            infoText.text = "<b>" + triggerCondition.tcName + ":</b>\n" + ability.abDescription;
         }
     }
 }

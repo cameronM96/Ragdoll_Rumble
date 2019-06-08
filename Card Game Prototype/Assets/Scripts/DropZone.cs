@@ -7,7 +7,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 {
     public Draggable.Slot typeOfItem = Draggable.Slot.CHEST;
     public bool cardSlot = false;
-    public GameObject characterBase;
+    public Base_Stats characterBase;
     public GameObject[] slot;
 
     public void OnPointerEnter (PointerEventData eventData)

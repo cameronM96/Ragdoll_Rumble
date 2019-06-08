@@ -37,17 +37,17 @@ public class CardDisplay : MonoBehaviour
             cardInfoText.text += ("\nAttack Speed: " + card.atkSpeed);
 
         if (card.triggerCondition != null && card.ability != null)
-            cardInfoText.text += "<b>" + card.triggerCondition.tcName + ":</b>\n" + card.ability.aDescription;
+            cardInfoText.text += "<b>" + card.triggerCondition.tcName + ":</b>\n" + card.ability.abDescription;
 
         artworkImage.sprite = card.artwork;
         background.sprite = card.background;
     }
 
-    public void PlayCard (GameObject characterBase, GameObject[] slotSpots)
+    public void PlayCard (Base_Stats characterBase, GameObject[] slotSpots)
     {
         //Debug.Log("Playing card: " + card.name);
         // Add base stats
-        UpdateStats(characterBase.GetComponent<Base_Stats>());
+        card.PlayCard(characterBase);
 
         // Instantiate items on slots
         if (card.item != null)
@@ -60,16 +60,7 @@ public class CardDisplay : MonoBehaviour
         }
 
         // Update stats display
-        CompleteCard(characterBase.GetComponent<Base_Stats>());
-    }
-
-    void UpdateStats (Base_Stats bStats)
-    {
-        bStats.attack += card.attack;
-        bStats.armour += card.armour;
-        bStats.maxHP += card.hP;
-        bStats.speed += card.speed;
-        bStats.atkSpeed += card.atkSpeed;
+        CompleteCard(characterBase);
     }
 
     void CompleteCard (Base_Stats bStats)
