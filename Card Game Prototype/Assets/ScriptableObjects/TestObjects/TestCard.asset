@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: TestCard
   m_EditorClassIdentifier: 
+  rarity: 0
   currentCardType: 0
   playableSlots: 0
   cardName: 
@@ -23,6 +24,6 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  triggerCondition: {fileID: 0}
   ability: {fileID: 0}
-  item: []
+  item: {fileID: 0}
+  templateCard: {fileID: 0}

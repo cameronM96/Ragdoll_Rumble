@@ -12,10 +12,13 @@ public class CardDisplay : MonoBehaviour
 
     public Image artworkImage;
     public Image background;
-
-    // Start is called before the first frame update
-    void Start()
+    
+    public void Initialise()
     {
+        // Update Card Display
+        if (card == null)
+            return;
+
         nameText = this.transform.GetChild(0).GetComponent<Text>();
         artworkImage = this.transform.GetChild(1).GetComponent<Image>();
         cardInfoText = this.transform.GetChild(2).GetComponent<Text>();
@@ -35,7 +38,7 @@ public class CardDisplay : MonoBehaviour
             cardInfoText.text += ("\nSpeed: " + card.speed);
         if (card.atkSpeed != 0)
             cardInfoText.text += ("\nAttack Speed: " + card.atkSpeed);
-        
+
         artworkImage.sprite = card.artwork;
         background.sprite = card.background;
     }
@@ -51,7 +54,7 @@ public class CardDisplay : MonoBehaviour
         {
             for (int i = 0; i < slotSpots.Length; i++)
             {
-                Instantiate(card.item[i], slotSpots[i].transform);
+                Instantiate(card.item, slotSpots[i].transform);
                 //Sort items here?
             }
         }

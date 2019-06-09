@@ -101,7 +101,7 @@ public class CardCreator_v2 : EditorWindow
 
         Tools.visibleLayers |= ((int)Mathf.Pow(2, LayerMask.NameToLayer("CardCreation")));
 
-        Debug.Log("Ignore the error below this comment. I think it's a bug which has be filed with Unity - Cameron M");
+        //Debug.Log("Ignore the error below this comment. I think it's a bug which has be filed with Unity - Cameron M");
         DestroyImmediate(previewTarget, true);
         DestroyImmediate(previewCanvas, true);
         DestroyImmediate(previewCamera, true);
@@ -262,11 +262,9 @@ public class CardCreator_v2 : EditorWindow
         // Reload UI
         if (GUILayout.Button("Reload UI", GUILayout.Height(40)))
         {
+            previewTarget.GetComponent<CardDisplay>().Initialise();
             Repaint();
             LoadUI();
-
-            if (windowGroup.width != 0 || optionsGroup.width != 0)
-                DrawCard(optionsGroup, windowGroup);
 
             Debug.Log("Reloading UI");
         }
@@ -339,46 +337,11 @@ public class CardCreator_v2 : EditorWindow
         // Update to values stored on selected card
         Card cardData = card.GetComponent<CardDisplay>().card;
         EditorGUILayout.LabelField("Selected: " + cardData.cardName);
+        
+        currentCardType = cardData.currentCardType;
 
-        switch (cardData.getCardType())
-        {
-            case 0:
-                currentCardType = CardType.Weapon;
-                break;
-            case 1:
-                currentCardType = CardType.Armour;
-                break;
-            case 2:
-                currentCardType = CardType.Ability;
-                break;
-            case 3:
-                currentCardType = CardType.Behaviour;
-                break;
-            case 4:
-                currentCardType = CardType.Environmental;
-                break;
-            default:
-                break;
-        }
-
-        switch (cardData.getPlayableSlot())
-        {
-            case 0:
-                playableSlots = PlayableSlot.Head;
-                break;
-            case 1:
-                playableSlots = PlayableSlot.Chest;
-                break;
-            case 2:
-                playableSlots = PlayableSlot.Hand;
-                break;
-            case 3:
-                playableSlots = PlayableSlot.Feet;
-                break;
-            default:
-                break;
-        }
-
+        playableSlots = cardData.playableSlots;
+        
         cardName = cardData.name;
         description = cardData.description;
 
@@ -393,7 +356,7 @@ public class CardCreator_v2 : EditorWindow
 
         ability = cardData.ability;
 
-        item = cardData.item[0];
+        item = cardData.item;
 }
 
     private void UpdateCardDisplay()

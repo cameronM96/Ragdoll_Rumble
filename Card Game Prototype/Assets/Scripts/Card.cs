@@ -8,7 +8,7 @@ public class Card : ScriptableObject
 {
     [HideInInspector] public Rarity rarity = Rarity.Common;
     [HideInInspector] public CardType currentCardType = CardType.Weapon;
-    [HideInInspector] public PlayableSlot playableSlots = PlayableSlot.None;
+    [HideInInspector] [EnumFlags] public PlayableSlot playableSlots = PlayableSlot.None;
 
     public string cardName;
     public string description;
@@ -24,70 +24,30 @@ public class Card : ScriptableObject
 
     public SO_Ability ability;
 
-    public GameObject[] item;
+    public GameObject item;
 
-    public int getCardType ()
+    //[HideInInspector]
+    public GameObject templateCard;
+
+    public GameObject CreateCard ()
     {
-        int cardNumb = -1;
+        if (templateCard == null)
+            return null;
 
-        switch (currentCardType)
-        {
-            case CardType.Weapon:
-                cardNumb = 0;
-                break;
-            case CardType.Armour:
-                cardNumb = 1;
-                break;
-            case CardType.Ability:
-                cardNumb = 2;
-                break;
-            case CardType.Behaviour:
-                cardNumb = 3;
-                break;
-            case CardType.Environmental:
-                cardNumb = 4;
-                break;
-            default:
-                Debug.Log("Unknown Card Type!");
-                cardNumb = -1;
-                break;
-        }
+        GameObject newCard = Instantiate(templateCard);
 
-        return cardNumb;
-    }
+        newCard.GetComponent<CardDisplay>().card = this;
+        newCard.GetComponent<CardDisplay>().Initialise();
 
-    public int getPlayableSlot()
-    {
-        int slotNumb = -1;
-
-        switch (playableSlots)
-        {
-            case PlayableSlot.Head:
-                slotNumb = 0;
-                break;
-            case PlayableSlot.Chest:
-                slotNumb = 1;
-                break;
-            case PlayableSlot.Hand:
-                slotNumb = 2;
-                break;
-            case PlayableSlot.Feet:
-                slotNumb = 3;
-                break;
-            default:
-                Debug.Log("Unknown Card Slot!");
-                slotNumb = -1;
-                break;
-        }
-
-        return slotNumb;
+        return newCard;
     }
 
     public void PlayCard (Base_Stats bStats)
     {
         UpdateStats(bStats);
 
-        ability.LoadAbility(bStats);
+        if (ability != null)
+            ability.LoadAbility(bStats);
     }
 
     void UpdateStats(Base_Stats bStats)

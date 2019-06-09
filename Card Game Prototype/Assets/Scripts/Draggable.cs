@@ -3,17 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using EnumTypes;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     [HideInInspector] public Transform returnParent = null;
     [HideInInspector] public Transform placeHolderParent = null;
 
-    public enum Slot { CHEST, HEAD, HAND, FEET};
-    public Slot typeOfItem = Slot.HAND;
+    public Card card;
 
     GameObject placeholder = null;
     [HideInInspector] public bool movePlaceHolder = true;
+
+    private void Start()
+    {
+        card = GetComponent<CardDisplay>().card;
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {

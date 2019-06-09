@@ -29,6 +29,7 @@ namespace EnumTypes
         MultiTarget
     };
 
+    [System.Flags]
     public enum PlayableSlot
     {
         None = 0,

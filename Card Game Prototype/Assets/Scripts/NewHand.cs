@@ -13,11 +13,6 @@ public class NewHand : MonoBehaviour
     private void Start()
     {
         deck = GameObject.FindGameObjectWithTag("Deck");
-
-        foreach(GameObject card in deck.GetComponent<Deck>().deckOfCards)
-        {
-            Instantiate(card, deck.transform);
-        }
     }
 
     public void DealNewHand()

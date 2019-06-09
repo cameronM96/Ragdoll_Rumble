@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using EnumTypes;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    public Draggable.Slot typeOfItem = Draggable.Slot.CHEST;
+    [EnumFlags] public PlayableSlot typeOfItem = PlayableSlot.None;
     public bool cardSlot = false;
     public Base_Stats characterBase;
     public GameObject[] slot;
@@ -40,13 +41,16 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {
+            //Debug.Log(d.card.playableSlots + " : " + typeOfItem);
+            //Debug.Log(typeOfItem == (typeOfItem & d.card.playableSlots));
+
             //Debug.Log("Draggable item found");
             if (cardSlot)
             {
                 //Debug.Log("Returning to cardbay");
                 d.returnParent = this.transform;
             }
-            else if (typeOfItem == d.typeOfItem)
+            else if (typeOfItem == (typeOfItem & d.card.playableSlots))
             {
                 //Debug.Log("Placing card in " + this.name);
                 eventData.pointerDrag.GetComponent<CardDisplay>().PlayCard(characterBase,slot);
@@ -55,3 +59,4 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }
     }
 }
+
