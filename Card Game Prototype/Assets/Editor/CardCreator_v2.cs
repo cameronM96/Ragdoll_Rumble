@@ -230,8 +230,13 @@ public class CardCreator_v2 : EditorWindow
         // Scroll group
         scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
+        GUIStyle groupHeaderStyle = new GUIStyle(EditorStyles.foldoutHeader)
+        {
+            richText = true
+        };
+
         // Card Info
-        cardInfoToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardInfoToggle, "Card Info:");
+        cardInfoToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardInfoToggle, "<size=13><b>Card Info:</b></size>", groupHeaderStyle);
         if (cardInfoToggle)
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -247,11 +252,11 @@ public class CardCreator_v2 : EditorWindow
 
         // Card Visuals
         EditorGUILayout.Space();
-        cardVisualsToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardVisualsToggle, "Card Visuals:");
+        cardVisualsToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardVisualsToggle, "<size=13><b>Card Visuals:</b></size>", groupHeaderStyle);
         if (cardVisualsToggle)
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-
+            
             cardName = EditorGUILayout.TextField("Card Name: ", cardName);
             EditorGUILayout.LabelField("Description:");
             description = EditorGUILayout.TextArea(description);
@@ -293,11 +298,11 @@ public class CardCreator_v2 : EditorWindow
 
         // Card Modifiers
         EditorGUILayout.Space();
-        cardModifersToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardModifersToggle, "Card Modifiers");
+        cardModifersToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardModifersToggle, "<size=13><b>Card Modifiers:</b></size>", groupHeaderStyle);
         if (cardModifersToggle)
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-
+            
             baseStatsToggle = EditorGUILayout.Foldout(baseStatsToggle, "Base Stats:");
             // Base Stats
             if (baseStatsToggle)
