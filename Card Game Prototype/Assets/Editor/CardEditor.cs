@@ -11,6 +11,7 @@ public class CardEditor : Editor
     {
         Card card = target as Card;
 
+        card.rarity = (Rarity)EditorGUILayout.EnumPopup("Card Rarity: ", card.rarity);
         card.currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", card.currentCardType);
         card.playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", card.playableSlots);
 

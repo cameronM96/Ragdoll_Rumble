@@ -42,7 +42,9 @@ public class CardCreator_v2 : EditorWindow
     //PreviewWindow
     private GameObject previewTarget;
     private GameObject previewCanvas;
-    private GameObject previewCamera;
+    private GameObject cameraObject;
+    private Camera previewCamera;
+    RenderTexture renderTexture;
 
     Rect windowGroup;
     Rect optionsGroup;
@@ -68,10 +70,14 @@ public class CardCreator_v2 : EditorWindow
         //Debug.Log(defaultValues);
 
         // Set up Preview Camera
-        previewCamera = EditorUtility.CreateGameObjectWithHideFlags("PreviewCamera", HideFlags.DontSave);
-        previewCamera.AddComponent<Camera>();
-        previewCamera.GetComponent<Camera>().targetTexture = defaultValues.previewWindowTexture;
-        previewCamera.gameObject.layer = 9;
+        cameraObject = EditorUtility.CreateGameObjectWithHideFlags("PreviewCamera", HideFlags.DontSave);
+        cameraObject.SetActive(false);
+        cameraObject.AddComponent<Camera>();
+        previewCamera = cameraObject.GetComponent<Camera>();
+        previewCamera.targetDisplay = 7;
+        cameraObject.SetActive(true);
+        renderTexture = new RenderTexture((int)position.width - 150, (int)position.height, (int)RenderTextureFormat.ARGB32);
+        cameraObject.gameObject.layer = 9;
         //Debug.Log("Camera: " + previewCamera.name);
 
         // Set up Preview Canvas
@@ -79,7 +85,7 @@ public class CardCreator_v2 : EditorWindow
         previewCanvas.AddComponent<Canvas>();
         previewCanvas.GetComponent<Canvas>().renderMode = RenderMode.ScreenSpaceCamera;
         previewCanvas.GetComponent<RectTransform>().sizeDelta = new Vector2(125, 180);
-        previewCanvas.GetComponent<Canvas>().worldCamera = previewCamera.GetComponent<Camera>();
+        previewCanvas.GetComponent<Canvas>().worldCamera = previewCamera;
         previewCanvas.layer = 9;
         //Debug.Log("Canvas: " + previewCanvas.name);
 
@@ -103,21 +109,36 @@ public class CardCreator_v2 : EditorWindow
         //DrawCard();
     }
 
+    public void Update()
+    {
+        if (previewCamera != null)
+        {
+            previewCamera.targetTexture = renderTexture;
+            previewCamera.Render();
+            previewCamera.targetTexture = null;
+        }
+
+        if (renderTexture.width != position.width - 150 ||
+            renderTexture.height != position.height)
+            renderTexture = new RenderTexture((int)position.width - 150, (int)position.height, (int)RenderTextureFormat.ARGB32);
+    }
+
     private void OnDisable()
     {
         // Destroy defaults
-        previewCamera.hideFlags = HideFlags.HideAndDontSave;
+        cameraObject.hideFlags = HideFlags.HideAndDontSave;
         previewCanvas.hideFlags = HideFlags.HideAndDontSave;
         previewTarget.hideFlags = HideFlags.HideAndDontSave;
 
         Tools.visibleLayers |= ((int)Mathf.Pow(2, LayerMask.NameToLayer("CardCreation")));
+        previewCamera = null;
 
         //Debug.Log("Ignore the error below this comment. I think it's a bug which has be filed with Unity - Cameron M");
         DestroyImmediate(previewTarget, true);
         DestroyImmediate(previewCanvas, true);
-        DestroyImmediate(previewCamera, true);
+        DestroyImmediate(cameraObject, true);
 
-        previewCamera = null;
+        cameraObject = null;
         previewCanvas = null;
         previewTarget = null;
     }
@@ -160,33 +181,37 @@ public class CardCreator_v2 : EditorWindow
         // Create Card button
         if (GUILayout.Button(createCardButton))
         {
-            //Create Card Template
-            GameObject newCard = Instantiate(defaultValues.cardTemplate);
-            newCard.transform.SetParent(GameObject.FindGameObjectWithTag("CardCanvas").transform);
-            newCard.name = cardName;
-
             // Create save path
-            string localPath = "Assets/Prefabs/" + currentCardType + "/" + cardName + ".prefab";
+            string localPath = "Assets/ScriptableObjects/Cards/" + currentCardType.ToString() + "/" + cardName + ".asset";
 
             if (AssetDatabase.LoadAssetAtPath(localPath, typeof(GameObject)))
             {
+                // Card already exists, double check with user.
                 if (EditorUtility.DisplayDialog("Are you sure?",
-                    "The Prefab already exists. Do you want to overwrite it?",
+                    "The Card already exists. Do you want to overwrite it?",
                     "Yes",
                     "No"))
                 {
-                    CreateNewCard(newCard, localPath);
+                    // Create Card
+                    Debug.Log("Creating: " + cardName);
+                    CreateNewCard(localPath);
                 }
+            }
+            else
+            {
+                // Create Card
+                Debug.Log("Creating: " + cardName);
+                CreateNewCard(localPath);
             }
         }
 
         // Update Card button
         if (GUILayout.Button(updateCardButton))
         {
-            foreach (GameObject card in Selection.gameObjects)
+            if (Selection.activeObject is Card selectedCard)
             {
-                Debug.Log("Updating: " + card.name);
-                UpdateCard(card);
+                Debug.Log("Updating: " + selectedCard.name);
+                UpdateCard(selectedCard);
             }
         }
 
@@ -297,22 +322,9 @@ public class CardCreator_v2 : EditorWindow
         // Load Selected Card button
         if (GUILayout.Button("Load Card", GUILayout.Height(40)))
         {
-            // No card selected
-            if (Selection.gameObjects.Length == 0)
-            {
-                Debug.Log("No Card was selected. Please select a card and try again.");
-            }
-            // Multiple cards are selected
-            else if (Selection.gameObjects.Length > 1)
-            {
-                Debug.Log("Too many cards selected! Please choose 1 and try again.");
-            }
-            // Just right
-            else
-            {
-                Debug.Log("Updating: " + Selection.activeGameObject.name);
-                LoadNewValues(Selection.activeGameObject);
-            }
+            Debug.Log("Loading: " + Selection.activeObject.name);
+            if (Selection.activeObject is Card selectedCard)
+                LoadNewValues(selectedCard);
         }
 
         EditorGUILayout.Space();
@@ -320,7 +332,7 @@ public class CardCreator_v2 : EditorWindow
         EditorGUILayout.EndVertical();
         EditorGUILayout.BeginVertical(GUILayout.MinWidth(300), GUILayout.MaxWidth(800));
         // Preview Window
-        if (previewCamera == null)
+        if (cameraObject == null)
         {
             InitialisePreviewRenderer();
         }
@@ -359,8 +371,8 @@ public class CardCreator_v2 : EditorWindow
 
     private void InitialisePreviewRenderer()
     {
-        previewCamera.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
-        previewCamera.transform.position = new Vector3(0, -1000, -10);
+        cameraObject.GetComponent<Camera>().clearFlags = CameraClearFlags.Skybox;
+        cameraObject.transform.position = new Vector3(0, -1000, -10);
     }
 
     private void DrawCard(Rect optionsRect ,Rect windowRect)
@@ -371,21 +383,97 @@ public class CardCreator_v2 : EditorWindow
             optionsRect.width + 5, 
             20, 
             windowRect.width - optionsRect.width - 10, 
-            Mathf.Clamp(windowRect.height,300,450)), 
-            previewCamera.GetComponent<Camera>().targetTexture);
+            Mathf.Clamp(windowRect.height,300,450)),
+            renderTexture);
     }
 
-    private void CreateNewCard(GameObject card, string localPath)
+    private void CreateNewCard(string filePath)
     {
         // Creates a new prefab for the card they made
+        Card newCard = ScriptableObject.CreateInstance<Card>();
+
+        // Card Info
+        newCard.rarity = rarity;
+        newCard.currentCardType = currentCardType;
+        newCard.playableSlots = playableSlots;
+
+        // Card Visuals
+        newCard.cardName = cardName;
+        newCard.description = description;
+        newCard.artwork = artwork;
+        newCard.background = background;
+
+        // Card Modifiers
+        newCard.attack = attack;
+        newCard.armour = armour;
+        newCard.hP = hP;
+        newCard.speed = speed;
+        newCard.atkSpeed = atkSpeed;
+
+        newCard.ability = ability;
+
+        newCard.item = item;
+
+
+        GameObject templateCard = (GameObject)AssetDatabase.LoadAssetAtPath(
+            "Assets/Prefabs/Templates(DO NOT TOUCH)/Card_Template.prefab", typeof(GameObject));
+        if (templateCard != null)
+            newCard.templateCard = templateCard;
+        else
+            Debug.Log("Template card not found!");
+
+        // Save Card
+        AssetDatabase.CreateAsset(newCard, filePath);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
+
+        Debug.Log(newCard.cardName + " was created!");
     }
 
-    private void UpdateCard(GameObject card)
+    private void UpdateCard(Card card)
     {
         // Updates an old prefab with new values
+        if (card == null)
+        {
+            EditorGUILayout.LabelField("No game object selected.");
+            return;
+        }
+
+        // Card Info
+        card.rarity = rarity;
+        card.currentCardType = currentCardType;
+        card.playableSlots = playableSlots;
+
+        // Card Visuals
+        card.cardName = cardName;
+        card.description = description;
+        card.artwork = artwork;
+        card.background = background;
+
+        // Card Modifiers
+        card.attack = attack;
+        card.armour = armour;
+        card.hP = hP;
+        card.speed = speed;
+        card.atkSpeed = atkSpeed;
+
+        card.ability = ability;
+
+        card.item = item;
+
+        GameObject templateCard = (GameObject)AssetDatabase.LoadAssetAtPath(
+            "Assets/Prefabs/Templates(DO NOT TOUCH)/Card_Template.prefab", typeof(GameObject));
+        if (templateCard != null)
+            card.templateCard = templateCard;
+        else
+            Debug.Log("Template card not found!");
+
+        EditorUtility.SetDirty(card);
+        AssetDatabase.SaveAssets();
+        AssetDatabase.Refresh();
     }
 
-    private void LoadNewValues(GameObject card)
+    private void LoadNewValues(Card card)
     {
         // Draw selected object
         if (card == null)
@@ -394,41 +482,27 @@ public class CardCreator_v2 : EditorWindow
             return;
         }
 
-        if (card.GetComponent<CardDisplay>() == null)
-        {
-            EditorGUILayout.LabelField("Game object does not contain the required components.");
-            return;
-        }
-
-        if (card.GetComponent<CardDisplay>().card == null)
-        {
-            EditorGUILayout.LabelField("Game object does not contain the required components.");
-            return;
-        }
-
-        // Update to values stored on selected card
-        Card cardData = card.GetComponent<CardDisplay>().card;
-        EditorGUILayout.LabelField("Selected: " + cardData.cardName);
+        // Card Info
+        rarity = card.rarity;
+        currentCardType = card.currentCardType;
+        playableSlots = card.playableSlots;  
         
-        currentCardType = cardData.currentCardType;
+        // Card Visuals
+        cardName = card.name;
+        description = card.description;
+        artwork = card.artwork;
+        background = card.background;
 
-        playableSlots = cardData.playableSlots;
-        
-        cardName = cardData.name;
-        description = cardData.description;
+        // Card Modifiers
+        attack = card.attack;
+        armour = card.armour;
+        hP = card.hP;
+        speed = card.speed;
+        atkSpeed = card.atkSpeed;
 
-        artwork = cardData.artwork;
-        background = cardData.background;
+        ability = card.ability;
 
-        attack = cardData.attack;
-        armour = cardData.armour;
-        hP = cardData.hP;
-        speed = cardData.speed;
-        atkSpeed = cardData.atkSpeed;
-
-        ability = cardData.ability;
-
-        item = cardData.item;
+        item = card.item;
 }
 
     private void UpdateCardDisplay()

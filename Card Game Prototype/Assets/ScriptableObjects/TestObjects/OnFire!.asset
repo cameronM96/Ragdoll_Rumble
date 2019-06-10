@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: OnFire!
   m_EditorClassIdentifier: 
-  rarity: 0
-  currentCardType: 2
-  playableSlots: -1
+  rarity: 1
+  currentCardType: 3
+  playableSlots: 2
   cardName: OnFire!
   description: Sets the target on fire.
   artwork: {fileID: 21300000, guid: c988e5a1f3fec9348a78f11a5946ccce, type: 3}
