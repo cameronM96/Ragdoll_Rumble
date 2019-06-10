@@ -76,7 +76,12 @@ public class CardCreator_v2 : EditorWindow
         previewCamera = cameraObject.GetComponent<Camera>();
         previewCamera.targetDisplay = 7;
         cameraObject.SetActive(true);
-        renderTexture = new RenderTexture((int)position.width - 150, (int)position.height, (int)RenderTextureFormat.ARGB32);
+
+        renderTexture = new RenderTexture(
+            Mathf.RoundToInt(windowGroup.width - optionsGroup.width) - 10,
+            Mathf.RoundToInt(Mathf.Clamp(windowGroup.height, 300, 450)), 
+            (int)RenderTextureFormat.ARGB32);
+
         cameraObject.gameObject.layer = 9;
         //Debug.Log("Camera: " + previewCamera.name);
 
@@ -111,16 +116,19 @@ public class CardCreator_v2 : EditorWindow
 
     public void Update()
     {
-        if (previewCamera != null)
+        if (previewCamera != null && renderTexture.width > 0 && renderTexture.height > 0)
         {
             previewCamera.targetTexture = renderTexture;
             previewCamera.Render();
             previewCamera.targetTexture = null;
         }
 
-        if (renderTexture.width != position.width - 150 ||
-            renderTexture.height != position.height)
-            renderTexture = new RenderTexture((int)position.width - 150, (int)position.height, (int)RenderTextureFormat.ARGB32);
+        if ((renderTexture.width != Mathf.RoundToInt(windowGroup.width - optionsGroup.width) - 10 ||
+            renderTexture.height != Mathf.RoundToInt(Mathf.Clamp(windowGroup.height, 300, 450))))
+            renderTexture = new RenderTexture(
+                Mathf.RoundToInt(windowGroup.width - optionsGroup.width) - 10,
+                Mathf.RoundToInt(Mathf.Clamp(windowGroup.height, 300, 450)),
+                (int)RenderTextureFormat.ARGB32);
     }
 
     private void OnDisable()
@@ -176,7 +184,7 @@ public class CardCreator_v2 : EditorWindow
             updateCardButton = new GUIContent("Update Card", "Not all required fields have been filled out!");
         }
 
-
+        // Disable buttons unless all required fields have been filled out.
         EditorGUI.BeginDisabledGroup(disableButtons);
         // Create Card button
         if (GUILayout.Button(createCardButton))
@@ -340,19 +348,7 @@ public class CardCreator_v2 : EditorWindow
         //Debug.Log("Width: " + (windowGroup.width - optionsGroup.width) + "\nHeight: " + windowGroup.height);
         if (windowGroup.width != 0 || optionsGroup.width != 0)
             DrawCard(optionsGroup, windowGroup);
-
-        GUILayout.FlexibleSpace();
-
-        // Reload UI
-        if (GUILayout.Button("Reload UI", GUILayout.Height(40)))
-        {
-            previewTarget.GetComponent<CardDisplay>().Initialise();
-            Repaint();
-            LoadUI();
-
-            Debug.Log("Reloading UI");
-        }
-
+        
         EditorGUILayout.Space();
 
         EditorGUILayout.EndVertical();
