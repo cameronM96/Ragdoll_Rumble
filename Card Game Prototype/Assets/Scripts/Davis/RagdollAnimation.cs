@@ -4,20 +4,21 @@ using UnityEngine;
 
 public class RagdollAnimation : MonoBehaviour
 {
+
+    float speed = 5.0f;
+    public Transform target;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
+        transform.LookAt(target);
 
-    private void OnMouseDown()
-    {
-        GetComponent<Rigidbody>().AddForce(transform.forward * 500);
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }
