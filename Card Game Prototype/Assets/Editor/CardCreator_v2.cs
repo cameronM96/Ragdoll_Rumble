@@ -167,11 +167,11 @@ public class CardCreator_v2 : EditorWindow
         GUIContent createCardButton;
         GUIContent updateCardButton;
         // Check if all required fields have been filled out.
-        if (rarity != Rarity.None &&
-            currentCardType != CardType.None &&
-            playableSlots != PlayableSlot.None &&
-            (cardName != "" || cardName != "New Card") &&
-            artwork != null)
+        if (rarity != Rarity.None && currentCardType != CardType.None &&
+            playableSlots != PlayableSlot.None && 
+            (cardName != "" || cardName != "New Card") && artwork != null &&
+            (attack != 0 || armour != 0 || hP != 0 || speed != 0 || 
+            atkSpeed != 0 || ability != null || item != null))
         {
             disableButtons = false;
             createCardButton = new GUIContent("Create Card");
@@ -234,16 +234,55 @@ public class CardCreator_v2 : EditorWindow
         {
             richText = true
         };
+        GUIStyle foldoutStyle = new GUIStyle(EditorStyles.foldout)
+        {
+            richText = true
+        };
+        GUIStyle labelStyle = new GUIStyle(EditorStyles.label)
+        {
+            richText = true
+        };
 
         // Card Info
-        cardInfoToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardInfoToggle, "<size=13><b>Card Info:</b></size>", groupHeaderStyle);
+        string cardInfoHeader = "<size=13><b>Card Info:</b></size>";
+
+        if (rarity == Rarity.None || currentCardType == CardType.None || playableSlots == PlayableSlot.None)
+            cardInfoHeader = "<size=13><color=red>*</color> <b>Card Info:</b></size>";
+
+        cardInfoToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardInfoToggle, cardInfoHeader, groupHeaderStyle);
         if (cardInfoToggle)
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-            rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity: ", rarity);
-            currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", currentCardType);
-            playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", playableSlots);
+            // Rarity
+            string rarityLabel = "Rarity:";
+            if (rarity == Rarity.None)
+                rarityLabel = "<color=red>*</color> " + rarityLabel;
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(rarityLabel, labelStyle, GUILayout.Width(146));
+            rarity = (Rarity)EditorGUILayout.EnumPopup(rarity);
+            EditorGUILayout.EndHorizontal();
+
+            // Card Type
+            string cardTypeLabel = "Card Type:";
+            if (currentCardType == CardType.None)
+                cardTypeLabel = "<color=red>*</color> " + cardTypeLabel;
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(cardTypeLabel, labelStyle, GUILayout.Width(146));
+            currentCardType = (CardType)EditorGUILayout.EnumPopup(currentCardType);
+            EditorGUILayout.EndHorizontal();
+
+            // Playable Slots
+            string playableSlotLabel = "Playable Slot(s):";
+            if (playableSlots == PlayableSlot.None)
+                playableSlotLabel = "<color=red>*</color> " + playableSlotLabel;
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(playableSlotLabel, labelStyle, GUILayout.Width(146));
+            playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField(playableSlots);
+            EditorGUILayout.EndHorizontal();
         }
         else
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
@@ -252,17 +291,38 @@ public class CardCreator_v2 : EditorWindow
 
         // Card Visuals
         EditorGUILayout.Space();
-        cardVisualsToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardVisualsToggle, "<size=13><b>Card Visuals:</b></size>", groupHeaderStyle);
+        string cardVisualsHeader = "<size=13><b>Card Visuals:</b></size>";
+
+        if ((cardName == "" || cardName == "New Card") || artwork == null)
+            cardVisualsHeader = "<size=13><color=red>*</color> <b>Card Visuals:</b></size>";
+
+        cardVisualsToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardVisualsToggle, cardVisualsHeader, groupHeaderStyle);
         if (cardVisualsToggle)
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            
-            cardName = EditorGUILayout.TextField("Card Name: ", cardName);
+
+            // Card Name
+            string cardNameLabel = "Card Name:";
+            if (cardName == "" || cardName == "New Card")
+                cardNameLabel = "<color=red>*</color> " + cardNameLabel;
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(cardNameLabel, labelStyle , GUILayout.Width(146));
+            cardName = EditorGUILayout.TextField(cardName);
+            EditorGUILayout.EndHorizontal();
+
             EditorGUILayout.LabelField("Description:");
             description = EditorGUILayout.TextArea(description);
 
             // Sprite artwork
-            artwork = (Sprite)EditorGUILayout.ObjectField("Art Work: ", artwork, typeof(Sprite), true);
+            string artworkLabel = "Art Work:";
+            if (artwork == null)
+                artworkLabel = "<color=red>*</color> " + artworkLabel;
+
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(artworkLabel, labelStyle, GUILayout.Width(70));
+            artwork = (Sprite)EditorGUILayout.ObjectField("", artwork, typeof(Sprite), true);
+            EditorGUILayout.EndHorizontal();
 
             // Find Background based on card type/Rarity
             switch (currentCardType)
@@ -298,12 +358,30 @@ public class CardCreator_v2 : EditorWindow
 
         // Card Modifiers
         EditorGUILayout.Space();
-        cardModifersToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardModifersToggle, "<size=13><b>Card Modifiers:</b></size>", groupHeaderStyle);
+
+        string cardModiferHeader = "<size=13><b>Card Modifiers:</b></size>";
+
+        if (ability == null && item == null && attack == 0 && armour == 0 && hP == 0 && speed == 0 && atkSpeed == 0)
+            cardModiferHeader = "<size=13><color=red>*</color> <b>Card Modifiers:</b></size>";
+
+        cardModifersToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardModifersToggle, cardModiferHeader, groupHeaderStyle);
         if (cardModifersToggle)
         {
             EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
-            
-            baseStatsToggle = EditorGUILayout.Foldout(baseStatsToggle, "Base Stats:");
+
+            // Add red star if there are no abilities or in-game model or basestats (need at least 1 to make a card)
+            string baseStatLabel = "Base Stats:";
+            string abilityLabel = "Ability:";
+            string itemLabel = "Item:";
+
+            if (ability == null && item == null && attack == 0 && armour == 0 && hP == 0 && speed == 0 && atkSpeed == 0)
+            {
+                baseStatLabel = "<color=red>*</color> " + baseStatLabel;
+                abilityLabel = "<color=red>*</color> " + abilityLabel; ;
+                itemLabel = "<color=red>*</color> " + itemLabel;
+            }
+
+            baseStatsToggle = EditorGUILayout.Foldout(baseStatsToggle, baseStatLabel, foldoutStyle);
             // Base Stats
             if (baseStatsToggle)
             {
@@ -319,12 +397,18 @@ public class CardCreator_v2 : EditorWindow
             EditorGUILayout.Space();
 
             // Abilities
-            ability = (SO_Ability)EditorGUILayout.ObjectField("Ability: ", ability, typeof(SO_Ability), true);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(abilityLabel, labelStyle, GUILayout.Width(146));
+            ability = (SO_Ability)EditorGUILayout.ObjectField(ability, typeof(SO_Ability), true);
+            EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.Space();
 
             // In-Game model
-            item = (GameObject)EditorGUILayout.ObjectField("Item: ", item, typeof(GameObject), true);
+            EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField(itemLabel, labelStyle, GUILayout.Width(146));
+            item = (GameObject)EditorGUILayout.ObjectField(item, typeof(GameObject), true);
+            EditorGUILayout.EndHorizontal();
 
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
