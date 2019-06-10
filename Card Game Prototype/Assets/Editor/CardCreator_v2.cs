@@ -7,8 +7,8 @@ using EnumTypes;
 
 public class CardCreator_v2 : EditorWindow
 {
-    public Rarity rarity = Rarity.Common;
-    public CardType currentCardType = CardType.Weapon;
+    public Rarity rarity = Rarity.None;
+    public CardType currentCardType = CardType.None;
     public PlayableSlot playableSlots = PlayableSlot.None;
     
     public string cardName = "New Card";
@@ -30,6 +30,14 @@ public class CardCreator_v2 : EditorWindow
     public GameObject item;
 
     private CardCreationWindowDefaultValues defaultValues;
+
+    //Window Style
+    private bool disableButtons = true;
+    private bool cardInfoToggle = true;
+    private bool cardVisualsToggle = true;
+    private bool cardModifersToggle = true;
+    private bool baseStatsToggle = true;
+    public Vector2 scrollPos;
 
     //PreviewWindow
     private GameObject previewTarget;
@@ -90,6 +98,9 @@ public class CardCreator_v2 : EditorWindow
 
         // Hide everything from sight
         Tools.visibleLayers &= ~((int)Mathf.Pow(2, LayerMask.NameToLayer("CardCreation")));
+
+        // Draw the card preivew window
+        //DrawCard();
     }
 
     private void OnDisable()
@@ -123,8 +134,31 @@ public class CardCreator_v2 : EditorWindow
         optionsGroup = (Rect)EditorGUILayout.BeginVertical(GUILayout.MinWidth(250), GUILayout.MaxWidth(500));
         //Put buttons next to each other
         buttonGroup = (Rect)EditorGUILayout.BeginHorizontal();
+
+        GUIContent createCardButton;
+        GUIContent updateCardButton;
+        // Check if all required fields have been filled out.
+        if (rarity != Rarity.None &&
+            currentCardType != CardType.None &&
+            playableSlots != PlayableSlot.None &&
+            (cardName != "" || cardName != "New Card") &&
+            artwork != null)
+        {
+            disableButtons = false;
+            createCardButton = new GUIContent("Create Card");
+            updateCardButton = new GUIContent("Update Card");
+        }
+        else
+        {
+            disableButtons = true;
+            createCardButton = new GUIContent("Create Card", "Not all required fields have been filled out!");
+            updateCardButton = new GUIContent("Update Card", "Not all required fields have been filled out!");
+        }
+
+
+        EditorGUI.BeginDisabledGroup(disableButtons);
         // Create Card button
-        if (GUILayout.Button("Create Card"))
+        if (GUILayout.Button(createCardButton))
         {
             //Create Card Template
             GameObject newCard = Instantiate(defaultValues.cardTemplate);
@@ -147,7 +181,7 @@ public class CardCreator_v2 : EditorWindow
         }
 
         // Update Card button
-        if (GUILayout.Button("Update Card"))
+        if (GUILayout.Button(updateCardButton))
         {
             foreach (GameObject card in Selection.gameObjects)
             {
@@ -156,69 +190,107 @@ public class CardCreator_v2 : EditorWindow
             }
         }
 
+        EditorGUI.EndDisabledGroup();
+
         EditorGUILayout.EndHorizontal();
-        EditorGUILayout.Space();
 
-        //Card Rarity
-        rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity: ", rarity);
-
-        EditorGUILayout.Space();
+        // Scroll group
+        scrollPos = EditorGUILayout.BeginScrollView(scrollPos);
 
         // Card Info
-        currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", currentCardType);
-        playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", playableSlots);
-
-        cardName = EditorGUILayout.TextField("Card Name: ", cardName);
-        EditorGUILayout.LabelField("Description:");
-        description = EditorGUILayout.TextArea(description);
-
-        EditorGUILayout.Space();
-
-        // Sprite artwork
-        artwork = (Sprite)EditorGUILayout.ObjectField("Art Work: ", artwork, typeof(Sprite), true);
-
-        // Find Background based on card type
-        switch (currentCardType)
+        cardInfoToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardInfoToggle, "Card Info:");
+        if (cardInfoToggle)
         {
-            case CardType.Weapon:
-                background = defaultValues.backgrounds[0];
-                break;
-            case CardType.Armour:
-                background = defaultValues.backgrounds[1];
-                break;
-            case CardType.Ability:
-                background = defaultValues.backgrounds[2];
-                break;
-            case CardType.Behaviour:
-                background = defaultValues.backgrounds[3];
-                break;
-            case CardType.Environmental:
-                background = defaultValues.backgrounds[4];
-                break;
-            default:
-                Debug.Log("Unknown Card Type!");
-                break;
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+            rarity = (Rarity)EditorGUILayout.EnumPopup("Rarity: ", rarity);
+            currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", currentCardType);
+            playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", playableSlots);
         }
-        background = (Sprite)EditorGUILayout.ObjectField("Background: ", background, typeof(Sprite), true);
+        else
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        // Card Visuals
         EditorGUILayout.Space();
+        cardVisualsToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardVisualsToggle, "Card Visuals:");
+        if (cardVisualsToggle)
+        {
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-        // Base Stats
-        attack = EditorGUILayout.IntField("Damage: ", attack);
-        armour = EditorGUILayout.IntField("Armour: ", armour);
-        hP = EditorGUILayout.IntField("Health: ", hP);
-        speed = EditorGUILayout.FloatField("Movement Speed: ", speed);
-        atkSpeed = EditorGUILayout.FloatField("Attack Speed: ", atkSpeed);
+            cardName = EditorGUILayout.TextField("Card Name: ", cardName);
+            EditorGUILayout.LabelField("Description:");
+            description = EditorGUILayout.TextArea(description);
 
+            // Sprite artwork
+            artwork = (Sprite)EditorGUILayout.ObjectField("Art Work: ", artwork, typeof(Sprite), true);
+
+            // Find Background based on card type/Rarity
+            switch (currentCardType)
+            {
+                case CardType.Weapon:
+                    background = defaultValues.backgrounds[0];
+                    break;
+                case CardType.Armour:
+                    background = defaultValues.backgrounds[1];
+                    break;
+                case CardType.Ability:
+                    background = defaultValues.backgrounds[2];
+                    break;
+                case CardType.Behaviour:
+                    background = defaultValues.backgrounds[3];
+                    break;
+                case CardType.Environmental:
+                    background = defaultValues.backgrounds[4];
+                    break;
+                case CardType.None:
+                    background = null;
+                    break;
+                default:
+                    Debug.Log("Unknown Card Type!");
+                    break;
+            }
+            background = (Sprite)EditorGUILayout.ObjectField("Background: ", background, typeof(Sprite), true);
+        }
+        else
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+        EditorGUILayout.EndFoldoutHeaderGroup();
+
+        // Card Modifiers
         EditorGUILayout.Space();
+        cardModifersToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardModifersToggle, "Card Modifiers");
+        if (cardModifersToggle)
+        {
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
 
-        // Abilities
-        ability = (SO_Ability)EditorGUILayout.ObjectField("Ability: ", ability, typeof(SO_Ability), true);
+            baseStatsToggle = EditorGUILayout.Foldout(baseStatsToggle, "Base Stats:");
+            // Base Stats
+            if (baseStatsToggle)
+            {
+                EditorGUI.indentLevel++;
+                attack = EditorGUILayout.IntField("Damage: ", attack);
+                armour = EditorGUILayout.IntField("Armour: ", armour);
+                hP = EditorGUILayout.IntField("Health: ", hP);
+                speed = EditorGUILayout.FloatField("Movement Speed: ", speed);
+                atkSpeed = EditorGUILayout.FloatField("Attack Speed: ", atkSpeed);
+                EditorGUI.indentLevel--;
+            }
 
-        EditorGUILayout.Space();
+            EditorGUILayout.Space();
 
-        // In-Game model
-        item = (GameObject)EditorGUILayout.ObjectField("Item: ", item, typeof(GameObject), true);
+            // Abilities
+            ability = (SO_Ability)EditorGUILayout.ObjectField("Ability: ", ability, typeof(SO_Ability), true);
+
+            EditorGUILayout.Space();
+
+            // In-Game model
+            item = (GameObject)EditorGUILayout.ObjectField("Item: ", item, typeof(GameObject), true);
+
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
+        EditorGUILayout.EndScrollView();
 
         GUILayout.FlexibleSpace();
 

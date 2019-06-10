@@ -41,6 +41,7 @@ namespace EnumTypes
 
     public enum CardType
     {
+        None,
         Weapon,
         Armour,
         Ability,
@@ -50,6 +51,7 @@ namespace EnumTypes
 
     public enum Rarity
     {
+        None,
         Common,
         Uncommon,
         Rare
