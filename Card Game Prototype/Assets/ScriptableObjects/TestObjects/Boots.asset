@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Boots
   m_EditorClassIdentifier: 
-  rarity: 0
-  currentCardType: 1
+  rarity: 1
+  currentCardType: 2
   playableSlots: 12
   cardName: Boots
   description: Some fancy shoes!
