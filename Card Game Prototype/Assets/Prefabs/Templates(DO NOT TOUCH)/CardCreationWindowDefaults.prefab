@@ -46,10 +46,10 @@ MonoBehaviour:
   cardTemplate: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}
   backgrounds:
-  - {fileID: 21300000, guid: 7832d75861d78a64c8079850b5784894, type: 3}
-  - {fileID: 21300000, guid: 05a1e5db8ff25e549a25a571e4a2b9a3, type: 3}
-  - {fileID: 21300000, guid: bc701468e77dbda49aa1d8e08fcedf4f, type: 3}
-  - {fileID: 21300000, guid: 27f04da24b77edf40baa5fc47edbf46c, type: 3}
-  - {fileID: 21300000, guid: c4d2c217b7ef8e24ebf62d61a2f6f229, type: 3}
+  - {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
+  - {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
+  - {fileID: 21300000, guid: 8fac3e1dbdb6ddc4faf60c05d4b37c6c, type: 3}
+  - {fileID: 21300000, guid: d540f533152d52a4f8975609f543d161, type: 3}
+  - {fileID: 21300000, guid: 07cb0bf09d9878d4381d698162ef84a7, type: 3}
   previewWindowTexture: {fileID: 8400000, guid: b92b14b84ef312644bca1f82920ed532,
     type: 2}
