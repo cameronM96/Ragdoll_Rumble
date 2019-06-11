@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Helmet
   m_EditorClassIdentifier: 
-  rarity: 0
-  currentCardType: 1
+  rarity: 1
+  currentCardType: 2
   playableSlots: 13
   cardName: Helmet
   description: is a shitty helmet
   artwork: {fileID: 21300000, guid: 190a1d1475a700e4c8e58d44ec7ce8ca, type: 3}
-  background: {fileID: 21300000, guid: 05a1e5db8ff25e549a25a571e4a2b9a3, type: 3}
+  background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
+  rarityImage: {fileID: 21300000, guid: 30d1829b2c24bdc48acaed7b79f9b208, type: 3}
   attack: 0
   armour: 2
   hP: 0

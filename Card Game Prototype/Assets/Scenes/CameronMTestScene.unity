@@ -14137,8 +14137,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: c6ffc756b51da5a429f2dbe1c30d480a, type: 2}
-  - {fileID: 11400000, guid: c6ffc756b51da5a429f2dbe1c30d480a, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
   - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
   - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
   - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}

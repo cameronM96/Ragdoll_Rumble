@@ -15,6 +15,7 @@ public class Card : ScriptableObject
 
     public Sprite artwork;
     public Sprite background;
+    public Sprite rarityImage;
 
     public int attack;
     public int armour;

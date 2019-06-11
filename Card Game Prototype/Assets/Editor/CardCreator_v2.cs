@@ -23,13 +23,13 @@ public class CardCreator_v2 : EditorWindow
     public float speed;
     public float atkSpeed;
 
-    public TriggerCondition triggerCondition;
-
     public SO_Ability ability;
 
     public GameObject item;
 
     private CardCreationWindowDefaultValues defaultValues;
+
+    private Card loadedCard;
 
     //Window Style
     private bool disableButtons = true;
@@ -133,6 +133,7 @@ public class CardCreator_v2 : EditorWindow
 
     private void OnDisable()
     {
+        loadedCard = null;
         // Destroy defaults
         cameraObject.hideFlags = HideFlags.HideAndDontSave;
         previewCanvas.hideFlags = HideFlags.HideAndDontSave;
@@ -149,6 +150,7 @@ public class CardCreator_v2 : EditorWindow
         cameraObject = null;
         previewCanvas = null;
         previewTarget = null;
+
     }
 
     public void OnGUI()
@@ -192,7 +194,7 @@ public class CardCreator_v2 : EditorWindow
             // Create save path
             string localPath = "Assets/ScriptableObjects/Cards/" + currentCardType.ToString() + "/" + cardName + ".asset";
 
-            if (AssetDatabase.LoadAssetAtPath(localPath, typeof(GameObject)))
+            if (AssetDatabase.LoadAssetAtPath(localPath, typeof(Card)))
             {
                 // Card already exists, double check with user.
                 if (EditorUtility.DisplayDialog("Are you sure?",
@@ -218,8 +220,23 @@ public class CardCreator_v2 : EditorWindow
         {
             if (Selection.activeObject is Card selectedCard)
             {
-                Debug.Log("Updating: " + selectedCard.name);
-                UpdateCard(selectedCard);
+                if (selectedCard != loadedCard)
+                {
+                    if (EditorUtility.DisplayDialog("Are you sure?",
+                    "The card you are trying to update is NOT the same as the loaded card. \n" +
+                    "are you sure you still want to update?",
+                    "Yes",
+                    "No"))
+                    {
+                        Debug.Log("Updating: " + selectedCard.name);
+                        UpdateCard(selectedCard);
+                    }
+                }
+                else
+                {
+                    Debug.Log("Updating: " + selectedCard.name);
+                    UpdateCard(selectedCard);
+                }
             }
         }
 
@@ -534,6 +551,7 @@ public class CardCreator_v2 : EditorWindow
         card.description = description;
         card.artwork = artwork;
         card.background = background;
+        card.rarityImage = previewTarget.transform.GetChild(3).GetComponent<Image>().sprite;
 
         // Card Modifiers
         card.attack = attack;
@@ -567,6 +585,8 @@ public class CardCreator_v2 : EditorWindow
             return;
         }
 
+        loadedCard = card;
+
         // Card Info
         rarity = card.rarity;
         currentCardType = card.currentCardType;
@@ -594,19 +614,99 @@ public class CardCreator_v2 : EditorWindow
     {
         //Debug.Log("Updating Display!");
         // Changes the visuals on the card in the preview window based on data from the options list
+
+        // Set name
         Text nameText = previewTarget.transform.GetChild(0).GetComponent<Text>();
         nameText.text = cardName;
 
+        // Set Description
+        Text cardInfoBox = previewTarget.transform.GetChild(4).GetComponent<Text>();
+        cardInfoBox.text = description;
+
+        // Set background
         if (background != null)
             previewTarget.GetComponent<Image>().sprite = background;
 
+        // Set Artwork
         if (artwork != null)
             previewTarget.transform.GetChild(1).GetComponent<Image>().sprite = artwork;
 
-        if (triggerCondition != null && ability != null)
+        // Set modifer Info
+        Text infoText = previewTarget.transform.GetChild(2).GetComponent<Text>();
+        infoText.text = "";
+        // Set base stats
+        if (attack != 0)
+            infoText.text += "\nAttack: " + attack;
+        if (armour != 0)
+            infoText.text += "\nArmour: " + armour;
+        if (hP != 0)
+            infoText.text += "\nHealth: " + hP;
+        if (speed != 0)
+            infoText.text += "\nSpeed: " + speed;
+        if (atkSpeed != 0)
+            infoText.text += "\nAttack Speed: " + atkSpeed;
+
+        // Set ability info
+        if (ability != null)
         {
-            Text infoText = previewTarget.transform.GetChild(2).GetComponent<Text>();
-            infoText.text = "<b>" + triggerCondition.tcName + ":</b>\n" + ability.abDescription;
+            infoText.text += ("\n" + ability.abDescription);
+        }
+
+        // Set rarity
+        Image rarityImage = previewTarget.transform.GetChild(3).GetComponent<Image>();
+        switch (rarity)
+        {
+            case Rarity.None:
+                rarityImage.sprite = null;
+                break;
+            case Rarity.Common:
+                rarityImage.sprite = defaultValues.rarity[0];
+                break;
+            case Rarity.Uncommon:
+                rarityImage.sprite = defaultValues.rarity[1];
+                break;
+            case Rarity.Rare:
+                rarityImage.sprite = defaultValues.rarity[2];
+                break;
+            default:
+                Debug.Log("Unknown rarity");
+                break;
+        }
+
+        // Set Slots
+        // Get all slot image rings
+        Image[] rings = new Image[4];
+        for (int i = 0; i < rings.Length; i++)
+            rings[i] = previewTarget.transform.GetChild(5).GetChild(i).GetChild(0).GetComponent<Image>();
+
+        // Update all slots
+        PlayableSlot currentSlot = PlayableSlot.None;
+        for (int i = 0; i < rings.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    currentSlot = PlayableSlot.Head;
+                    break;
+                case 1:
+                    currentSlot = PlayableSlot.Hand;
+                    break;
+                case 2:
+                    currentSlot = PlayableSlot.Chest;
+                    break;
+                case 3:
+                    currentSlot = PlayableSlot.Feet;
+                    break;
+                default:
+                    currentSlot = PlayableSlot.None;
+                    Debug.Log("Unknown Slot!");
+                    break;
+            }
+
+            if (currentSlot == (currentSlot & playableSlots))
+                rings[i].color = Color.red;
+            else
+                rings[i].color = Color.grey;
         }
     }
 }
