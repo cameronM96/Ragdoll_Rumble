@@ -19,8 +19,11 @@ public class SO_Ability : ScriptableObject
 
     public Effect[] effects;
 
-    public void LoadAbility (Base_Stats targetPlayer)
+    [HideInInspector] public GameObject item;
+
+    public void LoadAbility (Base_Stats targetPlayer, GameObject gameItem)
     {
+        item = gameItem;
         deliveryMethod.ability = this;
         deliveryMethod.owner = targetPlayer.GetComponent<GameObject>();
 

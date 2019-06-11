@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 public class Projectile_Seeking : Projectile
 {
@@ -10,9 +11,11 @@ public class Projectile_Seeking : Projectile
     public bool uniqueTargetsOnly = true;
     public bool alternateTeams = false;
 
-    public enum TargetSelection { Closest, Farthest, Random };
     public TargetSelection targetSelectionMethod = TargetSelection.Closest;
     public bool getClosestTarget = true;
+
+    public float seekDelayTime = 0;
+    private bool seekDelayActive = true;
     
     private List<GameObject> targets = new List<GameObject>();
     [SerializeField] private GameObject currenttarget;
@@ -36,36 +39,53 @@ public class Projectile_Seeking : Projectile
             maxTargetsHit = targets.Count;
 
         base.Initialize();
+
+        if (seekDelayTime > 0)
+            StartCoroutine(SeekDelay(seekDelayTime + holdDelayTimer));
+        else
+            seekDelayActive = false;
+    }
+
+    private IEnumerator SeekDelay (float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        seekDelayActive = false;
     }
 
     private void Update()
     {
         AdditionalUpdates();
 
-        if (constSpeed && curving)
+        if (!seekDelayActive)
         {
-            direction = acceleration;
-        }
-        else if (constSpeed && !curve)
-        {
-            direction = Vector3.Normalize(currenttarget.transform.position - transform.position) * speed;
-        }
+            if (constSpeed && curving)
+            {
+                direction = acceleration;
+            }
+            else if (constSpeed && !curve)
+            {
+                direction = Vector3.Normalize(currenttarget.transform.position - transform.position) * speed;
+            }
 
-        acceleration *= 0;
+            acceleration *= 0;
+        }
     }
 
     protected override void AdditionalUpdates()
     {
         base.AdditionalUpdates();
 
-        if (currenttarget == null && !uniqueTargetsOnly)
+        if (!seekDelayActive)
         {
-            FindTargets();
-            GetNewTarget();
-        }
+            if (currenttarget == null && !uniqueTargetsOnly)
+            {
+                FindTargets();
+                GetNewTarget();
+            }
 
-        if (currenttarget != null)
-            Seek();
+            if (currenttarget != null)
+                Seek();
+        }
     }
 
     private void FixedUpdate()

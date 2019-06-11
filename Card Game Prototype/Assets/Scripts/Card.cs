@@ -47,7 +47,7 @@ public class Card : ScriptableObject
         UpdateStats(bStats);
 
         if (ability != null)
-            ability.LoadAbility(bStats);
+            ability.LoadAbility(bStats, item);
     }
 
     void UpdateStats(Base_Stats bStats)

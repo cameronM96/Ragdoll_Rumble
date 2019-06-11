@@ -14,6 +14,7 @@ TagManager:
   - Team 2
   - Combat Phase HUD
   - Card Phase HUD
+  - LaunchPoint
   layers:
   - Default
   - TransparentFX

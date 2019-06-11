@@ -56,4 +56,12 @@ namespace EnumTypes
         Uncommon,
         Rare
     };
+
+
+    public enum TargetSelection
+    {
+        Closest,
+        Farthest,
+        Random
+    };
 }

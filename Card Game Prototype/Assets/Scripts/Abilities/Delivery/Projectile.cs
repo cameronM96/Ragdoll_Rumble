@@ -13,6 +13,9 @@ public class Projectile : Delivery
     public bool multiTargets = false;
     public int maxTargetsHit = 0;
 
+    private bool hold = true;
+    public float holdDelayTimer = 1;
+
     protected Rigidbody rb;
     protected bool forceapplied;
     protected bool curving;
@@ -21,6 +24,7 @@ public class Projectile : Delivery
 
     protected float deathTimer = 0.2f;
 
+
     public override void Initialize()
     {
         base.Initialize();
@@ -28,28 +32,41 @@ public class Projectile : Delivery
         rb = GetComponent<Rigidbody>();
         forceapplied = false;
         rb.useGravity = gravity;
+        if (holdDelayTimer > 0)
+            StartCoroutine(HoldDelay(holdDelayTimer));
+        else
+            hold = false;
+    }
+
+    private IEnumerator HoldDelay (float waitTimer)
+    {
+        yield return new WaitForSeconds(waitTimer);
+        hold = false;
     }
 
     protected void Move()
     {
-        if (constSpeed && curving)
+        if (!hold)
         {
-            // Curve Projectile
-            rb.AddForce(direction * speed, ForceMode.Acceleration);
-        }
-        else if (constSpeed && !curving)
-        {
-            // Instantly change direction
-            rb.velocity = Vector3.Normalize(direction) * speed;
-        }
-        else if (!constSpeed && !forceapplied)
-        {
-            // Apply force once
-            rb.AddForce(direction * speed, ForceMode.Impulse);
-            forceapplied = true;
-        }
+            if (constSpeed && curving)
+            {
+                // Curve Projectile
+                rb.AddForce(direction * speed, ForceMode.Acceleration);
+            }
+            else if (constSpeed && !curving)
+            {
+                // Instantly change direction
+                rb.velocity = Vector3.Normalize(direction) * speed;
+            }
+            else if (!constSpeed && !forceapplied)
+            {
+                // Apply force once
+                rb.AddForce(direction * speed, ForceMode.Impulse);
+                forceapplied = true;
+            }
 
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, speed);
+            rb.velocity = Vector3.ClampMagnitude(rb.velocity, speed);
+        }
     }
 
     protected override void AdditionalUpdates()
@@ -57,7 +74,8 @@ public class Projectile : Delivery
         if (currentTargetsHit >= maxTargetsHit && maxTargetsHit != 0)
             Destroy(this.gameObject, deathTimer);
 
-        base.AdditionalUpdates();
+        if (!hold)
+            base.AdditionalUpdates();
     }
 
     protected void AdditionalTriggerEvents(GameObject other)

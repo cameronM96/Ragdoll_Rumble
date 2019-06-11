@@ -19,4 +19,19 @@ public class DeliverySO : ScriptableObject
     {
         triggeringTarget = target;
     }
+
+    public virtual void Initialise(GameObject targetObject)
+    {
+        Delivery delivery = targetObject.GetComponent<Delivery>();
+
+        if (delivery != null)
+        {
+            delivery.viableTargetID = viableTargetID;
+            delivery.owner = owner;
+            delivery.TriggeringTarget = triggeringTarget;
+            delivery.lifeSpan = lifeSpan;
+        }
+        else
+            Debug.Log("Failed to find Delivery!");
+    }
 }
