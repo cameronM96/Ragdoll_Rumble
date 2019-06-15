@@ -10,6 +10,12 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     public bool cardSlot = false;
     public Base_Stats characterBase;
     public GameObject[] slot;
+    public UIManager uiManager;
+
+    private void Start()
+    {
+        uiManager = transform.parent.GetComponentInParent<UIManager>();
+    }
 
     public void OnPointerEnter (PointerEventData eventData)
     {
@@ -41,20 +47,21 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         if (d != null)
         {
-            //Debug.Log(d.card.playableSlots + " : " + typeOfItem);
-            //Debug.Log(typeOfItem == (typeOfItem & d.card.playableSlots));
-
-            //Debug.Log("Draggable item found");
+            // If card bay, drop card
             if (cardSlot)
             {
                 //Debug.Log("Returning to cardbay");
                 d.returnParent = this.transform;
             }
+            // Check if slot type matches card slot type (check if it can be dropped in this slot)
             else if (typeOfItem == (typeOfItem & d.card.playableSlots))
             {
-                //Debug.Log("Placing card in " + this.name);
-                eventData.pointerDrag.GetComponent<CardDisplay>().PlayCard(characterBase,slot);
-                d.returnParent = this.transform;
+                // Check if player is allowed to place any more this round
+                if (uiManager.PlayCard())
+                {
+                    eventData.pointerDrag.GetComponent<CardDisplay>().PlayCard(characterBase, slot);
+                    d.returnParent = this.transform;
+                }
             }
         }
     }

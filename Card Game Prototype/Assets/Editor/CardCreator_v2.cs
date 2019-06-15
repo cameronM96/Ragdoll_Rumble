@@ -529,6 +529,9 @@ public class CardCreator_v2 : EditorWindow
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
 
+        loadedCard = newCard;
+
+        EditorUtility.DisplayDialog("Card  Created!", "Card was successfully created!", "ok");
         Debug.Log(newCard.cardName + " was created!");
     }
 
@@ -574,6 +577,8 @@ public class CardCreator_v2 : EditorWindow
         EditorUtility.SetDirty(card);
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
+
+        EditorUtility.DisplayDialog("Card  Updated!", card.name + " was successfully updated!", "ok");
     }
 
     private void LoadNewValues(Card card)
@@ -608,7 +613,7 @@ public class CardCreator_v2 : EditorWindow
         ability = card.ability;
 
         item = card.item;
-}
+    }
 
     private void UpdateCardDisplay()
     {

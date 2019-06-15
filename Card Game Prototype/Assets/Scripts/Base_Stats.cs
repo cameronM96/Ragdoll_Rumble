@@ -11,8 +11,10 @@ public class Base_Stats : MonoBehaviour
     public float speed = 20f;
     public float atkSpeed = 1;
 
+    private float[] storedBaseStats = new float[5];
+
     [SerializeField] private int currentHP;
-    public bool dead;
+    public bool dead = false;
     public GameObject hitText;
 
     public Display_Base_Stats statDisplay;
@@ -25,14 +27,33 @@ public class Base_Stats : MonoBehaviour
     public List<OnDamaged> onDamagedList = new List<OnDamaged>();
     public List<OnHealth> onHealthList = new List<OnHealth>();
 
-    private void Start()
+    public GameManager gameManager;
+    
+    private void OnEnable()
     {
-        Initialise();
+        GameManager.EnterCombatPhase += InitialiseCombatPhase;
+        GameManager.EnterCardPhase += InitialiseCardPhase;
     }
 
-    public void Initialise()
+    private void OnDisable()
     {
+        GameManager.EnterCombatPhase -= InitialiseCombatPhase;
+        GameManager.EnterCardPhase -= InitialiseCardPhase;
+    }
+
+    public void InitialiseCombatPhase()
+    {
+        //Debug.Log("Initialising Player for Combat Phase");
+        // Save current Stats to set back to in cardphase (Stops in combat changes from being permanent
+        storedBaseStats[0] = attack; 
+        storedBaseStats[1] = armour;
+        storedBaseStats[2] = maxHP;
+        storedBaseStats[3] = speed;
+        storedBaseStats[4] = atkSpeed;
+
+        // Unkill Player
         currentHP = maxHP;
+        dead = false;
 
         // Initialise Triggers
         if (onTimerList.Count > 0)
@@ -73,6 +94,22 @@ public class Base_Stats : MonoBehaviour
             foreach (DeliverySO delivery in onGetHitEffectsList)
                 delivery.owner = this.gameObject;
         }
+    }
+
+    public void InitialiseCardPhase()
+    {
+        //Debug.Log("Initialising Player to Card Phase");
+        // Reload Saved stats (Reset stats back to end of last cardPhase)
+        if (gameManager.currentRound > 1)
+        {
+            attack = Mathf.RoundToInt(storedBaseStats[0]);
+            armour = Mathf.RoundToInt(storedBaseStats[1]);
+            maxHP = Mathf.RoundToInt(storedBaseStats[2]);
+            speed = storedBaseStats[3];
+            atkSpeed = storedBaseStats[4];
+        }
+
+        dead = false;
     }
 
     public void UpdateStatDisplay()
@@ -154,10 +191,15 @@ public class Base_Stats : MonoBehaviour
     // Kill player
     public void Dead()
     {
-        Debug.Log(this.gameObject.name + " has Died!");
-        dead = true;
-        GetComponent<Renderer>().material.color = Color.black;
-        //GetComponent<Collider>().enabled = false;
+        if (!dead)
+        {
+            Debug.Log(this.gameObject.name + " has Died!");
+            dead = true;
+            //GetComponent<Renderer>().material.color = Color.black;
+
+            gameManager.PlayerDied(this.gameObject);
+            //GetComponent<Collider>().enabled = false;
+        }
     }
 
     // *************************** Trigger Events ***************************

@@ -15,6 +15,7 @@ TagManager:
   - Combat Phase HUD
   - Card Phase HUD
   - LaunchPoint
+  - Timer
   layers:
   - Default
   - TransparentFX

@@ -9,6 +9,16 @@ public class TickTimer : MonoBehaviour
 
     private int timer;
 
+    private void OnEnable()
+    {
+        GameManager.EnterCardPhase += StopTimers;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.EnterCardPhase -= StopTimers;
+    }
+
     public void SetTimer (int damage, int frequency, int duration, TickingEffect target)
     {
         targetEffect = target;
@@ -38,6 +48,13 @@ public class TickTimer : MonoBehaviour
             targetEffect.TickEffect(this.gameObject);
 
         tickTimer = null;
+        Destroy(this);
+    }
+
+    public void StopTimers()
+    {
+        //Debug.Log("Stopping Ticking Effect");
+        StopAllCoroutines();
         Destroy(this);
     }
 }

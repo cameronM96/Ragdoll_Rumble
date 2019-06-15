@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Burn
   m_EditorClassIdentifier: 
   statChange: 1
-  statChangeValue: 2
+  statChangeValue: 10
   changeCurrentHP: 0
   multipler: 0
   particleEffect: {fileID: 100004, guid: 1c20c7996d683754db1f0f62a361952c, type: 3}

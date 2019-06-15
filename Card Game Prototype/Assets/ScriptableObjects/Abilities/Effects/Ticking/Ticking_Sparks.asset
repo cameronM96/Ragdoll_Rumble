@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: Ticking_Sparks
   m_EditorClassIdentifier: 
   statChange: 5
-  statChangeValue: -2
+  statChangeValue: 2
   changeCurrentHP: 0
   multipler: 0
   particleEffect: {fileID: 1247311384876784, guid: 4adffb0018aeda44e9263f901167af1f,
     type: 3}
   effectLength: 5
   effectFrequency: 1
+  applyTickOnStart: 0
+  applyTickOnEnd: 0
