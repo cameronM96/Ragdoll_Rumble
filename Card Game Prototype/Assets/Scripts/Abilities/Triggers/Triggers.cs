@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Triggers : ScriptableObject
+public abstract class Triggers : ScriptableObject
 {
     public SO_Ability ability;
 

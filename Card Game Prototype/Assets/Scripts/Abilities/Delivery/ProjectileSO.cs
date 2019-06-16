@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileSO : DeliverySO
+public abstract class ProjectileSO : DeliverySO
 {
     public GameObject templateObj;
     public int numberOfProjectiles = 1;

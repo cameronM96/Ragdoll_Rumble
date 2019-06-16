@@ -220,14 +220,6 @@ public class Projectile_Seeking : Projectile
         List<GameObject> tempList = targets;
         tempList.Remove(currenttarget);
 
-        //if (tempList.Count == 0)
-        //{
-        //    //Debug.Log("No Targets to check");
-        //    FindTargets();
-        //    GetNewTarget(++attempts);
-        //    return;
-        //}
-
         // Find the new target
         GameObject newTarget = null;
         float closestDistance;
@@ -334,12 +326,6 @@ public class Projectile_Seeking : Projectile
                 Debug.Log("Invalid Target Selection Method!");
                 break;
         }
-
-        //if (newTarget == null && attempts < 3)
-        //{
-        //    FindTargets();
-        //    GetNewTarget(++attempts);
-        //}
 
         currenttarget = newTarget;
     }

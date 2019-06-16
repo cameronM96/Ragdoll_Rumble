@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Effect : ScriptableObject
+public abstract class Effect : ScriptableObject
 {
     public enum StatChange { None, Damage, Heal, MaxHealth, Attack, Armour, Speed, AttackSpeed}
     public StatChange statChange = StatChange.Damage;

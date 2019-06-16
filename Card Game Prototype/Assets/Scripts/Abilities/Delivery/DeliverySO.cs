@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnumTypes;
 
-public class DeliverySO : ScriptableObject
+public abstract class DeliverySO : ScriptableObject
 {
     public SO_Ability ability;
 

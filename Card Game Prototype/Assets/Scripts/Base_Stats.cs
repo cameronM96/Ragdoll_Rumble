@@ -9,7 +9,10 @@ public class Base_Stats : MonoBehaviour
     public int armour;
     public int maxHP = 25;
     public float speed = 20f;
-    public float atkSpeed = 1;
+    // Need to figure out how to turn this into an attackrate (as atkspeed increases, time between attack decrease)
+    public float atkSpeed = 5;
+
+    public float attackRange = 4f;
 
     private float[] storedBaseStats = new float[5];
 
@@ -402,6 +405,9 @@ public class Base_Stats : MonoBehaviour
         {
             atkSpeed += attackSpeedChange;
         }
+
+        if (atkSpeed < 1)
+            atkSpeed = 1;
     }
 
     private void SpawnHitText(Color newColour, int value)

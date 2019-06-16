@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : Delivery
+public abstract class Projectile : Delivery
 {
     public bool constSpeed = true;
     public bool gravity = false;

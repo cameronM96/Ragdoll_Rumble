@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EnumTypes;
 
-public class Delivery : MonoBehaviour
+public abstract class Delivery : MonoBehaviour
 {
     public TargetID viableTargetID = TargetID.Enemies;
 
