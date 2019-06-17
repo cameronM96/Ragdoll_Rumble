@@ -14,12 +14,15 @@ public class StateController : MonoBehaviour
     public Base_Stats baseStates;
     public GameManager gameManager;
 
+    public Transform spawnPoint;
+
     [HideInInspector] public AIController aiController;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform chaseTarget;
-    [HideInInspector] public float stateTimeElapsed; 
+    [HideInInspector] public float stateTimeElapsed;
+    [HideInInspector] Rigidbody rb;
 
-    private bool aiActive;
+    private bool aiActive = false;
 
     private void Awake()
     {
@@ -27,6 +30,39 @@ public class StateController : MonoBehaviour
         baseStates = GetComponent<Base_Stats>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         aiController = GetComponent<AIController>();
+        rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        GameManager.EnterCombatPhase += InitialiseCombatPhase;
+        GameManager.EnterCardPhase += InitialiseCardPhase;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.EnterCombatPhase -= InitialiseCombatPhase;
+        GameManager.EnterCardPhase -= InitialiseCardPhase;
+    }
+
+    private void InitialiseCombatPhase ()
+    {
+        rb.isKinematic = false;
+        aiActive = true;
+        baseStates.CalcMoveSpeed();
+        SetupAI();
+        if (currentState != baseAIState)
+            TransitionToState(baseAIState);
+    }
+
+    private void InitialiseCardPhase()
+    {
+        aiActive = false;
+        SetupAI();
+        rb.isKinematic = true;
+        transform.position = spawnPoint.position;
+        transform.rotation = spawnPoint.rotation;
+        TransitionToState(baseAIState);
     }
 
     public void SetupAI ()
@@ -37,12 +73,18 @@ public class StateController : MonoBehaviour
             navMeshAgent.enabled = false;
     }
 
+    public void SetAISpeed (float speed)
+    {
+        navMeshAgent.speed = speed;
+    }
+
     private void Update()
     {
         if (!aiActive)
             return;
 
-        currentState.UpdateState(this);
+        if (currentState != null)
+            currentState.UpdateState(this);
     }
 
     private void OnDrawGizmos()
@@ -59,6 +101,7 @@ public class StateController : MonoBehaviour
     {
         if (nextState != remainState)
         {
+            //Debug.Log(this.tag + " has transitioned to " + nextState.name);
             currentState = nextState;
             OnExitState();
         }
@@ -79,7 +122,9 @@ public class StateController : MonoBehaviour
     {
         if (currentState.overRideAble && overrideState != null && overrideState != remainState)
         {
+            Debug.Log(this.tag + " state was overriden by " + overrideState.name);
             currentState = overrideState;
+            SetupAI();
             OnExitState();
             return true;
         }

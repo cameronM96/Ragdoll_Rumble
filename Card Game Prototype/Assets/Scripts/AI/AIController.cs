@@ -12,9 +12,14 @@ public class AIController : MonoBehaviour
     public AudioClip[] victoryNoise;
     public AudioClip[] defeatNoise;
 
+    private void Awake()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void Attack()
     {
+        Debug.Log("" + this.tag + " is attacking!");
         int index = Random.Range(0, attackNoise.Length - 1);
         if (attackNoise[index] != null) {
             audioSource.clip = attackNoise[index];
@@ -24,6 +29,7 @@ public class AIController : MonoBehaviour
 
     public void Hurt ()
     {
+        Debug.Log("" + this.tag + " was hurt!");
         int index = Random.Range(0, hurtNoise.Length - 1);
         if (hurtNoise[index] != null)
         {
@@ -34,6 +40,7 @@ public class AIController : MonoBehaviour
 
     public void Die()
     {
+        Debug.Log("" + this.tag + " diededed!");
         int index = Random.Range(0, deathNoise.Length - 1);
         if (deathNoise[index] != null)
         {
@@ -44,6 +51,7 @@ public class AIController : MonoBehaviour
 
     public void Ability(AudioClip abilityNoise)
     {
+        Debug.Log("" + this.tag + " was hit by ability!");
         if (abilityNoise != null)
         {
             audioSource.clip = abilityNoise;
@@ -53,6 +61,7 @@ public class AIController : MonoBehaviour
 
     public void Victory()
     {
+        Debug.Log("(" + this.tag + ") Wins!");
         int index = Random.Range(0, victoryNoise.Length - 1);
         if (victoryNoise[index] != null)
         {
@@ -63,6 +72,7 @@ public class AIController : MonoBehaviour
 
     public void Defeat ()
     {
+        Debug.Log("(" + this.tag + ") Loses!");
         int index = Random.Range(0, deathNoise.Length - 1);
         if (deathNoise[index] != null)
         {

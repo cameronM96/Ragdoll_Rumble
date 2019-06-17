@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109a501f3846afa4e8601bd5e8f0cb3b, type: 3}
   m_Name: ChaseState
   m_EditorClassIdentifier: 
+  overRideAble: 1
   activities:
   - {fileID: 11400000, guid: 50427131a268968429539f7afe8a69a4, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: 904f6ca20ae9c914bb168332748d13d9, type: 2}
     trueState: {fileID: 11400000, guid: 80f939dec2caa7a4cb33c4f77e883a2e, type: 2}
     falseState: {fileID: 11400000, guid: e694cdaf319e8c449a9b958fd1fc1932, type: 2}
+  - decision: {fileID: 11400000, guid: 15a21bae4e615a64181e6ae83b673d43, type: 2}
+    trueState: {fileID: 11400000, guid: 0111e9ff1b67b8a4b9226feced75dd01, type: 2}
+    falseState: {fileID: 11400000, guid: 80f939dec2caa7a4cb33c4f77e883a2e, type: 2}
   sceneGizmoColor: {r: 0, g: 1, b: 0.043263197, a: 1}

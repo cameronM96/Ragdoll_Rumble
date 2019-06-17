@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 109a501f3846afa4e8601bd5e8f0cb3b, type: 3}
   m_Name: IdleState
   m_EditorClassIdentifier: 
+  overRideAble: 1
   activities:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 16bad29095612604e88973c666f6a9bf, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: 904f6ca20ae9c914bb168332748d13d9, type: 2}
     trueState: {fileID: 11400000, guid: bcf8330b0f83d564cbe6bf14089dda32, type: 2}

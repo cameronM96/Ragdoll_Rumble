@@ -12,6 +12,7 @@ public class ChaseAct : Activity
 
     private void Chase (StateController controller)
     {
-
+        controller.navMeshAgent.destination = controller.chaseTarget.position;
+        controller.navMeshAgent.isStopped = false;
     }
 }

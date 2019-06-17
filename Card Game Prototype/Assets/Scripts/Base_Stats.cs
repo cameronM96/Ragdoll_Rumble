@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(StateController))]
+//[RequireComponent(typeof(StateController))]
 public class Base_Stats : MonoBehaviour
 {
     public int attack = 2;
@@ -13,7 +13,7 @@ public class Base_Stats : MonoBehaviour
     // Need to figure out how to turn this into an attackrate (as atkspeed increases, time between attack decrease)
     public float atkSpeed = 5;
 
-    public float attackRange = 4f;
+    public float attackRange = 1f;
 
     private float[] storedBaseStats = new float[5];
 
@@ -32,7 +32,13 @@ public class Base_Stats : MonoBehaviour
     public List<OnHealth> onHealthList = new List<OnHealth>();
 
     public GameManager gameManager;
-    
+    public StateController stateController;
+
+    private void Awake()
+    {
+        stateController = GetComponent<StateController>();
+    }
+
     private void OnEnable()
     {
         GameManager.EnterCombatPhase += InitialiseCombatPhase;
@@ -385,6 +391,13 @@ public class Base_Stats : MonoBehaviour
         }
 
         SpawnHitText(Color.blue, speedChange);
+    }
+
+    public void CalcMoveSpeed()
+    {
+        // Put move speed function here!
+        float moveSpeed = speed;
+        stateController.SetAISpeed(moveSpeed);
     }
 
     public void ChangeAttackSpeed(int attackSpeedChange)

@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
         if (numberOfRounds % 2 != 0)
             ++instaWinScore;
 
-        Debug.Log("Victory requires " + instaWinScore + " wins");
+        //Debug.Log("Victory requires " + instaWinScore + " wins");
 
         // Find which team has the highest score
         int highestScore = -1;

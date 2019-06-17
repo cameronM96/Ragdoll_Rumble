@@ -7,8 +7,7 @@ public class LookDecision : Decision
 {
     public override bool Decide(StateController controller)
     {
-        bool targetFound = Look(controller);
-        return targetFound;
+        return Look(controller);
     }
 
     private bool Look (StateController controller)
