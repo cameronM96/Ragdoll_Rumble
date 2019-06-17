@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
+  m_Name: Super Big Knight Armour
+  m_EditorClassIdentifier: 
+  rarity: 2
+  currentCardType: 2
+  playableSlots: 7
+  cardName: Super Big Knight Armour
+  description: 'Don''t mess with this big chungus!
+
+'
+  artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
+  background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
+  rarityImage: {fileID: 0}
+  attack: 0
+  armour: 6
+  hP: 0
+  speed: -3
+  atkSpeed: -3
+  ability: {fileID: 0}
+  item: {fileID: 0}
+  templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
+    type: 3}
