@@ -1037,6 +1037,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -1267,6 +1268,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -3687,6 +3689,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -7192,6 +7195,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -7367,6 +7371,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -9267,6 +9272,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -9824,6 +9830,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -10000,6 +10007,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -10077,11 +10085,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 0}
-  remainState: {fileID: 0}
+  baseAIState: {fileID: 11400000, guid: bcf8330b0f83d564cbe6bf14089dda32, type: 2}
+  remainState: {fileID: 11400000, guid: 80f939dec2caa7a4cb33c4f77e883a2e, type: 2}
   baseStates: {fileID: 0}
   gameManager: {fileID: 0}
+  aiController: {fileID: 0}
   navMeshAgent: {fileID: 0}
   chaseTarget: {fileID: 0}
+  stateTimeElapsed: 0
 --- !u!1 &1283947052
 GameObject:
   m_ObjectHideFlags: 0
@@ -10575,6 +10586,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -11170,6 +11182,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -11494,6 +11507,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -12816,6 +12830,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -13891,6 +13906,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -14279,6 +14295,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -14826,6 +14843,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -15128,6 +15146,7 @@ MonoBehaviour:
   maxHP: 25
   speed: 20
   atkSpeed: 1
+  attackRange: 4
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}

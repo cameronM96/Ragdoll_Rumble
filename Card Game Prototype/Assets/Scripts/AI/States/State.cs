@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu (menuName = "PluggableAI/State")]
 public class State : ScriptableObject
 {
+    public bool overRideAble = true;
     public Activity[] activities;
     public Transition[] transitions;
     public Color sceneGizmoColor = Color.grey;

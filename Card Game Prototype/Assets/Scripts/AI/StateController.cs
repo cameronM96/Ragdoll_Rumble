@@ -3,14 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(AIController))]
 public class StateController : MonoBehaviour
 {
+    // Manages the AI state machine
     public State currentState;
+    public State baseAIState;
     public State remainState;
 
     public Base_Stats baseStates;
     public GameManager gameManager;
 
+    [HideInInspector] public AIController aiController;
     [HideInInspector] public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public float stateTimeElapsed; 
@@ -22,6 +26,7 @@ public class StateController : MonoBehaviour
         navMeshAgent = GetComponent<NavMeshAgent>();
         baseStates = GetComponent<Base_Stats>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        aiController = GetComponent<AIController>();
     }
 
     public void SetupAI ()
@@ -49,6 +54,7 @@ public class StateController : MonoBehaviour
         }
     }
 
+    // Transition to 
     public void TransitionToState (State nextState)
     {
         if (nextState != remainState)
@@ -67,5 +73,17 @@ public class StateController : MonoBehaviour
     private void OnExitState()
     {
         stateTimeElapsed = 0;
+    }
+
+    public bool OverRideState (State overrideState)
+    {
+        if (currentState.overRideAble && overrideState != null && overrideState != remainState)
+        {
+            currentState = overrideState;
+            OnExitState();
+            return true;
+        }
+
+        return false;
     }
 }

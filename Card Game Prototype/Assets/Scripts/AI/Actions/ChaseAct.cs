@@ -7,7 +7,7 @@ public class ChaseAct : Activity
 {
     public override void Act(StateController controller)
     {
-        throw new System.NotImplementedException();
+        Chase(controller);
     }
 
     private void Chase (StateController controller)

@@ -22,7 +22,8 @@ public class AttackAct : Activity
         {
             if (controller.CheckIfCountDownElapsed (controller.baseStates.atkSpeed))
             {
-                // Add attack function here!
+                // Attack function
+                controller.aiController.Attack();
             }
         }
     }
