@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
 
     private bool cardPhase = true;
     private int maxCardsThisRound = 0;
+    [SerializeField] private int maxCardsPlayed = 5;
 
     private void Start()
     {
@@ -100,8 +101,13 @@ public class UIManager : MonoBehaviour
     {
         //Debug.Log("Initialising Card Phase UI");
         maxCardsThisRound += gameManager.cardsEachRound[gameManager.currentRound - 1];
+        if (maxCardsPlayed != 0)
+        {
+            if (maxCardsThisRound > maxCardsPlayed)
+                maxCardsThisRound = maxCardsPlayed;
+        }
         cardCount.text = "Cards Left: " + maxCardsThisRound;
-        roundNumber.text = "Round: " + gameManager.currentRound;
+        roundNumber.text = "Round: " + gameManager.currentRound + " ";
         DealNewHand();
         cardPhase = true;
         cardPhaseUI.SetActive(true);
