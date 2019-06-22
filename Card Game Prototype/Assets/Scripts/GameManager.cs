@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
     public delegate void CombatPhase();
     public static event CombatPhase EnterCombatPhase;
 
+    public delegate void PlayerFell();
+    public static event PlayerFell PlayerHasFallen;
+
     public delegate void GameOver();
     public static event GameOver EndGame;
 
@@ -160,6 +163,7 @@ public class GameManager : MonoBehaviour
         if (teamNumb != 0)
         {
             --alivePlayersPerTeam[teamNumb - 1];
+            PlayerHasFallen?.Invoke();
             // Check if this player was the last one on their team
             if (alivePlayersPerTeam[teamNumb - 1] <= 0)
                 defeatedTeams.Add(teamNumb);
