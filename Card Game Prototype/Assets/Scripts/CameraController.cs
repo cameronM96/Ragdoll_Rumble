@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class CameraController : MonoBehaviour
 {
     public GameObject myPlayer;
+    public GameObject gameHUD;
     public List<Transform> targets;
 
-    public Vector3 offset;
+    public Vector3 combatOffset = new Vector3(0,20,-60);
+    public Vector3 cardOffset = new Vector3(20, 5, 0); // x = forward, y = up, z = right
     public float smoothTime = 0.5f;
 
     public float minZoom = 40f;
@@ -25,7 +28,10 @@ public class CameraController : MonoBehaviour
     public float mouseSensitivity = 1f;
     public float manualControlMinDist = 2f;
 
+    public float rotationSpeed = 1f;
+
     public GameManager gameManager;
+    public bool draggingSomething = false;
 
     private void OnEnable()
     {
@@ -43,13 +49,16 @@ public class CameraController : MonoBehaviour
 
     public void InitialiseCombatPhase()
     {
+        Debug.Log("In Combat Phase");
         combatPhase = true;
         GetCameraTargets();
     }
 
     public void InitialiseCardPhase()
     {
+        Debug.Log("In Card Phase");
         combatPhase = false;
+        manualControl = false;
         targets.Clear();
         targets.Add(myPlayer.transform);
     }
@@ -58,25 +67,37 @@ public class CameraController : MonoBehaviour
     {
         cam = GetComponent<Camera>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        myPlayer = transform.parent.gameObject;
+        transform.SetParent(null);
+
+        GameObject prefabHUD = gameHUD;
+        gameHUD = Instantiate(prefabHUD);
+        gameHUD.GetComponent<UIManager>().myCameraController = this;
+
+        myPlayer.GetComponent<Base_Stats>().statDisplay = gameHUD.transform.GetChild(0).GetComponentInChildren<Display_Base_Stats>();
     }
 
     private void LateUpdate()
     {
-        // Key Board Controls
-        if (Input.GetMouseButtonDown(0))
-            lastMousePosition = Input.mousePosition;
-
-        if (Input.GetMouseButton(0))
+        if (!IsMouseOverUI())
         {
-            Vector3 delta = Input.mousePosition - lastMousePosition;
+            // Key Board Controls
+            if (Input.GetMouseButtonDown(0))
+                lastMousePosition = Input.mousePosition;
 
-            if (manualControl || delta.magnitude > manualControlMinDist)
-                ManualCameraMove(delta);
+            if (Input.GetMouseButton(0))
+            {
+                Vector3 delta = Input.mousePosition - lastMousePosition;
+
+                if (manualControl || delta.magnitude > manualControlMinDist)
+                    ManualCameraMove(delta);
+            }
+
+            if (Input.GetAxis("Mouse ScrollWheel") != 0)
+                ManualCameraZoom(Input.GetAxis("Mouse ScrollWheel"));
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") != 0)
-            ManualCameraZoom(Input.GetAxis("Mouse ScrollWheel"));
-
+        // Stop manual control during transition!
         if (manualControl)
         {
             // Set back to auto camera if camera has not been moved for a while
@@ -93,9 +114,30 @@ public class CameraController : MonoBehaviour
             if (targets.Count == 0)
                 return;
 
-            Move();
+            Move(combatPhase);
             Zoom();
+
+            if (combatPhase)
+            {
+                // In Combat Phase
+                // Rotate camera
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, gameManager.gameObject.transform.rotation, rotationSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // In Card Phase
+                // Rotate camera
+                Vector3 targetPosition = myPlayer.transform.position;
+                targetPosition.y += 1f;
+                Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
         }
+    }
+
+    bool IsMouseOverUI()
+    {
+        return EventSystem.current.IsPointerOverGameObject() || draggingSomething;
     }
 
     void ManualCameraMove (Vector3 delta)
@@ -138,12 +180,22 @@ public class CameraController : MonoBehaviour
         return bounds.size.x;
     }
 
-    void Move()
+    void Move(bool inCombat)
     {
         // Auto move camera
         Vector3 centerPoint = GetCenterPoint();
 
-        Vector3 newPosition = centerPoint + offset;
+        Vector3 newPosition;
+        if (inCombat)
+            newPosition = centerPoint + combatOffset;
+        else
+        {
+            // Put card in front of the target
+            Vector3 targetForward = myPlayer.transform.forward * cardOffset.x;
+            // Raise camera up so camera is not in the floor
+            centerPoint.y += cardOffset.y;
+            newPosition = centerPoint + targetForward;
+        }
 
         transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
     }

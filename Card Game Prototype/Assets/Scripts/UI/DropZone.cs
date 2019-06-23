@@ -9,12 +9,38 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     [EnumFlags] public PlayableSlot typeOfItem = PlayableSlot.None;
     public bool cardSlot = false;
     public Base_Stats characterBase;
+    public bool rightSide = false;
     public GameObject[] slot;
     public UIManager uiManager;
 
     private void Start()
     {
         uiManager = transform.parent.GetComponentInParent<UIManager>();
+        characterBase = transform.root.GetComponent<UIManager>().myCameraController.myPlayer.GetComponent<Base_Stats>();
+
+        switch (typeOfItem)
+        {
+            case PlayableSlot.None:
+                break;
+            case PlayableSlot.Head:
+                slot[0] = characterBase.slots[0];
+                break;
+            case PlayableSlot.Chest:
+                slot[0] = characterBase.slots[1];
+                break;
+            case PlayableSlot.Hand:
+                if (rightSide)
+                    slot[0] = characterBase.slots[2];
+                else
+                    slot[0] = characterBase.slots[3];
+                break;
+            case PlayableSlot.Feet:
+                slot[0] = characterBase.slots[4];
+                slot[1] = characterBase.slots[5];
+                break;
+            default:
+                break;
+        }
     }
 
     public void OnPointerEnter (PointerEventData eventData)
@@ -61,6 +87,9 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 {
                     eventData.pointerDrag.GetComponent<CardDisplay>().PlayCard(characterBase, slot);
                     d.returnParent = this.transform;
+
+                    // Tell camera I am done being dragged
+                    d.cameraController.draggingSomething = false;
                 }
             }
         }

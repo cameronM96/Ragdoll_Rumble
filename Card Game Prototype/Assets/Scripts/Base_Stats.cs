@@ -6,6 +6,8 @@ using UnityEngine.UI;
 //[RequireComponent(typeof(StateController))]
 public class Base_Stats : MonoBehaviour
 {
+    public bool isAI = false;
+
     public int attack = 2;
     public int armour;
     public int maxHP = 25;
@@ -33,10 +35,15 @@ public class Base_Stats : MonoBehaviour
 
     public GameManager gameManager;
     public StateController stateController;
+    public GameObject[] slots;
 
     private void Awake()
     {
         stateController = GetComponent<StateController>();
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
+        if (!isAI)
+            gameManager.PlayerJoined();
     }
 
     private void OnEnable()
@@ -124,7 +131,8 @@ public class Base_Stats : MonoBehaviour
 
     public void UpdateStatDisplay()
     {
-        statDisplay.UpdateStatText(this);
+        if (!isAI)
+            statDisplay.UpdateStatText(this);
     }
 
     // *************************** In Combat Events ***************************

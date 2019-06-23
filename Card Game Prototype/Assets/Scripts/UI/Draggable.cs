@@ -14,6 +14,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     GameObject placeholder = null;
     [HideInInspector] public bool movePlaceHolder = true;
+    public CameraController cameraController;
 
     private void Start()
     {
@@ -22,6 +23,11 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        // Tell camera I am being dragged
+        cameraController = transform.root.GetComponent<UIManager>().myCameraController;
+        cameraController.draggingSomething = true;
+
+        // Pick up card
         placeholder = new GameObject();
         placeholder.transform.SetParent(this.transform.parent);
         LayoutElement le = placeholder.AddComponent<LayoutElement>();
@@ -34,6 +40,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         returnParent = this.transform.parent;
         placeHolderParent = returnParent;
+
         this.transform.SetParent(this.transform.parent.parent);
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -41,6 +48,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnDrag(PointerEventData eventData)
     {
+        // Drag card
         this.transform.position = eventData.position;
 
         if (placeholder.transform.parent != placeHolderParent)
@@ -66,6 +74,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        // Tell camera I am done being dragged
+        cameraController.draggingSomething = false;
+
+        // Drop card
         this.transform.SetParent(returnParent);
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
         GetComponent<CanvasGroup>().blocksRaycasts = true;

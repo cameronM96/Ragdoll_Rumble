@@ -5,13 +5,14 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+    public CameraController myCameraController;
     public GameObject cardPhaseUI;
+    public GameObject combatPhaseUI;
     public GameObject cardSlot;
     public GameObject deck;
     public int handSize = 5;
     public Text numCardsLeft;
     public Text cardCount;
-    public GameObject combatPhaseUI;
     public Text timerText;
     public Text roundNumber;
     public Image[] timeBars;
@@ -27,6 +28,8 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+
         // General HUD
         timeBars = new Image[2];
         timeBars[0] = transform.GetChild(2).GetChild(0).GetComponent<Image>();

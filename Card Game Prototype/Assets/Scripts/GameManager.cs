@@ -37,6 +37,8 @@ public class GameManager : MonoBehaviour
 
     public int gameStartDelay;
 
+    private int numbOfPlayers = 0;
+    private int readyPlayers = 0;
     private bool gameOver = false;
 
     // Start is called before the first frame update
@@ -106,6 +108,7 @@ public class GameManager : MonoBehaviour
     public void InitialiseCardPhase ()
     {
         currentRound++;
+        readyPlayers = 0;
         // Find score that will win game
         int instaWinScore = numberOfRounds / 2;
         if (numberOfRounds % 2 != 0)
@@ -198,8 +201,28 @@ public class GameManager : MonoBehaviour
         EndGame?.Invoke();
     }
 
+    // PlaceHolder until Multi-player is implemented
+    public void PlayerJoined ()
+    {
+        ++numbOfPlayers;
+    }
+
+    public void PlayerLeft ()
+    {
+        --numbOfPlayers;
+    }
+
     public void EndTurn ()
     {
-        InitialiseCombatPhase();
+        // Switch this out for a function that checks if everyone else has finished their turn
+        ++readyPlayers;
+        if (readyPlayers >= numbOfPlayers)
+        {
+            Debug.Log("All Players Ready! Ending Card Phase Early!");
+            InitialiseCombatPhase();
+        }
+        else
+            Debug.Log("A player is ready!");
+
     }
 }
