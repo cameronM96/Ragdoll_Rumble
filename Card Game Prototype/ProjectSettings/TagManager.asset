@@ -17,6 +17,8 @@ TagManager:
   - LaunchPoint
   - Timer
   - GameManager
+  - IgnoreMe
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -30,6 +30,10 @@ public class CameraController : MonoBehaviour
 
     public float rotationSpeed = 1f;
 
+    public bool transitioning;
+    public float cardTransitionLength = 4f;
+    public float combatTransitionLength = 3f;
+
     public GameManager gameManager;
     public bool draggingSomething = false;
 
@@ -52,6 +56,10 @@ public class CameraController : MonoBehaviour
         Debug.Log("In Combat Phase");
         combatPhase = true;
         GetCameraTargets();
+
+        // Begin Camera Transition
+        transitioning = true;
+        StartCoroutine(TransitionSequence(combatTransitionLength));
     }
 
     public void InitialiseCardPhase()
@@ -61,10 +69,24 @@ public class CameraController : MonoBehaviour
         manualControl = false;
         targets.Clear();
         targets.Add(myPlayer.transform);
+
+        // Begin Camera Transition
+        transitioning = true;
+        StartCoroutine(TransitionSequence(cardTransitionLength));
+    }
+
+    IEnumerator TransitionSequence(float waitTimer)
+    {
+        // Disable Manual Camera Control until time elapse
+        //Debug.Log("Begin Transition");
+        yield return new WaitForSeconds(waitTimer);
+        transitioning = false;
+        //Debug.Log("End Transition");
     }
 
     private void Start()
     {
+        // Initialise
         cam = GetComponent<Camera>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         myPlayer = transform.parent.gameObject;
@@ -79,7 +101,7 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!IsMouseOverUI())
+        if (!IsMouseOverUI() && !draggingSomething && !transitioning)
         {
             // Key Board Controls
             if (Input.GetMouseButtonDown(0))
@@ -97,7 +119,6 @@ public class CameraController : MonoBehaviour
                 ManualCameraZoom(Input.GetAxis("Mouse ScrollWheel"));
         }
 
-        // Stop manual control during transition!
         if (manualControl)
         {
             // Set back to auto camera if camera has not been moved for a while
@@ -137,7 +158,7 @@ public class CameraController : MonoBehaviour
 
     bool IsMouseOverUI()
     {
-        return EventSystem.current.IsPointerOverGameObject() || draggingSomething;
+        return EventSystem.current.IsPointerOverGameObject();
     }
 
     void ManualCameraMove (Vector3 delta)

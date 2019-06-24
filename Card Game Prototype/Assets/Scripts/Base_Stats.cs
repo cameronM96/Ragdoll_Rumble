@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-//[RequireComponent(typeof(StateController))]
+[RequireComponent(typeof(StateController))]
 public class Base_Stats : MonoBehaviour
 {
     public bool isAI = false;
@@ -223,15 +223,16 @@ public class Base_Stats : MonoBehaviour
     // *************************** Trigger Events ***************************
     public void OnHit(GameObject target)
     {
-        // Deal damage if it is hurtable
-        if (target.GetComponent<Base_Stats>() != null)
-            target.GetComponent<Base_Stats>().TakeDamage(attack, false, target);
-
-        // Apply on hit effects
+        // Don't hit same object multiple times in a single attack
         if (!hitList.Contains(target))
         {
             StartCoroutine(RecentlyHit(hitInterval, target));
 
+            // Deal damage if it is hurtable
+            if (target.GetComponent<Base_Stats>() != null)
+            target.GetComponent<Base_Stats>().TakeDamage(attack, false, target);
+
+            // Apply on hit effects
             if (onHitEffectsList.Count > 0)
             {
                 foreach (DeliverySO deliveryMethod in onHitEffectsList)

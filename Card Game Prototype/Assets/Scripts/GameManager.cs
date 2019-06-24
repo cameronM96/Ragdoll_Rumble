@@ -218,11 +218,11 @@ public class GameManager : MonoBehaviour
         ++readyPlayers;
         if (readyPlayers >= numbOfPlayers)
         {
-            Debug.Log("All Players Ready! Ending Card Phase Early!");
+            //Debug.Log("All Players Ready! Ending Card Phase Early!");
             InitialiseCombatPhase();
         }
-        else
-            Debug.Log("A player is ready!");
+        //else
+            //Debug.Log("A player is ready!");
 
     }
 }

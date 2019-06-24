@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     public CameraController myCameraController;
     public GameObject cardPhaseUI;
     public GameObject combatPhaseUI;
+    public GameObject endGameUI;
     public GameObject cardSlot;
     public GameObject deck;
     public int handSize = 5;
@@ -46,18 +47,24 @@ public class UIManager : MonoBehaviour
 
         // Combat Phase UI
         combatPhaseUI = transform.GetChild(1).gameObject;
+
+        // End Game UI
+        endGameUI = transform.GetChild(3).gameObject;
+        endGameUI.SetActive(false);
     }
 
     private void OnEnable()
     {
         GameManager.EnterCardPhase += InitialiseCardPhaseUI;
         GameManager.EnterCombatPhase += InitialiseCombatPhaseUI;
+        GameManager.EndGame += EndGame;
     }
 
     private void OnDisable()
     {
         GameManager.EnterCardPhase -= InitialiseCardPhaseUI;
         GameManager.EnterCombatPhase -= InitialiseCombatPhaseUI;
+        GameManager.EndGame -= EndGame;
     }
 
     // Update is called once per frame
@@ -100,9 +107,21 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void EndGame()
+    {
+        endGameUI.SetActive(true);
+        Text endGameText = endGameUI.GetComponentInChildren<Text>();
+        endGameText.text = "Team " + (gameManager.winningTeam) + " is victorious!";
+        if (gameManager.winningTeam == 1)
+            endGameText.color = Color.blue;
+        else if (gameManager.winningTeam == 2)
+            endGameText.color = Color.red;
+    }
+
     public void InitialiseCardPhaseUI()
     {
         //Debug.Log("Initialising Card Phase UI");
+
         maxCardsThisRound += gameManager.cardsEachRound[gameManager.currentRound - 1];
         if (maxCardsPlayed != 0)
         {
