@@ -6,6 +6,8 @@ using EnumTypes;
 
 public class CardDisplay : MonoBehaviour
 {
+    // This script is used to create the cards the players make 
+    // but does not contain functionality to play them.
     public Card card;
 
     public Text nameText;
@@ -87,29 +89,12 @@ public class CardDisplay : MonoBehaviour
         }
     }
 
-    public void PlayCard (Base_Stats characterBase, GameObject[] slotSpots)
+    public void PlayCard ()
     {
         //Debug.Log("Playing card: " + card.name);
         // Add base stats
-        card.PlayCard(characterBase);
+        //card.PlayCard(characterBase, slotSpots);
 
-        // Instantiate items on slots
-        if (card.item != null)
-        {
-            for (int i = 0; i < slotSpots.Length; i++)
-            {
-                Instantiate(card.item, slotSpots[i].transform);
-                //Sort items here?
-            }
-        }
-
-        // Update stats display
-        CompleteCard(characterBase);
-    }
-
-    void CompleteCard (Base_Stats bStats)
-    {
-        bStats.UpdateStatDisplay();
         Destroy(this.gameObject);
     }
 }

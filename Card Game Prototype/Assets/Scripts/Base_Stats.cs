@@ -42,8 +42,7 @@ public class Base_Stats : MonoBehaviour
         stateController = GetComponent<StateController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-        if (!isAI)
-            gameManager.PlayerJoined();
+        gameManager.PlayerJoined();
     }
 
     private void OnEnable()

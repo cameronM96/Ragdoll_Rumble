@@ -85,11 +85,14 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                 // Check if player is allowed to place any more this round
                 if (uiManager.PlayCard())
                 {
-                    eventData.pointerDrag.GetComponent<CardDisplay>().PlayCard(characterBase, slot);
+                    d.card.PlayCard(characterBase, slot);
                     d.returnParent = this.transform;
 
                     // Tell camera I am done being dragged
                     d.cameraController.draggingSomething = false;
+
+                    // Destroys the card
+                    eventData.pointerDrag.GetComponent<CardDisplay>().PlayCard();
                 }
             }
         }

@@ -43,12 +43,37 @@ public class Card : ScriptableObject
         return newCard;
     }
 
-    public void PlayCard (Base_Stats bStats)
+    public void PlayCard (Base_Stats bStats, GameObject[] slotSpots)
     {
         UpdateStats(bStats);
 
         if (ability != null)
             ability.LoadAbility(bStats, item);
+
+        // Instantiate items on slots
+        if (item != null)
+        {
+            if (slotSpots != null)
+            {
+                for (int i = 0; i < slotSpots.Length; i++)
+                {
+                    if (slotSpots[i] != null)
+                    {
+                        GameObject newItem = Instantiate(item);
+                        newItem.transform.position = slotSpots[i].transform.position;
+                        newItem.transform.rotation = slotSpots[i].transform.rotation;
+                        newItem.transform.SetParent(slotSpots[i].transform);
+                        //Call something else to sort items
+                    }
+                    else
+                        Debug.Log("Slot was not set!");
+                }
+            }
+            else
+                Debug.Log("Slots could not be found!");
+        }
+
+        bStats.UpdateStatDisplay();
     }
 
     void UpdateStats(Base_Stats bStats)
