@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
 
     public int gameStartDelay;
 
-    private int numbOfPlayers = 0;
+    public int numbOfPlayers = 0;
     private int readyPlayers = 0;
     private bool gameOver = false;
 

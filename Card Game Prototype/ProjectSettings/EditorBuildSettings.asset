@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CampaignPlaceholder.unity
     guid: e7cc0415c1fed13409817952c6a412e6
+  - enabled: 1
+    path: Assets/Scenes/Temple-Dojo.unity
+    guid: 4cdc7c7a6d2128e4b90ce61e107b7760
   m_configObjects: {}

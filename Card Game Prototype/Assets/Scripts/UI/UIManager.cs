@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class UIManager : MonoBehaviour
     public GameObject cardPhaseUI;
     public GameObject combatPhaseUI;
     public GameObject endGameUI;
+    private Button quitGameButton;
+    public GameObject pauseMenu;
+    public Button pauseMenuButton;
     public GameObject cardSlot;
     public GameObject deck;
     public int handSize = 5;
@@ -51,6 +55,13 @@ public class UIManager : MonoBehaviour
         // End Game UI
         endGameUI = transform.GetChild(3).gameObject;
         endGameUI.SetActive(false);
+        quitGameButton = endGameUI.GetComponentInChildren<Button>();
+        quitGameButton.onClick.AddListener(QuitGame);
+
+        // Pause Menu
+        pauseMenu = transform.GetChild(4).gameObject;
+        pauseMenu.SetActive(false);
+        pauseMenuButton.onClick.AddListener(PauseMenu);
     }
 
     private void OnEnable()
@@ -118,6 +129,17 @@ public class UIManager : MonoBehaviour
             endGameText.color = Color.red;
     }
 
+    public void QuitGame()
+    {
+        // Go back to main menu
+        SceneManager.LoadScene(0);
+    }
+
+    public void PauseMenu()
+    {
+        pauseMenu.SetActive(true);
+    }
+
     public void InitialiseCardPhaseUI()
     {
         //Debug.Log("Initialising Card Phase UI");
@@ -129,7 +151,7 @@ public class UIManager : MonoBehaviour
                 maxCardsThisRound = maxCardsPlayed;
         }
         cardCount.text = "Cards Left: " + maxCardsThisRound;
-        roundNumber.text = "Round: " + gameManager.currentRound + " ";
+        roundNumber.text = " Round: " + gameManager.currentRound + " ";
         DealNewHand();
         cardPhase = true;
         cardPhaseUI.SetActive(true);
