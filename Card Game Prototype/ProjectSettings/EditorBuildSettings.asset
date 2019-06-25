@@ -20,7 +20,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Temple-Dojo.unity
     guid: 4cdc7c7a6d2128e4b90ce61e107b7760
-  - enabled: 1
-    path: Assets/Scenes/AncientGreece.unity
-    guid: 53bfd092a6cda7642bc8d11f62cf1a31
   m_configObjects: {}
