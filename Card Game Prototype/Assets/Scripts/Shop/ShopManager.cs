@@ -41,7 +41,7 @@ public class ShopManager : MonoBehaviour
             StartCoroutine(GivePacks(PlayerPrefs.GetInt("UnopenedPacks"), true));
         }
 
-        LoadDustAndMoneyFromPlayerPrefs();
+       LoadDustAndMoneyFromPlayerPrefs();
     }
 
     private int gold;
@@ -172,6 +172,7 @@ public class ShopManager : MonoBehaviour
         moneyHud.SetActive(true);
         dustHud.SetActive(true);
     }
+
     public void HideScreen()
     {
         screenContent.SetActive(false);
