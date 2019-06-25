@@ -18,14 +18,18 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private void Start()
     {
-        card = GetComponent<CardDisplay>().card;
+        if (card != null)
+            card = GetComponent<CardDisplay>().card;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Tell camera I am being dragged
-        cameraController = transform.root.GetComponent<UIManager>().myCameraController;
-        cameraController.draggingSomething = true;
+        if (cameraController != null)
+        {
+            cameraController = transform.root.GetComponent<UIManager>().myCameraController;
+            cameraController.draggingSomething = true;
+        }
 
         // Pick up card
         placeholder = new GameObject();
@@ -75,7 +79,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnEndDrag(PointerEventData eventData)
     {
         // Tell camera I am done being dragged
-        cameraController.draggingSomething = false;
+        if (cameraController != null)
+            cameraController.draggingSomething = false;
 
         // Drop card
         this.transform.SetParent(returnParent);

@@ -35,12 +35,14 @@ public class Base_Stats : MonoBehaviour
 
     public GameManager gameManager;
     public StateController stateController;
+    public AIController audioController;
     public GameObject[] slots;
 
     private void Awake()
     {
         stateController = GetComponent<StateController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        audioController = GetComponent<AIController>();
 
         gameManager.PlayerJoined();
     }
@@ -49,12 +51,14 @@ public class Base_Stats : MonoBehaviour
     {
         GameManager.EnterCombatPhase += InitialiseCombatPhase;
         GameManager.EnterCardPhase += InitialiseCardPhase;
+        GameManager.EndGame += GameIsOver;
     }
 
     private void OnDisable()
     {
         GameManager.EnterCombatPhase -= InitialiseCombatPhase;
         GameManager.EnterCardPhase -= InitialiseCardPhase;
+        GameManager.EndGame -= GameIsOver;
     }
 
     public void InitialiseCombatPhase()
@@ -128,6 +132,14 @@ public class Base_Stats : MonoBehaviour
         dead = false;
     }
 
+    public void GameIsOver()
+    {
+        if ("Team: " + gameManager.winningTeam == this.tag)
+            audioController.Victory();
+        else
+            audioController.Defeat();
+    }
+
     public void UpdateStatDisplay()
     {
         if (!isAI)
@@ -186,6 +198,9 @@ public class Base_Stats : MonoBehaviour
             OnGetHit(target);
         }
 
+        // Play Hurt Animation/Audio
+        audioController.Hurt();
+
         // Apply OnHit Events
         OnDamaged(damageTaken, target);
         OnHealth(target);
@@ -215,6 +230,8 @@ public class Base_Stats : MonoBehaviour
             //GetComponent<Renderer>().material.color = Color.black;
 
             gameManager.PlayerDied(this.gameObject);
+
+            audioController.Die();
             //GetComponent<Collider>().enabled = false;
         }
     }
