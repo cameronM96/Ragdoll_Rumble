@@ -947,6 +947,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2b73583e3c01b9544b29eea21f9c8f34, type: 2}
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &170042977
 Rigidbody:
@@ -1181,6 +1182,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &187064957
 Rigidbody:
@@ -2695,6 +2697,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &474090312
 Rigidbody:
@@ -5035,6 +5038,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &929328149
 Rigidbody:
@@ -5185,6 +5189,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &956413627
 Rigidbody:
@@ -6345,6 +6350,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1192317397
 Rigidbody:
@@ -6832,6 +6838,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1265294260
 Rigidbody:
@@ -7373,6 +7380,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1380734919
 Rigidbody:
@@ -7872,6 +7880,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1454119885
 Rigidbody:
@@ -8613,6 +8622,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1738012738
 Rigidbody:
@@ -9165,6 +9175,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1854054958
 Rigidbody:
@@ -9429,6 +9440,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &1941281056
 Rigidbody:
@@ -9960,6 +9972,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &2018248212
 Rigidbody:
@@ -10104,6 +10117,7 @@ MonoBehaviour:
   onHealthList: []
   gameManager: {fileID: 0}
   stateController: {fileID: 0}
+  audioController: {fileID: 0}
   slots: []
 --- !u!54 &2053913348
 Rigidbody:
@@ -10938,6 +10952,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aab7baf843559341a49e68ef24a04ad, type: 3}
+--- !u!1 &7339731277228812965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5336386751945502655, guid: 0aab7baf843559341a49e68ef24a04ad,
+    type: 3}
+  m_PrefabInstance: {fileID: 7339731277228812964}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7339731277228812966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339731277228812965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c814bff31198542a3c1eecb3062c81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  increment: {x: 20, y: 40, z: 0}
 --- !u!1001 &8120180269420197241
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11018,6 +11051,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044691412266487054, guid: 820d63b10983fdf4d9140a7b289c3d76,
+        type: 3}
+      propertyPath: cardsEachRound.Array.data[0]
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 9044691412266487041, guid: 820d63b10983fdf4d9140a7b289c3d76,
         type: 3}

@@ -26,6 +26,7 @@ public class Card : ScriptableObject
     public SO_Ability ability;
 
     public GameObject item;
+    [HideInInspector] [EnumFlags] public Organisation organisation = Organisation.None;
 
     //[HideInInspector]
     public GameObject templateCard;
@@ -63,7 +64,40 @@ public class Card : ScriptableObject
                         newItem.transform.position = slotSpots[i].transform.position;
                         newItem.transform.rotation = slotSpots[i].transform.rotation;
                         newItem.transform.SetParent(slotSpots[i].transform);
-                        //Call something else to sort items
+                        //Organise the items on this slot if applicable
+                        if (organisation != (organisation & Organisation.None))
+                        {
+                            //Debug.Log("Organisation Acticated!");
+                            OrganiseSlot organise = slotSpots[i].GetComponent<OrganiseSlot>();
+                            if (organise != null)
+                            {
+                                // Set position and parent
+                                if (organisation == (organisation & Organisation.Position))
+                                {
+                                    //Debug.Log("Organisation: Position");
+                                    GameObject newParent = organise.OrganisePosition(newItem);
+                                    newItem.transform.position = newParent.transform.position;
+                                    newItem.transform.SetParent(newParent.transform);
+                                }
+
+                                // Set Rotation
+                                if (organisation == (organisation & Organisation.Rotation))
+                                {
+                                    //Debug.Log("Organisation: Rotation");
+                                    Vector3 newRot = organise.OrganiseRotation();
+                                    newItem.transform.Rotate(0, newRot.y, 0);
+                                    newItem.transform.Rotate(newRot.x, 0, 0);
+                                }
+
+                                // Set Scale
+                                if (organisation == (organisation & Organisation.Scale))
+                                {
+                                    //Debug.Log("Organisation: Scale");
+                                    newItem.transform.localScale *= organise.OrganiseScale();
+                                }
+                            }
+                        }
+                        //Debug.Log("Organisation Not Needed!");
                     }
                     else
                         Debug.Log("Slot was not set!");

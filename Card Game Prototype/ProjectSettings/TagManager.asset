@@ -19,6 +19,7 @@ TagManager:
   - GameManager
   - IgnoreMe
   - SpawnPoint
+  - NextPosition
   layers:
   - Default
   - TransparentFX

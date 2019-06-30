@@ -2251,7 +2251,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 8348631375617226368}
-        m_MethodName: 
+        m_MethodName: DealNewHand
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2801,21 +2801,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 0b6d9136a5c984944b0cd05779f6cee6, type: 2}
-  - {fileID: 11400000, guid: d8037658a252ad24bb124cc086395385, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
   - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
-  - {fileID: 11400000, guid: 2803b736d515fad42a1b499c6e39edf9, type: 2}
-  - {fileID: 11400000, guid: f189257046fe6ee4f97cde5c75856055, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
   - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
   - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
+  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
+  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
+  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
   - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
-  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
+  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
   deckOfCards:
   - {fileID: 1156897855, guid: bdd57069414afc4449937d9d58514d2c, type: 3}
   - {fileID: 2374550111916289344, guid: c7bb251478525b04bb0cf9c3b55fa554, type: 3}
@@ -3102,7 +3102,7 @@ MonoBehaviour:
   middleColor: {r: 1, g: 1, b: 0, a: 1}
   endColor: {r: 1, g: 0, b: 0, a: 1}
   gameManager: {fileID: 0}
-  maxCardsPlayed: 5
+  maxCardsPlayed: 0
 --- !u!1 &8348631375704290802
 GameObject:
   m_ObjectHideFlags: 0
