@@ -70,8 +70,8 @@ public class OrganiseSlot : MonoBehaviour
         flipFlop = !flipFlop;
         ++currentIteration;
 
-        Debug.Log(currentIteration);
-        Debug.Log(currentRot);
+        //Debug.Log(currentIteration);
+        //Debug.Log(currentRot);
         return currentRot;
     }
 

@@ -77,7 +77,7 @@ public class AICardSelector : MonoBehaviour
             }
 
             chosenCard.PlayCard(bStats, slots);
-            Debug.Log("AI played " + chosenCard.name + " in the " + chosenSlot + " slot");
+            //Debug.Log("AI played " + chosenCard.name + " in the " + chosenSlot + " slot");
         }
     }
 

@@ -27,5 +27,6 @@ MonoBehaviour:
   atkSpeed: 0
   ability: {fileID: 0}
   item: {fileID: 6331073404654309975, guid: 63d6976b6172e6d4eb85d867c721897f, type: 3}
+  organisation: 1
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

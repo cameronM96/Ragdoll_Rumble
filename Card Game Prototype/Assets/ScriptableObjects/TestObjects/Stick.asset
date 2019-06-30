@@ -19,6 +19,7 @@ MonoBehaviour:
   description: It's a stick you found in the park
   artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
   background: {fileID: 21300000, guid: 7832d75861d78a64c8079850b5784894, type: 3}
+  rarityImage: {fileID: 0}
   attack: 2
   armour: 0
   hP: 0
@@ -26,5 +27,6 @@ MonoBehaviour:
   atkSpeed: 0
   ability: {fileID: 0}
   item: {fileID: 4081503627470519158, guid: 985974f56e41df4439f1ce444f568376, type: 3}
+  organisation: 2
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}
