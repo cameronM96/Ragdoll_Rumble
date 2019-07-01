@@ -100,7 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c814bff31198542a3c1eecb3062c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increment: {x: 20, y: 60, z: 0}
+  rotIncrement: {x: 20, y: 60, z: 0}
+  scaleIncrement: 0.2
 --- !u!136 &1652478951686756113
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -115,6 +116,25 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &615766583503776640
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2536379588500415033}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 24b87b62509815e46bf75041f1d9a3f6, type: 3}
+  m_Controller: {fileID: 9100000, guid: 21e9e6f6dc46aa94c91b887755c6955d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &2004985840999055971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c814bff31198542a3c1eecb3062c81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increment: {x: 20, y: 60, z: 0}
+  rotIncrement: {x: 20, y: 60, z: 0}
+  scaleIncrement: 0.2
 --- !u!1 &7339731278432549789
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +248,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7339731278432549785}
-  - component: {fileID: 7339731278432549790}
   - component: {fileID: 7339731278432549784}
   - component: {fileID: 7339731278432549786}
   - component: {fileID: 7339731278432549791}
@@ -257,25 +277,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
---- !u!95 &7339731278432549790
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7339731278432549789}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 76b351ca8f5fd984ab8211def7fcd636, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!54 &7339731278432549784
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -717,6 +718,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 8777151a16251324c8acb4ff53f6bd10,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 21e9e6f6dc46aa94c91b887755c6955d, type: 2}
     - target: {fileID: -4694338623589209743, guid: 8777151a16251324c8acb4ff53f6bd10,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
     public float zoomLimiter = 50f;
 
     private Vector3 velocity;
-    private Camera cam;
+    [HideInInspector] public Camera cam;
 
     private bool combatPhase = false;
     private bool manualControl = false;

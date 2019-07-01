@@ -6,7 +6,7 @@ using EnumTypes;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    [EnumFlags] public PlayableSlot typeOfItem = PlayableSlot.None;
+    public PlayableSlot typeOfItem = PlayableSlot.None;
     public bool cardSlot = false;
     public Base_Stats characterBase;
     public bool rightSide = false;
