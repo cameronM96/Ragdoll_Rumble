@@ -20,32 +20,42 @@ public class AIController : MonoBehaviour
     public void Attack()
     {
         Debug.Log("" + this.tag + " is attacking!");
-        int index = Random.Range(0, attackNoise.Length - 1);
-        if (attackNoise[index] != null) {
-            audioSource.clip = attackNoise[index];
-            audioSource.Play();
+        if (attackNoise.Length > 0)
+        {
+            int index = Random.Range(0, attackNoise.Length - 1);
+            if (attackNoise[index] != null)
+            {
+                audioSource.clip = attackNoise[index];
+                audioSource.Play();
+            }
         }
     }
 
     public void Hurt ()
     {
         Debug.Log("" + this.tag + " was hurt!");
-        int index = Random.Range(0, hurtNoise.Length - 1);
-        if (hurtNoise[index] != null)
+        if (hurtNoise.Length > 0)
         {
-            audioSource.clip = hurtNoise[index];
-            audioSource.Play();
+            int index = Random.Range(0, hurtNoise.Length - 1);
+            if (hurtNoise[index] != null)
+            {
+                audioSource.clip = hurtNoise[index];
+                audioSource.Play();
+            }
         }
     }
 
     public void Die()
     {
         Debug.Log("" + this.tag + " diededed!");
-        int index = Random.Range(0, deathNoise.Length - 1);
-        if (deathNoise[index] != null)
+        if (deathNoise.Length > 0)
         {
-            audioSource.clip = deathNoise[index];
-            audioSource.Play();
+            int index = Random.Range(0, deathNoise.Length - 1);
+            if (deathNoise[index] != null)
+            {
+                audioSource.clip = deathNoise[index];
+                audioSource.Play();
+            }
         }
     }
 
@@ -62,22 +72,28 @@ public class AIController : MonoBehaviour
     public void Victory()
     {
         Debug.Log("(" + this.tag + ") Wins!");
-        int index = Random.Range(0, victoryNoise.Length - 1);
-        if (victoryNoise[index] != null)
+        if (victoryNoise.Length > 0)
         {
-            audioSource.clip = victoryNoise[index];
-            audioSource.Play();
+            int index = Random.Range(0, victoryNoise.Length - 1);
+            if (victoryNoise[index] != null)
+            {
+                audioSource.clip = victoryNoise[index];
+                audioSource.Play();
+            }
         }
     }
 
     public void Defeat ()
     {
         Debug.Log("(" + this.tag + ") Loses!");
-        int index = Random.Range(0, deathNoise.Length - 1);
-        if (deathNoise[index] != null)
+        if (defeatNoise.Length > 0)
         {
-            audioSource.clip = deathNoise[index];
-            audioSource.Play();
+            int index = Random.Range(0, defeatNoise.Length - 1);
+            if (defeatNoise[index] != null)
+            {
+                audioSource.clip = defeatNoise[index];
+                audioSource.Play();
+            }
         }
     }
 }
