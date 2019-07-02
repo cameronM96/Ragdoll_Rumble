@@ -20,4 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Temple-Dojo.unity
     guid: 4cdc7c7a6d2128e4b90ce61e107b7760
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevel/CampaignLevel1.unity
+    guid: daaa5303806a05343b06b5a731cabd06
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevel/CampaignLevel2.unity
+    guid: 043a1c79c6fbb574ca33cbd6bc4604f7
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevel/CampaignLevel3.unity
+    guid: 7483e0a202c9b844ba8f5a5dadce8d63
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevel/CampaignLevel4.unity
+    guid: bba27f8d8f44827458bd40f1b360bc04
   m_configObjects: {}
