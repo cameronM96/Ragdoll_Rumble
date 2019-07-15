@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 using EnumTypes;
 using System.Linq;
 
@@ -13,15 +14,14 @@ public class CardCollection : MonoBehaviour
 
     public Dictionary<Card, int> quantityOfEachCard = new Dictionary<Card, int>();
 
-    private Card[] allCardsArray;
+    public CardLibrary cardLibrary;
 
     private void Awake()
     {
         Instance = this;
 
-        allCardsArray = Resources.LoadAll<Card>("");
-        Debug.Log(allCardsArray.Length + " cards were loaded into the AllCardsArray");
-        foreach (Card ca in allCardsArray)
+        Debug.Log(cardLibrary.cardLibrary.Count + " cards were loaded into the AllCardsArray");
+        foreach (Card ca in cardLibrary.cardLibrary)
         {
             if (!allCardsDictionary.ContainsKey(ca.name))
             {
@@ -33,7 +33,7 @@ public class CardCollection : MonoBehaviour
 
     private void LoadQuantityOfCardsFromPlayerPrefs()
     {
-        foreach (Card ca in allCardsArray)
+        foreach (Card ca in cardLibrary.cardLibrary)
         {
             if (ca.rarity == Rarity.None)
             {
@@ -52,7 +52,7 @@ public class CardCollection : MonoBehaviour
 
     private void SaveQuantityOfCardsInPlayerPrefs()
     {
-        foreach (Card ca in allCardsArray)
+        foreach (Card ca in cardLibrary.cardLibrary)
         {
             if (ca.rarity == Rarity.None)
             {
@@ -89,7 +89,7 @@ public class CardCollection : MonoBehaviour
         CardType cardTypeCollection = CardType.Ability, //filter var for specific card types
         Rarity cardRarityCollection = Rarity.Common)//filter var for specific card rarities
     {
-        var cards = from card in allCardsArray select card;
+        var cards = from card in cardLibrary.cardLibrary select card;
 
         if (!showingCardsPlayerDoesNotOwn)
         {

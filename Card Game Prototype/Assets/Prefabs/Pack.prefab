@@ -190,9 +190,9 @@ GameObject:
   m_Component:
   - component: {fileID: 696903040731751770}
   - component: {fileID: 9102276384762446967}
-  - component: {fileID: 7214073912135918451}
   - component: {fileID: 7214073912135918460}
   - component: {fileID: 4848806033127001840}
+  - component: {fileID: 6834845266639248154}
   m_Layer: 0
   m_Name: Pack
   m_TagString: Untagged
@@ -228,23 +228,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.7195629, y: 2.6801236, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7214073912135918451
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7214073912135918461}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c949f7f8a1afe6499957cc491453767, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  returnParent: {fileID: 0}
-  placeHolderParent: {fileID: 0}
-  card: {fileID: 0}
-  movePlaceHolder: 1
-  cameraController: {fileID: 0}
 --- !u!114 &7214073912135918460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,6 +250,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1ae54e75c85a1e47bd0045d590dba89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6834845266639248154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7214073912135918461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c9b5b10818f64f4bbd1e9380eadd89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8974476740437863631
