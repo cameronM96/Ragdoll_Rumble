@@ -87,10 +87,10 @@ public class CardLibrary : ScriptableObject
                 localPath += fileName.Substring(index);
             
             // load the object if it is a card
-            object t = AssetDatabase.LoadAssetAtPath(localPath, typeof(Card));
+            //object t = AssetDatabase.LoadAssetAtPath(localPath, typeof(Card));
 
-            if (t != null)
-                al.Add(t);
+            //if (t != null)
+            //    al.Add(t);
         }
 
         // Load cards into card library

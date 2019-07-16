@@ -70,6 +70,7 @@ public class PackOpeningArea : MonoBehaviour
 
     public void ShowPackOpening(Vector3 cardsInitialPosition)
     {
+        Debug.Log("Openning Pack!");
         Rarity[] rarities = new Rarity[slotsForCards.Length];
         bool atLeastOneRareGiven = false;
         for(int i=0;i<rarities.Length;i++)
@@ -103,6 +104,7 @@ public class PackOpeningArea : MonoBehaviour
             cardsFromPackCreated.Add(card.CreateCard());
         }
     }
+
     private Card cardFromPack(Rarity rarity)
     {
         List<Card> CardsOfThisRarity = CardCollection.Instance.GetCardsWithRarity(rarity);

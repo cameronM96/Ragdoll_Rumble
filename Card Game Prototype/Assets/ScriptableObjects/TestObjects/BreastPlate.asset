@@ -15,6 +15,10 @@ MonoBehaviour:
   rarity: 1
   currentCardType: 1
   playableSlots: 2
+  org: 0
+  pos: 0
+  rot: 0
+  size: 1
   cardName: BreastPlate
   description: 
   artwork: {fileID: 21300000, guid: eb527443cd592894d8ca013e2d3e81ac, type: 3}

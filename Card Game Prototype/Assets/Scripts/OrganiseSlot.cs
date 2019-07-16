@@ -29,7 +29,7 @@ public class OrganiseSlot : MonoBehaviour
         newScale = 1f;
     }
 
-    public Vector3 OrganiseRotation()
+    public Vector3 OrganiseRot()
     {
         // Rotate around y
         if (!first)
@@ -75,7 +75,7 @@ public class OrganiseSlot : MonoBehaviour
         return currentRot;
     }
 
-    public GameObject OrganisePosition(GameObject item)
+    public GameObject OrganisePos(GameObject item)
     {
         GameObject newPosition = nextPosition;
         for (int i = 0; i < item.transform.childCount; i++)
@@ -87,7 +87,7 @@ public class OrganiseSlot : MonoBehaviour
         return newPosition;
     }
 
-    public float OrganiseScale()
+    public float OrganiseSize()
     {
         float nextScale = newScale;
         newScale += scaleIncrement;

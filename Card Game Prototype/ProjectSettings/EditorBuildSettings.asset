@@ -32,4 +32,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CampaignLevels/ActualLevels/CampaignLevel4.unity
     guid: bba27f8d8f44827458bd40f1b360bc04
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevels/DojoCampaign.unity
+    guid: c7e28f50447f7194a98f695e2d956231
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevels/GreeceCampaign.unity
+    guid: 5656a3a3f0476d645846cc5d9505ee95
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevels/SaloonCampaign.unity
+    guid: deb797f3a56215b46b357e3a1143c9ab
+  - enabled: 1
+    path: Assets/Scenes/CampaignLevels/SpaceCampaign.unity
+    guid: 3208829b8d62caa489b4a547e6c14db6
   m_configObjects: {}

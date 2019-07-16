@@ -29,14 +29,22 @@ namespace EnumTypes
         MultiTarget
     };
 
-    [System.Flags]
-    public enum PlayableSlot
+    [System.Flags] public enum PlayableSlot
     {
         None = 0,
         Head = 1 << 0,
         Chest = 1 << 1,
         Hand = 1 << 2,
         Feet = 1 << 3
+    };
+
+    [System.Flags] public enum Organisation
+    {
+        // Doesn't work for no apparent reason
+        None = 0,
+        Pos = 1 << 0,
+        Rot = 1 << 1,
+        Size = 1 << 2
     };
 
     public enum CardType
@@ -57,20 +65,10 @@ namespace EnumTypes
         Rare
     };
 
-
     public enum TargetSelection
     {
         Closest,
         Farthest,
         Random
-    };
-
-    [System.Flags]
-    public enum Organisation
-    {
-        None,
-        Position = 1 << 0,
-        Rotation = 1 << 1,
-        Scale = 1 << 2
     };
 }

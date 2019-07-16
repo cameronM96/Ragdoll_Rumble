@@ -13,8 +13,8 @@ public class CameraController : MonoBehaviour
     public Vector3 cardOffset = new Vector3(20, 5, 0); // x = forward, y = up, z = right
     public float smoothTime = 0.5f;
 
-    public float minZoom = 40f;
-    public float maxZoom = 10f;
+    public float minZoom = 10f;
+    public float maxZoom = 40f;
     public float zoomLimiter = 50f;
 
     private Vector3 velocity;
@@ -175,7 +175,7 @@ public class CameraController : MonoBehaviour
         // Move Camera based on input
         float fov = cam.fieldOfView;
         // Might need to add sensitivity
-        fov += zoom;
+        fov += zoom / zoomLimiter;
         fov = Mathf.Clamp(fov, minZoom, maxZoom);
         cam.fieldOfView = fov;
         manualControl = true;

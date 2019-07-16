@@ -13278,7 +13278,7 @@ PrefabInstance:
     - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
         type: 3}
       propertyPath: minZoom
-      value: 70
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
         type: 3}
@@ -13288,12 +13288,17 @@ PrefabInstance:
     - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
         type: 3}
       propertyPath: maxZoom
-      value: 20
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
         type: 3}
       propertyPath: combatOffset.z
       value: -20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
+        type: 3}
+      propertyPath: zoomLimiter
+      value: -0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aab7baf843559341a49e68ef24a04ad, type: 3}

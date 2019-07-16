@@ -15,6 +15,10 @@ MonoBehaviour:
   rarity: 1
   currentCardType: 2
   playableSlots: 13
+  org: 0
+  pos: 1
+  rot: 0
+  size: 0
   cardName: Helmet
   description: is a shitty helmet
   artwork: {fileID: 21300000, guid: 190a1d1475a700e4c8e58d44ec7ce8ca, type: 3}
@@ -27,6 +31,5 @@ MonoBehaviour:
   atkSpeed: 0
   ability: {fileID: 0}
   item: {fileID: 6331073404654309975, guid: 63d6976b6172e6d4eb85d867c721897f, type: 3}
-  organisation: 1
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

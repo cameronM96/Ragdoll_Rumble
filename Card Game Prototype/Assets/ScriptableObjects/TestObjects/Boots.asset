@@ -15,10 +15,15 @@ MonoBehaviour:
   rarity: 1
   currentCardType: 2
   playableSlots: 12
+  org: 0
+  pos: 0
+  rot: 0
+  size: 1
   cardName: Boots
   description: Some fancy shoes!
   artwork: {fileID: 21300000, guid: 18414d9d6bfda2045bda604eea0313c9, type: 3}
   background: {fileID: 21300000, guid: 05a1e5db8ff25e549a25a571e4a2b9a3, type: 3}
+  rarityImage: {fileID: 0}
   attack: 0
   armour: 2
   hP: 0

@@ -7,7 +7,6 @@ using EnumTypes;
 [CustomEditor(typeof(Card))]
 public class CardEditor : Editor
 {
-
     public override void OnInspectorGUI()
     {
         Card card = target as Card;
@@ -15,9 +14,9 @@ public class CardEditor : Editor
         card.rarity = (Rarity)EditorGUILayout.EnumPopup("Card Rarity: ", card.rarity);
         card.currentCardType = (CardType)EditorGUILayout.EnumPopup("Card Type: ", card.currentCardType);
         card.playableSlots = (PlayableSlot)EditorGUILayout.EnumFlagsField("PlayableSlots: ", card.playableSlots);
+        card.org = (Organisation)EditorGUILayout.EnumFlagsField("Organisation: ", card.org);
 
         base.OnInspectorGUI();
 
-        card.organisation = (Organisation)EditorGUILayout.EnumFlagsField("Organisation: ", card.organisation);
     }
 }
