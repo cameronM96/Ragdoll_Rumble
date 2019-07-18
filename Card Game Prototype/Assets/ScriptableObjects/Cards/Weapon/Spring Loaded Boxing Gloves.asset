@@ -15,6 +15,10 @@ MonoBehaviour:
   rarity: 1
   currentCardType: 1
   playableSlots: 6
+  org: 0
+  pos: 0
+  rot: 0
+  size: 0
   cardName: Spring Loaded Boxing Gloves
   description: Knock 'em out with one punch!
   artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
@@ -26,7 +30,6 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: -927199367670048503, guid: 2bfce13dd8d86504db840e130a46fe0d, type: 3}
-  organisation: 0
+  item: {fileID: 2404125795586234251, guid: c90176cf523fe594f91296d9b7c148b0, type: 3}
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

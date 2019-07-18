@@ -15,6 +15,10 @@ MonoBehaviour:
   rarity: 1
   currentCardType: 1
   playableSlots: 5
+  org: 0
+  pos: 0
+  rot: 0
+  size: 0
   cardName: Pool Noodle
   description: Slap 'em with your wet noodle
   artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
@@ -26,7 +30,6 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 1
   ability: {fileID: 0}
-  item: {fileID: -927199367670048503, guid: 721e529433377804eaba3a24acfba71a, type: 3}
-  organisation: 0
+  item: {fileID: 8811589160514843543, guid: 7651b348fa2e0ce4a9422aa5cb512d42, type: 3}
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

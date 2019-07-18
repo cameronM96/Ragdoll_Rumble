@@ -15,6 +15,10 @@ MonoBehaviour:
   rarity: 1
   currentCardType: 1
   playableSlots: 13
+  org: 0
+  pos: 0
+  rot: 0
+  size: 0
   cardName: Cool stick I found at the park
   description: '"LOOK MUM!"'
   artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
@@ -26,7 +30,6 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 1
   ability: {fileID: 0}
-  item: {fileID: -927199367670048503, guid: ebfe8ab1bef1ccb46becc51d046d6759, type: 3}
-  organisation: 0
+  item: {fileID: 7381053628621491558, guid: f3c0accd87bb2aa40bc8aa9ecd3b412a, type: 3}
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

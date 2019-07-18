@@ -15,6 +15,10 @@ MonoBehaviour:
   rarity: 3
   currentCardType: 1
   playableSlots: 4
+  org: 0
+  pos: 0
+  rot: 0
+  size: 0
   cardName: Week Old Baguette
   description: Fight like a true French! En Garde!!!
   artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
@@ -26,7 +30,6 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: -927199367670048503, guid: 9d2156c2f63c62b42893785af626b72f, type: 3}
-  organisation: 0
+  item: {fileID: 298323870503559284, guid: c05122d9462b10e42ada22d3c9125c87, type: 3}
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}
