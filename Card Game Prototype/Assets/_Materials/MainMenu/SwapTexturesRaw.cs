@@ -8,6 +8,7 @@ public class SwapTexturesRaw : MonoBehaviour
     public GameObject Initimage;
     public Texture image1;
     public Texture image2;
+    public Texture image3;
     public float WaitTime;
 
     // Start is called before the first frame update
@@ -28,6 +29,8 @@ public class SwapTexturesRaw : MonoBehaviour
         {
             yield return new WaitForSeconds(WaitTime);
             Initimage.GetComponent<RawImage>().texture = image2;
+            yield return new WaitForSeconds(WaitTime);
+            Initimage.GetComponent<RawImage>().texture = image3;
             yield return new WaitForSeconds(WaitTime);
             Initimage.GetComponent<RawImage>().texture = image1;
         }
