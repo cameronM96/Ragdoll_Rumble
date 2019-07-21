@@ -10,7 +10,7 @@ public class CardCollection : MonoBehaviour
     public int defaultNumberOfBasicCards = 0; //how many cards the player starts with (so they dont get included into things)
 
     public static CardCollection Instance;
-    private Dictionary<string, Card> allCardsDictionary = new Dictionary<string, Card>();
+    public Dictionary<string, Card> allCardsDictionary = new Dictionary<string, Card>();
 
     public Dictionary<Card, int> quantityOfEachCard = new Dictionary<Card, int>();
 
@@ -29,6 +29,8 @@ public class CardCollection : MonoBehaviour
             }
         }
         LoadQuantityOfCardsFromPlayerPrefs();
+
+
     }
 
     private void LoadQuantityOfCardsFromPlayerPrefs()

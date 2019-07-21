@@ -31,6 +31,9 @@ public class Card : ScriptableObject
 
     public GameObject item;
 
+    public int coinCost;
+    public int gemCost;
+
     //[HideInInspector]
     public GameObject templateCard;
 
