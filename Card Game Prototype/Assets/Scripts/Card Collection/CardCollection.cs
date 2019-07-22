@@ -16,11 +16,11 @@ public class CardCollection : MonoBehaviour
 
     public CardLibrary cardLibrary;
 
-    private void Awake()
+    private void Start()
     {
         Instance = this;
 
-        Debug.Log(cardLibrary.cardLibrary.Count + " cards were loaded into the AllCardsArray");
+        //Debug.Log(cardLibrary.cardLibrary.Count + " cards were loaded into the AllCardsArray");
         foreach (Card ca in cardLibrary.cardLibrary)
         {
             if (!allCardsDictionary.ContainsKey(ca.name))
@@ -29,8 +29,6 @@ public class CardCollection : MonoBehaviour
             }
         }
         LoadQuantityOfCardsFromPlayerPrefs();
-
-
     }
 
     private void LoadQuantityOfCardsFromPlayerPrefs()
@@ -41,9 +39,9 @@ public class CardCollection : MonoBehaviour
             {
                 quantityOfEachCard.Add(ca, defaultNumberOfBasicCards);
             }
-            else if (PlayerPrefs.HasKey("NumberOf" + ca.name))
+            else if (PlayerPrefs.HasKey("NumberOf" + ca.cardName))
             {
-                quantityOfEachCard.Add(ca, PlayerPrefs.GetInt("NumberOf" + ca.name));
+                quantityOfEachCard.Add(ca, PlayerPrefs.GetInt("NumberOf" + ca.cardName));
             }
             else
             {
@@ -58,11 +56,11 @@ public class CardCollection : MonoBehaviour
         {
             if (ca.rarity == Rarity.None)
             {
-                PlayerPrefs.SetInt("NumberOf" + ca.name, defaultNumberOfBasicCards);
+                PlayerPrefs.SetInt("NumberOf" + ca.cardName, defaultNumberOfBasicCards);
             }
             else
             {
-                PlayerPrefs.SetInt("NumberOf" + ca.name, quantityOfEachCard[ca]);
+                PlayerPrefs.SetInt("NumberOf" + ca.cardName, quantityOfEachCard[ca]);
             }
         }
     }

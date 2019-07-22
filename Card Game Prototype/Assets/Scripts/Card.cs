@@ -6,6 +6,7 @@ using EnumTypes;
 [CreateAssetMenu(menuName = "New Card")]
 public class Card : ScriptableObject
 {
+    public int iD;
     [HideInInspector] public Rarity rarity = Rarity.None;
     [HideInInspector] public CardType currentCardType = CardType.None;
     [HideInInspector] [EnumFlags] public PlayableSlot playableSlots = PlayableSlot.None;

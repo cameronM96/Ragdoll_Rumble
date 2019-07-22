@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bfcc45fe73329468622c8305d04d2b, type: 3}
+  m_Name: Pack1
+  m_EditorClassIdentifier: 
+  packSize: 3
+  packName: Gentlemen's Pack
+  packImage: {fileID: 21300000, guid: efe689b9b4d378646a1bb5055f3c277b, type: 3}
+  coinCost: 500
+  gemCost: 125
+  guaranteedSpecificCards: 1
+  gSpecificCards: []
+  randomSpecificCards: 1
+  guaranteedFromSet: 1
+  setName: 
+  rSpecificCards:
+  - {fileID: 11400000, guid: 321318052ee03a046898d835e7354642, type: 2}
+  - {fileID: 11400000, guid: babe08925040f384f8cbda542f7ada60, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: bd898b796579c844eacdd65fe039eb86, type: 2}
+  guaranteedRandom: 1
+  numberOfRares: 0
+  numberOfUncommons: 0
+  numberOfCommons: 0
+  randomCard: 1
+  numberOfRandomCards: 2

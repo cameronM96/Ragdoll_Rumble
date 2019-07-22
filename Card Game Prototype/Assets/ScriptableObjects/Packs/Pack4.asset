@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0bfcc45fe73329468622c8305d04d2b, type: 3}
+  m_Name: Pack4
+  m_EditorClassIdentifier: 
+  packSize: 0
+  packName: 
+  packImage: {fileID: 0}
+  guaranteedSpecificCards: 0
+  gSpecificCards: []
+  randomSpecificCards: 0
+  guaranteedFromSet: 0
+  rSpecificCards: []
+  guaranteedRandom: 0
+  numberOfRares: 0
+  numberOfUncommons: 0
+  numberOfCommons: 0
+  randomCard: 0
+  numberOfRandomCards: 0

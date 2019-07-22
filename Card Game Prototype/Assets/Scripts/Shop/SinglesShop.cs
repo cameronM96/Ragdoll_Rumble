@@ -14,22 +14,12 @@ public class SinglesShop : MonoBehaviour
     public float startYPos;
     public float colLength;
     public bool alphaBetically = true;
-    public int rarity = 0; // None, Common, UnCommon, Rare
+    public int rarity = 0; // None, Common, UnCommon, Rare, common -> rare, rare -> common
     public int cardType = 0; // None, Weapon, Armour, Ability, Environmental, Behaviour
 
     public List<Card> currentShopCards;
 
-    private CardCollection cardCollection;
-
-    private void Start()
-    {
-        cardCollection = GetComponent<CardCollection>();
-    }
-
-    private void Update()
-    {
-        //ScrollWindow(scrollBar);
-    }
+    public CardCollection cardCollection;
 
     public void ScrollWindow (Scrollbar bar)
     {
@@ -57,12 +47,16 @@ public class SinglesShop : MonoBehaviour
 
         // Load Shop
         if (cardCollection?.allCardsDictionary == null)
+        {
+            Debug.Log("Dictionary was null!");
             return;
+        }
 
         foreach (Card card in cardCollection.allCardsDictionary.Values)
         {
             bool addToShop = true;
             //If a card type was specified
+            // None, Weapon, Armour, Ability, Environmental, Behaviour
             if (cardType != 0)
             {
                 switch (card.currentCardType)
@@ -96,11 +90,14 @@ public class SinglesShop : MonoBehaviour
             }
 
             // If card rarity was specified
+            // None, Common, UnCommon, Rare, common -> rare, rare -> common
             if (rarity != 0)
             {
                 switch (card.rarity)
                 {
                     case Rarity.None:
+                        Debug.Log("This card has no rarity! " + card.cardName);
+                        addToShop = false;
                         break;
                     case Rarity.Common:
                         if (rarity != 1)

@@ -18,5 +18,9 @@ public class CardEditor : Editor
 
         base.OnInspectorGUI();
 
+        if(GUILayout.Button("Update ID"))
+        {
+            card.iD = card.GetInstanceID();
+        }
     }
 }

@@ -21,6 +21,7 @@ TagManager:
   - SpawnPoint
   - NextPosition
   - Reach
+  - PlayerProfile
   layers:
   - Default
   - TransparentFX

@@ -495,6 +495,7 @@ public class CardCreator_v2 : EditorWindow
         Card newCard = ScriptableObject.CreateInstance<Card>();
 
         // Card Info
+        newCard.iD = newCard.GetInstanceID();
         newCard.rarity = rarity;
         newCard.currentCardType = currentCardType;
         newCard.playableSlots = playableSlots;
@@ -545,6 +546,7 @@ public class CardCreator_v2 : EditorWindow
         }
 
         // Card Info
+        card.iD = card.GetInstanceID();
         card.rarity = rarity;
         card.currentCardType = currentCardType;
         card.playableSlots = playableSlots;
