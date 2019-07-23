@@ -8,8 +8,8 @@ public class CollectionManager : MonoBehaviour
 {
     public Player player;
 
-    public GameObject CollectionPanel;
-    public GameObject CollectionCardTemplate;
+    public GameObject collectionPanel;
+    public GameObject collectionCardTemplate;
     public Scrollbar scrollBar;
     public float startYPos;
     public float colLength;
@@ -17,9 +17,90 @@ public class CollectionManager : MonoBehaviour
     public int rarity = 0; // None, Common, UnCommon, Rare, common -> rare, rare -> common
     public int cardType = 0; // None, Weapon, Armour, Ability, Environmental, Behaviour
 
+    // Deck Stuff
+    public int requiredDeckSize;
+    public GameObject deckButtons;
+    public GameObject deckCreation;
+    public GameObject deckPanel;
+    public GameObject deckButtonPrefab;
+
     public List<Card> currentCollection;
 
     public CardCollection cardCollection;
+
+    public string currentDeckName;
+    public Card[] currentDeck;
+
+    private bool creatingDeck;
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
+
+        LoadCards();
+
+        creatingDeck = true;
+        ToggleDeckCreation();
+    }
+
+    public void ToggleDeckCreation()
+    {
+        creatingDeck = !creatingDeck;
+
+        deckButtons.SetActive(!creatingDeck);
+        deckCreation.SetActive(creatingDeck);
+    }
+
+    public void CreateDeck()
+    {
+
+    }
+
+    public void LoadDeck(string deckName, DeckButton deckButton)
+    {
+        currentDeckName = deckName;
+
+        if (player.myDecks.ContainsKey(deckName))
+        {
+            // Destroy cards currently in the deck holder
+            foreach (Transform child in deckPanel.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Create all the cards
+            int[] cardIDs = player.myDecks[deckName];
+            currentDeck = new Card[cardIDs.Length];
+            for (int i = 0; i < cardIDs.Length; i++)
+            {
+                // Match Id with a card and add it to the current cards list and create it.
+                if (cardCollection.allCardIDDictionary.ContainsKey(cardIDs[i]))
+                {
+                    Card newCard = cardCollection.allCardIDDictionary[cardIDs[i]];
+                    currentDeck[i] = newCard;
+                }
+                else
+                    Debug.LogError("Unidentified card!");
+            }
+        }
+        else
+            Debug.LogError("Unknown Deck! " + deckName + " could not be found in the deck list");
+    }
+
+    public void SaveDeck(string deckName)
+    {
+        if (currentDeckName == "")
+        {
+            // create a button for this deck in the deckbuttons window give a default name
+        }
+
+        // save to player.mydecks
+    }
+
+    public void ClearDeck()
+    {
+
+    }
 
     public void ScrollWindow(Scrollbar bar)
     {
@@ -28,11 +109,11 @@ public class CollectionManager : MonoBehaviour
         if (top < startYPos)
             top = startYPos;
 
-        Vector3 newPos = CollectionPanel.transform.localPosition;
+        Vector3 newPos = collectionPanel.transform.localPosition;
 
         newPos.y = Map(bar.value, 0, 1, startYPos, top, true);
 
-        CollectionPanel.transform.localPosition = newPos;
+        collectionPanel.transform.localPosition = newPos;
     }
 
     public void LoadCards()
@@ -40,7 +121,7 @@ public class CollectionManager : MonoBehaviour
         // Clear Shop
         currentCollection.Clear();
 
-        foreach (Transform child in CollectionPanel.transform)
+        foreach (Transform child in collectionPanel.transform)
         {
             Destroy(child.gameObject);
         }
@@ -133,7 +214,7 @@ public class CollectionManager : MonoBehaviour
             for (int i = 0; i < currentCollection.Count; i++)
             {
                 GameObject shopCard = CreateCard(currentCollection[i]);
-                shopCard.transform.SetParent(CollectionPanel.transform);
+                shopCard.transform.SetParent(collectionPanel.transform);
             }
         }
         else
@@ -142,19 +223,21 @@ public class CollectionManager : MonoBehaviour
             for (int i = currentCollection.Count - 1; i >= 0; i--)
             {
                 GameObject shopCard = CreateCard(currentCollection[i]);
-                shopCard.transform.SetParent(CollectionPanel.transform);
+                shopCard.transform.SetParent(collectionPanel.transform);
             }
         }
+
+        collectionPanel.GetComponent<PanelResizer>().Resize();
     }
 
     public GameObject CreateCard(Card card)
     {
-        if (CollectionCardTemplate == null)
+        if (collectionCardTemplate == null)
             return null;
 
-        GameObject newCard = Instantiate(CollectionCardTemplate);
+        GameObject newCard = Instantiate(collectionCardTemplate);
 
-        newCard.GetComponent<CardDisplay>().Initialise();
+        newCard.GetComponent<CardDisplay>().Initialise(card);
 
         return newCard;
     }

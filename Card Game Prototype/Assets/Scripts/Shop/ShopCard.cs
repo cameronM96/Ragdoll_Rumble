@@ -17,7 +17,6 @@ public class ShopCard : MonoBehaviour
         cardDis = GetComponent<CardDisplay>();
         shopManager = shopMan;
         card = newCard;
-        cardDis.card = newCard;
 
         if (cardDis.card != null)
         {

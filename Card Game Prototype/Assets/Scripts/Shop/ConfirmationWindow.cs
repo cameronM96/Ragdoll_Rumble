@@ -109,8 +109,7 @@ public class ConfirmationWindow : MonoBehaviour
 
         GameObject newCard = Instantiate(shopCardTemplate);
 
-        newCard.GetComponent<CardDisplay>().card = card;
-        newCard.GetComponent<CardDisplay>().Initialise();
+        newCard.GetComponent<CardDisplay>().Initialise(card);
 
         return newCard;
     }

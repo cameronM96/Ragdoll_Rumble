@@ -45,8 +45,7 @@ public class Card : ScriptableObject
 
         GameObject newCard = Instantiate(templateCard);
 
-        newCard.GetComponent<CardDisplay>().card = this;
-        newCard.GetComponent<CardDisplay>().Initialise();
+        newCard.GetComponent<CardDisplay>().Initialise(this);
 
         return newCard;
     }

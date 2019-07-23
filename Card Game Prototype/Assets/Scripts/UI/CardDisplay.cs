@@ -19,9 +19,11 @@ public class CardDisplay : MonoBehaviour
     public Image rarityImage;
     public Image[] rings = new Image[4];
     
-    public void Initialise()
+    public void Initialise(Card newCard)
     {
         // Update Card Display
+        card = newCard;
+
         if (card == null)
             return;
 

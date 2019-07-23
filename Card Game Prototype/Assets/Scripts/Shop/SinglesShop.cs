@@ -155,8 +155,8 @@ public class SinglesShop : MonoBehaviour
 
         GameObject newCard = Instantiate(shopCardTemplate);
 
+        newCard.GetComponent<CardDisplay>().Initialise(card);
         newCard.GetComponent<ShopCard>().Initialise(shopManager, card);
-        newCard.GetComponent<CardDisplay>().Initialise();
 
         return newCard;
     }

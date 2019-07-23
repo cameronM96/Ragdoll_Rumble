@@ -11,6 +11,7 @@ public class CardCollection : MonoBehaviour
 
     public static CardCollection Instance;
     public Dictionary<string, Card> allCardsDictionary = new Dictionary<string, Card>();
+    public Dictionary<int, Card> allCardIDDictionary = new Dictionary<int, Card>();
 
     public Dictionary<Card, int> quantityOfEachCard = new Dictionary<Card, int>();
 
