@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Land Mines
   m_EditorClassIdentifier: 
+  iD: 19584
   rarity: 2
   currentCardType: 5
   playableSlots: -1
@@ -23,7 +24,7 @@ MonoBehaviour:
   description: '*Vietnam Flashbacks*'
   artwork: {fileID: 21300000, guid: fe6ac62b4cb99df478ccd28e6d3eda6b, type: 3}
   background: {fileID: 21300000, guid: 07cb0bf09d9878d4381d698162ef84a7, type: 3}
-  rarityImage: {fileID: 0}
+  rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 6
   armour: 0
   hP: 0
@@ -31,5 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   ability: {fileID: 0}
   item: {fileID: 3119774255040208409, guid: 6d115fb7f0395c14eb39fe1fcc8b4ecb, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

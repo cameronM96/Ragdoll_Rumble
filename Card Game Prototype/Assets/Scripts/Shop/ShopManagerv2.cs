@@ -73,7 +73,7 @@ public class ShopManagerv2 : MonoBehaviour
             }
         }
 
-        Debug.Log(defaultCost);
+        //Debug.Log(defaultCost);
         return defaultCost;
     }
 }

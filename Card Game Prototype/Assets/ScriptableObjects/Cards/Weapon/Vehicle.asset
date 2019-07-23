@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Vehicle
   m_EditorClassIdentifier: 
+  iD: 17832
   rarity: 2
   currentCardType: 1
   playableSlots: 4
+  org: 0
+  pos: 0
+  rot: 0
+  size: 0
   cardName: Vehicle
   description: Hit 'em like a truck!
   artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
   background: {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
-  rarityImage: {fileID: 0}
+  rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 6
   armour: 0
   hP: 0
@@ -27,5 +32,7 @@ MonoBehaviour:
   atkSpeed: -3
   ability: {fileID: 0}
   item: {fileID: 0}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

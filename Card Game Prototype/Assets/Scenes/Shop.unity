@@ -3100,6 +3100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed25436faa83c5408b2b80ffce4dd83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopManager: {fileID: 1719620634}
   confirmWindow: {fileID: 693004232}
   shopCardPanel: {fileID: 946888151}
   shopCardTemplate: {fileID: 4726946754491709035, guid: a768fa9f5c096244a875d581c32249c1,
@@ -3518,6 +3519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd3fd6f57d4fbcd4d89a1d8ce07b357c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopManager: {fileID: 1719620634}
   confirmWindow: {fileID: 1370313319}
   shopPackPanel: {fileID: 1662404057}
   shopPackTemplate: {fileID: 2087164250927149705, guid: 952350873fe809142aff6d18975fc476,

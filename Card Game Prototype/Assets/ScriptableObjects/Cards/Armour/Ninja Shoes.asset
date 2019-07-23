@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Ninja Shoes
   m_EditorClassIdentifier: 
+  iD: 13284
   rarity: 2
   currentCardType: 2
   playableSlots: 8
@@ -23,7 +24,7 @@ MonoBehaviour:
   description: Become as silent as a gentle breeze
   artwork: {fileID: 21300000, guid: 6951b46ad21e54441b66a40ccaf203a0, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
-  rarityImage: {fileID: 0}
+  rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 1
   armour: 1
   hP: 0

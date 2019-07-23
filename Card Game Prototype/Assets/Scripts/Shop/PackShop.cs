@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PackShop : MonoBehaviour
 {
+    public ShopManagerv2 shopManager;
     public ConfirmationWindow confirmWindow;
     public GameObject shopPackPanel;
     public GameObject shopPackTemplate;

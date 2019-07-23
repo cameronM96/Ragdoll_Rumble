@@ -7,6 +7,7 @@ using System.Linq;
 
 public class SinglesShop : MonoBehaviour
 {
+    public ShopManagerv2 shopManager;
     public ConfirmationWindow confirmWindow;
     public GameObject shopCardPanel;
     public GameObject shopCardTemplate;
@@ -154,7 +155,7 @@ public class SinglesShop : MonoBehaviour
 
         GameObject newCard = Instantiate(shopCardTemplate);
 
-        newCard.GetComponent<CardDisplay>().card = card;
+        newCard.GetComponent<ShopCard>().Initialise(shopManager, card);
         newCard.GetComponent<CardDisplay>().Initialise();
 
         return newCard;

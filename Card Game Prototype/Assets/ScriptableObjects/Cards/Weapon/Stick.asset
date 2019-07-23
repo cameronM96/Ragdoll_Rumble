@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Stick
   m_EditorClassIdentifier: 
+  iD: 14174
   rarity: 3
   currentCardType: 1
   playableSlots: 5
@@ -23,7 +24,7 @@ MonoBehaviour:
   description: It's a stick you found in the park
   artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
   background: {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
-  rarityImage: {fileID: 0}
+  rarityImage: {fileID: 21300000, guid: a05a88c956ad5ac44b7a7aad780f3c04, type: 3}
   attack: 2
   armour: 2
   hP: 0
@@ -31,5 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   ability: {fileID: 0}
   item: {fileID: 4081503627470519158, guid: 985974f56e41df4439f1ce444f568376, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
     public void AddCardToLibrary (Card card)
     {
         // Add to myCardLibrary
-        Debug.Log(card.cardName);
+        //Debug.Log(card.cardName);
         if (myCards.ContainsKey(card.iD))
         {
             myCards[card.iD] += 1;

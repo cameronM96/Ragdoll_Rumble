@@ -8,41 +8,39 @@ public class ShopCard : MonoBehaviour
     public GameObject costValues;
     public Text coinValue;
     public Text gemValue;
-
+    public Card card;
     CardDisplay cardDis;
+    ShopManagerv2 shopManager;
 
-    private bool initialised = false;
+    public void Initialise(ShopManagerv2 shopMan, Card newCard)
+    {
+        cardDis = GetComponent<CardDisplay>();
+        shopManager = shopMan;
+        card = newCard;
+        cardDis.card = newCard;
+
+        if (cardDis.card != null)
+        {
+            if (cardDis.card.coinCost != 0)
+                coinValue.text = "" + cardDis.card.coinCost;
+            else
+                coinValue.text = "" + shopManager.ReturnDefaultCosts(false, card);
+
+            if (cardDis.card.gemCost != 0)
+                gemValue.text = "" + cardDis.card.gemCost;
+            else
+                gemValue.text = "" + shopManager.ReturnDefaultCosts(true, card);
+        }
+    }
 
     public void CardPicked ()
     {
-        Card card = GetComponent<CardDisplay>().card;
+        card = GetComponent<CardDisplay>().card;
         SinglesShop shop = transform.parent.GetComponentInParent<SinglesShop>();
 
         if (shop != null && card != null)
             shop.confirmWindow.OpenWindow(card);
         else
             Debug.Log("Something went wrong and I couldn't find everything I needed");
-    }
-
-    private void Start()
-    {
-        cardDis = GetComponent<CardDisplay>();
-    }
-
-    private void Update()
-    {
-        if (!initialised)
-        {
-            if (cardDis.card != null)
-            {
-                if (cardDis.card.coinCost != 0)
-                    coinValue.text = "" + cardDis.card.coinCost;
-
-                if (cardDis.card.gemCost != 0)
-                    gemValue.text = "" + cardDis.card.gemCost;
-
-                initialised = true;
-            }
-        }
     }
 }

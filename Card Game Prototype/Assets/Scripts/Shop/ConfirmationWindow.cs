@@ -132,8 +132,8 @@ public class ConfirmationWindow : MonoBehaviour
         bool purchaseSuccessful = false;
         Player player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
 
-        Debug.Log(player.playerName);
-        Debug.Log(currentCard.cardName);
+        //Debug.Log(player.playerName);
+        //Debug.Log(currentCard.cardName);
         if (player != null && currentCard != null)
         {
             if (usingPremiumCurrency)

@@ -12,14 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Coffee Cup
   m_EditorClassIdentifier: 
+  iD: 20748
   rarity: 1
   currentCardType: 3
   playableSlots: -1
+  org: 0
+  pos: 0
+  rot: 0
+  size: 0
   cardName: Coffee Cup
   description: Show them not to mess with you before you drink your coffee!
   artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
   background: {fileID: 21300000, guid: 8fac3e1dbdb6ddc4faf60c05d4b37c6c, type: 3}
-  rarityImage: {fileID: 0}
+  rarityImage: {fileID: 21300000, guid: 30d1829b2c24bdc48acaed7b79f9b208, type: 3}
   attack: 1
   armour: 0
   hP: 0
@@ -27,5 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   ability: {fileID: 0}
   item: {fileID: 0}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}
