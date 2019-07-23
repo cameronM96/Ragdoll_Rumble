@@ -3487,21 +3487,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cards:
-  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
-  - {fileID: 11400000, guid: 0b6d9136a5c984944b0cd05779f6cee6, type: 2}
-  - {fileID: 11400000, guid: aedcc4401acf80f459742240cd7b0469, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: 0b6d9136a5c984944b0cd05779f6cee6, type: 2}
-  - {fileID: 11400000, guid: aedcc4401acf80f459742240cd7b0469, type: 2}
-  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: 0b6d9136a5c984944b0cd05779f6cee6, type: 2}
-  - {fileID: 11400000, guid: 1c6ba9c59def4db4689a3c4e19d9ee95, type: 2}
-  - {fileID: 11400000, guid: aedcc4401acf80f459742240cd7b0469, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: 92278954f48a1664d93ff2546aaa6a0c, type: 2}
+  - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
+  - {fileID: 11400000, guid: 0e4a624f767029141b335bcd138deacc, type: 2}
+  - {fileID: 11400000, guid: bd898b796579c844eacdd65fe039eb86, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
   deckOfCards:
   - {fileID: 1156897855, guid: bdd57069414afc4449937d9d58514d2c, type: 3}
   - {fileID: 2374550111916289344, guid: c7bb251478525b04bb0cf9c3b55fa554, type: 3}

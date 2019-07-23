@@ -18,7 +18,7 @@ MonoBehaviour:
   playableSlots: 12
   org: 0
   pos: 0
-  rot: 0
+  rot: 1
   size: 0
   cardName: Acoustic Guitar
   description: Serenade your opponent with your moves!
@@ -31,7 +31,7 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 1
   ability: {fileID: 0}
-  item: {fileID: 3202513188947993111, guid: 7410ad87b3a373d4f95d479aeb588968, type: 3}
+  item: {fileID: 4898700221819802091, guid: 66e558b5af3466740b8fe3e17e111004, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
