@@ -24,8 +24,8 @@ public class DeckButton : MonoBehaviour
 
     public void OpenDeck()
     {
-        collectionManager.LoadDeck(deckName, this);
-        collectionManager.ToggleDeckCreation();
+        bool loaded = collectionManager.LoadDeck(deckName, this);
+        if (loaded)
+            collectionManager.ToggleDeckCreation();
     }
-
 }

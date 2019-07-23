@@ -56,8 +56,9 @@ public class CollectionManager : MonoBehaviour
 
     }
 
-    public void LoadDeck(string deckName, DeckButton deckButton)
+    public bool LoadDeck(string deckName, DeckButton deckButton)
     {
+        bool successfulLoading = false;
         currentDeckName = deckName;
 
         if (player.myDecks.ContainsKey(deckName))
@@ -76,8 +77,8 @@ public class CollectionManager : MonoBehaviour
                 // Match Id with a card and add it to the current cards list and create it.
                 if (cardCollection.allCardIDDictionary.ContainsKey(cardIDs[i]))
                 {
-                    Card newCard = cardCollection.allCardIDDictionary[cardIDs[i]];
-                    currentDeck[i] = newCard;
+                    currentDeck[i] = cardCollection.allCardIDDictionary[cardIDs[i]];
+                    successfulLoading = true;
                 }
                 else
                     Debug.LogError("Unidentified card!");
@@ -85,6 +86,8 @@ public class CollectionManager : MonoBehaviour
         }
         else
             Debug.LogError("Unknown Deck! " + deckName + " could not be found in the deck list");
+
+        return successfulLoading;
     }
 
     public void SaveDeck(string deckName)
