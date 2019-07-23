@@ -10,6 +10,10 @@ public class CardCreator_v2 : EditorWindow
     public Rarity rarity = Rarity.None;
     public CardType currentCardType = CardType.None;
     public PlayableSlot playableSlots = PlayableSlot.None;
+
+    public bool pos;
+    public bool rot;
+    public bool size;
     
     public string cardName = "New Card";
     public string description = "Enter Card Description";
@@ -37,6 +41,7 @@ public class CardCreator_v2 : EditorWindow
     private bool cardVisualsToggle = true;
     private bool cardModifersToggle = true;
     private bool baseStatsToggle = true;
+    private bool arrangementToggle = true;
     public Vector2 scrollPos;
 
     //PreviewWindow
@@ -429,6 +434,20 @@ public class CardCreator_v2 : EditorWindow
 
         }
         EditorGUILayout.EndFoldoutHeaderGroup();
+
+        // OrganisationEditorGUILayout.Space();
+        string cardArrangementHeader = "<size=13><b>Card Visuals:</b></size>";
+
+        arrangementToggle = EditorGUILayout.BeginFoldoutHeaderGroup(arrangementToggle, cardArrangementHeader, groupHeaderStyle);
+        if (arrangementToggle)
+        {
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
+
+            pos = EditorGUILayout.Toggle("Adjust Position: ", pos);
+            rot = EditorGUILayout.Toggle("Adjust Rotation: ", rot);
+            size = EditorGUILayout.Toggle("Adjust Size: ", size);
+        }
+        EditorGUILayout.EndFoldoutHeaderGroup();
         EditorGUILayout.EndScrollView();
 
         GUILayout.FlexibleSpace();
@@ -516,7 +535,9 @@ public class CardCreator_v2 : EditorWindow
         newCard.ability = ability;
 
         newCard.item = item;
-
+        newCard.pos = pos;
+        newCard.rot = rot;
+        newCard.size = size;
 
         GameObject templateCard = (GameObject)AssetDatabase.LoadAssetAtPath(
             "Assets/Prefabs/Templates(DO NOT TOUCH)/Card_Template.prefab", typeof(GameObject));
@@ -568,6 +589,9 @@ public class CardCreator_v2 : EditorWindow
         card.ability = ability;
 
         card.item = item;
+        card.pos = pos;
+        card.rot = rot;
+        card.size = size;
 
         GameObject templateCard = (GameObject)AssetDatabase.LoadAssetAtPath(
             "Assets/Prefabs/Templates(DO NOT TOUCH)/Card_Template.prefab", typeof(GameObject));
@@ -615,6 +639,10 @@ public class CardCreator_v2 : EditorWindow
         ability = card.ability;
 
         item = card.item;
+
+        pos = card.pos;
+        rot = card.rot;
+        size = card.size;
     }
 
     private void UpdateCardDisplay()
