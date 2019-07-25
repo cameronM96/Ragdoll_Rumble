@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Foam Hand
   m_EditorClassIdentifier: 
+  iD: 16320
   rarity: 2
   currentCardType: 1
   playableSlots: 4
   org: 0
   pos: 0
-  rot: 0
+  rot: 1
   size: 0
   cardName: Foam Hand
   description: Deals 2X damage if you are winning! "We're no.1!!"
@@ -30,6 +31,8 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: 8317279289685807134, guid: dbb119306046a7d4c9b0be2278fb90d2, type: 3}
+  item: {fileID: 2217404245595148130, guid: 4af5b38d0a4697249b8b280bfbd7149b, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Hand Pistol
   m_EditorClassIdentifier: 
-  iD: 18174
+  iD: 15848
   rarity: 1
   currentCardType: 1
   playableSlots: 4
   org: 0
-  pos: 0
+  pos: 1
   rot: 0
   size: 0
   cardName: Hand Pistol
@@ -31,7 +31,7 @@ MonoBehaviour:
   speed: 1
   atkSpeed: 1
   ability: {fileID: 0}
-  item: {fileID: 5685905073868826067, guid: 79032dc9b4eaa9c4a84e706d12bbecd7, type: 3}
+  item: {fileID: 2663201184421286457, guid: cd6dedb935c4af541a8b12ba105f2b71, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

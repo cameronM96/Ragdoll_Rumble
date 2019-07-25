@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Ninja Katana
   m_EditorClassIdentifier: 
+  iD: 18450
   rarity: 2
   currentCardType: 1
   playableSlots: 6
   org: 0
   pos: 0
-  rot: 0
+  rot: 1
   size: 0
   cardName: Ninja Katana
   description: Show off the true power of the fedora with your trusty katana
@@ -30,6 +31,8 @@ MonoBehaviour:
   speed: 2
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: 5667865056372676977, guid: c015c325f69a2604092edbe06e75d8aa, type: 3}
+  item: {fileID: 6189597350750907462, guid: 6e8c4475257432e4089f135bdb507bd2, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

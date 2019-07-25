@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Pool Noodle
   m_EditorClassIdentifier: 
+  iD: 19870
   rarity: 1
   currentCardType: 1
   playableSlots: 5
   org: 0
   pos: 0
-  rot: 0
+  rot: 1
   size: 0
   cardName: Pool Noodle
   description: Slap 'em with your wet noodle
@@ -30,6 +31,8 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 1
   ability: {fileID: 0}
-  item: {fileID: 8811589160514843543, guid: 7651b348fa2e0ce4a9422aa5cb512d42, type: 3}
+  item: {fileID: 3566739665978691968, guid: 0baf1e44bfb27ae4a8a475e5461a92bc, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

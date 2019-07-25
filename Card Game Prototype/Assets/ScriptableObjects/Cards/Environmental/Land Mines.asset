@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Land Mines
   m_EditorClassIdentifier: 
-  iD: 19584
+  iD: 17442
   rarity: 2
   currentCardType: 5
   playableSlots: -1
@@ -31,7 +31,7 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: 3119774255040208409, guid: 6d115fb7f0395c14eb39fe1fcc8b4ecb, type: 3}
+  item: {fileID: -927199367670048503, guid: c4d307282690c9741b000d0aec41f901, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

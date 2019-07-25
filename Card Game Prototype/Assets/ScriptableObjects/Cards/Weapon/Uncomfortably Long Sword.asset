@@ -12,12 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Uncomfortably Long Sword
   m_EditorClassIdentifier: 
+  iD: 15164
   rarity: 1
   currentCardType: 1
   playableSlots: 4
   org: 0
   pos: 0
-  rot: 0
+  rot: 1
   size: 0
   cardName: Uncomfortably Long Sword
   description: Overcompensating much?
@@ -30,6 +31,8 @@ MonoBehaviour:
   speed: -2
   atkSpeed: -1
   ability: {fileID: 0}
-  item: {fileID: 4884835330887237001, guid: 36da8d01f1461c24a9b26bd409c71cda, type: 3}
+  item: {fileID: 3097786748414876681, guid: 0c05d71abdcce3c4499af362d86fedb6, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

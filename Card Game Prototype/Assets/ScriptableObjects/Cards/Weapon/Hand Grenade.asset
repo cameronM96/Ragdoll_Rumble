@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Hand Grenade
   m_EditorClassIdentifier: 
+  iD: 15704
   rarity: 3
   currentCardType: 1
   playableSlots: -1
   org: 0
-  pos: 0
+  pos: 1
   rot: 0
   size: 0
   cardName: Hand Grenade
@@ -30,6 +31,8 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: 7950668279587482036, guid: b7a3caeccff64ea4eb686a41d6e8b16f, type: 3}
+  item: {fileID: 1801417783848596450, guid: 3f572dcc063f7314f9b62b03b25afc79, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}

@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Week Old Baguette
   m_EditorClassIdentifier: 
+  iD: 16338
   rarity: 3
   currentCardType: 1
   playableSlots: 4
   org: 0
-  pos: 0
+  pos: 1
   rot: 0
   size: 0
   cardName: Week Old Baguette
@@ -30,6 +31,8 @@ MonoBehaviour:
   speed: 0
   atkSpeed: 0
   ability: {fileID: 0}
-  item: {fileID: 298323870503559284, guid: c05122d9462b10e42ada22d3c9125c87, type: 3}
+  item: {fileID: 6393396864865494563, guid: 746e151db81adfd43901a0e7405cdd5d, type: 3}
+  coinCost: 0
+  gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
     type: 3}
