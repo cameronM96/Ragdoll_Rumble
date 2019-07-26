@@ -16,11 +16,11 @@ public class PlayerProfile
     public PlayerProfile (Player player)
     {
         playerName = player.playerName;
-        coins = player.coins;
-        gems = player.gems;
-        myCards = player.myCards;
-        myDecks = player.myDecks;
-        campaignProgress = player.campaignProgress;
-        myUnopenedPacks = player.myUnopenedPacks;
+        coins = player.Coins;
+        gems = player.Gems;
+        myCards = player.MyCards;
+        myDecks = player.MyDecks;
+        campaignProgress = player.CampaignProgress;
+        myUnopenedPacks = player.MyUnopenedPacks;
     }
 }

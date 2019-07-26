@@ -44,15 +44,17 @@ public class CardLibraryEditor : Editor
         GUILayout.Space(10);
 
         cardLibraryInstance.storedPath = EditorGUILayout.TextField("Folder Path", cardLibraryInstance.storedPath);
-        string path = cardLibraryInstance.storedPath;
 
-        if (path != "") {
-            cardLibraryInstance.newLibrary = EditorGUILayout.Toggle("Load New Library", cardLibraryInstance.newLibrary);
+        cardLibraryInstance.newLibrary = EditorGUILayout.Toggle("Load New Library", cardLibraryInstance.newLibrary);
 
-            if (GUILayout.Button("Load Library"))
+        if (GUILayout.Button("Load Library"))
+        {
+            if (cardLibraryInstance.storedPath != "")
             {
-                LoadLibraryFromFolder(cardLibraryInstance.newLibrary, path);
+                LoadLibraryFromFolder(cardLibraryInstance.newLibrary, cardLibraryInstance.storedPath);
             }
+            else
+                Debug.Log("Need to add a file path!");
         }
 
         GUILayout.Space(10);

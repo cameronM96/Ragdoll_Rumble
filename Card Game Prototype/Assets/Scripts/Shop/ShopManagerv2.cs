@@ -26,8 +26,8 @@ public class ShopManagerv2 : MonoBehaviour
             playerInfo = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
 
         playerName.text = playerInfo.playerName;
-        coins.text = "" + playerInfo.coins;
-        gems.text = "" + playerInfo.gems;
+        coins.text = "" + playerInfo.Coins;
+        gems.text = "" + playerInfo.Gems;
     }
 
     public int ReturnDefaultCosts(bool premium, Card card)

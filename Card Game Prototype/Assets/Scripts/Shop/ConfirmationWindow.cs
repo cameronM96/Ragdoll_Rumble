@@ -142,7 +142,7 @@ public class ConfirmationWindow : MonoBehaviour
                 if (gemCost == 0)
                     gemCost = shopManager.ReturnDefaultCosts(usingPremiumCurrency, currentCard);
 
-                if (player.gems >= gemCost && gemCost != -1)
+                if (player.Gems >= gemCost && gemCost != -1)
                 {
                     player.SpendCurrency(gemCost, usingPremiumCurrency);
                     purchaseSuccessful = true;
@@ -157,7 +157,7 @@ public class ConfirmationWindow : MonoBehaviour
                 if (coinCost == 0)
                     coinCost = shopManager.ReturnDefaultCosts(usingPremiumCurrency, currentCard);
 
-                if (player.coins >= coinCost && coinCost != -1)
+                if (player.Coins >= coinCost && coinCost != -1)
                 {
                     player.SpendCurrency(coinCost, usingPremiumCurrency);
                     purchaseSuccessful = true;
@@ -186,7 +186,7 @@ public class ConfirmationWindow : MonoBehaviour
             if (usingPremiumCurrency)
             {
                 // Using Gems
-                if (player.gems >= currentPack.gemCost)
+                if (player.Gems >= currentPack.gemCost)
                 {
                     player.SpendCurrency(currentPack.gemCost, usingPremiumCurrency);
                     purchaseSuccessful = true;
@@ -197,7 +197,7 @@ public class ConfirmationWindow : MonoBehaviour
             else
             {
                 // Using Coins
-                if (player.coins >= currentPack.coinCost)
+                if (player.Coins >= currentPack.coinCost)
                 {
                     player.SpendCurrency(currentPack.coinCost, usingPremiumCurrency);
                     purchaseSuccessful = true;

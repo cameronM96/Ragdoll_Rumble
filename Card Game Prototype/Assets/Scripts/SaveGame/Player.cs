@@ -6,12 +6,12 @@ using System.Linq;
 public class Player : MonoBehaviour
 {
     public string playerName;
-    public int coins;
-    public int gems;
-    public Dictionary<int, int> myCards;
-    public Dictionary<string, int[]> myDecks;
-    public Dictionary<int, int> myUnopenedPacks;
-    public int campaignProgress;
+    private int coins;
+    private int gems;
+    private Dictionary<int, int> myCards;
+    private Dictionary<string, int[]> myDecks;
+    private Dictionary<int, int> myUnopenedPacks;
+    private int campaignProgress;
 
     public List<Card> starterDeck;
 
@@ -19,6 +19,31 @@ public class Player : MonoBehaviour
     {
         DontDestroyOnLoad(this.gameObject);
         LoadGame();
+    }
+
+    public int Coins
+    {
+        get { return coins; }
+    }
+    public int Gems
+    {
+        get { return Gems; }
+    }
+    public Dictionary<int, int> MyCards
+    {
+        get { return myCards; }
+    }
+    public Dictionary<string, int[]> MyDecks
+    {
+        get { return MyDecks; }
+    }
+    public Dictionary<int, int> MyUnopenedPacks
+    {
+        get { return myUnopenedPacks; }
+    }
+    public int CampaignProgress
+    {
+        get { return campaignProgress; }
     }
 
     public void SaveGame()

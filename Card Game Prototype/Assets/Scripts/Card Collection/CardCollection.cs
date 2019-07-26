@@ -22,6 +22,11 @@ public class CardCollection : MonoBehaviour
         Instance = this;
 
         //Debug.Log(cardLibrary.cardLibrary.Count + " cards were loaded into the AllCardsArray");
+        LoadCardLibrary();
+    }
+
+    public void LoadCardLibrary()
+    {
         foreach (Card ca in cardLibrary.cardLibrary)
         {
             if (!allCardsDictionary.ContainsKey(ca.name))
