@@ -10,12 +10,12 @@ public class CollectionManager : MonoBehaviour
 
     public GameObject collectionPanel;
     public GameObject collectionCardTemplate;
-    public Scrollbar scrollBar;
-    public float startYPos;
-    public float colLength;
+    public GameObject deckBuildingCardTemplate;
     public bool alphaBetically = true;
     public int rarity = 0; // None, Common, UnCommon, Rare, common -> rare, rare -> common
     public int cardType = 0; // None, Weapon, Armour, Ability, Environmental, Behaviour
+
+    public GameObject cardWindow;
 
     // Deck Stuff
     public int requiredDeckSize;
@@ -37,10 +37,9 @@ public class CollectionManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
 
-        LoadCards();
-
         creatingDeck = true;
         ToggleDeckCreation();
+        LoadCards(creatingDeck);
     }
 
     public void ToggleDeckCreation()
@@ -58,10 +57,9 @@ public class CollectionManager : MonoBehaviour
 
     public bool LoadDeck(string deckName, DeckButton deckButton)
     {
-        bool successfulLoading = false;
         currentDeckName = deckName;
 
-        if (player.myDecks.ContainsKey(deckName))
+        if (player.MyDecks.ContainsKey(deckName))
         {
             // Destroy cards currently in the deck holder
             foreach (Transform child in deckPanel.transform)
@@ -70,56 +68,63 @@ public class CollectionManager : MonoBehaviour
             }
 
             // Create all the cards
-            int[] cardIDs = player.myDecks[deckName];
+            int[] cardIDs = player.MyDecks[deckName];
             currentDeck = new Card[cardIDs.Length];
             for (int i = 0; i < cardIDs.Length; i++)
             {
                 // Match Id with a card and add it to the current cards list and create it.
                 if (cardCollection.allCardIDDictionary.ContainsKey(cardIDs[i]))
                 {
-                    currentDeck[i] = cardCollection.allCardIDDictionary[cardIDs[i]];
-                    successfulLoading = true;
+                    Card newCard = cardCollection.allCardIDDictionary[cardIDs[i]];
+                    currentDeck[i] = newCard;
                 }
                 else
                     Debug.LogError("Unidentified card!");
             }
         }
         else
+        {
             Debug.LogError("Unknown Deck! " + deckName + " could not be found in the deck list");
+            return false;
+        }
 
-        return successfulLoading;
+        return true;
     }
 
     public void SaveDeck(string deckName)
     {
-        if (currentDeckName == "")
+        // Compile Deck
+        List<int> deckInts = new List<int>();
+        foreach (Transform child in deckPanel.transform)
         {
-            // create a button for this deck in the deckbuttons window give a default name
+            if (child.GetComponent<CardDisplay>()?.card != null)
+            {
+                if (child.GetComponent<CardDisplay>().card.iD != 0)
+                    deckInts.Add(child.GetComponent<CardDisplay>().card.iD);
+            }
         }
 
-        // save to player.mydecks
+        // Save deck
+        if (player.MyDecks.ContainsKey(deckName))
+            player.UpdateDeck(deckName, deckInts.ToArray());
+        else
+            player.AddDeck(deckName, deckInts.ToArray());
     }
 
     public void ClearDeck()
     {
-
+        foreach (Transform child in deckPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
-    public void ScrollWindow(Scrollbar bar)
+    public void DeleteDeck(string deckName)
     {
-        Debug.Log(Mathf.CeilToInt(currentCollection.Count / 6f));
-        float top = startYPos + (colLength * (Mathf.CeilToInt(currentCollection.Count / 6f)));
-        if (top < startYPos)
-            top = startYPos;
-
-        Vector3 newPos = collectionPanel.transform.localPosition;
-
-        newPos.y = Map(bar.value, 0, 1, startYPos, top, true);
-
-        collectionPanel.transform.localPosition = newPos;
+        player.RemoveDeck(deckName);
     }
 
-    public void LoadCards()
+    public void LoadCards(bool deckBuilding)
     {
         // Clear Shop
         currentCollection.Clear();
@@ -216,7 +221,7 @@ public class CollectionManager : MonoBehaviour
             // A-Z
             for (int i = 0; i < currentCollection.Count; i++)
             {
-                GameObject shopCard = CreateCard(currentCollection[i]);
+                GameObject shopCard = CreateCard(currentCollection[i], deckBuilding);
                 shopCard.transform.SetParent(collectionPanel.transform);
             }
         }
@@ -225,7 +230,7 @@ public class CollectionManager : MonoBehaviour
             // Z-A
             for (int i = currentCollection.Count - 1; i >= 0; i--)
             {
-                GameObject shopCard = CreateCard(currentCollection[i]);
+                GameObject shopCard = CreateCard(currentCollection[i], deckBuilding);
                 shopCard.transform.SetParent(collectionPanel.transform);
             }
         }
@@ -233,12 +238,16 @@ public class CollectionManager : MonoBehaviour
         collectionPanel.GetComponent<PanelResizer>().Resize();
     }
 
-    public GameObject CreateCard(Card card)
+    public GameObject CreateCard(Card card, bool deckBuilding)
     {
         if (collectionCardTemplate == null)
             return null;
 
-        GameObject newCard = Instantiate(collectionCardTemplate);
+        GameObject newCard;
+        if (deckBuilding)
+            newCard = Instantiate(deckBuildingCardTemplate);
+        else
+            newCard = Instantiate(collectionCardTemplate);
 
         newCard.GetComponent<CardDisplay>().Initialise(card);
 
@@ -249,7 +258,13 @@ public class CollectionManager : MonoBehaviour
     {
         alphaBetically = !alphaBetically;
 
-        LoadCards();
+        LoadCards(creatingDeck);
+    }
+
+    public void OpenCardWindow(Card card)
+    {
+        cardWindow.GetComponent<CardWindow>().LoadWindow(card);
+        cardWindow.SetActive(true);
     }
 
     public float Map(float x, float in_min, float in_max, float out_min, float out_max, bool clamp = false)

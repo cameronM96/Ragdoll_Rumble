@@ -615,7 +615,6 @@ GameObject:
   - component: {fileID: 4337522134655225355}
   - component: {fileID: 4343228010699965554}
   - component: {fileID: 8628472788985255603}
-  - component: {fileID: 7973741169854156010}
   m_Layer: 5
   m_Name: CollectionCardTemplate
   m_TagString: Untagged
@@ -743,22 +742,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7973741169854156010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966529825220809054}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3cafd0ca08ce44a9e5280534cd8b45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  costValues: {fileID: 0}
-  coinValue: {fileID: 0}
-  gemValue: {fileID: 0}
-  card: {fileID: 0}
 --- !u!1 &4057018640990645317
 GameObject:
   m_ObjectHideFlags: 0
@@ -845,6 +828,7 @@ GameObject:
   - component: {fileID: 2549955783512828649}
   - component: {fileID: 3271425166471780039}
   - component: {fileID: 1979421460206954166}
+  - component: {fileID: 4407863347564567801}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -951,8 +935,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7973741169854156010}
-        m_MethodName: CardPicked
+      - m_Target: {fileID: 4407863347564567801}
+        m_MethodName: OpenCard
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -964,6 +948,19 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &4407863347564567801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453011699789200931}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28acb5eb11f8cc140ab0ed175136bd69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectionManager: {fileID: 0}
 --- !u!1 &4535134145172494743
 GameObject:
   m_ObjectHideFlags: 0
