@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
     }
     public int Gems
     {
-        get { return Gems; }
+        get { return gems; }
     }
     public Dictionary<int, int> MyCards
     {
@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
     }
     public Dictionary<string, int[]> MyDecks
     {
-        get { return MyDecks; }
+        get { return myDecks; }
     }
     public Dictionary<int, int> MyUnopenedPacks
     {
@@ -118,26 +118,31 @@ public class Player : MonoBehaviour
     {
         PlayerProfile data = SaveSystem.LoadPlayer();
 
-        playerName = data.playerName;
-        coins = data.coins;
-        gems = data.gems;
+        if (data != null)
+        {
+            playerName = data.playerName;
+            coins = data.coins;
+            gems = data.gems;
 
-        if (data.myCards == null)
-            myCards = new Dictionary<int, int>();
+            if (data.myCards == null)
+                myCards = new Dictionary<int, int>();
+            else
+                myCards = data.myCards;
+
+            if (data.myDecks == null)
+                myDecks = new Dictionary<string, int[]>();
+            else
+                myDecks = data.myDecks;
+
+            if (data.myUnopenedPacks == null)
+                myUnopenedPacks = new Dictionary<int, int>();
+            else
+                myUnopenedPacks = data.myUnopenedPacks;
+
+            campaignProgress = data.campaignProgress;
+        }
         else
-            myCards = data.myCards;
-
-        if (data.myDecks == null)
-            myDecks = new Dictionary<string, int[]>();
-        else
-            myDecks = data.myDecks;
-
-        if (data.myUnopenedPacks == null)
-            myUnopenedPacks = new Dictionary<int, int>();
-        else
-            myUnopenedPacks = data.myUnopenedPacks;
-
-        campaignProgress = data.campaignProgress;
+            NewProfile("New Player");
     }
 
     public void AddCardToLibrary (Card card)
@@ -215,6 +220,7 @@ public class Player : MonoBehaviour
 
         myCards = new Dictionary<int, int>();
         myDecks = new Dictionary<string, int[]>();
+        myUnopenedPacks = new Dictionary<int, int>();
 
         int[] idArray = new int[starterDeck.Count];
         for (int i = 0; i < starterDeck.Count; i++)
@@ -222,7 +228,7 @@ public class Player : MonoBehaviour
             // Populate myCardLibrary
             if (myCards.ContainsKey(starterDeck[i].iD))
             {
-                myCards[starterDeck[i].iD] += 1;
+                ++myCards[starterDeck[i].iD];
             }
             else
                 myCards.Add(starterDeck[i].iD, 1);

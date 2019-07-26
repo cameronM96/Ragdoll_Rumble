@@ -31,7 +31,7 @@ public class CollectionManager : MonoBehaviour
     public string currentDeckName;
     public Card[] currentDeck;
 
-    private bool creatingDeck;
+    [HideInInspector] public bool creatingDeck;
 
     private void Start()
     {
@@ -86,6 +86,13 @@ public class CollectionManager : MonoBehaviour
         {
             Debug.LogError("Unknown Deck! " + deckName + " could not be found in the deck list");
             return false;
+        }
+
+        foreach(Card deckCard in currentDeck)
+        {
+            GameObject newDeckCard = Instantiate(deckBuildingCardTemplate, deckPanel.transform);
+            newDeckCard.GetComponent<CardDisplay>().Initialise(deckCard);
+            newDeckCard.GetComponent<DeckCard_Draggable>().returnParent = deckPanel.transform;
         }
 
         return true;
@@ -250,6 +257,12 @@ public class CollectionManager : MonoBehaviour
             newCard = Instantiate(collectionCardTemplate);
 
         newCard.GetComponent<CardDisplay>().Initialise(card);
+
+        int cardCount = 0;
+        if (player.MyCards.ContainsKey(card.iD))
+            cardCount = player.MyCards[card.iD];
+
+        newCard.GetComponent<Collection_Card>().UpdateCardCount(cardCount);
 
         return newCard;
     }

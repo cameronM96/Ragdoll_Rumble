@@ -29,11 +29,17 @@ public class CardCollection : MonoBehaviour
     {
         foreach (Card ca in cardLibrary.cardLibrary)
         {
-            if (!allCardsDictionary.ContainsKey(ca.name))
+            if (!allCardsDictionary.ContainsKey(ca.cardName))
             {
-                allCardsDictionary.Add(ca.name, ca);
+                allCardsDictionary.Add(ca.cardName, ca);
+            }
+
+            if (!allCardIDDictionary.ContainsKey(ca.iD))
+            {
+                allCardIDDictionary.Add(ca.iD, ca);
             }
         }
+
         LoadQuantityOfCardsFromPlayerPrefs();
     }
 
