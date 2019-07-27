@@ -52,10 +52,16 @@ public class Collection_Card : MonoBehaviour
         {
             if (collectionManager.creatingDeck)
             {
-                UpdateCardCount(--currentCardCount);
-                GameObject deckCard = Instantiate(collectionManager.deckBuildingCardTemplate);
-                deckCard.GetComponent<CardDisplay>().Initialise(GetComponent<CardDisplay>().card);
-                deckCard.GetComponent<DeckCard_Draggable>().collectionCard = this;
+                if (collectionManager.deckPanel.transform.childCount < collectionManager.requiredDeckSize)
+                {
+                    collectionManager.deckSaved = false;
+                    UpdateCardCount(--currentCardCount);
+                    GameObject deckCard = Instantiate(collectionManager.deckBuildingCardTemplate, collectionManager.deckPanel.transform);
+                    deckCard.GetComponent<CardDisplay>().Initialise(GetComponent<CardDisplay>().card);
+                    deckCard.GetComponent<DeckCard_Draggable>().Initialise(this, collectionManager.deckPanel.transform, this.transform.position);
+                }
+                else
+                    Debug.Log("Deck is full!");
             }
             else
                 collectionManager.OpenCardWindow(transform.GetComponentInParent<CardDisplay>().card);

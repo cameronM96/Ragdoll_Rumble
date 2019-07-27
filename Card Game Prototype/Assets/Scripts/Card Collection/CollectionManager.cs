@@ -23,6 +23,7 @@ public class CollectionManager : MonoBehaviour
     public GameObject deckCreation;
     public GameObject deckPanel;
     public GameObject deckButtonPrefab;
+    [HideInInspector] public bool deckSaved = true;
 
     public List<Card> currentCollection;
 
@@ -40,6 +41,7 @@ public class CollectionManager : MonoBehaviour
         creatingDeck = true;
         ToggleDeckCreation();
         LoadCards(creatingDeck);
+        LoadDeckButtons();
     }
 
     public void ToggleDeckCreation()
@@ -50,13 +52,45 @@ public class CollectionManager : MonoBehaviour
         deckCreation.SetActive(creatingDeck);
     }
 
-    public void CreateDeck()
+    public void LoadDeckButtons()
     {
+        // Destroy old buttons
+        foreach(Transform child in deckButtons.transform)
+        {
+            Destroy(child.gameObject);
+        }
 
+        // Create buttons based on decks in player class.
+        foreach (KeyValuePair<string, int[]> deck in player.MyDecks)
+        {
+            GameObject newButton = Instantiate(deckButtonPrefab, deckButtons.transform);
+            newButton.GetComponent<DeckButton>().Initialise(this, deck.Key);
+        }
     }
 
-    public bool LoadDeck(string deckName, DeckButton deckButton)
+    public void CreateDeck(Text textEl)
     {
+        CreateDeck(textEl.text);
+    }
+
+    public void CreateDeck(string deckName)
+    {
+        // Create a new deck and add it to player.Mydecks
+        currentDeckName = deckName;
+        SaveDeck();
+        bool loaded = LoadDeck(deckName);
+        if (loaded)
+        {
+            ToggleDeckCreation();
+            Debug.Log("Creation of '" + deckName + "' was successful.");
+        }
+        else
+            Debug.Log("Creation of '" + deckName + "' was unsuccessful.");
+    }
+
+    public bool LoadDeck(string deckName)
+    {
+        // Loads all the cards from the selected deck into the deck window
         currentDeckName = deckName;
 
         if (player.MyDecks.ContainsKey(deckName))
@@ -98,37 +132,48 @@ public class CollectionManager : MonoBehaviour
         return true;
     }
 
-    public void SaveDeck(string deckName)
+    public void SaveDeck()
     {
-        // Compile Deck
-        List<int> deckInts = new List<int>();
-        foreach (Transform child in deckPanel.transform)
+        if (deckPanel.transform.childCount <= requiredDeckSize)
         {
-            if (child.GetComponent<CardDisplay>()?.card != null)
+            // Compile Deck
+            List<int> deckInts = new List<int>();
+            foreach (Transform child in deckPanel.transform)
             {
-                if (child.GetComponent<CardDisplay>().card.iD != 0)
-                    deckInts.Add(child.GetComponent<CardDisplay>().card.iD);
+                if (child.GetComponent<CardDisplay>()?.card != null)
+                {
+                    if (child.GetComponent<CardDisplay>().card.iD != 0)
+                        deckInts.Add(child.GetComponent<CardDisplay>().card.iD);
+                }
             }
-        }
 
-        // Save deck
-        if (player.MyDecks.ContainsKey(deckName))
-            player.UpdateDeck(deckName, deckInts.ToArray());
+            // Save deck
+            if (player.MyDecks.ContainsKey(currentDeckName))
+                player.UpdateDeck(currentDeckName, deckInts.ToArray());
+            else
+                player.AddDeck(currentDeckName, deckInts.ToArray());
+
+            deckSaved = true;
+        }
         else
-            player.AddDeck(deckName, deckInts.ToArray());
+            Debug.LogError("Deck is too big!");
     }
 
     public void ClearDeck()
     {
+        // Empties Deck (doesn't save it)
         foreach (Transform child in deckPanel.transform)
         {
             Destroy(child.gameObject);
         }
     }
 
-    public void DeleteDeck(string deckName)
+    public void DeleteDeck()
     {
-        player.RemoveDeck(deckName);
+        // Removes deck from player.Mydeck
+        player.RemoveDeck(currentDeckName);
+        LoadDeckButtons();
+        ToggleDeckCreation();
     }
 
     public void LoadCards(bool deckBuilding)
@@ -247,20 +292,28 @@ public class CollectionManager : MonoBehaviour
 
     public GameObject CreateCard(Card card, bool deckBuilding)
     {
+        // Creates the cards seen in the collection window
         if (collectionCardTemplate == null)
             return null;
 
         GameObject newCard;
-        if (deckBuilding)
-            newCard = Instantiate(deckBuildingCardTemplate);
-        else
-            newCard = Instantiate(collectionCardTemplate);
+        newCard = Instantiate(collectionCardTemplate);
 
         newCard.GetComponent<CardDisplay>().Initialise(card);
 
         int cardCount = 0;
         if (player.MyCards.ContainsKey(card.iD))
             cardCount = player.MyCards[card.iD];
+
+        if (deckBuilding)
+        {
+            // Reduce the number of cards available if the deck contains this card
+            foreach(int id in player.MyDecks[currentDeckName])
+            {
+                if (id == card.iD)
+                    --cardCount;
+            }
+        }
 
         newCard.GetComponent<Collection_Card>().UpdateCardCount(cardCount);
 
@@ -269,6 +322,7 @@ public class CollectionManager : MonoBehaviour
 
     public void ToggleAlphaBetically()
     {
+        // Sorts cards alphabetically
         alphaBetically = !alphaBetically;
 
         LoadCards(creatingDeck);
@@ -276,6 +330,7 @@ public class CollectionManager : MonoBehaviour
 
     public void OpenCardWindow(Card card)
     {
+        // Opens window that displays the cards much larger so they are easier to read
         cardWindow.GetComponent<CardWindow>().LoadWindow(card);
         cardWindow.SetActive(true);
     }

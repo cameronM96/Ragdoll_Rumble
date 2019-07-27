@@ -10,22 +10,20 @@ public class DeckButton : MonoBehaviour
 
     public string deckName;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Initialise(CollectionManager cM, string newName)
     {
-        collectionManager = transform.root.GetComponent<CollectionManager>();
-        deckNameText.text = deckName;
-    }
-
-    private void Update()
-    {
+        collectionManager = cM;
+        deckName = newName;
         deckNameText.text = deckName;
     }
 
     public void OpenDeck()
     {
-        bool loaded = collectionManager.LoadDeck(deckName, this);
+        bool loaded = collectionManager.LoadDeck(deckName);
         if (loaded)
+        {
             collectionManager.ToggleDeckCreation();
+            collectionManager.LoadCards(collectionManager.creatingDeck);
+        }
     }
 }
