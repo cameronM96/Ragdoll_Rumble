@@ -21,6 +21,8 @@ public class CardEditor : Editor
         if(GUILayout.Button("Update ID"))
         {
             card.iD = card.GetInstanceID();
+            EditorUtility.SetDirty(card);
+            AssetDatabase.SaveAssets();
         }
     }
 }

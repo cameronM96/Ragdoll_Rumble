@@ -23,6 +23,8 @@ public class PlayerEditor : Editor
         if (GUILayout.Button("New Profile"))
         {
             player.NewProfile(tempName);
+            EditorUtility.SetDirty(player);
+            AssetDatabase.SaveAssets();
         }
 
         base.OnInspectorGUI();
@@ -30,6 +32,8 @@ public class PlayerEditor : Editor
         if (GUILayout.Button("Update Name"))
         {
             player.playerName = tempName;
+            EditorUtility.SetDirty(player);
+            AssetDatabase.SaveAssets();
         }
 
         if (GUILayout.Button("Print Values"))
@@ -40,6 +44,8 @@ public class PlayerEditor : Editor
         if (GUILayout.Button("Load Profile"))
         {
             player.LoadGame();
+            EditorUtility.SetDirty(player);
+            AssetDatabase.SaveAssets();
         }
     }
 }

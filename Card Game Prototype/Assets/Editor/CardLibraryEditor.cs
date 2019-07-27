@@ -17,13 +17,18 @@ public class CardLibraryEditor : Editor
 
     public override void OnInspectorGUI()
     {
+        CardLibrary cardLibrary = target as CardLibrary;
 
         if (GUILayout.Button("Add Card"))
         {
             if(Selection.activeObject)
             {
                 if (Selection.activeObject is Card)
+                {
                     cardLibraryInstance.AddCardToLibrary((Card)Selection.activeObject);
+                    EditorUtility.SetDirty(cardLibrary);
+                    AssetDatabase.SaveAssets();
+                }
             }
         }
 
@@ -32,13 +37,19 @@ public class CardLibraryEditor : Editor
             if (Selection.activeObject)
             {
                 if (Selection.activeObject is Card)
+                {
                     cardLibraryInstance.RemoveCardFromLibrary((Card)Selection.activeObject);
+                    EditorUtility.SetDirty(cardLibrary);
+                    AssetDatabase.SaveAssets();
+                }
             }
         }
 
         if (GUILayout.Button("Clear Library"))
         {
             cardLibraryInstance.ClearLibrary();
+            EditorUtility.SetDirty(cardLibrary);
+            AssetDatabase.SaveAssets();
         }
 
         GUILayout.Space(10);
@@ -52,6 +63,8 @@ public class CardLibraryEditor : Editor
             if (cardLibraryInstance.storedPath != "")
             {
                 LoadLibraryFromFolder(cardLibraryInstance.newLibrary, cardLibraryInstance.storedPath);
+                EditorUtility.SetDirty(cardLibrary);
+                AssetDatabase.SaveAssets();
             }
             else
                 Debug.Log("Need to add a file path!");
