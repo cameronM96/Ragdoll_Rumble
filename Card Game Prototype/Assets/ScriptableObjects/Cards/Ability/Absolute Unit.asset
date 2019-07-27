@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Absolute Unit
   m_EditorClassIdentifier: 
-  iD: 18538
+  iD: 15772
   rarity: 1
   currentCardType: 3
   playableSlots: -1

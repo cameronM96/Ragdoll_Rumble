@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Raining Men!
   m_EditorClassIdentifier: 
-  iD: 17124
+  iD: 14102
   rarity: 1
   currentCardType: 5
   playableSlots: -1

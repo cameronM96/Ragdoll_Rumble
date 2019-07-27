@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Hand Grenade
   m_EditorClassIdentifier: 
-  iD: 15704
+  iD: 15162
   rarity: 3
   currentCardType: 1
   playableSlots: -1

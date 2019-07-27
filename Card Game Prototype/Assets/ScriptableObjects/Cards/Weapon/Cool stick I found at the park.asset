@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Cool stick I found at the park
   m_EditorClassIdentifier: 
-  iD: 0
+  iD: 16792
   rarity: 1
   currentCardType: 1
   playableSlots: 13

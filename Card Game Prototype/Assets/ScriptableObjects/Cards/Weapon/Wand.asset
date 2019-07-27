@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Wand
   m_EditorClassIdentifier: 
-  iD: 19470
+  iD: 16790
   rarity: 2
   currentCardType: 1
   playableSlots: 5
