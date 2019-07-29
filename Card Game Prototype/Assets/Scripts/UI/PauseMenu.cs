@@ -7,21 +7,16 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameManager gameManager;
-    public Button resumeButton;
-    public Button quitButton;
+    float previousTimeScale;
 
     //private float previousTimeScale = 1;
 
     private void Start()
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        resumeButton = transform.GetChild(1).GetComponent<Button>();
-        quitButton = transform.GetChild(0).GetComponent<Button>();
-        resumeButton.onClick.AddListener(ResumeButton);
-        quitButton.onClick.AddListener(QuitButton);
     }
 
-    // Maybe put pause function in later
+    //Maybe put pause function in later
     //private void OnEnable()
     //{
     //    if (gameManager != null)
@@ -41,14 +36,21 @@ public class PauseMenu : MonoBehaviour
     //    Time.timeScale = previousTimeScale;
     //}
 
-    void QuitButton()
+    public void QuitButton()
     {
         // Go back to main menu
+        Time.timeScale = 1f;
         SceneManager.LoadScene(0);
     }
 
-    void ResumeButton ()
+    public void ResumeButton ()
     {
         this.gameObject.SetActive(false);
+    }
+
+    public void RestartLevel ()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

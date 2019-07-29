@@ -44,4 +44,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CampaignLevels/SpaceCampaign.unity
     guid: 3208829b8d62caa489b4a547e6c14db6
+  - enabled: 1
+    path: Assets/Scenes/GameLobby.unity
+    guid: ee24a6b574042d1489c7a9e6db6778bb
   m_configObjects: {}

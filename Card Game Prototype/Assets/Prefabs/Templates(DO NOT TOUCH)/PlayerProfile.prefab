@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1842419616948038229}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 704.8, y: 388.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -44,22 +44,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerName: Cameron Mullins
-  coins: 100000
-  gems: 100000
-  campaignProgress: 0
   starterDeck:
-  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
-  - {fileID: 11400000, guid: 2803b736d515fad42a1b499c6e39edf9, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: f189257046fe6ee4f97cde5c75856055, type: 2}
-  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
-  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
-  - {fileID: 11400000, guid: 2803b736d515fad42a1b499c6e39edf9, type: 2}
-  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
-  - {fileID: 11400000, guid: f189257046fe6ee4f97cde5c75856055, type: 2}
-  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
-  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
-  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
-  - {fileID: 11400000, guid: 2803b736d515fad42a1b499c6e39edf9, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: 2b57964905887f049ab57567c7f3c071, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: 321318052ee03a046898d835e7354642, type: 2}
+  - {fileID: 11400000, guid: babe08925040f384f8cbda542f7ada60, type: 2}
+  - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
+  - {fileID: 11400000, guid: bd898b796579c844eacdd65fe039eb86, type: 2}
+  - {fileID: 11400000, guid: 0e4a624f767029141b335bcd138deacc, type: 2}
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
+  - {fileID: 11400000, guid: d8037658a252ad24bb124cc086395385, type: 2}
+  - {fileID: 11400000, guid: e1725b6c685971743b62280c9426745f, type: 2}
+  - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
+  - {fileID: 11400000, guid: f3918799e0c19be4cabe91e3f693c324, type: 2}
+  - {fileID: 11400000, guid: 62eb3ec4df2847a4ea1bdadeaba0354c, type: 2}
