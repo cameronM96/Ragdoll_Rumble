@@ -248,11 +248,6 @@ public class Player : MonoBehaviour
         Debug.Log("Name: " + playerName);
         Debug.Log("Coins: " + coins);
         Debug.Log("Gems: " + gems);
-        foreach (KeyValuePair<int, int> cardInfo in myCards)
-        {
-            //Now you can access the key and value both separately from this attachStat as:
-            Debug.Log(cardInfo.Value + "x Card ID: " + cardInfo.Key);
-        }
 
         foreach (KeyValuePair<string, int[]> deckInfo in myDecks)
         {
@@ -264,6 +259,12 @@ public class Player : MonoBehaviour
         {
             //Now you can access the key and value both separately from this attachStat as:
             Debug.Log(packInfo.Value + "x Pack ID: " + packInfo.Key);
+        }
+
+        foreach (KeyValuePair<int, int> cardInfo in myCards)
+        {
+            //Now you can access the key and value both separately from this attachStat as:
+            Debug.Log(cardInfo.Value + "x Card ID: " + cardInfo.Key);
         }
     }
 }

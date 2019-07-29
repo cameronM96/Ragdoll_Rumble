@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f72f4f796e81f6840939eae60a8e29d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonText: {fileID: 9100452114072562290}
   myDeckName: 
   myLobbyManager: {fileID: 0}
 --- !u!1001 &4832803186187491944
@@ -156,6 +157,11 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4421088010937544730, guid: f2b78b5e75e9d9147b6f61de528d5503,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3403749898160771106, guid: f2b78b5e75e9d9147b6f61de528d5503, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f2b78b5e75e9d9147b6f61de528d5503, type: 3}
@@ -165,3 +171,15 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4832803186187491944}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9100452114072562290 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4421088010937544730, guid: f2b78b5e75e9d9147b6f61de528d5503,
+    type: 3}
+  m_PrefabInstance: {fileID: 4832803186187491944}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

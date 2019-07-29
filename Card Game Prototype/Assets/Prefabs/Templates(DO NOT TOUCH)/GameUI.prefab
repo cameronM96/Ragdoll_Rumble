@@ -3514,22 +3514,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e4a624f767029141b335bcd138deacc, type: 2}
   - {fileID: 11400000, guid: bd898b796579c844eacdd65fe039eb86, type: 2}
   - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
-  deckOfCards:
-  - {fileID: 1156897855, guid: bdd57069414afc4449937d9d58514d2c, type: 3}
-  - {fileID: 2374550111916289344, guid: c7bb251478525b04bb0cf9c3b55fa554, type: 3}
-  - {fileID: 4520190991391814990, guid: b5e5edd5a99892145948e0fee757c445, type: 3}
-  - {fileID: 2371701012569125934, guid: e73abb321ead33c499b05c98fec229f3, type: 3}
-  - {fileID: 2454989926517808423, guid: e90cc5cfcc8534042aef60fd80817497, type: 3}
-  - {fileID: 2371701012569125934, guid: e73abb321ead33c499b05c98fec229f3, type: 3}
-  - {fileID: 2454989926517808423, guid: e90cc5cfcc8534042aef60fd80817497, type: 3}
-  - {fileID: 2374550111916289344, guid: c7bb251478525b04bb0cf9c3b55fa554, type: 3}
-  - {fileID: 4520190991391814990, guid: b5e5edd5a99892145948e0fee757c445, type: 3}
-  - {fileID: 6706404585875834380, guid: cf2ce04c4b9d95242a215b6da28a3e06, type: 3}
-  - {fileID: 2374550111916289344, guid: c7bb251478525b04bb0cf9c3b55fa554, type: 3}
-  - {fileID: 2371701012569125934, guid: e73abb321ead33c499b05c98fec229f3, type: 3}
-  - {fileID: 1156897855, guid: bdd57069414afc4449937d9d58514d2c, type: 3}
-  - {fileID: 2374550111916289344, guid: c7bb251478525b04bb0cf9c3b55fa554, type: 3}
-  - {fileID: 2454989926517808423, guid: e90cc5cfcc8534042aef60fd80817497, type: 3}
+  deckOfCards: []
 --- !u!1 &8348631375378492006
 GameObject:
   m_ObjectHideFlags: 0

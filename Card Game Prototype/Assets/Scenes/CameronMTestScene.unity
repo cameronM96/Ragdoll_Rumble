@@ -11193,6 +11193,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8120180268883746563, guid: 1864ef9c1666a94419e00d2c5ff1bd7d,
+        type: 3}
+      propertyPath: m_Name
+      value: EventSystem
+      objectReference: {fileID: 0}
     - target: {fileID: 8120180268883746564, guid: 1864ef9c1666a94419e00d2c5ff1bd7d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11248,11 +11253,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8120180268883746563, guid: 1864ef9c1666a94419e00d2c5ff1bd7d,
-        type: 3}
-      propertyPath: m_Name
-      value: EventSystem
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1864ef9c1666a94419e00d2c5ff1bd7d, type: 3}
 --- !u!1001 &9044691413299521337
@@ -11271,6 +11271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: cardsEachRound.Array.data[0]
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044691412266487054, guid: 820d63b10983fdf4d9140a7b289c3d76,
+        type: 3}
+      propertyPath: gameStartDelay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9044691412266487041, guid: 820d63b10983fdf4d9140a7b289c3d76,
         type: 3}

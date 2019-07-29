@@ -14,11 +14,17 @@ public class Deck : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
+        StartCoroutine(EndOfFrame());
+    }
 
+    public void Initialise()
+    {
+        Debug.Log("Initialising Deck");
         deckOfCards = new List<GameObject>();
 
         if (player.MyDecks.ContainsKey(LevelHolder.SelectedDeckName))
         {
+            Debug.Log("Compiling Deck");
             cards = new List<Card>();
             // Create all the cards
             int[] cardIDs = player.MyDecks[LevelHolder.SelectedDeckName];
@@ -33,17 +39,25 @@ public class Deck : MonoBehaviour
                     Debug.LogError("Unidentified card!");
             }
         }
-        Debug.LogError("Unknown Deck! " + LevelHolder.SelectedDeckName + " could not be found.");
+        else
+            Debug.LogError("Unknown Deck! " + LevelHolder.SelectedDeckName + " could not be found.");
 
         foreach (Card card in cards)
         {
             if (card != null)
             {
+                Debug.Log("Creating Card");
                 GameObject newCard = card.CreateCard();
                 deckOfCards.Add(newCard);
                 newCard.transform.position = this.transform.position;
                 newCard.transform.SetParent(this.transform);
             }
         }
+    }
+
+    IEnumerator EndOfFrame()
+    {
+        yield return new WaitForEndOfFrame();
+        Initialise();
     }
 }

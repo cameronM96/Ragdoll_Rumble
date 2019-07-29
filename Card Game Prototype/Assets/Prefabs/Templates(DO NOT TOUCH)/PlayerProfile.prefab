@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 087baf20a3d30fc4bbfb4a284c7a147c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerName: Cameron Mullins
+  playerName: Player 1
   starterDeck:
   - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
   - {fileID: 11400000, guid: 2b57964905887f049ab57567c7f3c071, type: 2}

@@ -20,17 +20,20 @@ public class LobbyManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
-        Debug.Log("Check 1");
+        //Debug.Log("Check 1");
         LoadDeckButtons();
-        Debug.Log("Check 2");
-        Debug.Log(LevelHolder.SelectedDeckName);
-        if (LevelHolder.SelectedDeckName != "" || LevelHolder.SelectedDeckName != null)
+        //Debug.Log("Check 2");
+        //Debug.Log(LevelHolder.SelectedDeckName);
+        if (!(LevelHolder.SelectedDeckName == "" || LevelHolder.SelectedDeckName == null))
         {
             foreach (Transform child in deckButtonsPanel.transform)
             {
                 LobbyDeckButton deckButton = child.gameObject.GetComponent<LobbyDeckButton>();
                 if (deckButton.myDeckName == LevelHolder.SelectedDeckName)
+                {
+                    child.gameObject.GetComponent<Button>().Select();
                     deckButton.SelectDeck();
+                }
             }
         }
     }

@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LobbyDeckButton : MonoBehaviour
 {
+    public Text buttonText;
     public string myDeckName;
     public LobbyManager myLobbyManager;
 
@@ -11,6 +13,7 @@ public class LobbyDeckButton : MonoBehaviour
     {
         myDeckName = deckName;
         myLobbyManager = lobbyManager;
+        buttonText.text = myDeckName;
     }
 
     public void SelectDeck()

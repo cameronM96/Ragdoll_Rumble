@@ -73,15 +73,15 @@ public class Card : ScriptableObject
                         //Organise the items on this slot if applicable
                         if (/*org != (org & Organisation.None) ||*/ (pos || rot || size))
                         {
-                            Debug.Log("Organisation Acticated!");
+                            //Debug.Log("Organisation Acticated!");
                             OrganiseSlot organiseItemsObject = slotSpots[i].GetComponent<OrganiseSlot>();
-                            Debug.Log(organiseItemsObject);
+                            //Debug.Log(organiseItemsObject);
                             if (organiseItemsObject != null)
                             {
                                 // Set position and parent
                                 if (/*org == (org & Organisation.Pos) ||*/ pos)
                                 {
-                                    Debug.Log("Organisation: Position");
+                                    //Debug.Log("Organisation: Position");
                                     GameObject newParent = organiseItemsObject.OrganisePos(newItem);
                                     newItem.transform.position = newParent.transform.position;
                                     newItem.transform.SetParent(newParent.transform);
@@ -90,7 +90,7 @@ public class Card : ScriptableObject
                                 // Set Rotation
                                 if (/*org == (org & Organisation.Rot) ||*/ rot)
                                 {
-                                    Debug.Log("Organisation: Rotation");
+                                    //Debug.Log("Organisation: Rotation");
                                     Vector3 newRot = organiseItemsObject.OrganiseRot();
                                     newItem.transform.Rotate(0, newRot.y, 0);
                                     newItem.transform.Rotate(newRot.x, 0, 0);
@@ -99,7 +99,7 @@ public class Card : ScriptableObject
                                 // Set Scale
                                 if (/*org == (org & Organisation.Size) ||*/ size)
                                 {
-                                    Debug.Log("Organisation: Scale");
+                                    //Debug.Log("Organisation: Scale");
                                     newItem.transform.localScale *= organiseItemsObject.OrganiseSize();
                                 }
                             }
