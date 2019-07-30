@@ -11,8 +11,10 @@ public class UIManager : MonoBehaviour
     public GameObject combatPhaseUI;
     public GameObject endGameUI;
     private Button quitGameButton;
+
     public GameObject pauseMenu;
     public Button pauseMenuButton;
+
     public GameObject cardSlot;
     public GameObject deck;
     public int handSize = 5;
@@ -24,6 +26,10 @@ public class UIManager : MonoBehaviour
     public Color startColor;
     public Color middleColor;
     public Color endColor;
+
+    // Round Results
+    public GameObject resultsWindow;
+    public Text resultsWindowText;
 
     public GameManager gameManager;
 
@@ -70,6 +76,7 @@ public class UIManager : MonoBehaviour
         GameManager.EnterCardPhase += InitialiseCardPhaseUI;
         GameManager.EnterCombatPhase += InitialiseCombatPhaseUI;
         GameManager.EndGame += EndGame;
+        GameManager.DisplayRoundResults += RoundResults;
     }
 
     private void OnDisable()
@@ -77,6 +84,7 @@ public class UIManager : MonoBehaviour
         GameManager.EnterCardPhase -= InitialiseCardPhaseUI;
         GameManager.EnterCombatPhase -= InitialiseCombatPhaseUI;
         GameManager.EndGame -= EndGame;
+        GameManager.DisplayRoundResults -= RoundResults;
     }
 
     // Update is called once per frame
@@ -163,8 +171,21 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(true);
     }
 
+    public void RoundResults()
+    {
+        resultsWindow.SetActive(true);
+
+        resultsWindowText.text = "Player " + gameManager.roundWinner + " has won\nround " + gameManager.currentRound + "!";
+
+        if (gameManager.roundWinner == 1)
+            resultsWindowText.color = Color.blue;
+        else if (gameManager.roundWinner == 2)
+            resultsWindowText.color = Color.red;
+    }
+
     public void InitialiseCardPhaseUI()
     {
+        resultsWindow.SetActive(false);
         //Debug.Log("Initialising Card Phase UI");
         if (gameManager.currentRound - 1 >= gameManager.cardsEachRound.Length)
             maxCardsPlayed += 1;

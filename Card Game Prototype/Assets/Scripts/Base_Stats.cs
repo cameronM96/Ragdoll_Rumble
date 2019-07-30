@@ -61,6 +61,11 @@ public class Base_Stats : MonoBehaviour
         GameManager.EndGame -= GameIsOver;
     }
 
+    public int GetHealth()
+    {
+        return currentHP;
+    }
+
     public void InitialiseCombatPhase()
     {
         //Debug.Log("Initialising Player for Combat Phase");

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public delegate void RoundResults();
+    public static event RoundResults DisplayRoundResults;
+
     public delegate void CardPhase();
     public static event CardPhase EnterCardPhase;
 
@@ -40,6 +43,11 @@ public class GameManager : MonoBehaviour
     public int numbOfPlayers = 0;
     private int readyPlayers = 0;
     private bool gameOver = false;
+
+    public int roundWinner;
+
+    // Round Transition Delay
+    public float roundTransitionDelay = 3f;
 
     // Reward system
     public int baseReward;
@@ -99,17 +107,109 @@ public class GameManager : MonoBehaviour
 
                 if (combatPhaseTimer <= 0)
                 {
-                    // Check if event has subscribers
-                    if (EnterCardPhase != null)
+                    // get health of AI
+                    GameObject ai = GameObject.FindGameObjectWithTag("Team 2");
+                    Base_Stats aiStats;
+                    int aiHealth = -1, aiHPPercent = -1;
+                    if (ai != null)
                     {
-                        // Go to Card phase!
-                        InitialiseCardPhase();
+                        aiStats = ai.GetComponent<Base_Stats>();
+                        if (aiStats != null)
+                        {
+                            aiHealth = aiStats.GetHealth();
+                            aiHPPercent = aiHealth / aiStats.maxHP;
+                        }
                     }
-                    else
-                        Debug.Log("ERROR: Card Phase has no subscribers!");
+
+                    // Get health of Player
+                    GameObject person = GameObject.FindGameObjectWithTag("Team 1");
+                    Base_Stats personStats;
+                    int personHealth = -1, personHPPercent = -1;
+                    if (person != null)
+                    {
+                        personStats = ai.GetComponent<Base_Stats>();
+                        if (personStats != null)
+                        {
+                            personHealth = personStats.GetHealth();
+                            personHPPercent = personHealth / personStats.maxHP;
+                        }
+                    }
+
+                    // Check who wins
+                    if (personHPPercent != -1 && aiHPPercent != -1 && aiHealth != -1 && personHealth != -1)
+                    {
+                        if (personHPPercent == aiHPPercent)
+                        {
+                            // HP percent is the same check total hp
+                            if (personHealth == aiHealth)
+                            {
+                                // It's a tie
+                                roundWinner = -1;
+                            }
+                            else if (personHealth > aiHealth)
+                            {
+                                // player wins
+                                roundWinner = 1;
+                            }
+                            else
+                            {
+                                // AI wins
+                                roundWinner = 2;
+                            }
+                        }
+                        else if (personHPPercent > aiHPPercent)
+                        {
+                            // Player wins
+                            roundWinner = 1;
+                        }
+                        else
+                        {
+                            // AI wins
+                            roundWinner = 2;
+                        }
+                    }
+
+                    // End round
+                    ShowRoundResults();
                 }
             }
         }
+    }
+
+    public void ShowRoundResults ()
+    {
+        DisplayRoundResults?.Invoke();
+
+        // Find score that will win game
+        int instaWinScore = numberOfRounds / 2;
+        if (numberOfRounds % 2 != 0)
+            ++instaWinScore;
+
+        //Debug.Log("Victory requires " + instaWinScore + " wins");
+
+        // Find which team has the highest score
+        int highestScore = -1;
+        winningTeam = -1;
+        for (int i = 0; i < numberOfTeams; i++)
+        {
+            if (teamScore[i] > highestScore)
+            {
+                highestScore = teamScore[i];
+                winningTeam = i + 1;
+            }
+        }
+
+        // Check if game should end
+        if (highestScore >= instaWinScore)
+            EndTheGame();
+        else
+            StartCoroutine(RoundResultsDelay(roundTransitionDelay));
+    }
+
+    IEnumerator RoundResultsDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        InitialiseCardPhase();
     }
 
     public void InitialiseCardPhase ()
@@ -145,11 +245,15 @@ public class GameManager : MonoBehaviour
             EnterCardPhase?.Invoke();
         }
         else
+        {
+            // This should never occur, it's just for safety
             EndTheGame();
+        }
     }
 
     public void InitialiseCombatPhase ()
     {
+        roundWinner = -1;
         // Enter Combat Phase
         //Debug.Log("Beginning Combat Phase!");
 
@@ -191,14 +295,15 @@ public class GameManager : MonoBehaviour
                 if (!defeatedTeams.Contains(i + 1))
                 {
                     ++teamScore[i];
+                    roundWinner = i + 1;
                     Debug.Log("Team " + (i + 1) + " has won and now has won " + teamScore[i] + " round(s)!");
-                    InitialiseCardPhase();
+                    ShowRoundResults();
                     break;
                 }
             }
         }
         else if (defeatedTeams.Count >= numberOfTeams - 1)
-            Debug.Log("Some how everyone is dead but no one won...");
+            Debug.Log("Some how everyone is dead but no one won... its a tie?");
     }
 
     public void EndTheGame ()
@@ -208,10 +313,6 @@ public class GameManager : MonoBehaviour
         EndGame?.Invoke();
     }
 
-    //baseReward;
-    //gameWinReward;
-    //roundWinReward;
-    //dominationReward;
     public (string scoreBoard, int score) CalcScore(string teamName)
     {
         string scoreBoard = "Score:";
