@@ -48,7 +48,7 @@ MonoBehaviour:
   cardPhaseTimer: 0
   combatPhaseTimer: 0
   numberOfRounds: 5
-  cardsEachRound: 0f0000000200000001000000
+  cardsEachRound: 03000000020000000100000001000000010000000100000001000000010000000100000001000000
   currentRound: 0
   numberOfTeams: 2
   teamScore: 0000000000000000
@@ -57,3 +57,8 @@ MonoBehaviour:
   defeatedTeams: 
   gameStartDelay: 1
   numbOfPlayers: 0
+  baseReward: 100
+  gameWinReward: 100
+  roundWinReward: 10
+  dominationReward: 100
+  campaignReward: 300

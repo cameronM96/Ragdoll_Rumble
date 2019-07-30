@@ -13,6 +13,11 @@ public class LoadLobby : MonoBehaviour
     public string nextLevelName;
     public Vector2 sceneNumberRange;
 
+    public bool isCampaign = true;
+    public int campaignNumber = -1;
+    public int difficulty = 1;
+    public int rounds = 3;
+
     public void LoadScene()
     {
         if (randomScene)
@@ -20,14 +25,18 @@ public class LoadLobby : MonoBehaviour
 
         if (usingSceneName)
         {
-            LevelHolder.NextLevelName = nextLevelName;
-            LevelHolder.NextLevelNumb = -1;
+            GameInfo.NextLevelName = nextLevelName;
+            GameInfo.NextLevelNumb = -1;
         }
         else
         {
-            LevelHolder.NextLevelNumb = nextLevelNumber;
-            LevelHolder.NextLevelName = null;
+            GameInfo.NextLevelNumb = nextLevelNumber;
+            GameInfo.NextLevelName = null;
         }
+
+        GameInfo.CampaignNumber = campaignNumber;
+        GameInfo.Difficulty = difficulty;
+        GameInfo.Rounds = rounds;
 
         SceneManager.LoadScene(lobbySceneNumber);
     }

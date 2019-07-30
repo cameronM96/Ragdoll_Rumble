@@ -37,8 +37,11 @@ public class AICardSelector : MonoBehaviour
     public void InitialiseCardPhaseUI()
     {
         //Debug.Log("Initialising Card Phase UI");
+        if (gameManager.currentRound - 1 >= gameManager.cardsEachRound.Length)
+            maxCardsPlayed += 1;
+        else
+            maxCardsThisRound += gameManager.cardsEachRound[gameManager.currentRound - 1];
 
-        maxCardsThisRound += gameManager.cardsEachRound[gameManager.currentRound - 1];
         if (maxCardsPlayed != 0)
         {
             if (maxCardsThisRound > maxCardsPlayed)

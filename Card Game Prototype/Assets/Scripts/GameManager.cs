@@ -41,6 +41,13 @@ public class GameManager : MonoBehaviour
     private int readyPlayers = 0;
     private bool gameOver = false;
 
+    // Reward system
+    public int baseReward;
+    public int gameWinReward;
+    public int roundWinReward;
+    public int dominationReward;
+    public int campaignReward;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -199,6 +206,45 @@ public class GameManager : MonoBehaviour
         Debug.Log("Team " + (winningTeam) + " is victorious!");
         gameOver = true;
         EndGame?.Invoke();
+    }
+
+    //baseReward;
+    //gameWinReward;
+    //roundWinReward;
+    //dominationReward;
+    public (string scoreBoard, int score) CalcScore(string teamName)
+    {
+        string scoreBoard = "Score:";
+        int score = 0;
+        // Base Reward
+        scoreBoard += "\nCompletion:        " + baseReward;
+        score += baseReward;
+
+        // Get team number
+        int.TryParse((teamName).Replace("Team ", ""), out int teamNumb);
+
+        // Round bonus
+        if (teamScore[teamNumb - 1] > 0)
+        {
+            scoreBoard += "\nRound Bonus:        " + (roundWinReward * teamScore[teamNumb - 1]);
+            score += (roundWinReward * teamScore[teamNumb - 1]);
+        }
+
+        // Victory Bonus
+        if (winningTeam == teamNumb)
+        {
+            scoreBoard += "\nVictory Bonus:        " + gameWinReward;
+            score += gameWinReward;
+        }
+
+        // Domination Bonus
+        if (teamScore[teamNumb - 1] == currentRound)
+        {
+            scoreBoard += "\nDomination Bonus:        " + dominationReward;
+            score += dominationReward;
+        }
+
+        return (scoreBoard,score);
     }
 
     // PlaceHolder until Multi-player is implemented

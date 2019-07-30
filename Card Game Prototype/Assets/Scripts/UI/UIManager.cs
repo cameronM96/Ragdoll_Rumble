@@ -35,12 +35,10 @@ public class UIManager : MonoBehaviour
     {
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
-        // General HUD
-        timeBars = new Image[2];
-        timeBars[0] = transform.GetChild(2).GetChild(0).GetComponent<Image>();
-        timeBars[1] = transform.GetChild(2).GetChild(1).GetComponent<Image>();
-        timerText = transform.GetChild(2).GetChild(2).GetComponent<Text>();
-        roundNumber = transform.GetChild(2).GetChild(3).GetComponent<Text>();
+        // End Game UI
+        endGameUI = transform.GetChild(4).gameObject;
+        endGameUI.SetActive(false);
+        quitGameButton = endGameUI.GetComponentInChildren<Button>();
 
         // Card Phase UI
         cardPhaseUI = transform.GetChild(0).gameObject;
@@ -52,14 +50,17 @@ public class UIManager : MonoBehaviour
         // Combat Phase UI
         combatPhaseUI = transform.GetChild(1).gameObject;
 
-        // End Game UI
-        endGameUI = transform.GetChild(3).gameObject;
-        endGameUI.SetActive(false);
-        quitGameButton = endGameUI.GetComponentInChildren<Button>();
         quitGameButton.onClick.AddListener(QuitGame);
 
+        // General HUD
+        timeBars = new Image[2];
+        timeBars[0] = transform.GetChild(2).GetChild(0).GetComponent<Image>();
+        timeBars[1] = transform.GetChild(2).GetChild(1).GetComponent<Image>();
+        timerText = transform.GetChild(2).GetChild(2).GetComponent<Text>();
+        roundNumber = transform.GetChild(2).GetChild(3).GetComponent<Text>();
+
         // Pause Menu
-        pauseMenu = transform.GetChild(4).gameObject;
+        pauseMenu = transform.GetChild(3).gameObject;
         pauseMenu.SetActive(false);
         pauseMenuButton.onClick.AddListener(PauseMenu);
     }
@@ -120,13 +121,35 @@ public class UIManager : MonoBehaviour
 
     public void EndGame()
     {
-        endGameUI.SetActive(true);
-        Text endGameText = endGameUI.GetComponentInChildren<Text>();
+        // Generate End Game Score
+        Text endGameText = endGameUI.transform.GetChild(0).GetComponent<Text>();
+        Text scoreBoard = endGameUI.transform.GetChild(2).GetComponent<Text>();
         endGameText.text = "Team " + (gameManager.winningTeam) + " is victorious!";
+        var scoreInfo = gameManager.CalcScore("Team 1");
+        scoreBoard.text = scoreInfo.scoreBoard;
+
+        Player player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
+        // Get team number
+        int.TryParse(("Team 1").Replace("Team ", ""), out int teamNumb);
+
+        // Add campaign Reward
+        if (player.CampaignProgress < GameInfo.CampaignNumber && gameManager.winningTeam == teamNumb)
+        {
+            scoreBoard.text += "\nCampaign Bonus:       " + gameManager.campaignReward;
+            scoreInfo.score += gameManager.campaignReward;
+            player.UpdateCampaignProg(GameInfo.CampaignNumber);
+        }
+
+        // Total
+        scoreBoard.text += "\n\nTotal:        " + scoreInfo.score;
+
+        player.AddCurrency(scoreInfo.score, false);
         if (gameManager.winningTeam == 1)
             endGameText.color = Color.blue;
         else if (gameManager.winningTeam == 2)
             endGameText.color = Color.red;
+
+        endGameUI.SetActive(true);
     }
 
     public void QuitGame()
@@ -143,8 +166,11 @@ public class UIManager : MonoBehaviour
     public void InitialiseCardPhaseUI()
     {
         //Debug.Log("Initialising Card Phase UI");
+        if (gameManager.currentRound - 1 >= gameManager.cardsEachRound.Length)
+            maxCardsPlayed += 1;
+        else
+            maxCardsThisRound += gameManager.cardsEachRound[gameManager.currentRound - 1];
 
-        maxCardsThisRound += gameManager.cardsEachRound[gameManager.currentRound - 1];
         if (maxCardsPlayed != 0)
         {
             if (maxCardsThisRound > maxCardsPlayed)

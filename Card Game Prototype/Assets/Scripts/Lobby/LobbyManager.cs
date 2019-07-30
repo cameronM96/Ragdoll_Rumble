@@ -9,6 +9,9 @@ public class LobbyManager : MonoBehaviour
     public Player player;
     public CardCollection cardCollection;
 
+    public Dropdown difficulty;
+    public Dropdown rounds;
+
     public GameObject deckButtonsPanel;
     public GameObject deckButtonPrefab;
 
@@ -20,16 +23,21 @@ public class LobbyManager : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
-        //Debug.Log("Check 1");
+
+        // Get game info
+        difficulty.interactable = (GameInfo.CampaignNumber == -1);
+        rounds.interactable = (GameInfo.CampaignNumber == -1);
+        difficulty.value = GameInfo.Difficulty;
+        rounds.value = GameInfo.Rounds;
+
+        // Load Deck buttons
         LoadDeckButtons();
-        //Debug.Log("Check 2");
-        //Debug.Log(LevelHolder.SelectedDeckName);
-        if (!(LevelHolder.SelectedDeckName == "" || LevelHolder.SelectedDeckName == null))
+        if (!(GameInfo.SelectedDeckName == "" || GameInfo.SelectedDeckName == null))
         {
             foreach (Transform child in deckButtonsPanel.transform)
             {
                 LobbyDeckButton deckButton = child.gameObject.GetComponent<LobbyDeckButton>();
-                if (deckButton.myDeckName == LevelHolder.SelectedDeckName)
+                if (deckButton.myDeckName == GameInfo.SelectedDeckName)
                 {
                     child.gameObject.GetComponent<Button>().Select();
                     deckButton.SelectDeck();
@@ -40,20 +48,20 @@ public class LobbyManager : MonoBehaviour
 
     public void LoadNextLevel ()
     {
-        if (!(LevelHolder.NextLevelName == "" || LevelHolder.NextLevelName == null))
-            SceneManager.LoadScene(LevelHolder.NextLevelName);
-        else if (LevelHolder.NextLevelNumb > -1)
-            SceneManager.LoadScene(LevelHolder.NextLevelNumb);
+        if (!(GameInfo.NextLevelName == "" || GameInfo.NextLevelName == null))
+            SceneManager.LoadScene(GameInfo.NextLevelName);
+        else if (GameInfo.NextLevelNumb > -1)
+            SceneManager.LoadScene(GameInfo.NextLevelNumb);
         else
             Debug.Log("Next level is invalid");
     }
 
     public void LoadPreviousLevel()
     {
-        if (!(LevelHolder.ReturnLevelName == "" || LevelHolder.ReturnLevelName == null))
-            SceneManager.LoadScene(LevelHolder.ReturnLevelName);
-        else if (LevelHolder.ReturnLevelNumb > -1)
-            SceneManager.LoadScene(LevelHolder.ReturnLevelNumb);
+        if (!(GameInfo.ReturnLevelName == "" || GameInfo.ReturnLevelName == null))
+            SceneManager.LoadScene(GameInfo.ReturnLevelName);
+        else if (GameInfo.ReturnLevelNumb > -1)
+            SceneManager.LoadScene(GameInfo.ReturnLevelNumb);
         else
             Debug.Log("Previous level is invalid");
     }

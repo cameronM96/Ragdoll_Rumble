@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class LevelHolder
+public static class GameInfo
 {
     private static string nextLevelName, returnLevelName, selectedDeckName;
-    private static int nextLevelNumb, returnLevelNumb;
+    private static int nextLevelNumb, returnLevelNumb, campaignNumber, difficulty, rounds;
 
     public static string NextLevelName
     {
@@ -64,6 +64,42 @@ public static class LevelHolder
         set
         {
             returnLevelNumb = value;
+        }
+    }
+
+    public static int CampaignNumber
+    {
+        get
+        {
+            return campaignNumber;
+        }
+        set
+        {
+            campaignNumber = value;
+        }
+    }
+
+    public static int Difficulty
+    {
+        get
+        {
+            return difficulty;
+        }
+        set
+        {
+            difficulty = value;
+        }
+    }
+
+    public static int Rounds
+    {
+        get
+        {
+            return rounds;
+        }
+        set
+        {
+            rounds = value;
         }
     }
 }
