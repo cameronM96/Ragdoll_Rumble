@@ -71,4 +71,25 @@ namespace EnumTypes
         Farthest,
         Random
     };
+
+    public enum CC
+    {
+        None,
+        Stun,
+        Snare,
+        Slow,
+        SlowAttack
+    };
+
+    public enum StatChange
+    {
+        None,
+        Damage,
+        Heal,
+        MaxHealth,
+        Attack,
+        Armour,
+        Speed,
+        AttackSpeed
+    }
 }

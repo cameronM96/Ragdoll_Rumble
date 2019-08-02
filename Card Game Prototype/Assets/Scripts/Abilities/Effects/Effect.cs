@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EnumTypes;
 
 public abstract class Effect : ScriptableObject
 {
-    public enum StatChange { None, Damage, Heal, MaxHealth, Attack, Armour, Speed, AttackSpeed}
+    public CC ccType = CC.None;
+    public float duration;
+    public int value;
     public StatChange statChange = StatChange.Damage;
     public int statChangeValue = 0;
     public bool changeCurrentHP = false;
@@ -69,6 +72,33 @@ public abstract class Effect : ScriptableObject
                     break;
                 case StatChange.AttackSpeed:
                     targetStats.ChangeAttackSpeed(statChangeValue, multipler);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    protected void ApplyCC(GameObject target)
+    {
+        if (target.GetComponent<Base_Stats>() != null)
+        {
+            Base_Stats targetStats = target.GetComponent<Base_Stats>();
+            switch (ccType)
+            {
+                case CC.None:
+                    break;
+                case CC.Stun:
+                    targetStats.ApplyCC(ccType, duration);
+                    break;
+                case CC.Snare:
+                    targetStats.ApplyCC(ccType, duration);
+                    break;
+                case CC.Slow:
+                    targetStats.ApplyCC(ccType, duration, value);
+                    break;
+                case CC.SlowAttack:
+                    targetStats.ApplyCC(ccType, duration, value);
                     break;
                 default:
                     break;

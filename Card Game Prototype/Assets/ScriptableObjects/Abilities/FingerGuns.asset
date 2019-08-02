@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c0709f4681164c9849cc8d76bb18b, type: 3}
+  m_Name: FingerGuns
+  m_EditorClassIdentifier: 
+  abName: 
+  abDescription: 
+  triggerMethod: 6
+  onDamaged: {fileID: 0}
+  onHealth: {fileID: 0}
+  onTimer: {fileID: 0}
+  onButton: {fileID: 11400000, guid: c2c9432c16288e242931ddcde5049870, type: 2}
+  deliveryMethod: {fileID: 11400000, guid: 9cb4ff78106cc5d4babbb32d332dc715, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 1bd2b7dd7957a70469b77af7384e4144, type: 2}
+  item: {fileID: 0}

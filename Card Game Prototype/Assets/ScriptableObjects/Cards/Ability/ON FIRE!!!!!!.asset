@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: ON FIRE!!!!!!
   m_EditorClassIdentifier: 
-  iD: 12824
+  iD: 13516
   rarity: 3
   currentCardType: 3
   playableSlots: -1
@@ -25,12 +25,21 @@ MonoBehaviour:
   artwork: {fileID: 21300000, guid: efe689b9b4d378646a1bb5055f3c277b, type: 3}
   background: {fileID: 21300000, guid: 8fac3e1dbdb6ddc4faf60c05d4b37c6c, type: 3}
   rarityImage: {fileID: 21300000, guid: a05a88c956ad5ac44b7a7aad780f3c04, type: 3}
-  attack: 7
+  attack: 0
   armour: 0
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 'Sets you on fire and deals light
+
+    ticking damage but sets enemy on
+
+    fire when struck dealing heavy
+
+    ticking damage.'
+  abilities:
+  - {fileID: 11400000, guid: b9d42cd7560b8d747872e7f7a32f08eb, type: 2}
+  - {fileID: 11400000, guid: b8266668ce09d7d4a8f37f7bf029d2e2, type: 2}
   item: {fileID: 0}
   coinCost: 0
   gemCost: 0

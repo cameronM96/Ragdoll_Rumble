@@ -28,7 +28,8 @@ public class Card : ScriptableObject
     public float speed;
     public float atkSpeed;
 
-    public SO_Ability ability;
+    public string abilityDescription;
+    public SO_Ability[] abilities;
 
     public GameObject item;
 
@@ -54,8 +55,11 @@ public class Card : ScriptableObject
     {
         UpdateStats(bStats);
 
-        if (ability != null)
-            ability.LoadAbility(bStats, item);
+        if (abilities != null && abilities.Length > 0)
+        {
+            foreach(SO_Ability ability in abilities)
+                ability.LoadAbility(bStats, item);
+        }
 
         // Instantiate items on slots
         if (item != null)

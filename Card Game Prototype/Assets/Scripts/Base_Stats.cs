@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using EnumTypes;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(StateController))]
 public class Base_Stats : MonoBehaviour
@@ -38,6 +40,11 @@ public class Base_Stats : MonoBehaviour
     public AIController audioController;
     public GameObject[] slots;
 
+    [HideInInspector] public bool stunned = false;
+    private float stunLength;
+    [HideInInspector] public bool snared = false;
+    private float snareLength;
+
     private void Awake()
     {
         stateController = GetComponent<StateController>();
@@ -45,6 +52,29 @@ public class Base_Stats : MonoBehaviour
         audioController = GetComponent<AIController>();
 
         gameManager.PlayerJoined();
+    }
+
+    private void Update()
+    {
+        if(stunned)
+        {
+            if(stunLength <= 0)
+            {
+                stunned = false;
+                // Undo stun here
+                GetComponent<NavMeshAgent>().speed = speed;
+            }
+        }
+
+        if (snared)
+        {
+            if (snareLength <= 0)
+            {
+                snared = false;
+                // Undo snare here
+                GetComponent<NavMeshAgent>().speed = speed;
+            }
+        }
     }
 
     private void OnEnable()
@@ -76,6 +106,9 @@ public class Base_Stats : MonoBehaviour
         storedBaseStats[3] = speed;
         storedBaseStats[4] = atkSpeed;
 
+        stunned = false;
+        snared = false;
+        GetComponent<NavMeshAgent>().speed = speed;
         // Unkill Player
         currentHP = maxHP;
         dead = false;
@@ -123,6 +156,7 @@ public class Base_Stats : MonoBehaviour
 
     public void InitialiseCardPhase()
     {
+        StopAllCoroutines();
         //Debug.Log("Initialising Player to Card Phase");
         // Reload Saved stats (Reset stats back to end of last cardPhase)
         if (gameManager.currentRound > 1)
@@ -237,6 +271,8 @@ public class Base_Stats : MonoBehaviour
             gameManager.PlayerDied(this.gameObject);
 
             audioController.Die();
+
+            StopAllCoroutines();
             //GetComponent<Collider>().enabled = false;
         }
     }
@@ -377,6 +413,9 @@ public class Base_Stats : MonoBehaviour
         {
             armour += armourChange;
         }
+
+        if (armour < 0)
+            armour = 0;
     }
 
     public void ChangeAttack(int attackChange)
@@ -398,6 +437,9 @@ public class Base_Stats : MonoBehaviour
         {
             attack += attackChange;
         }
+
+        if (attack < 2)
+            attack = 2;
     }
 
     public void ChangeSpeed(int speedChange)
@@ -420,6 +462,8 @@ public class Base_Stats : MonoBehaviour
             speed += speedChange;
         }
 
+        if (speed < 0)
+            speed = 0;
         SpawnHitText(Color.blue, speedChange);
     }
 
@@ -452,6 +496,55 @@ public class Base_Stats : MonoBehaviour
 
         if (atkSpeed < 1)
             atkSpeed = 1;
+    }
+
+    public void ApplyCC(CC ccType, float duration)
+    {
+        ApplyCC(ccType, duration, 0);
+    }
+
+    public void ApplyCC (CC ccType, float duration, int value)
+    {
+        switch (ccType)
+        {
+            case CC.Stun:
+                stunned = true;
+                stunLength += duration;
+                GetComponent<NavMeshAgent>().speed = 0f;
+                break;
+            case CC.Snare:
+                snared = true;
+                snareLength += duration;
+                GetComponent<NavMeshAgent>().speed = 0f;
+                break;
+            case CC.Slow:
+                ChangeSpeed(value);
+                GetComponent<NavMeshAgent>().speed = speed;
+                StartCoroutine(SlowTimer(duration, value));
+                break;
+            case CC.SlowAttack:
+                ChangeAttackSpeed(value);
+                StartCoroutine(SlowAttackTimer(duration, value));
+                break;
+            default:
+                Debug.Log("Unknown CC type");
+                break;
+        }
+    }
+
+    private IEnumerator SlowTimer(float duration, int value)
+    {
+        yield return new WaitForSeconds(duration);
+        // Unslow
+        ChangeSpeed(value * -1);
+        GetComponent<NavMeshAgent>().speed = speed;
+    }
+
+    private IEnumerator SlowAttackTimer(float duration, int value)
+    {
+        yield return new WaitForSeconds(duration);
+        // Unslow
+        ChangeAttackSpeed(value * -1);
     }
 
     private void SpawnHitText(Color newColour, int value)

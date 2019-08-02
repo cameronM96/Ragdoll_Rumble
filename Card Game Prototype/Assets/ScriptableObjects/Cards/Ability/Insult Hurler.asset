@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Insult Hurler
   m_EditorClassIdentifier: 
-  iD: 15630
+  iD: 13510
   rarity: 3
   currentCardType: 3
   playableSlots: 1
@@ -25,12 +25,16 @@ MonoBehaviour:
   artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
   background: {fileID: 21300000, guid: 8fac3e1dbdb6ddc4faf60c05d4b37c6c, type: 3}
   rarityImage: {fileID: 21300000, guid: a05a88c956ad5ac44b7a7aad780f3c04, type: 3}
-  attack: 2
+  attack: 0
   armour: 0
   hP: 0
   speed: 0
-  atkSpeed: 2
-  ability: {fileID: 0}
+  atkSpeed: 0
+  abilityDescription: 'Decrease enemy damage and attack speed
+
+    by 2 every 8 seconds.'
+  abilities:
+  - {fileID: 11400000, guid: 406e922c25572fc41a282c5766419c10, type: 2}
   item: {fileID: 0}
   coinCost: 0
   gemCost: 0

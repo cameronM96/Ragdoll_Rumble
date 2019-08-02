@@ -27,7 +27,8 @@ public class CardCreator_v2 : EditorWindow
     public float speed;
     public float atkSpeed;
 
-    public SO_Ability ability;
+    public string abilityDescription;
+    public SO_Ability[] abilities;
 
     public GameObject item;
 
@@ -178,7 +179,7 @@ public class CardCreator_v2 : EditorWindow
             playableSlots != PlayableSlot.None && 
             (cardName != "" || cardName != "New Card") && artwork != null &&
             (attack != 0 || armour != 0 || hP != 0 || speed != 0 || 
-            atkSpeed != 0 || ability != null || item != null))
+            atkSpeed != 0 || abilities != null || item != null))
         {
             disableButtons = false;
             createCardButton = new GUIContent("Create Card");
@@ -383,7 +384,7 @@ public class CardCreator_v2 : EditorWindow
 
         string cardModiferHeader = "<size=13><b>Card Modifiers:</b></size>";
 
-        if (ability == null && item == null && attack == 0 && armour == 0 && hP == 0 && speed == 0 && atkSpeed == 0)
+        if (abilities == null && item == null && attack == 0 && armour == 0 && hP == 0 && speed == 0 && atkSpeed == 0)
             cardModiferHeader = "<size=13><color=red>*</color> <b>Card Modifiers:</b></size>";
 
         cardModifersToggle = EditorGUILayout.BeginFoldoutHeaderGroup(cardModifersToggle, cardModiferHeader, groupHeaderStyle);
@@ -396,7 +397,7 @@ public class CardCreator_v2 : EditorWindow
             string abilityLabel = "Ability:";
             string itemLabel = "Item:";
 
-            if (ability == null && item == null && attack == 0 && armour == 0 && hP == 0 && speed == 0 && atkSpeed == 0)
+            if (abilities == null && item == null && attack == 0 && armour == 0 && hP == 0 && speed == 0 && atkSpeed == 0)
             {
                 baseStatLabel = "<color=red>*</color> " + baseStatLabel;
                 abilityLabel = "<color=red>*</color> " + abilityLabel; ;
@@ -420,8 +421,16 @@ public class CardCreator_v2 : EditorWindow
 
             // Abilities
             EditorGUILayout.BeginHorizontal();
+            EditorGUILayout.LabelField("Ability Description", labelStyle, GUILayout.Width(146));
+            abilityDescription = EditorGUILayout.TextArea(abilityDescription);
+            EditorGUILayout.EndHorizontal();
+            EditorGUILayout.BeginHorizontal();
             EditorGUILayout.LabelField(abilityLabel, labelStyle, GUILayout.Width(146));
-            ability = (SO_Ability)EditorGUILayout.ObjectField(ability, typeof(SO_Ability), true);
+            var serializedObject = new SerializedObject(this);
+            var property = serializedObject.FindProperty("abilities");
+            serializedObject.Update();
+            EditorGUILayout.PropertyField(property, true);
+            serializedObject.ApplyModifiedProperties();
             EditorGUILayout.EndHorizontal();
 
             EditorGUILayout.Space();
@@ -458,6 +467,8 @@ public class CardCreator_v2 : EditorWindow
             Debug.Log("Loading: " + Selection.activeObject.name);
             if (Selection.activeObject is Card selectedCard)
                 LoadNewValues(selectedCard);
+            else
+                Debug.LogError("Not a card! failed to load!");
         }
 
         EditorGUILayout.Space();
@@ -532,7 +543,8 @@ public class CardCreator_v2 : EditorWindow
         newCard.speed = speed;
         newCard.atkSpeed = atkSpeed;
 
-        newCard.ability = ability;
+        newCard.abilityDescription = abilityDescription;
+        newCard.abilities = abilities;
 
         newCard.item = item;
         newCard.pos = pos;
@@ -586,7 +598,8 @@ public class CardCreator_v2 : EditorWindow
         card.speed = speed;
         card.atkSpeed = atkSpeed;
 
-        card.ability = ability;
+        card.abilityDescription = abilityDescription;
+        card.abilities = abilities;
 
         card.item = item;
         card.pos = pos;
@@ -636,13 +649,16 @@ public class CardCreator_v2 : EditorWindow
         speed = card.speed;
         atkSpeed = card.atkSpeed;
 
-        ability = card.ability;
+        abilityDescription = card.abilityDescription;
+        abilities = card.abilities;
 
         item = card.item;
 
         pos = card.pos;
         rot = card.rot;
         size = card.size;
+
+        Debug.Log("Card successfully loaded");
     }
 
     private void UpdateCardDisplay()
@@ -682,9 +698,10 @@ public class CardCreator_v2 : EditorWindow
             infoText.text += "\nAttack Speed: " + atkSpeed;
 
         // Set ability info
-        if (ability != null)
+        if (abilities != null)
         {
-            infoText.text += ("\n" + ability.abDescription);
+            if (abilities.Length > 0)
+                infoText.text += ("\n" + abilityDescription);
         }
 
         // Set rarity
