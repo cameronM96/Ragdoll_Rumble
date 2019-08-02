@@ -287,7 +287,7 @@ public class CollectionManager : MonoBehaviour
             }
         }
 
-        collectionPanel.GetComponent<PanelResizer>().Resize();
+        //collectionPanel.GetComponent<PanelResizer>().Resize();
     }
 
     public GameObject CreateCard(Card card, bool deckBuilding)
