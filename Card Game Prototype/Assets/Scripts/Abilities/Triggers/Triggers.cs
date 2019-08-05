@@ -16,8 +16,11 @@ public abstract class Triggers : ScriptableObject
     
     public void ApplyEffect(GameObject target)
     {
-        if (target != null)
+        if (target != null && ability != null)
+        {
+            //Debug.Log("Applying Delivery");
             ability.deliveryMethod.ApplyDelivery(target);
+        }
 
         //foreach (DeliverySO delivery in ability.deliveryMethod)
         //{

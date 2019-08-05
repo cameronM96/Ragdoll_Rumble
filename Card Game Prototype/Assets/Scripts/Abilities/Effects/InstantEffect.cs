@@ -9,6 +9,8 @@ public class InstantEffect : Effect
     {
         ChangeStat(target);
 
+        ApplyCC(target);
+
         SpawnParticleEffect(target);
     }
 }

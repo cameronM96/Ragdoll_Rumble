@@ -47,6 +47,7 @@ public class SO_ApplyToTarget : DeliverySO
                 {
                     if (currentTargetCount <= 0)
                     {
+                        Debug.Log("Applying Effect to " + target.name);
                         foreach (Effect effect in ability.effects)
                             effect.TriggerEffect(target);
 

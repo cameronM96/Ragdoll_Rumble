@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using EnumTypes;
 
 [CreateAssetMenu(menuName = "Card Elements/Abilities/Ability")]
@@ -53,6 +54,13 @@ public class SO_Ability : ScriptableObject
             case TriggerMethod.OnButton:
                 onButton.ability = this;
                 // Apply On Button Effect
+                GameObject gameCanvas = GameObject.FindGameObjectWithTag("CardCanvas");
+                if (gameCanvas != null)
+                {
+                    UIManager uiManager = gameCanvas.GetComponent<UIManager>();
+                    if (uiManager != null)
+                        uiManager.AddAbilityButton(onButton, targetPlayer.gameObject);
+                }
                 break;
             default:
                 Debug.Log("Unknown Trigger Method!");

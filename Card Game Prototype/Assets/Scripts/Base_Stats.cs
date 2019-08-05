@@ -505,6 +505,7 @@ public class Base_Stats : MonoBehaviour
 
     public void ApplyCC (CC ccType, float duration, int value)
     {
+        Debug.Log("Applying CC!");
         switch (ccType)
         {
             case CC.Stun:

@@ -27,6 +27,10 @@ public class UIManager : MonoBehaviour
     public Color middleColor;
     public Color endColor;
 
+    // Button stuff
+    public GameObject buttonPanel;
+    public GameObject abilityButtonTemplate;
+
     // Round Results
     public GameObject resultsWindow;
     public Text resultsWindowText;
@@ -243,6 +247,13 @@ public class UIManager : MonoBehaviour
         }
 
         numCardsLeft.text = "Deck\n" + deck.transform.childCount;
+    }
+
+    public void AddAbilityButton(OnButton onButton, GameObject self)
+    {
+        GameObject newButton = Instantiate(abilityButtonTemplate, buttonPanel.transform);
+        newButton.GetComponent<OnButtonTrigger>().target = self;
+        newButton.GetComponent<OnButtonTrigger>().Initialise(onButton);
     }
 
     public float Map(float value, float in_min, float in_max, float out_min, float out_max)

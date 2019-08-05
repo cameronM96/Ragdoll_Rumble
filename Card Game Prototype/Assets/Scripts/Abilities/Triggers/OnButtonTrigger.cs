@@ -10,19 +10,16 @@ public class OnButtonTrigger : MonoBehaviour
     public bool oncePerRound;
     public GameObject target;
     public Image cooldownImage;
+    public SO_Ability ability;
 
     private float timer;
     private bool ready;
     private bool used;
 
-    private void Start()
-    {
-        Initialise();
-    }
-
-    public void Initialise()
+    public void Initialise(OnButton onbutton)
     {
         //cooldownImage = this.gameObject.GetComponentInChildren<Image>();
+        buttonTarget = onbutton;
         cooldownImage.enabled = false;
         ready = true;
         timer = 0;
@@ -52,6 +49,7 @@ public class OnButtonTrigger : MonoBehaviour
     {
         if (ready)
         {
+            //Debug.Log("Button Pressed!");
             buttonTarget.ApplyEffect(target);
             timer = coolDown;
             cooldownImage.enabled = true;
