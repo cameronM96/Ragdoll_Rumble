@@ -22,6 +22,7 @@ TagManager:
   - NextPosition
   - Reach
   - PlayerProfile
+  - DropZone
   layers:
   - Default
   - TransparentFX

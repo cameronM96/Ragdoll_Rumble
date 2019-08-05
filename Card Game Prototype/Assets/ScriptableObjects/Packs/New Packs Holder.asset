@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184fd48a048a2fd4d923b5910fb15e09, type: 3}
+  m_Name: New Packs Holder
+  m_EditorClassIdentifier: 
+  packs:
+  - {fileID: 11400000, guid: 665b252d2b1139343bfc7ad2735e2481, type: 2}
+  - {fileID: 11400000, guid: c6ec8a00e51c1be418b96a5cd676030a, type: 2}
+  - {fileID: 11400000, guid: 46c3d883a66654f47b165d7239741ab0, type: 2}
+  - {fileID: 11400000, guid: 8f8aa07bee9ded444a3fc1804ad60b9d, type: 2}
+  - {fileID: 11400000, guid: 2eae8de6029ea5a4cb5779898eab37b9, type: 2}
+  storedPath: ScriptableObjects/Packs
+  newLibrary: 1

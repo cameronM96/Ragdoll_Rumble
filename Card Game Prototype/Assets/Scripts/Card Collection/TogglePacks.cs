@@ -18,6 +18,10 @@ public class TogglePacks : MonoBehaviour
         if (collectionWindow.activeSelf)
             buttonText.text = packName;
         else
+        {
             buttonText.text = collectionName;
+            if (this.transform.root.GetComponent<CollectionManager>() != null)
+                this.transform.root.GetComponent<CollectionManager>().LoadPacks();
+        }
     }
 }

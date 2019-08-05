@@ -8,6 +8,7 @@ public class CollectionManager : MonoBehaviour
 {
     public Player player;
 
+    // Card Stuff
     public GameObject collectionPanel;
     public GameObject collectionCardTemplate;
     public GameObject deckBuildingCardTemplate;
@@ -25,8 +26,15 @@ public class CollectionManager : MonoBehaviour
     public GameObject deckButtonPrefab;
     [HideInInspector] public bool deckSaved = true;
 
+    // Pack Stuff
+    public GameObject packsDropZone;
+    public GameObject packsPanel;
+    public GameObject packsTemplate;
+    public Vector2 packOffset;
+
     public List<Card> currentCollection;
 
+    public PackCollection packCollection;
     public CardCollection cardCollection;
 
     public string currentDeckName;
@@ -42,6 +50,7 @@ public class CollectionManager : MonoBehaviour
         ToggleDeckCreation();
         LoadCards(creatingDeck);
         LoadDeckButtons();
+        LoadPacks();
     }
 
     public void ToggleDeckCreation()
@@ -50,6 +59,38 @@ public class CollectionManager : MonoBehaviour
 
         deckButtons.SetActive(!creatingDeck);
         deckCreation.SetActive(creatingDeck);
+    }
+
+    public void LoadPacks()
+    {
+        // Clear Packs Panel
+        foreach (Transform child in packsPanel.transform)
+            Destroy(child.gameObject);
+
+        // Clear Drop Zone
+        foreach (Transform child in packsDropZone.transform)
+            Destroy(child.gameObject);
+
+        // Load all owned packs
+        if (packCollection?.packIDDictionary != null && player?.MyUnopenedPacks != null)
+        {
+            foreach (KeyValuePair<int, int> packs in player.MyUnopenedPacks)
+            {
+                if (packCollection.packIDDictionary.ContainsKey(packs.Key) && packs.Value > 0)
+                {
+                    PackOfCards loadedPack = packCollection.packIDDictionary[packs.Key];
+                    Transform targetParent = packsPanel.transform;
+                    for (int i = 0; i < packs.Value; ++i)
+                    {
+                        GameObject newPack = Instantiate(packsTemplate, targetParent);
+                        newPack.GetComponent<CollectionPack>().Initialise(loadedPack);
+                        // Stacks packs ontop of each other
+                        newPack.transform.localPosition += new Vector3(packOffset.x, packOffset.y, 0);
+                        targetParent = newPack.transform;
+                    }
+                }
+            }
+        }
     }
 
     public void LoadDeckButtons()

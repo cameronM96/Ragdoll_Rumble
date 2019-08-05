@@ -12,9 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bfcc45fe73329468622c8305d04d2b, type: 3}
   m_Name: Pack3
   m_EditorClassIdentifier: 
-  specificCards: 0
-  cardPack: []
-  garenteedRandom: 0
+  iD: 14298
+  packSize: 0
+  packName: 
+  packImage: {fileID: 0}
+  coinCost: 0
+  gemCost: 0
+  guaranteedSpecificCards: 0
+  gSpecificCards: []
+  randomSpecificCards: 0
+  guaranteedFromSet: 0
+  setName: 
+  rSpecificCards: []
+  guaranteedRandom: 0
   numberOfRares: 0
   numberOfUncommons: 0
   numberOfCommons: 0

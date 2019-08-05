@@ -12,10 +12,16 @@ public class CardCollection : MonoBehaviour
     public static CardCollection Instance;
     public Dictionary<string, Card> allCardsDictionary = new Dictionary<string, Card>();
     public Dictionary<int, Card> allCardIDDictionary = new Dictionary<int, Card>();
+    [HideInInspector] public List<Card> commonCards = new List<Card>();
+    [HideInInspector] public List<Card> unCommonCards = new List<Card>();
+    [HideInInspector] public List<Card> rareCards = new List<Card>();
 
     public Dictionary<Card, int> quantityOfEachCard = new Dictionary<Card, int>();
 
     public CardLibrary cardLibrary;
+
+    public float chanceOfRare;
+    public float chanceOfUncommon;
 
     private void Start()
     {
@@ -23,6 +29,56 @@ public class CardCollection : MonoBehaviour
 
         //Debug.Log(cardLibrary.cardLibrary.Count + " cards were loaded into the AllCardsArray");
         LoadCardLibrary();
+    }
+
+    public Card GetRandomRarity (Rarity rarity)
+    {
+        Card chosenCard = null;
+        Card[] cardArray;
+        int index;
+
+        Random.InitState(System.DateTime.Now.Millisecond);
+        switch (rarity)
+        {
+            case Rarity.None:
+                cardArray = commonCards.ToArray();
+                break;
+            case Rarity.Common:
+                cardArray = commonCards.ToArray();
+                break;
+            case Rarity.Uncommon:
+                cardArray = unCommonCards.ToArray();
+                break;
+            case Rarity.Rare:
+                cardArray = rareCards.ToArray();
+                break;
+            default:
+                cardArray = null;
+                break;
+        }
+
+        if (cardArray == null)
+            return null;
+
+        index = Mathf.FloorToInt(Random.Range(0, cardArray.Length));
+        chosenCard = cardArray[index];
+
+        return chosenCard;
+    }
+
+    public Card GetRandomCard ()
+    {
+        Random.InitState(System.DateTime.Now.Millisecond);
+        float chance = Random.Range(0, 100);
+        Rarity newRarity = Rarity.None;
+        if (chance > (100 - chanceOfRare))
+            newRarity = Rarity.Rare;
+        else if (chance > (100 - (chanceOfUncommon + chanceOfRare)))
+            newRarity = Rarity.Uncommon;
+        else
+            newRarity = Rarity.Common;
+
+        return GetRandomRarity(newRarity);
     }
 
     public void LoadCardLibrary()
@@ -37,6 +93,25 @@ public class CardCollection : MonoBehaviour
             if (!allCardIDDictionary.ContainsKey(ca.iD))
             {
                 allCardIDDictionary.Add(ca.iD, ca);
+            }
+
+            switch (ca.rarity)
+            {
+                case Rarity.None:
+                    commonCards.Add(ca);
+                    break;
+                case Rarity.Common:
+                    commonCards.Add(ca);
+                    break;
+                case Rarity.Uncommon:
+                    unCommonCards.Add(ca);
+                    break;
+                case Rarity.Rare:
+                    rareCards.Add(ca);
+                    break;
+                default:
+                    Debug.LogError("Unknown Rarity");
+                    break;
             }
         }
 

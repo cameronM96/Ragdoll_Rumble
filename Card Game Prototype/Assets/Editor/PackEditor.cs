@@ -71,6 +71,8 @@ public class PackEditor : Editor
         if (GUILayout.Button("Update ID"))
         {
             pack.iD = pack.GetInstanceID();
+            EditorUtility.SetDirty(pack);
+            AssetDatabase.SaveAssets();
         }
         // Apply changes to the serializedProperty - always do this at the end of OnInspectorGUI.
         serializedObject.ApplyModifiedProperties();

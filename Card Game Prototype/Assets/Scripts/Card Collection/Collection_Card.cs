@@ -10,6 +10,7 @@ public class Collection_Card : MonoBehaviour
     public GameObject counterDisplay;
     public Text cardCount;
     public int currentCardCount;
+    public GameObject mysteryButton;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,11 @@ public class Collection_Card : MonoBehaviour
             counterDisplay.SetActive(false);
             cardDisabled.SetActive(true);
         }
+    }
+
+    public void PackCard()
+    {
+        mysteryButton.SetActive(true);
     }
 
     public void CardSelected ()

@@ -214,8 +214,8 @@ public class Player : MonoBehaviour
     public void NewProfile (string name)
     {
         playerName = name;
-        coins = 0;
-        gems = 0;
+        coins = 10000;
+        gems = 10000;
         campaignProgress = 0;
 
         myCards = new Dictionary<int, int>();

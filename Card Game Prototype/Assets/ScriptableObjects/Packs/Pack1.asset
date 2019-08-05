@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0bfcc45fe73329468622c8305d04d2b, type: 3}
   m_Name: Pack1
   m_EditorClassIdentifier: 
+  iD: 18732
   packSize: 3
   packName: Gentlemen's Pack
   packImage: {fileID: 21300000, guid: efe689b9b4d378646a1bb5055f3c277b, type: 3}
