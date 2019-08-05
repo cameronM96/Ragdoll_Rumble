@@ -24,7 +24,7 @@ public class SinglesShop : MonoBehaviour
 
     public void ScrollWindow (Scrollbar bar)
     {
-        Debug.Log(Mathf.CeilToInt(currentShopCards.Count / 6f));
+        //Debug.Log(Mathf.CeilToInt(currentShopCards.Count / 6f));
         float top = startYPos + (colLength * (Mathf.CeilToInt(currentShopCards.Count / 6f)));
         if (top < startYPos)
             top = startYPos;

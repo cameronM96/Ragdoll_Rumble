@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
-    public CameraController myCameraController;
+    [HideInInspector] public CameraController myCameraController;
     public GameObject cardPhaseUI;
     public GameObject combatPhaseUI;
     public GameObject endGameUI;
@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour
     public GameObject resultsWindow;
     public Text resultsWindowText;
 
-    public GameManager gameManager;
+    [HideInInspector] public GameManager gameManager;
 
     private bool cardPhase = true;
     private int maxCardsThisRound = 0;
@@ -42,31 +42,31 @@ public class UIManager : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
 
         // End Game UI
-        endGameUI = transform.GetChild(4).gameObject;
+        //endGameUI = transform.GetChild(4).gameObject;
         endGameUI.SetActive(false);
         quitGameButton = endGameUI.GetComponentInChildren<Button>();
 
         // Card Phase UI
-        cardPhaseUI = transform.GetChild(0).gameObject;
-        cardCount = transform.GetChild(0).GetChild(9).GetComponent<Text>();
-        cardSlot = transform.GetChild(0).GetChild(1).gameObject;
-        deck = transform.GetChild(0).GetChild(7).gameObject;
-        numCardsLeft = transform.GetChild(0).GetChild(8).GetChild(0).GetChild(0).GetComponent<Text>();
+        //cardPhaseUI = transform.GetChild(0).gameObject;
+        //cardCount = transform.GetChild(0).GetChild(9).GetComponent<Text>();
+        //cardSlot = transform.GetChild(0).GetChild(1).gameObject;
+        //deck = transform.GetChild(0).GetChild(7).gameObject;
+        //numCardsLeft = transform.GetChild(0).GetChild(8).GetChild(0).GetChild(0).GetComponent<Text>();
 
         // Combat Phase UI
-        combatPhaseUI = transform.GetChild(1).gameObject;
+        //combatPhaseUI = transform.GetChild(1).gameObject;
 
         quitGameButton.onClick.AddListener(QuitGame);
 
         // General HUD
-        timeBars = new Image[2];
-        timeBars[0] = transform.GetChild(2).GetChild(0).GetComponent<Image>();
-        timeBars[1] = transform.GetChild(2).GetChild(1).GetComponent<Image>();
-        timerText = transform.GetChild(2).GetChild(2).GetComponent<Text>();
-        roundNumber = transform.GetChild(2).GetChild(3).GetComponent<Text>();
+        //timeBars = new Image[2];
+        //timeBars[0] = transform.GetChild(2).GetChild(0).GetComponent<Image>();
+        //timeBars[1] = transform.GetChild(2).GetChild(1).GetComponent<Image>();
+        //timerText = transform.GetChild(2).GetChild(2).GetComponent<Text>();
+        //roundNumber = transform.GetChild(2).GetChild(3).GetComponent<Text>();
 
         // Pause Menu
-        pauseMenu = transform.GetChild(3).gameObject;
+        //pauseMenu = transform.GetChild(3).gameObject;
         pauseMenu.SetActive(false);
         pauseMenuButton.onClick.AddListener(PauseMenu);
     }

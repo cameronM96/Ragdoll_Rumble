@@ -6,7 +6,8 @@ using UnityEngine.EventSystems;
 public class CameraController : MonoBehaviour
 {
     public GameObject myPlayer;
-    public GameObject gameHUD;
+    public GameObject templateHUD;
+    [HideInInspector] public GameObject gameHUD;
     public List<Transform> targets;
 
     public Vector3 combatOffset = new Vector3(0,20,-60);
@@ -15,7 +16,7 @@ public class CameraController : MonoBehaviour
 
     public float minZoom = 10f;
     public float maxZoom = 40f;
-    public float zoomLimiter = 50f;
+    [SerializeField] private float zoomLimiter = 50f;
 
     private Vector3 velocity;
     [HideInInspector] public Camera cam;
@@ -92,8 +93,7 @@ public class CameraController : MonoBehaviour
         myPlayer = transform.parent.gameObject;
         transform.SetParent(null);
 
-        GameObject prefabHUD = gameHUD;
-        gameHUD = Instantiate(prefabHUD);
+        gameHUD = Instantiate(templateHUD);
         gameHUD.GetComponent<UIManager>().myCameraController = this;
 
         myPlayer.GetComponent<Base_Stats>().statDisplay = gameHUD.transform.GetChild(0).GetComponentInChildren<Display_Base_Stats>();

@@ -43,7 +43,7 @@ public class LoadLobby : MonoBehaviour
 
     private void LoadRandomScene()
     {
-        Random.seed = System.DateTime.Now.Millisecond;
+        Random.InitState(System.DateTime.Now.Millisecond);
         int randomSceneNumber = Random.Range(Mathf.RoundToInt(sceneNumberRange.x), Mathf.RoundToInt(sceneNumberRange.y));
 
         usingSceneName = false;

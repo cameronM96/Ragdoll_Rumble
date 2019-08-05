@@ -4425,6 +4425,16 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 481982051}
+    - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
+        type: 3}
+      propertyPath: minZoom
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339731278893235629, guid: 0aab7baf843559341a49e68ef24a04ad,
+        type: 3}
+      propertyPath: maxZoom
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0aab7baf843559341a49e68ef24a04ad, type: 3}
 --- !u!4 &1386996547 stripped

@@ -121,6 +121,7 @@ public class Player : MonoBehaviour
         if (data != null)
         {
             playerName = data.playerName;
+            Debug.Log("Loading " + playerName);
             coins = data.coins;
             gems = data.gems;
 
