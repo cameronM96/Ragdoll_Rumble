@@ -92,4 +92,12 @@ namespace EnumTypes
         Speed,
         AttackSpeed
     }
+
+    public enum PhysicsDirection
+    {
+        None,
+        Away,
+        Towards,
+        Custom
+    }
 }

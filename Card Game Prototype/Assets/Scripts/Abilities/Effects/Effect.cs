@@ -5,13 +5,17 @@ using EnumTypes;
 
 public abstract class Effect : ScriptableObject
 {
+    // CC
     public CC ccType = CC.None;
     public float duration;
     public int value;
+
+    // Stats
     public StatChange statChange = StatChange.Damage;
     public int statChangeValue = 0;
     public bool changeCurrentHP = false;
     public bool multipler = false;
+
 
     public GameObject particleEffect;
     public int effectLength = 0;

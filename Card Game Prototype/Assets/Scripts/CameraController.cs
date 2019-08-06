@@ -104,16 +104,16 @@ public class CameraController : MonoBehaviour
         if (!IsMouseOverUI() && !draggingSomething && !transitioning)
         {
             // Key Board Controls
-            if (Input.GetMouseButtonDown(0))
-                lastMousePosition = Input.mousePosition;
+            //if (Input.GetMouseButtonDown(0))
+            //    lastMousePosition = Input.mousePosition;
 
-            if (Input.GetMouseButton(0))
-            {
-                Vector3 delta = Input.mousePosition - lastMousePosition;
+            //if (Input.GetMouseButton(0))
+            //{
+            //    Vector3 delta = Input.mousePosition - lastMousePosition;
 
-                if (manualControl || delta.magnitude > manualControlMinDist)
-                    ManualCameraMove(delta);
-            }
+            //    if (manualControl || delta.magnitude > manualControlMinDist)
+            //        ManualCameraMove(delta);
+            //}
 
             if (Input.GetAxis("Mouse ScrollWheel") != 0)
                 ManualCameraZoom(Input.GetAxis("Mouse ScrollWheel"));
