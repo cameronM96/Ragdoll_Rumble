@@ -84,7 +84,7 @@ public class ApplyPhysics : MonoBehaviour
             case PhysicsDirection.None:
                 break;
             case PhysicsDirection.Away:
-                forceDirection =
+                //forceDirection =
                 break;
             case PhysicsDirection.Towards:
                 break;
