@@ -12,20 +12,29 @@ public class UIManager : MonoBehaviour
     public GameObject endGameUI;
     private Button quitGameButton;
 
+    // Pause menu stuff
     public GameObject pauseMenu;
     public Button pauseMenuButton;
 
+    // Card phase stuff
     public GameObject cardSlot;
     public GameObject deck;
     public int handSize = 5;
     public Text numCardsLeft;
     public Text cardCount;
+
+    // Combat phase stuff
     public Text timerText;
     public Text roundNumber;
     public Image[] timeBars;
     public Color startColor;
     public Color middleColor;
     public Color endColor;
+    public Text scoreCounter;
+    public Slider[] healthBars;
+    public Color highHealthColor;
+    public Color middleHealthColor;
+    public Color lowHealthColor;
 
     // Button stuff
     public GameObject buttonPanel;
@@ -40,6 +49,9 @@ public class UIManager : MonoBehaviour
     private bool cardPhase = true;
     private int maxCardsThisRound = 0;
     [SerializeField] private int maxCardsPlayed = 5;
+
+    Base_Stats player;
+    Base_Stats enemy;
 
     private void Start()
     {
@@ -73,6 +85,9 @@ public class UIManager : MonoBehaviour
         //pauseMenu = transform.GetChild(3).gameObject;
         pauseMenu.SetActive(false);
         pauseMenuButton.onClick.AddListener(PauseMenu);
+
+        player = GameObject.FindGameObjectWithTag("Team 1").GetComponent<Base_Stats>();
+        enemy = GameObject.FindGameObjectWithTag("Team 2").GetComponent<Base_Stats>();
     }
 
     private void OnEnable()
@@ -128,6 +143,9 @@ public class UIManager : MonoBehaviour
                 else
                     timeBar.color = endColor;
             }
+
+            healthBars[0].value = (float)player.GetHealth() / player.maxHP;
+            healthBars[1].value = (float)enemy.GetHealth() / enemy.maxHP;
         }
     }
 
@@ -203,6 +221,9 @@ public class UIManager : MonoBehaviour
         }
         cardCount.text = "Cards Left: " + maxCardsThisRound;
         roundNumber.text = " Round: " + gameManager.currentRound + " ";
+
+        scoreCounter.text = gameManager.teamScore[0] + "-" + gameManager.teamScore[1];
+
         DealNewHand();
         cardPhase = true;
         cardPhaseUI.SetActive(true);
