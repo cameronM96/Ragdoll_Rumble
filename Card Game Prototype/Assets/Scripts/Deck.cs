@@ -5,7 +5,9 @@ using UnityEngine;
 public class Deck : MonoBehaviour
 {
     Player player;
+    public bool playerDeck = false;
     public CardCollection cardCollection;
+    public int requiredDeckSize = 15;
 
     public List<Card> cards;
     //[HideInInspector]
@@ -15,6 +17,16 @@ public class Deck : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
         StartCoroutine(EndOfFrame());
+    }
+
+    private void OnEnable()
+    {
+        GameManager.InitialiseTheGame += Initialise;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.InitialiseTheGame -= Initialise;
     }
 
     public void Initialise()
@@ -53,11 +65,23 @@ public class Deck : MonoBehaviour
                 newCard.transform.SetParent(this.transform);
             }
         }
+
+        ShuffleDeck();
     }
 
     IEnumerator EndOfFrame()
     {
         yield return new WaitForEndOfFrame();
         Initialise();
+    }
+
+    public void ShuffleDeck()
+    {
+        foreach (GameObject card in deckOfCards)
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            int index = Random.Range(0, deckOfCards.Count);
+            card.transform.SetSiblingIndex(index);
+        }
     }
 }

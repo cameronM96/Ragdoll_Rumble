@@ -4,21 +4,75 @@ using UnityEngine;
 
 public class AIDeck : MonoBehaviour
 {
+    [HideInInspector] public CardCollection cardCollection;
+
     public List<Card> gameDeck;
+
+    public int requiredDeckSize = 15;
 
     public List<Card> currentHand;
     public Card[] viewingDeck;
     public Queue<Card> currentDeck;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
     {
+        GameManager.InitialiseTheGame += Initialise;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.InitialiseTheGame -= Initialise;
+    }
+
+    public void Initialise()
+    {
+        gameDeck = new List<Card>();
+        // Create all the cards
+        if (GameInfo.RandomAIDeck)
+        {
+            for (int i = 0; i < requiredDeckSize; i++)
+            {
+                Random.InitState(System.DateTime.Now.Millisecond);
+                gameDeck.Add(cardCollection.GetRandomCard());
+            }
+        }
+        else
+        {
+            int[] cardIDs = GameInfo.AIDeck;
+            for (int i = 0; i < cardIDs.Length; i++)
+            {
+                // Match Id with a card and add it to the current cards list and create it.
+                if (cardCollection.allCardIDDictionary.ContainsKey(cardIDs[i]))
+                {
+                    gameDeck.Add(cardCollection.allCardIDDictionary[cardIDs[i]]);
+                }
+                else
+                    Debug.LogError("Unidentified card!");
+            }
+
+            ShuffleDeck();
+        }
+
         currentDeck = new Queue<Card>();
 
         foreach (Card card in gameDeck)
             currentDeck.Enqueue(card);
 
         viewingDeck = currentDeck.ToArray();
+    }
+
+    public void ShuffleDeck()
+    {
+        List<Card> cards = gameDeck;
+        gameDeck.Clear();
+
+        for (int i = 0; i < requiredDeckSize; i++)
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            Card shuffledCard = cards[Random.Range(0, cards.Count)];
+            gameDeck.Add(shuffledCard);
+            cards.Remove(shuffledCard);
+        }
     }
 
     public void DealNewHand(int handSize)

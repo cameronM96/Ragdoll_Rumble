@@ -9,6 +9,13 @@ public class LoadLobbyEditor : Editor
     public string[] difficulties = new string[] { "Easy", "Normal", "Hard" };
     public string[] bestOf = new string[] { "1", "3", "5", "7", "9", "11" };
 
+    SerializedProperty m_CardList;
+
+    private void OnEnable()
+    {
+        m_CardList = serializedObject.FindProperty("aiDeck");
+    }
+
     public override void OnInspectorGUI()
     {
         LoadLobby loadScene = target as LoadLobby;
@@ -41,5 +48,13 @@ public class LoadLobbyEditor : Editor
         else
             loadScene.campaignNumber = -1;
 
+        loadScene.randomAIDeck = EditorGUILayout.Toggle("Random AI Deck:", loadScene.randomAIDeck);
+        if (!loadScene.randomAIDeck)
+        {
+            EditorGUILayout.PropertyField(m_CardList, new GUIContent("AI Deck: "), true);
+        }
+
+        // Apply changes to the serializedProperty - always do this at the end of OnInspectorGUI.
+        serializedObject.ApplyModifiedProperties();
     }
 }

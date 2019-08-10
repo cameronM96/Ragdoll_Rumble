@@ -18,6 +18,9 @@ public class LoadLobby : MonoBehaviour
     public int difficulty = 1;
     public int rounds = 3;
 
+    public bool randomAIDeck;
+    public List<Card> aiDeck;
+
     public void LoadScene()
     {
         if (randomScene)
@@ -38,6 +41,12 @@ public class LoadLobby : MonoBehaviour
         GameInfo.Difficulty = difficulty;
         GameInfo.Rounds = rounds;
 
+        GameInfo.RandomAIDeck = randomAIDeck;
+        if (!randomAIDeck)
+            GameInfo.AIDeck = CompileDeck();
+        else
+            GameInfo.AIDeck = new int[15];
+
         SceneManager.LoadScene(lobbySceneNumber);
     }
 
@@ -48,5 +57,16 @@ public class LoadLobby : MonoBehaviour
 
         usingSceneName = false;
         nextLevelNumber = randomSceneNumber;
+    }
+
+    private int[] CompileDeck()
+    {
+        int[] newDeck = new int[15];
+        for (int i = 0; i < aiDeck.Count; i++)
+        {
+            newDeck[i] = aiDeck[i].iD;
+        }
+
+        return newDeck;
     }
 }

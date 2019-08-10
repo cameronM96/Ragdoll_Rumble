@@ -6,6 +6,8 @@ public static class GameInfo
 {
     private static string nextLevelName, returnLevelName, selectedDeckName;
     private static int nextLevelNumb, returnLevelNumb, campaignNumber, difficulty, rounds;
+    private static bool randomAIDeck;
+    private static int[] aiDeck;
 
     public static string NextLevelName
     {
@@ -100,6 +102,30 @@ public static class GameInfo
         set
         {
             rounds = value;
+        }
+    }
+
+    public static bool RandomAIDeck
+    {
+        get
+        {
+            return randomAIDeck;
+        }
+        set
+        {
+            randomAIDeck = value;
+        }
+    }
+
+    public static int[] AIDeck
+    {
+        get
+        {
+            return aiDeck;
+        }
+        set
+        {
+            aiDeck = value;
         }
     }
 }

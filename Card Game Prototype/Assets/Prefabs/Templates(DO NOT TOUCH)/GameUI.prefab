@@ -4675,8 +4675,8 @@ MonoBehaviour:
   unCommonCards: []
   rareCards: []
   cardLibrary: {fileID: 11400000, guid: 1e605ac22370c2148b3fba1316b76e72, type: 2}
-  chanceOfRare: 0
-  chanceOfUncommon: 0
+  chanceOfRare: 5
+  chanceOfUncommon: 35
 --- !u!114 &8348631375248742112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4689,7 +4689,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0872eeb2934463b4eb5e6438e933d11a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerDeck: 0
   cardCollection: {fileID: 33536121415370690}
+  requiredDeckSize: 15
   cards:
   - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
   - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}

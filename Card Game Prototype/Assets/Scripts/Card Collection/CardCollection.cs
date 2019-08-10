@@ -20,8 +20,8 @@ public class CardCollection : MonoBehaviour
 
     public CardLibrary cardLibrary;
 
-    public float chanceOfRare;
-    public float chanceOfUncommon;
+    public float chanceOfRare = 5f;
+    public float chanceOfUncommon = 35f;
 
     private void Start()
     {

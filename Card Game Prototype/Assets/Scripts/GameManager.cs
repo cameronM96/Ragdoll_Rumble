@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public delegate void InitialiseGame();
+    public static event InitialiseGame InitialiseTheGame;
+
     public delegate void RoundResults();
     public static event RoundResults DisplayRoundResults;
 
@@ -56,6 +59,10 @@ public class GameManager : MonoBehaviour
     public int dominationReward;
     public int campaignReward;
 
+    // Initialise Game
+    private bool gameInitialised = false;
+    private int initialisedPlayers = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,89 +84,92 @@ public class GameManager : MonoBehaviour
         else
             yield return new WaitForEndOfFrame();
 
-        InitialiseCardPhase();
+        InitialiseTheGame?.Invoke();
+    }
+
+    public void InitialsePlayer()
+    {
+        ++initialisedPlayers;
+        if (initialisedPlayers >= numbOfPlayers)
+        {
+            gameInitialised = true;
+            InitialiseCardPhase();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!gameOver)
+        if (!gameInitialised)
+            return;
+
+        if (gameOver)
+            return;
+
+        if (cardPhase)
         {
-            if (cardPhase)
-            {
-                cardPhaseTimer -= Time.deltaTime;
+            cardPhaseTimer -= Time.deltaTime;
 
-                if (cardPhaseTimer <= 0)
+            if (cardPhaseTimer <= 0)
+            {
+                // Check if event has subscribers
+                if (EnterCombatPhase != null)
                 {
-                    // Check if event has subscribers
-                    if (EnterCombatPhase != null)
-                    {
-                        // Go to combat phase!
-                        InitialiseCombatPhase();
-                    }
-                    else
-                        Debug.Log("ERROR: Combat Phase has no subscribers!");
+                    // Go to combat phase!
+                    InitialiseCombatPhase();
                 }
+                else
+                    Debug.Log("ERROR: Combat Phase has no subscribers!");
             }
-            else
+        }
+        else
+        {
+            combatPhaseTimer -= Time.deltaTime;
+
+            if (combatPhaseTimer <= 0)
             {
-                combatPhaseTimer -= Time.deltaTime;
-
-                if (combatPhaseTimer <= 0)
+                // get health of AI
+                GameObject ai = GameObject.FindGameObjectWithTag("Team 2");
+                Base_Stats aiStats;
+                int aiHealth = -1, aiHPPercent = -1;
+                if (ai != null)
                 {
-                    // get health of AI
-                    GameObject ai = GameObject.FindGameObjectWithTag("Team 2");
-                    Base_Stats aiStats;
-                    int aiHealth = -1, aiHPPercent = -1;
-                    if (ai != null)
+                    aiStats = ai.GetComponent<Base_Stats>();
+                    if (aiStats != null)
                     {
-                        aiStats = ai.GetComponent<Base_Stats>();
-                        if (aiStats != null)
-                        {
-                            aiHealth = aiStats.GetHealth();
-                            aiHPPercent = aiHealth / aiStats.maxHP;
-                        }
+                        aiHealth = aiStats.GetHealth();
+                        aiHPPercent = aiHealth / aiStats.maxHP;
                     }
+                }
 
-                    // Get health of Player
-                    GameObject person = GameObject.FindGameObjectWithTag("Team 1");
-                    Base_Stats personStats;
-                    int personHealth = -1, personHPPercent = -1;
-                    if (person != null)
+                // Get health of Player
+                GameObject person = GameObject.FindGameObjectWithTag("Team 1");
+                Base_Stats personStats;
+                int personHealth = -1, personHPPercent = -1;
+                if (person != null)
+                {
+                    personStats = ai.GetComponent<Base_Stats>();
+                    if (personStats != null)
                     {
-                        personStats = ai.GetComponent<Base_Stats>();
-                        if (personStats != null)
-                        {
-                            personHealth = personStats.GetHealth();
-                            personHPPercent = personHealth / personStats.maxHP;
-                        }
+                        personHealth = personStats.GetHealth();
+                        personHPPercent = personHealth / personStats.maxHP;
                     }
+                }
 
-                    // Check who wins
-                    if (personHPPercent != -1 && aiHPPercent != -1 && aiHealth != -1 && personHealth != -1)
+                // Check who wins
+                if (personHPPercent != -1 && aiHPPercent != -1 && aiHealth != -1 && personHealth != -1)
+                {
+                    if (personHPPercent == aiHPPercent)
                     {
-                        if (personHPPercent == aiHPPercent)
+                        // HP percent is the same check total hp
+                        if (personHealth == aiHealth)
                         {
-                            // HP percent is the same check total hp
-                            if (personHealth == aiHealth)
-                            {
-                                // It's a tie
-                                roundWinner = -1;
-                            }
-                            else if (personHealth > aiHealth)
-                            {
-                                // player wins
-                                roundWinner = 1;
-                            }
-                            else
-                            {
-                                // AI wins
-                                roundWinner = 2;
-                            }
+                            // It's a tie
+                            roundWinner = -1;
                         }
-                        else if (personHPPercent > aiHPPercent)
+                        else if (personHealth > aiHealth)
                         {
-                            // Player wins
+                            // player wins
                             roundWinner = 1;
                         }
                         else
@@ -168,10 +178,20 @@ public class GameManager : MonoBehaviour
                             roundWinner = 2;
                         }
                     }
-
-                    // End round
-                    ShowRoundResults();
+                    else if (personHPPercent > aiHPPercent)
+                    {
+                        // Player wins
+                        roundWinner = 1;
+                    }
+                    else
+                    {
+                        // AI wins
+                        roundWinner = 2;
+                    }
                 }
+
+                // End round
+                ShowRoundResults();
             }
         }
     }
@@ -351,6 +371,7 @@ public class GameManager : MonoBehaviour
     // PlaceHolder until Multi-player is implemented
     public void PlayerJoined ()
     {
+        Debug.Log("Player has joined!");
         ++numbOfPlayers;
     }
 

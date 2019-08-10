@@ -45,12 +45,11 @@ public class Base_Stats : MonoBehaviour
     [HideInInspector] public bool snared = false;
     private float snareLength;
 
-    private void Awake()
+    private void Start()
     {
         stateController = GetComponent<StateController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioController = GetComponent<AIController>();
-
         gameManager.PlayerJoined();
     }
 
