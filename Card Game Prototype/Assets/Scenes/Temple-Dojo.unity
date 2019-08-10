@@ -68643,6 +68643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1536982873}
   - component: {fileID: 1536982872}
+  - component: {fileID: 1536982874}
   m_Layer: 0
   m_Name: Light rotator
   m_TagString: Untagged
@@ -68679,6 +68680,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1536982874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1536982871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d3c595434a38e2e45817eeb4be39b252, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minTime: 0.6
+  threshhold: 0.7
+  LastTime: 0
+  lightning1: {fileID: 1846002403}
 --- !u!1001 &1542500133
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -83723,7 +83740,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1846002404}
   - component: {fileID: 1846002406}
-  - component: {fileID: 1846002405}
   m_Layer: 0
   m_Name: Lightning
   m_TagString: Untagged
@@ -83745,22 +83761,6 @@ Transform:
   m_Father: {fileID: 1536982873}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 39.122, y: -78.865005, z: -21.901001}
---- !u!114 &1846002405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846002403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c595434a38e2e45817eeb4be39b252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  minTime: 1
-  threshhold: 1
-  LastTime: 0
-  lightning1: {fileID: 1846002403}
 --- !u!108 &1846002406
 Light:
   m_ObjectHideFlags: 0

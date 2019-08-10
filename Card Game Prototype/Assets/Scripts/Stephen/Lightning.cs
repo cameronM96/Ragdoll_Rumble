@@ -12,7 +12,7 @@ public class Lightning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lightning1.SetActive(true);
+
     }
 
     // Update is called once per frame
@@ -23,7 +23,6 @@ public class Lightning : MonoBehaviour
             if(Random.value > threshhold)
             {
                 lightning1.SetActive (true);
-                Debug.Log("hdjahsd");
             }
             else
             {
