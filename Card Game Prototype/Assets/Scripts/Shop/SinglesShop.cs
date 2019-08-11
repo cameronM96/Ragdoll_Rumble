@@ -41,8 +41,17 @@ public class SinglesShop : MonoBehaviour
         // Clear Shop
         currentShopCards.Clear();
 
+        List<Transform> unParent = new List<Transform>();
+        // Cache children (can't change the list you are looping through so need to cache it)
         foreach (Transform child in shopCardPanel.transform)
         {
+            unParent.Add(child);
+        }
+
+        // Unparent and destroy children
+        foreach (Transform child in unParent)
+        {
+            child.SetParent(null);
             Destroy(child.gameObject);
         }
 
@@ -146,6 +155,8 @@ public class SinglesShop : MonoBehaviour
                 shopCard.transform.SetParent(shopCardPanel.transform);
             }
         }
+
+        shopCardPanel.GetComponent<PanelResizer>().Resize();
     }
 
     public GameObject CreateCard(Card card)

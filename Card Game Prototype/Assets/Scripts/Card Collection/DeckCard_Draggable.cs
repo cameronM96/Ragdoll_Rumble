@@ -57,19 +57,31 @@ public class DeckCard_Draggable : GenericDrag, IEndDragHandler, IBeginDragHandle
     public void OnEndDrag(PointerEventData eventData)
     {
         movingToDeck = false;
+        PanelResizer panelResizer = null;
         if (returnParent == null)
         {
+            // Remove from deck
             if (collectionCard != null)
                 collectionCard.UpdateCardCount(++collectionCard.currentCardCount);
+
+            Transform oldParent = transform.parent;
+            transform.SetParent(null);
+            if(oldParent != null)
+                panelResizer = oldParent.GetComponent<PanelResizer>();
 
             cM.deckSaved = false;
             Destroy(this.gameObject);
         }
         else
         {
+            // Return to deck
             this.transform.SetParent(null);
             this.transform.SetParent(returnParent);
             this.transform.SetAsFirstSibling();
+            panelResizer = transform.GetComponentInParent<PanelResizer>();
         }
+
+        if (panelResizer != null)
+            panelResizer.Resize();
     }
 }

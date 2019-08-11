@@ -1172,6 +1172,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  statIcons:
+  - {fileID: 21300000, guid: 8b4c7c799d4dab344ae87ea21bc10b7e, type: 3}
+  - {fileID: 21300000, guid: ccce6efaf61b2cf4eb0dd5ec6f0b3e53, type: 3}
+  - {fileID: 21300000, guid: f239f91eb35a4d644860f89c640eacb2, type: 3}
+  - {fileID: 21300000, guid: 22eb6b0e960768c47a5eccf64921b410, type: 3}
+  - {fileID: 21300000, guid: 799d709400c68804a9e7ac970ea34b89, type: 3}
+  iconTemplate: {fileID: 6755115446928718425, guid: a883425599d1dea4195cb0bbf14160ec,
+    type: 3}
+  columnValue: {x: 10, y: 35}
+  yValue: -10
+  rowValue: -20
 --- !u!114 &5392130394296607559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1219,6 +1230,7 @@ MonoBehaviour:
   costValues: {fileID: 5482137753006367565}
   coinValue: {fileID: 1960564691454728896}
   gemValue: {fileID: 1598275291658712018}
+  card: {fileID: 0}
 --- !u!1 &5176442016172350401
 GameObject:
   m_ObjectHideFlags: 0
@@ -1697,6 +1709,7 @@ GameObject:
   - component: {fileID: 3909240910914833762}
   - component: {fileID: 387481735849827935}
   - component: {fileID: 527352460248337734}
+  - component: {fileID: 2100083852341211174}
   m_Layer: 5
   m_Name: Card Modifier
   m_TagString: Untagged
@@ -1765,6 +1778,30 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Card info
+--- !u!114 &2100083852341211174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6844452982324690878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 20, y: 20}
+  m_Spacing: {x: 5, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &7427689675897608493
 GameObject:
   m_ObjectHideFlags: 0

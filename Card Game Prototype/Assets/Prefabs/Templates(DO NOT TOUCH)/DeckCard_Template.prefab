@@ -1457,6 +1457,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  statIcons:
+  - {fileID: 21300000, guid: 8b4c7c799d4dab344ae87ea21bc10b7e, type: 3}
+  - {fileID: 21300000, guid: ccce6efaf61b2cf4eb0dd5ec6f0b3e53, type: 3}
+  - {fileID: 21300000, guid: f239f91eb35a4d644860f89c640eacb2, type: 3}
+  - {fileID: 21300000, guid: 22eb6b0e960768c47a5eccf64921b410, type: 3}
+  - {fileID: 21300000, guid: 799d709400c68804a9e7ac970ea34b89, type: 3}
+  iconTemplate: {fileID: 6755115446928718425, guid: a883425599d1dea4195cb0bbf14160ec,
+    type: 3}
+  columnValue: {x: 10, y: 35}
+  yValue: -10
+  rowValue: -20
 --- !u!114 &8328444310102483831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1501,8 +1512,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494012a44eb24c444a5e8652067a5970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cM: {fileID: 0}
   collectionCard: {fileID: 0}
-  destroyOnEndDrag: 1
+  returnParent: {fileID: 0}
+  timeToMove: 2
+  startPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &8242358114282344825
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1528,7 @@ GameObject:
   - component: {fileID: 3515177475006564872}
   - component: {fileID: 8635089311137560608}
   - component: {fileID: 2396437361958153727}
+  - component: {fileID: 591861483615134578}
   m_Layer: 5
   m_Name: Card Modifier
   m_TagString: Untagged
@@ -1582,6 +1597,30 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Card info
+--- !u!114 &591861483615134578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242358114282344825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 20, y: 20}
+  m_Spacing: {x: 5, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &8388928193873201418
 GameObject:
   m_ObjectHideFlags: 0

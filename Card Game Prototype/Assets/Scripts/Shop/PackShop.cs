@@ -18,8 +18,18 @@ public class PackShop : MonoBehaviour
     public void LoadWindow()
     {
         // Clear Shop
+
+        List<Transform> unParent = new List<Transform>();
+        // Cache children (can't change the list you are looping through so need to cache it)
         foreach (Transform child in shopPackPanel.transform)
         {
+            unParent.Add(child);
+        }
+
+        // Unparent and destroy children
+        foreach (Transform child in unParent)
+        {
+            child.SetParent(null);
             Destroy(child.gameObject);
         }
 
@@ -29,6 +39,8 @@ public class PackShop : MonoBehaviour
             GameObject newPack = CreatePack(pack);
             newPack.transform.SetParent(shopPackPanel.transform);
         }
+
+        shopPackPanel.GetComponent<PanelResizer>().Resize();
     }
 
     public void ScrollWindow(Scrollbar bar)

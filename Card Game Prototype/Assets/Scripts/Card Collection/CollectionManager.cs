@@ -96,8 +96,17 @@ public class CollectionManager : MonoBehaviour
     public void LoadDeckButtons()
     {
         // Destroy old buttons
-        foreach(Transform child in deckButtons.transform)
+        List<Transform> unParent = new List<Transform>();
+        // Cache children (can't change the list you are looping through so need to cache it)
+        foreach (Transform child in deckButtons.transform)
         {
+            unParent.Add(child);
+        }
+
+        // Unparent and destroy children
+        foreach (Transform child in unParent)
+        {
+            child.SetParent(null);
             Destroy(child.gameObject);
         }
 
@@ -107,6 +116,8 @@ public class CollectionManager : MonoBehaviour
             GameObject newButton = Instantiate(deckButtonPrefab, deckButtons.transform);
             newButton.GetComponent<DeckButton>().Initialise(this, deck.Key);
         }
+
+        deckButtons.GetComponent<PanelResizer>().Resize();
     }
 
     public void CreateDeck(Text textEl)
@@ -137,8 +148,17 @@ public class CollectionManager : MonoBehaviour
         if (player.MyDecks.ContainsKey(deckName))
         {
             // Destroy cards currently in the deck holder
+            List<Transform> unParent = new List<Transform>();
+            // Cache children (can't change the list you are looping through so need to cache it)
             foreach (Transform child in deckPanel.transform)
             {
+                unParent.Add(child);
+            }
+
+            // Unparent and destroy children
+            foreach (Transform child in unParent)
+            {
+                child.SetParent(null);
                 Destroy(child.gameObject);
             }
 
@@ -169,6 +189,8 @@ public class CollectionManager : MonoBehaviour
             newDeckCard.GetComponent<CardDisplay>().Initialise(deckCard);
             newDeckCard.GetComponent<DeckCard_Draggable>().returnParent = deckPanel.transform;
         }
+
+        deckPanel.GetComponent<PanelResizer>().Resize();
 
         return true;
     }
@@ -203,10 +225,22 @@ public class CollectionManager : MonoBehaviour
     public void ClearDeck()
     {
         // Empties Deck (doesn't save it)
+
+        List<Transform> unParent = new List<Transform>();
+        // Cache children (can't change the list you are looping through so need to cache it)
         foreach (Transform child in deckPanel.transform)
         {
+            unParent.Add(child);
+        }
+
+        // Unparent and destroy children
+        foreach (Transform child in unParent)
+        {
+            child.SetParent(null);
             Destroy(child.gameObject);
         }
+
+        deckPanel.GetComponent<PanelResizer>().Resize();
     }
 
     public void DeleteDeck()
@@ -222,8 +256,17 @@ public class CollectionManager : MonoBehaviour
         // Clear Shop
         currentCollection.Clear();
 
+        List<Transform> unParent = new List<Transform>();
+        // Cache children (can't change the list you are looping through so need to cache it)
         foreach (Transform child in collectionPanel.transform)
         {
+            unParent.Add(child);
+        }
+
+        // Unparent and destroy children
+        foreach (Transform child in unParent)
+        {
+            child.SetParent(null);
             Destroy(child.gameObject);
         }
 
@@ -328,6 +371,7 @@ public class CollectionManager : MonoBehaviour
             }
         }
 
+        collectionPanel.GetComponent<PanelResizer>().Resize();
         //collectionPanel.GetComponent<PanelResizer>().Resize();
     }
 

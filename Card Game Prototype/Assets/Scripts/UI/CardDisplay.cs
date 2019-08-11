@@ -18,11 +18,20 @@ public class CardDisplay : MonoBehaviour
     public Image background;
     public Image rarityImage;
     public Image[] rings = new Image[4];
-    
+
+    public Sprite[] statIcons;
+    public GameObject iconTemplate;
+    public Vector2 columnValue = new Vector2(10,35);
+    public float yValue = -10f;
+    public float rowValue = -20f;
+
+    private bool reArrangeIcons;
+
     public void Initialise(Card newCard)
     {
         // Update Card Display
         card = newCard;
+        reArrangeIcons = false;
 
         if (card == null)
             return;
@@ -40,15 +49,58 @@ public class CardDisplay : MonoBehaviour
             description.text = card.description + "\n";
 
         if (card.attack != 0)
-            cardInfoText.text += ("\nAttack: " + card.attack);
+            CreateIcon(0);
         if (card.armour != 0)
-            cardInfoText.text += ("\nArmour: " + card.armour);
+            CreateIcon(1);
         if (card.hP != 0)
-            cardInfoText.text += ("\nHealth: " + card.hP);
+            CreateIcon(2);
         if (card.speed != 0)
-            cardInfoText.text += ("\nSpeed: " + card.speed);
+            CreateIcon(3);
         if (card.atkSpeed != 0)
-            cardInfoText.text += ("\nAttack Speed: " + card.atkSpeed);
+            CreateIcon(4);
+
+        if (reArrangeIcons)
+        {
+            Debug.Log("Rearranging");
+            cardInfoText.GetComponent<GridLayoutGroup>().enabled = false;
+            //float currentY = yValue;
+            //bool flipFlop = false;
+            //foreach (Transform child in cardInfoText.transform)
+            //{
+            //    if (!flipFlop)
+            //    {
+            //        child.localPosition = new Vector3(columnValue.x, currentY);
+            //    }
+            //    else
+            //    {
+            //        child.localPosition = new Vector3(columnValue.y, currentY);
+            //        currentY += rowValue;
+            //    }
+            //}
+
+            // Center objects that are solo on a new row
+            if (cardInfoText.transform.childCount == 1)
+            {
+                RectTransform reSetSize = cardInfoText.transform.GetChild(0).GetComponent<RectTransform>();
+                reSetSize.sizeDelta = new Vector2(20, 20);
+            }
+            else
+            {
+                int lastChild = cardInfoText.transform.childCount;
+                --lastChild;
+                Transform centerObject = cardInfoText.transform.GetChild(lastChild);
+                Vector3 newPos = centerObject.transform.localPosition;
+                newPos.x = 
+                    (cardInfoText.transform.GetChild(lastChild - 1).transform.position.x +
+                    cardInfoText.transform.GetChild(lastChild - 2).transform.position.x) / 2;
+                centerObject.localPosition = newPos;
+            }
+
+            cardInfoText.text = "";
+            description.text = card.abilityDescription;
+        }
+        else
+            cardInfoText.text = card.abilityDescription;
 
         artworkImage.sprite = card.artwork;
         background.sprite = card.background;
@@ -98,5 +150,41 @@ public class CardDisplay : MonoBehaviour
         //card.PlayCard(characterBase, slotSpots);
 
         Destroy(this.gameObject);
+    }
+
+    private void CreateIcon(int value)
+    {
+        //reArrangeIcons = !reArrangeIcons;
+
+        GameObject newIcon = Instantiate(iconTemplate, cardInfoText.transform);
+        newIcon.GetComponent<Image>().sprite = statIcons[value];
+        float statValue = 0;
+        Color iconColour = Color.grey;
+        switch (value)
+        {
+            case 0:
+                statValue = card.attack;
+                iconColour = Color.red;
+                break;
+            case 1:
+                statValue = card.armour;
+                iconColour = Color.yellow;
+                break;
+            case 2:
+                statValue = card.hP;
+                iconColour = Color.green;
+                break;
+            case 3:
+                statValue = card.speed;
+                iconColour = Color.blue;
+                break;
+            case 4:
+                statValue = card.atkSpeed;
+                iconColour = Color.magenta;
+                break;
+        }
+
+        newIcon.GetComponentInChildren<Text>().text = statValue.ToString();
+        newIcon.GetComponent<Image>().color = iconColour;
     }
 }

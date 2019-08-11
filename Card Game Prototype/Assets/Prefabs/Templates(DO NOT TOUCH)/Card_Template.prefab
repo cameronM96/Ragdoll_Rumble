@@ -370,6 +370,17 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  statIcons:
+  - {fileID: 21300000, guid: 8b4c7c799d4dab344ae87ea21bc10b7e, type: 3}
+  - {fileID: 21300000, guid: ccce6efaf61b2cf4eb0dd5ec6f0b3e53, type: 3}
+  - {fileID: 21300000, guid: f239f91eb35a4d644860f89c640eacb2, type: 3}
+  - {fileID: 21300000, guid: 22eb6b0e960768c47a5eccf64921b410, type: 3}
+  - {fileID: 21300000, guid: 799d709400c68804a9e7ac970ea34b89, type: 3}
+  iconTemplate: {fileID: 6755115446928718425, guid: a883425599d1dea4195cb0bbf14160ec,
+    type: 3}
+  columnValue: {x: 10, y: 35}
+  yValue: -10
+  rowValue: -20
 --- !u!114 &4844281565309600364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,6 +397,7 @@ MonoBehaviour:
   placeHolderParent: {fileID: 0}
   card: {fileID: 0}
   movePlaceHolder: 1
+  cameraController: {fileID: 0}
 --- !u!114 &3150786633707124844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,6 +775,7 @@ GameObject:
   - component: {fileID: 6281690648068970057}
   - component: {fileID: 7209692547370468724}
   - component: {fileID: 7367024763216877165}
+  - component: {fileID: 4638359832098383869}
   m_Layer: 5
   m_Name: Card Modifier
   m_TagString: Untagged
@@ -786,8 +799,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -34.522, y: -119.75}
-  m_SizeDelta: {x: 50.665, y: 57.67}
+  m_AnchoredPosition: {x: -34.522, y: -113.3}
+  m_SizeDelta: {x: 45, y: 57.67}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &7209692547370468724
 CanvasRenderer:
@@ -824,13 +837,37 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Card info
+--- !u!114 &4638359832098383869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4580446698267534485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -2095666955, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 20, y: 20}
+  m_Spacing: {x: 5, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1 &5260144862961480056
 GameObject:
   m_ObjectHideFlags: 0
