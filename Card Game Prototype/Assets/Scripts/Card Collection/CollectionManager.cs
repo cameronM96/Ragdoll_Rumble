@@ -14,15 +14,24 @@ public class CollectionManager : MonoBehaviour
     public GameObject deckBuildingCardTemplate;
     public bool alphaBetically = true;
     public int rarity = 0; // None, Common, UnCommon, Rare, common -> rare, rare -> common
-    public int cardType = 0; // None, Weapon, Armour, Ability, Environmental, Behaviour
+    [HideInInspector] public bool weapon = true;
+    [HideInInspector] public bool armour = true;
+    [HideInInspector] public bool ability = true;
+    [HideInInspector] public bool environmental = true;
+    [HideInInspector] public bool behaviour = true;
+    [HideInInspector] public int owned = 0;
 
     public GameObject cardWindow;
 
     // Deck Stuff
-    public int requiredDeckSize;
+    public int requiredDeckSize = 15;
     public GameObject deckButtons;
     public GameObject deckCreation;
     public GameObject deckPanel;
+    public GameObject deckCounter;
+    public Text saveDeckText;
+    public Color validDeckSizeColour;
+    public Color invalidDeckSizeColour;
     public GameObject deckButtonPrefab;
     [HideInInspector] public bool deckSaved = true;
 
@@ -134,6 +143,8 @@ public class CollectionManager : MonoBehaviour
         {
             GameObject newButton = Instantiate(deckButtonPrefab, deckButtons.transform);
             newButton.GetComponent<DeckButton>().Initialise(this, deck.Key);
+            if (deck.Value.Length != requiredDeckSize)
+                newButton.GetComponent<Image>().color = invalidDeckSizeColour;
         }
 
         deckButtons.GetComponent<PanelResizer>().Resize();
@@ -147,16 +158,38 @@ public class CollectionManager : MonoBehaviour
     public void CreateDeck(string deckName)
     {
         // Create a new deck and add it to player.Mydecks
-        currentDeckName = deckName;
-        SaveDeck();
-        bool loaded = LoadDeck(deckName);
-        if (loaded)
+        if (deckName != "" || deckName != null)
         {
-            ToggleDeckCreation();
-            Debug.Log("Creation of '" + deckName + "' was successful.");
+            bool deckExists = false;
+            foreach (KeyValuePair<string, int[]> deck in player.MyDecks)
+            {
+                if (deck.Key == deckName)
+                {
+                    deckExists = true;
+                    break;
+                }
+            }
+
+            if (deckExists)
+            {
+                Debug.LogError("Invalid deck name! Deck already exists!");
+                return;
+            }
+
+            currentDeckName = deckName;
+            SaveDeck();
+            bool loaded = LoadDeck(deckName);
+            if (loaded)
+            {
+                ClearDeck();
+                ToggleDeckCreation();
+                Debug.Log("Creation of '" + deckName + "' was successful.");
+            }
+            else
+                Debug.Log("Creation of '" + deckName + "' was unsuccessful.");
         }
         else
-            Debug.Log("Creation of '" + deckName + "' was unsuccessful.");
+            Debug.LogError("Invalid deck name! Can't have an empty deck name!");
     }
 
     public bool LoadDeck(string deckName)
@@ -210,8 +243,20 @@ public class CollectionManager : MonoBehaviour
         }
 
         deckPanel.GetComponent<PanelResizer>().Resize();
+        UpdateDeckCardCount();
+        saveDeckText.text = ("Save " + currentDeckName).ToUpper();
 
         return true;
+    }
+
+    public void UpdateDeckCardCount()
+    {
+        int deckCount = deckPanel.transform.childCount;
+        deckCounter.GetComponentInChildren<Text>().text = deckCount + "/" + requiredDeckSize;
+        if (deckCount == requiredDeckSize)
+            deckCounter.GetComponent<Image>().color = validDeckSizeColour;
+        else
+            deckCounter.GetComponent<Image>().color = invalidDeckSizeColour;
     }
 
     public void SaveDeck()
@@ -236,6 +281,7 @@ public class CollectionManager : MonoBehaviour
                 player.AddDeck(currentDeckName, deckInts.ToArray());
 
             deckSaved = true;
+            saveDeckText.text = ("Save " + currentDeckName).ToUpper();
         }
         else
             Debug.LogError("Deck is too big!");
@@ -260,6 +306,7 @@ public class CollectionManager : MonoBehaviour
         }
 
         deckPanel.GetComponent<PanelResizer>().Resize();
+        UpdateDeckCardCount();
     }
 
     public void DeleteDeck()
@@ -300,37 +347,52 @@ public class CollectionManager : MonoBehaviour
         {
             bool addToShop = true;
             //If a card type was specified
-            // None, Weapon, Armour, Ability, Environmental, Behaviour
-            if (cardType != 0)
+            if (owned != 0)
             {
-                switch (card.currentCardType)
+                switch (owned)
                 {
-                    case CardType.None:
-                        break;
-                    case CardType.Weapon:
-                        if (cardType != 1)
+                    case 1:
+                        // Owned
+                        if (!player.MyCards.ContainsKey(card.iD))
                             addToShop = false;
                         break;
-                    case CardType.Armour:
-                        if (cardType != 2)
-                            addToShop = false;
-                        break;
-                    case CardType.Ability:
-                        if (cardType != 3)
-                            addToShop = false;
-                        break;
-                    case CardType.Behaviour:
-                        if (cardType != 4)
-                            addToShop = false;
-                        break;
-                    case CardType.Environmental:
-                        if (cardType != 5)
+                    case 2:
+                        // Unowned
+                        if (player.MyCards.ContainsKey(card.iD))
                             addToShop = false;
                         break;
                     default:
-                        Debug.Log("I don't know what type of card this is");
                         break;
                 }
+            }
+            // None, Weapon, Armour, Ability, Environmental, Behaviour
+            switch (card.currentCardType)
+            {
+                case CardType.None:
+                    break;
+                case CardType.Weapon:
+                    if (!weapon)
+                        addToShop = false;
+                    break;
+                case CardType.Armour:
+                    if (!armour)
+                        addToShop = false;
+                    break;
+                case CardType.Ability:
+                    if (!ability)
+                        addToShop = false;
+                    break;
+                case CardType.Behaviour:
+                    if (!behaviour)
+                        addToShop = false;
+                    break;
+                case CardType.Environmental:
+                    if (!environmental)
+                        addToShop = false;
+                    break;
+                default:
+                    Debug.Log("I don't know what type of card this is");
+                    break;
             }
 
             // If card rarity was specified
@@ -415,7 +477,14 @@ public class CollectionManager : MonoBehaviour
             foreach(int id in player.MyDecks[currentDeckName])
             {
                 if (id == card.iD)
+                {
                     --cardCount;
+                    foreach (Transform child in deckPanel.transform)
+                    {
+                        if (child.gameObject.GetComponent<CardDisplay>().card == card)
+                            child.GetComponent<DeckCard_Draggable>().collectionCard = newCard.GetComponent<Collection_Card>();
+                    }
+                }
             }
         }
 
@@ -437,6 +506,40 @@ public class CollectionManager : MonoBehaviour
         // Opens window that displays the cards much larger so they are easier to read
         cardWindow.GetComponent<CardWindow>().LoadWindow(card);
         cardWindow.SetActive(true);
+    }
+
+    public void DropdownChange (Dropdown dropDown)
+    {
+        owned = dropDown.value;
+        LoadCards(creatingDeck);
+    }
+
+    public void ToggleChange (int value, Toggle toggle)
+    {
+        // Weapon, Armour, Ability, Environmental, Behaviour
+        switch (value)
+        {
+            case 0:
+                weapon = toggle.isOn;
+                break;
+            case 1:
+                armour = toggle.isOn;
+                break;
+            case 2:
+                ability = toggle.isOn;
+                break;
+            case 3:
+                environmental = toggle.isOn;
+                break;
+            case 4:
+                behaviour = toggle.isOn;
+                break;
+            default:
+                Debug.LogError("Unknown Value!");
+                break;
+        }
+
+        LoadCards(creatingDeck);
     }
 
     public float Map(float x, float in_min, float in_max, float out_min, float out_max, bool clamp = false)

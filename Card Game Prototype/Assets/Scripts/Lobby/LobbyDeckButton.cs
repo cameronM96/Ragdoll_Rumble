@@ -19,6 +19,6 @@ public class LobbyDeckButton : MonoBehaviour
     public void SelectDeck()
     {
         if (myLobbyManager.LoadDeck(myDeckName))
-            GameInfo.SelectedDeckName = myDeckName;
+            myLobbyManager.DeckSelected(myDeckName);
     }
 }

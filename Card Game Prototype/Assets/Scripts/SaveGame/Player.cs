@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Dictionary<string, int[]> myDecks;
     private Dictionary<int, int> myUnopenedPacks;
     private int campaignProgress;
+    private string defaultDeckName;
 
     public List<Card> starterDeck;
 
@@ -44,6 +45,11 @@ public class Player : MonoBehaviour
     public int CampaignProgress
     {
         get { return campaignProgress; }
+    }
+    public string DefaultDeckName
+    {
+        get { return defaultDeckName; }
+        set { defaultDeckName = value; }
     }
 
     public void SaveGame()
@@ -141,6 +147,7 @@ public class Player : MonoBehaviour
                 myUnopenedPacks = data.myUnopenedPacks;
 
             campaignProgress = data.campaignProgress;
+            DefaultDeckName = data.defaultDeckName;
         }
         else
             NewProfile("New Player");

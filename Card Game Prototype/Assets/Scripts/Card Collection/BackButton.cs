@@ -30,6 +30,7 @@ public class BackButton : MonoBehaviour
             cM.LoadDeckButtons();
             cM.ToggleDeckCreation();
             cM.LoadCards(cM.creatingDeck);
+            cM.deckSaved = true;
         }
         else
             SceneManager.LoadScene("StephenTestMaps");

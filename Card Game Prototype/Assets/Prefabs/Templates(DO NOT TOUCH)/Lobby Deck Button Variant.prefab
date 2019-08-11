@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 4421088010250850914, guid: f2b78b5e75e9d9147b6f61de528d5503,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 318
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4421088010250850914, guid: f2b78b5e75e9d9147b6f61de528d5503,
         type: 3}
@@ -157,10 +157,25 @@ PrefabInstance:
       propertyPath: m_Colors.m_SelectedColor.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4421088010937544729, guid: f2b78b5e75e9d9147b6f61de528d5503,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421088010937544729, guid: f2b78b5e75e9d9147b6f61de528d5503,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 4421088010937544730, guid: f2b78b5e75e9d9147b6f61de528d5503,
         type: 3}
       propertyPath: m_FontData.m_BestFit
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4421088010937544730, guid: f2b78b5e75e9d9147b6f61de528d5503,
+        type: 3}
+      propertyPath: m_Text
+      value: Starter Deck
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3403749898160771106, guid: f2b78b5e75e9d9147b6f61de528d5503, type: 3}

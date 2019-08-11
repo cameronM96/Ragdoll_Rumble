@@ -65,7 +65,9 @@ public class Collection_Card : MonoBehaviour
                     UpdateCardCount(--currentCardCount);
                     GameObject deckCard = Instantiate(collectionManager.deckBuildingCardTemplate, collectionManager.deckPanel.transform);
                     deckCard.GetComponent<CardDisplay>().Initialise(GetComponent<CardDisplay>().card);
-                    deckCard.GetComponent<DeckCard_Draggable>().Initialise(this, collectionManager.deckPanel.transform, this.transform.position);
+                    deckCard.GetComponent<DeckCard_Draggable>().Initialise(this, collectionManager.deckPanel.transform);
+                    collectionManager.UpdateDeckCardCount();
+                    collectionManager.saveDeckText.text = ("Save" + collectionManager.currentDeckName + "<color=red>*</color>").ToUpper();
                 }
                 else
                     Debug.Log("Deck is full!");

@@ -12,6 +12,7 @@ public class PlayerProfile
     public Dictionary<string, int[]> myDecks;
     public Dictionary<int, int> myUnopenedPacks;
     public int campaignProgress;
+    public string defaultDeckName;
 
     public PlayerProfile (Player player)
     {
@@ -22,5 +23,6 @@ public class PlayerProfile
         myDecks = player.MyDecks;
         campaignProgress = player.CampaignProgress;
         myUnopenedPacks = player.MyUnopenedPacks;
+        defaultDeckName = player.DefaultDeckName;
     }
 }

@@ -36,7 +36,7 @@ public class DeckCard_Draggable : GenericDrag, IEndDragHandler, IBeginDragHandle
         //}
     }
 
-    public void Initialise(Collection_Card cc, Transform parent, Vector3 pos)
+    public void Initialise(Collection_Card cc, Transform parent)
     {
         this.transform.SetParent(parent);
         this.transform.SetAsFirstSibling();
@@ -70,6 +70,8 @@ public class DeckCard_Draggable : GenericDrag, IEndDragHandler, IBeginDragHandle
                 panelResizer = oldParent.GetComponent<PanelResizer>();
 
             cM.deckSaved = false;
+            cM.UpdateDeckCardCount();
+            cM.saveDeckText.text = ("Save" + cM.currentDeckName + "<color=red>*</color>").ToUpper();
             Destroy(this.gameObject);
         }
         else
@@ -79,6 +81,7 @@ public class DeckCard_Draggable : GenericDrag, IEndDragHandler, IBeginDragHandle
             this.transform.SetParent(returnParent);
             this.transform.SetAsFirstSibling();
             panelResizer = transform.GetComponentInParent<PanelResizer>();
+            cM.UpdateDeckCardCount();
         }
 
         if (panelResizer != null)
