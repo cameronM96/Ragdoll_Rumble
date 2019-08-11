@@ -26,6 +26,11 @@ public class CollectionManager : MonoBehaviour
     public GameObject deckButtonPrefab;
     [HideInInspector] public bool deckSaved = true;
 
+    // Player Stuff
+    public Text playerName;
+    public Text coins;
+    public Text premium;
+
     // Pack Stuff
     public GameObject packsDropZone;
     public GameObject packsPanel;
@@ -51,6 +56,20 @@ public class CollectionManager : MonoBehaviour
         LoadCards(creatingDeck);
         LoadDeckButtons();
         LoadPacks();
+        UpdatePlayerInfo();
+    }
+
+    public void UpdatePlayerInfo()
+    {
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("PlayerProfile")?.GetComponent<Player>();
+
+        if (player == null)
+            return;
+
+        playerName.text = player.playerName;
+        coins.text = player.Coins.ToString();
+        premium.text = player.Gems.ToString();
     }
 
     public void ToggleDeckCreation()

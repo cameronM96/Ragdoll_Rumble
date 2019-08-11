@@ -39,6 +39,7 @@ public class ShopManagerv2 : MonoBehaviour
             switch (card.rarity)
             {
                 case Rarity.None:
+                    defaultCost = CommonDefaultGemCost;
                     break;
                 case Rarity.Common:
                     defaultCost = CommonDefaultGemCost;
@@ -58,6 +59,7 @@ public class ShopManagerv2 : MonoBehaviour
             switch (card.rarity)
             {
                 case Rarity.None:
+                    defaultCost = CommonDefaultCoinCost;
                     break;
                 case Rarity.Common:
                     defaultCost = CommonDefaultCoinCost;

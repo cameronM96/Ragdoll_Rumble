@@ -19,7 +19,7 @@ public class PanelResizer : MonoBehaviour
 
     public void Resize()
     {
-        Debug.Log("Resizing!");
+        //Debug.Log("Resizing!");
 
         switch (groupType)
         {

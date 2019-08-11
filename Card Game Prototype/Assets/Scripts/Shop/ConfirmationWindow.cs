@@ -12,6 +12,9 @@ public class ConfirmationWindow : MonoBehaviour
 
     public InputField shopItemInfo;
 
+    public Text coinCostText;
+    public Text gemCostText;
+
     [SerializeField] private Card currentCard;
     [SerializeField] private PackOfCards currentPack;
 
@@ -36,6 +39,33 @@ public class ConfirmationWindow : MonoBehaviour
             shopItemInfo.text += "1x " + card.cardName;
 
         currentCard = card;
+
+        // Get Cost Values
+        // Coins
+        int coinCost = currentCard.gemCost;
+        if (coinCost == 0)
+            coinCost = shopManager.ReturnDefaultCosts(false, currentCard);
+
+        // Gems
+        int gemCost = currentCard.gemCost;
+        if (gemCost == 0)
+            gemCost = shopManager.ReturnDefaultCosts(true, currentCard);
+
+        if (coinCost > 0)
+            coinCostText.text = coinCost.ToString();
+        else
+        {
+            Debug.LogError("This card doesn't have a Coin Cost!");
+            return;
+        }
+
+        if (gemCost > 0)
+            gemCostText.text = gemCost.ToString();
+        else
+        {
+            Debug.LogError("This card doesn't have a Gem Cost!");
+            return;
+        }
 
         this.gameObject.SetActive(true);
     }
@@ -95,6 +125,29 @@ public class ConfirmationWindow : MonoBehaviour
                 if (pack.numberOfRandomCards > 0)
                     shopItemInfo.text += pack.numberOfRandomCards + "x Random Card\n";
             }
+        }
+
+        // Get Cost Values
+        // Coins
+        int coinCost = pack.coinCost;
+
+        // Gems
+        int gemCost = pack.gemCost;
+
+        if (coinCost > 0)
+            coinCostText.text = coinCost.ToString();
+        else
+        {
+            Debug.LogError("This pack doesn't have a Coin Cost!");
+            return;
+        }
+
+        if (gemCost > 0)
+            gemCostText.text = gemCost.ToString();
+        else
+        {
+            Debug.LogError("This pack doesn't have a Gem Cost!");
+            return;
         }
 
         currentPack = pack;

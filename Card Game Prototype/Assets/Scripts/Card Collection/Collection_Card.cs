@@ -11,6 +11,7 @@ public class Collection_Card : MonoBehaviour
     public Text cardCount;
     public int currentCardCount;
     public GameObject mysteryButton;
+    public GameObject openCardButton;
 
     // Start is called before the first frame update
     void Start()
