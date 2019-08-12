@@ -8,13 +8,6 @@ public class piernasmov : MonoBehaviour {
     public Transform objetivo;
     public bool invertido;
 
-    
-    
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
 	// Update is called once per frame
 	void Update () {
         JointSpring js = hj.spring;
