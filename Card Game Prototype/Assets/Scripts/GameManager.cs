@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
 
     public int numberOfRounds = 3;
     public int[] cardsEachRound;
-    [HideInInspector] public int currentRound = 0;
+    public int currentRound = 0;
 
     public int numberOfTeams;
     public int[] teamScore;
@@ -64,6 +64,19 @@ public class GameManager : MonoBehaviour
     [SerializeField] private int initialisedPlayers = 0;
 
     public bool debugging = false;
+
+    public AudioSource audioSource;
+    public AudioClip[] victoryNoise;
+    public AudioClip[] defeatNoise;
+    public AudioClip[] draw;
+    public AudioClip[] countDownNoise;
+    public AudioClip[] beginAnnounce;
+    public AudioClip[] fightAnnounce;
+    public AudioClip nextRoundAnnounce;
+    public AudioClip[] rounds;
+
+    private bool countDown, countDown10, countDown30;
+    private bool showingResults;
 
     // Start is called before the first frame update
     void Start()
@@ -112,9 +125,26 @@ public class GameManager : MonoBehaviour
         if (gameOver)
             return;
 
+        if (showingResults)
+            return;
+
         if (cardPhase)
         {
             cardPhaseTimer -= Time.deltaTime;
+
+            if (!countDown10 && cardPhaseTimer < 10)
+            {
+                audioSource.clip = countDownNoise[1];
+                audioSource.Play();
+                countDown10 = true;
+            }
+
+            if (!countDown &&  cardPhaseTimer < 5)
+            {
+                audioSource.clip = countDownNoise[0];
+                audioSource.Play();
+                countDown = true;
+            }
 
             if (cardPhaseTimer <= 0)
             {
@@ -131,6 +161,26 @@ public class GameManager : MonoBehaviour
         else
         {
             combatPhaseTimer -= Time.deltaTime;
+            if (!countDown30 && combatPhaseTimer < 30)
+            {
+                audioSource.clip = countDownNoise[2];
+                audioSource.Play();
+                countDown30 = true;
+            }
+
+            if (!countDown10 && combatPhaseTimer < 10)
+            {
+                audioSource.clip = countDownNoise[1];
+                audioSource.Play();
+                countDown10 = true;
+            }
+
+            if (!countDown && combatPhaseTimer < 5)
+            {
+                audioSource.clip = countDownNoise[0];
+                audioSource.Play();
+                countDown = true;
+            }
 
             if (combatPhaseTimer <= 0)
             {
@@ -195,6 +245,8 @@ public class GameManager : MonoBehaviour
                         roundWinner = 2;
                     }
                 }
+                else
+                    Debug.LogError("Was unable to find players health and was not able to determine a winner");
 
                 // End round
                 ShowRoundResults();
@@ -204,6 +256,7 @@ public class GameManager : MonoBehaviour
 
     public void ShowRoundResults ()
     {
+        showingResults = true;
         DisplayRoundResults?.Invoke();
 
         // Find score that will win game
@@ -225,6 +278,25 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        if (winningTeam == 1)
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            audioSource.clip = victoryNoise[Random.Range(0,victoryNoise.Length)];
+            audioSource.Play();
+        }
+        else if (winningTeam == 2)
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            audioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
+            audioSource.Play();
+        }
+        else
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            audioSource.clip = draw[Random.Range(0, draw.Length)];
+            audioSource.Play();
+        }
+
         // Check if game should end
         if (highestScore >= instaWinScore)
             EndTheGame();
@@ -235,6 +307,7 @@ public class GameManager : MonoBehaviour
     IEnumerator RoundResultsDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
+        showingResults = false;
         InitialiseCardPhase();
     }
 
@@ -242,6 +315,10 @@ public class GameManager : MonoBehaviour
     {
         currentRound++;
         readyPlayers = 0;
+        // Reset Audio
+        countDown = false;
+        countDown10 = false;
+        countDown30 = false;
         // Find score that will win game
         int instaWinScore = numberOfRounds / 2;
         if (numberOfRounds % 2 != 0)
@@ -280,9 +357,18 @@ public class GameManager : MonoBehaviour
     public void InitialiseCombatPhase ()
     {
         roundWinner = -1;
+        // Reset Audio
+        countDown = false;
+        countDown10 = false;
+        countDown30 = false;
         // Enter Combat Phase
         //Debug.Log("Beginning Combat Phase!");
+        if (currentRound - 1 < rounds.Length)
+            audioSource.clip = rounds[currentRound - 1];
+        else
+            audioSource.clip = nextRoundAnnounce;
 
+        audioSource.Play();
         // Get all alive Players
         alivePlayersPerTeam = new int[numberOfTeams];
         for (int i = 0; i < numberOfTeams; i++)
@@ -335,6 +421,18 @@ public class GameManager : MonoBehaviour
     public void EndTheGame ()
     {
         Debug.Log("Team " + (winningTeam) + " is victorious!");
+        if (winningTeam == 1)
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            audioSource.clip = victoryNoise[Random.Range(0, victoryNoise.Length)];
+            audioSource.Play();
+        }
+        else
+        {
+            Random.InitState(System.DateTime.Now.Millisecond);
+            audioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
+            audioSource.Play();
+        }
         gameOver = true;
         EndGame?.Invoke();
     }

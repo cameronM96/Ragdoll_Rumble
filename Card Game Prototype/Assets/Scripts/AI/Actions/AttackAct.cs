@@ -17,13 +17,14 @@ public class AttackAct : Activity
 
         Debug.DrawRay(controller.transform.position, (controller.transform.forward.normalized * controller.baseStates.attackRange), Color.red);
 
-        if (Physics.SphereCast (controller.transform.position, controller.baseStates.attackRange/2,controller.transform.forward,out hit,controller.baseStates.attackRange) 
+        if (Physics.SphereCast (controller.transform.position, controller.reach,controller.transform.forward,out hit,controller.baseStates.attackRange) 
             && hit.collider.CompareTag(controller.chaseTarget.tag))
         {
             if (controller.CheckIfCountDownElapsed (controller.baseStates.atkSpeed))
             {
                 // Attack function
                 controller.aiController.Attack();
+                controller.Attack();
             }
         }
     }

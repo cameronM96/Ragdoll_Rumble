@@ -27,6 +27,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Rigidbody[] rbs;
     private Vector3[] returnPoints;
     private Quaternion[] returnRots;
+    public Attack[] attackPoints;
 
     private Vector3 returnPos;
     private bool aiActive = false;
@@ -47,8 +48,6 @@ public class StateController : MonoBehaviour
             returnPoints[i] = ragDollTransforms[i].position;
             returnRots[i] = ragDollTransforms[i].rotation;
         }
-
-        ChangeReach(reach);
     }
 
     private void OnEnable()
@@ -133,6 +132,13 @@ public class StateController : MonoBehaviour
         return (stateTimeElapsed >= duration);
     }
 
+    public void Attack()
+    {
+        Random.InitState(System.DateTime.Now.Millisecond);
+        int index = Random.Range(0, attackPoints.Length);
+        attackPoints[index].AttackTarget(chaseTarget);
+    }
+
     private void OnExitState()
     {
         stateTimeElapsed = 0;
@@ -164,12 +170,15 @@ public class StateController : MonoBehaviour
             ragDollTransforms[i].position = returnPoints[i];
             ragDollTransforms[i].rotation = returnRots[i];
         }
-
     }
 
+    // Increase attack range
     public void ChangeReach(float newReach)
     {
-        reach = newReach - reachOffset;
-        navMeshAgent.stoppingDistance = reach;
+        if (newReach - reachOffset > reach)
+        {
+            reach = newReach - reachOffset;
+            navMeshAgent.stoppingDistance = reach;
+        }
     }
 }

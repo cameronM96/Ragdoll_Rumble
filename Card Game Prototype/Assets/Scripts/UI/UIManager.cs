@@ -197,12 +197,17 @@ public class UIManager : MonoBehaviour
     {
         resultsWindow.SetActive(true);
 
-        resultsWindowText.text = "Player " + gameManager.roundWinner + " has won\nround " + gameManager.currentRound + "!";
+        if (gameManager.roundWinner == -1)
+            resultsWindowText.text = "Tie!";
+        else
+            resultsWindowText.text = "Player " + gameManager.roundWinner + " has won\nround " + gameManager.currentRound + "!";
 
         if (gameManager.roundWinner == 1)
             resultsWindowText.color = Color.blue;
         else if (gameManager.roundWinner == 2)
             resultsWindowText.color = Color.red;
+        else
+            resultsWindowText.color = Color.yellow;
     }
 
     public void InitialiseCardPhaseUI()

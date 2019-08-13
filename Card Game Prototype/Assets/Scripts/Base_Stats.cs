@@ -52,6 +52,9 @@ public class Base_Stats : MonoBehaviour
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioController = GetComponent<AIController>();
         gameManager.PlayerJoined();
+
+        if (stateController != null)
+            stateController.ChangeReach(attackRange);
     }
 
     private void Update()

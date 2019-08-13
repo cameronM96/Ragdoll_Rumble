@@ -16,10 +16,13 @@ public class Attack : MonoBehaviour
     private bool holstering = true;
     private float timer = 0f;
 
+    public AIController audioController;
+
     public void AttackTarget(Transform newTarget)
     {
         target = newTarget;
         attacking = true;
+        audioController.Attack();
     }
 
     private void Update()
