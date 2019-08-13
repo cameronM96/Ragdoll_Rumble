@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Gentlemen's Shoes
   m_EditorClassIdentifier: 
-  iD: 16874
+  iD: 14050
   rarity: 2
   currentCardType: 2
   playableSlots: 8
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Gentlemen's Shoes
   description: '"A pair of spiffy shiney dress shoes"'
-  artwork: {fileID: 21300000, guid: fe6ac62b4cb99df478ccd28e6d3eda6b, type: 3}
+  artwork: {fileID: 21300000, guid: 9a160b155b1c9414bbe5924d3185594f, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 0
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 1028517533733719312, guid: 75b23e02388c14342b96db109ce9b97b, type: 3}
   coinCost: 0
   gemCost: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Knight Sword
   m_EditorClassIdentifier: 
-  iD: 17006
+  iD: 14056
   rarity: 2
   currentCardType: 1
   playableSlots: 5
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Knight Sword
   description: Become one with the night... wait... wrong knight..
-  artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
+  artwork: {fileID: 21300000, guid: 93a25910111d8924fb6b59f96fe88997, type: 3}
   background: {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 4
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: -1
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 2097546178541105394, guid: e58f47ea61377bb4e8509e07ba6f573e, type: 3}
   coinCost: 0
   gemCost: 0

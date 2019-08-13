@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Cool stick I found at the park
   m_EditorClassIdentifier: 
-  iD: 16792
+  iD: 13076
   rarity: 1
   currentCardType: 1
   playableSlots: 13
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Cool stick I found at the park
   description: '"LOOK MUM!"'
-  artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
+  artwork: {fileID: 21300000, guid: e3c9307b5d0ed644383dd1bdecaebca2, type: 3}
   background: {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
   rarityImage: {fileID: 21300000, guid: 30d1829b2c24bdc48acaed7b79f9b208, type: 3}
   attack: 1
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 1
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 7381053628621491558, guid: f3c0accd87bb2aa40bc8aa9ecd3b412a, type: 3}
   coinCost: 0
   gemCost: 0

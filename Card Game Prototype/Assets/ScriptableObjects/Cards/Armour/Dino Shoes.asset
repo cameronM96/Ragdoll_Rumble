@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Dino Shoes
   m_EditorClassIdentifier: 
-  iD: 16942
+  iD: 13730
   rarity: 3
   currentCardType: 2
   playableSlots: 8
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Dino Shoes
   description: Become one with the beast!
-  artwork: {fileID: 21300000, guid: 18414d9d6bfda2045bda604eea0313c9, type: 3}
+  artwork: {fileID: 21300000, guid: ea8fbe1523be4474c94ca3ea330d8b6a, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: a05a88c956ad5ac44b7a7aad780f3c04, type: 3}
   attack: 0
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 1
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 5894048083687743055, guid: f60f5869bf15a4042bf1153b85d9ce33, type: 3}
   coinCost: 0
   gemCost: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Hand Pistol
   m_EditorClassIdentifier: 
-  iD: 15306
+  iD: 13080
   rarity: 1
   currentCardType: 1
   playableSlots: 4
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Hand Pistol
   description: Pistol whip them bi+#%es
-  artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
+  artwork: {fileID: 21300000, guid: d949db5f7a292614099c3429f4844236, type: 3}
   background: {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
   rarityImage: {fileID: 21300000, guid: 30d1829b2c24bdc48acaed7b79f9b208, type: 3}
   attack: 1
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 1
   atkSpeed: 1
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 2663201184421286457, guid: cd6dedb935c4af541a8b12ba105f2b71, type: 3}
   coinCost: 0
   gemCost: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Rake!
   m_EditorClassIdentifier: 
-  iD: 14510
+  iD: 13742
   rarity: 1
   currentCardType: 5
   playableSlots: -1
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Rake!
   description: Litters the field with rakes, stunning a damaging players.
-  artwork: {fileID: 21300000, guid: 592213fde1b669f47b8d5379d8a971bd, type: 3}
+  artwork: {fileID: 21300000, guid: 918185c1e945e154faaf16919bcd03a5, type: 3}
   background: {fileID: 21300000, guid: 07cb0bf09d9878d4381d698162ef84a7, type: 3}
   rarityImage: {fileID: 21300000, guid: 30d1829b2c24bdc48acaed7b79f9b208, type: 3}
   attack: 1
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 3092467598276361203, guid: a1e09f821cd9eb7409e92480d1d4023e, type: 3}
   coinCost: 0
   gemCost: 0

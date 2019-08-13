@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Visor
   m_EditorClassIdentifier: 
-  iD: 15806
+  iD: 13088
   rarity: 2
   currentCardType: 2
   playableSlots: 7
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Visor
   description: Shoot lasers from your hands and face!
-  artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
+  artwork: {fileID: 21300000, guid: 2b3cf2aa676fca141837f91b682c6994, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 1
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 117512329282299076, guid: dd391cb0a1e7de043bf28493ff666f7a, type: 3}
   coinCost: 0
   gemCost: 0

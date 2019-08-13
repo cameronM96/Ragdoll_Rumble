@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Gentlemen's Cane
   m_EditorClassIdentifier: 
-  iD: 14910
+  iD: 14044
   rarity: 2
   currentCardType: 1
   playableSlots: 12
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Gentlemen's Cane
   description: '"A dapper cane for a dapper Gentleman(''s set)"'
-  artwork: {fileID: 21300000, guid: 6e57e3d7cea0737428b8edec4d2df6f8, type: 3}
+  artwork: {fileID: 21300000, guid: adf02b0c3a7044d4e93082e00ef7f650, type: 3}
   background: {fileID: 21300000, guid: 3935264863e7aff4785e2bc17f88d6de, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 3
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 264021613850993872, guid: ba71f011ea6e262448aed10b7252042a, type: 3}
   coinCost: 0
   gemCost: 0

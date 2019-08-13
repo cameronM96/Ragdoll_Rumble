@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Ninja Pants
   m_EditorClassIdentifier: 
-  iD: 19624
+  iD: 14360
   rarity: 2
   currentCardType: 2
   playableSlots: 8
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Ninja Pants
   description: Dash through the wind, like a silent fart.
-  artwork: {fileID: 21300000, guid: 6951b46ad21e54441b66a40ccaf203a0, type: 3}
+  artwork: {fileID: 21300000, guid: a547e849ff467c744983db1dcccc9c30, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 0
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 2
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 5228560047836151288, guid: 6d5e201b8bb37474fbcd791e991952b2, type: 3}
   coinCost: 0
   gemCost: 0

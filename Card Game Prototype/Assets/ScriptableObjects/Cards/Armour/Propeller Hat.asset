@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Propeller Hat
   m_EditorClassIdentifier: 
-  iD: 18246
+  iD: 13734
   rarity: 2
   currentCardType: 2
   playableSlots: 5
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Propeller Hat
   description: ~ Like a plastic bag, drifting through the wind ~
-  artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
+  artwork: {fileID: 21300000, guid: f97a31b12beb4c74a806808b1ccc6188, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 0
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 3
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 8929018821980840820, guid: 3133bf2345cd0e9488c54c4f4019acbd, type: 3}
   coinCost: 0
   gemCost: 0

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Enemy Face Mask
   m_EditorClassIdentifier: 
-  iD: 19000
+  iD: 14052
   rarity: 3
   currentCardType: 2
   playableSlots: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Enemy Face Mask
   description: '"Stop hitting yourself!.....no seriously please don''t"'
-  artwork: {fileID: 21300000, guid: cc94f49cc181c2b4b8db25e15401c41d, type: 3}
+  artwork: {fileID: 21300000, guid: 4cb1e6bea86db96458ff6a6ec9a4c3c4, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: a05a88c956ad5ac44b7a7aad780f3c04, type: 3}
   attack: 0
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 0}
   coinCost: 0
   gemCost: 0

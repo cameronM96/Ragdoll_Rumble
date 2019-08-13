@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Spiked Helmet
   m_EditorClassIdentifier: 
-  iD: 14812
+  iD: 13736
   rarity: 2
   currentCardType: 2
   playableSlots: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
   size: 0
   cardName: Spiked Helmet
   description: Damages your enemy whenever they hit you!
-  artwork: {fileID: 21300000, guid: 190a1d1475a700e4c8e58d44ec7ce8ca, type: 3}
+  artwork: {fileID: 21300000, guid: 4291ad2578d270c408b220da70ebfaad, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 1
@@ -30,7 +30,8 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 1847328229451260564, guid: ce42f377c8d964944adbe3b1833ce5d0, type: 3}
   coinCost: 0
   gemCost: 0

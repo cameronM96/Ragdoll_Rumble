@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Super Big Knight Armour
   m_EditorClassIdentifier: 
-  iD: 13282
+  iD: 14224
   rarity: 2
   currentCardType: 2
   playableSlots: 7
@@ -24,7 +24,7 @@ MonoBehaviour:
   description: 'Don''t mess with this big chungus!
 
 '
-  artwork: {fileID: 21300000, guid: 47b4fae216176e54db8a52bb768a3d56, type: 3}
+  artwork: {fileID: 21300000, guid: 2cf5f3eaac9cbd249b7b66024e94c36c, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 545099c0c7f9d1342a92185f1b29fc41, type: 3}
   attack: 0
@@ -32,7 +32,8 @@ MonoBehaviour:
   hP: 0
   speed: -3
   atkSpeed: -3
-  ability: {fileID: 0}
+  abilityDescription: 
+  abilities: []
   item: {fileID: 0}
   coinCost: 0
   gemCost: 0

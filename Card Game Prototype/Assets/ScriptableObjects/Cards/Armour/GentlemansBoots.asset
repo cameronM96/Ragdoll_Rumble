@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
-  m_Name: Boots
+  m_Name: GentlemansBoots
   m_EditorClassIdentifier: 
-  iD: 12794
+  iD: 14222
   rarity: 1
   currentCardType: 2
   playableSlots: 12
@@ -20,9 +20,9 @@ MonoBehaviour:
   pos: 0
   rot: 0
   size: 0
-  cardName: Boots
+  cardName: Gentlemans Boots
   description: Some fancy shoes!
-  artwork: {fileID: 21300000, guid: 18414d9d6bfda2045bda604eea0313c9, type: 3}
+  artwork: {fileID: 21300000, guid: 9a160b155b1c9414bbe5924d3185594f, type: 3}
   background: {fileID: 21300000, guid: 3d6826fb9da8c4042a0228af94a687a6, type: 3}
   rarityImage: {fileID: 21300000, guid: 30d1829b2c24bdc48acaed7b79f9b208, type: 3}
   attack: 0
@@ -30,8 +30,9 @@ MonoBehaviour:
   hP: 0
   speed: 0
   atkSpeed: 0
-  ability: {fileID: 0}
-  item: {fileID: 7097438483534304117, guid: 39e35ff89ab2029499a37905013bdbe4, type: 3}
+  abilityDescription: 
+  abilities: []
+  item: {fileID: 3696041912423328942, guid: a1964f5bba8d97f43a0ed4917bd8eac6, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
