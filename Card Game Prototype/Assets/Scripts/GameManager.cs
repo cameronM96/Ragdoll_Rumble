@@ -103,6 +103,7 @@ public class GameManager : MonoBehaviour
         else
             yield return new WaitForEndOfFrame();
 
+        Debug.Log("Initialising Game!");
         InitialiseTheGame?.Invoke();
     }
 
@@ -112,6 +113,7 @@ public class GameManager : MonoBehaviour
         if (initialisedPlayers >= numbOfPlayers && !gameInitialised)
         {
             gameInitialised = true;
+            Debug.Log("Starting Game!");
             InitialiseCardPhase();
         }
     }

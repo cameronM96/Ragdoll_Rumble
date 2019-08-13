@@ -219,6 +219,7 @@ MonoBehaviour:
   - {fileID: 4640900031506502379}
   stunned: 0
   snared: 0
+  navAgent: {fileID: 3309580833136800080}
 --- !u!114 &3309580833136800087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,10 +256,16 @@ MonoBehaviour:
   baseStates: {fileID: 0}
   gameManager: {fileID: 0}
   spawnPoint: {fileID: 0}
+  chest: {fileID: 0}
   aiController: {fileID: 0}
-  navMeshAgent: {fileID: 0}
+  reach: 0
+  reachOffset: 0
+  navMeshAgent: {fileID: 3309580833136800080}
   chaseTarget: {fileID: 0}
   stateTimeElapsed: 0
+  ragDollTransforms: []
+  rbs: []
+  attackPoints: []
 --- !u!82 &3309580833136800085
 AudioSource:
   m_ObjectHideFlags: 0
@@ -631,11 +638,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3309580833136800084}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 8777151a16251324c8acb4ff53f6bd10,
-        type: 3}
-      propertyPath: m_Name
-      value: MYDoll
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8777151a16251324c8acb4ff53f6bd10,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -705,6 +707,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 8777151a16251324c8acb4ff53f6bd10,
+        type: 3}
+      propertyPath: m_Name
+      value: MYDoll
       objectReference: {fileID: 0}
     - target: {fileID: -4694338623589209743, guid: 8777151a16251324c8acb4ff53f6bd10,
         type: 3}
