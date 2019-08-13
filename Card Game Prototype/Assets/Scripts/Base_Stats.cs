@@ -44,6 +44,7 @@ public class Base_Stats : MonoBehaviour
     private float stunLength;
     [HideInInspector] public bool snared = false;
     private float snareLength;
+    public NavMeshAgent navAgent;
 
     private void Start()
     {
@@ -61,7 +62,7 @@ public class Base_Stats : MonoBehaviour
             {
                 stunned = false;
                 // Undo stun here
-                GetComponent<NavMeshAgent>().speed = speed;
+                navAgent.speed = speed;
             }
         }
 
@@ -71,7 +72,7 @@ public class Base_Stats : MonoBehaviour
             {
                 snared = false;
                 // Undo snare here
-                GetComponent<NavMeshAgent>().speed = speed;
+                navAgent.speed = speed;
             }
         }
     }
@@ -107,7 +108,7 @@ public class Base_Stats : MonoBehaviour
 
         stunned = false;
         snared = false;
-        GetComponent<NavMeshAgent>().speed = speed;
+        navAgent.speed = speed;
         // Unkill Player
         currentHP = maxHP;
         dead = false;
@@ -510,16 +511,16 @@ public class Base_Stats : MonoBehaviour
             case CC.Stun:
                 stunned = true;
                 stunLength += duration;
-                GetComponent<NavMeshAgent>().speed = 0f;
+                navAgent.speed = 0f;
                 break;
             case CC.Snare:
                 snared = true;
                 snareLength += duration;
-                GetComponent<NavMeshAgent>().speed = 0f;
+                navAgent.speed = 0f;
                 break;
             case CC.Slow:
                 ChangeSpeed(value);
-                GetComponent<NavMeshAgent>().speed = speed;
+                navAgent.speed = speed;
                 StartCoroutine(SlowTimer(duration, value));
                 break;
             case CC.SlowAttack:
@@ -537,7 +538,7 @@ public class Base_Stats : MonoBehaviour
         yield return new WaitForSeconds(duration);
         // Unslow
         ChangeSpeed(value * -1);
-        GetComponent<NavMeshAgent>().speed = speed;
+        navAgent.speed = speed;
     }
 
     private IEnumerator SlowAttackTimer(float duration, int value)

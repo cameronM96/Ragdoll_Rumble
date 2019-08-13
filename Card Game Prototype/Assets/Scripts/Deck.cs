@@ -67,6 +67,10 @@ public class Deck : MonoBehaviour
         }
 
         ShuffleDeck();
+
+        // Let game manager know this player is ready
+        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        gm.InitialsePlayer();
     }
 
     IEnumerator EndOfFrame()

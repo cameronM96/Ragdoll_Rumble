@@ -27,8 +27,8 @@ public class GameManager : MonoBehaviour
     public float cardPhaseLength;
     public float combatPhaseLength;
 
-    [HideInInspector] public float cardPhaseTimer = 0;
-    [HideInInspector] public float combatPhaseTimer = 0;
+    /*[HideInInspector]*/ public float cardPhaseTimer = 0;
+    /*[HideInInspector]*/ public float combatPhaseTimer = 0;
 
     public int numberOfRounds = 3;
     public int[] cardsEachRound;
@@ -61,7 +61,9 @@ public class GameManager : MonoBehaviour
 
     // Initialise Game
     private bool gameInitialised = false;
-    private int initialisedPlayers = 0;
+    [SerializeField] private int initialisedPlayers = 0;
+
+    public bool debugging = false;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +76,10 @@ public class GameManager : MonoBehaviour
         cardPhaseTimer = cardPhaseLength;
         combatPhaseTimer = combatPhaseLength;
         currentRound = 0;
+
+        if (debugging)
+            GameInfo.SelectedDeckName = "Starter Deck";
+
         StartCoroutine(StartGameDelay(gameStartDelay));
     }
 
@@ -90,7 +96,7 @@ public class GameManager : MonoBehaviour
     public void InitialsePlayer()
     {
         ++initialisedPlayers;
-        if (initialisedPlayers >= numbOfPlayers)
+        if (initialisedPlayers >= numbOfPlayers && !gameInitialised)
         {
             gameInitialised = true;
             InitialiseCardPhase();

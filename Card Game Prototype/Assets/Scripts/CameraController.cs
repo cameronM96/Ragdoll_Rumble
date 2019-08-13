@@ -135,24 +135,29 @@ public class CameraController : MonoBehaviour
             if (targets.Count == 0)
                 return;
 
-            Move(combatPhase);
             Zoom();
+        }
 
-            if (combatPhase)
-            {
-                // In Combat Phase
-                // Rotate camera
-                transform.rotation = Quaternion.RotateTowards(transform.rotation, gameManager.gameObject.transform.rotation, rotationSpeed * Time.deltaTime);
-            }
-            else
-            {
-                // In Card Phase
-                // Rotate camera
-                Vector3 targetPosition = myPlayer.transform.position;
-                targetPosition.y += 1f;
-                Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            }
+        // Auto Camera
+        if (targets.Count == 0)
+            return;
+
+        Move(combatPhase);
+
+        if (combatPhase)
+        {
+            // In Combat Phase
+            // Rotate camera
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, gameManager.gameObject.transform.rotation, rotationSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // In Card Phase
+            // Rotate camera
+            Vector3 targetPosition = myPlayer.transform.position;
+            targetPosition.y += 1f;
+            Quaternion targetRotation = Quaternion.LookRotation(targetPosition - transform.position);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
     }
 

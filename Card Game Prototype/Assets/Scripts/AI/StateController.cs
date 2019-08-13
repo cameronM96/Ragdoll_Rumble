@@ -15,22 +15,40 @@ public class StateController : MonoBehaviour
     public GameManager gameManager;
 
     public Transform spawnPoint;
+    public Transform chest;
 
     [HideInInspector] public AIController aiController;
-    [HideInInspector] public NavMeshAgent navMeshAgent;
+    public float reach;
+    public float reachOffset;
+    public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public float stateTimeElapsed;
-    [HideInInspector] Rigidbody rb;
+    public Transform[] ragDollTransforms;
+    [HideInInspector] public Rigidbody[] rbs;
+    private Vector3[] returnPoints;
+    private Quaternion[] returnRots;
 
+    private Vector3 returnPos;
     private bool aiActive = false;
 
     private void Awake()
     {
-        navMeshAgent = GetComponent<NavMeshAgent>();
         baseStates = GetComponent<Base_Stats>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         aiController = GetComponent<AIController>();
-        rb = GetComponent<Rigidbody>();
+        returnPos = chest.position;
+
+        rbs = new Rigidbody[ragDollTransforms.Length];
+        returnPoints = new Vector3[ragDollTransforms.Length];
+        returnRots = new Quaternion[ragDollTransforms.Length];
+        for (int i = 0; i < ragDollTransforms.Length; i++)
+        {
+            rbs[i] = ragDollTransforms[i]?.GetComponent<Rigidbody>();
+            returnPoints[i] = ragDollTransforms[i].position;
+            returnRots[i] = ragDollTransforms[i].rotation;
+        }
+
+        ChangeReach(reach);
     }
 
     private void OnEnable()
@@ -47,7 +65,9 @@ public class StateController : MonoBehaviour
 
     private void InitialiseCombatPhase ()
     {
-        rb.isKinematic = false;
+        foreach(Rigidbody rb in rbs) 
+            rb.isKinematic = false;
+
         aiActive = true;
         baseStates.CalcMoveSpeed();
         SetupAI();
@@ -58,10 +78,10 @@ public class StateController : MonoBehaviour
     private void InitialiseCardPhase()
     {
         aiActive = false;
-        SetupAI();
-        rb.isKinematic = true;
+        TPose();
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
+        SetupAI();
         TransitionToState(baseAIState);
     }
 
@@ -130,5 +150,26 @@ public class StateController : MonoBehaviour
         }
 
         return false;
+    }
+
+    public void TPose()
+    {
+        foreach (Rigidbody rb in rbs)
+            rb.isKinematic = true;
+
+        chest.position = returnPos;
+
+        for (int i = 0; i < ragDollTransforms.Length; i++)
+        {
+            ragDollTransforms[i].position = returnPoints[i];
+            ragDollTransforms[i].rotation = returnRots[i];
+        }
+
+    }
+
+    public void ChangeReach(float newReach)
+    {
+        reach = newReach - reachOffset;
+        navMeshAgent.stoppingDistance = reach;
     }
 }

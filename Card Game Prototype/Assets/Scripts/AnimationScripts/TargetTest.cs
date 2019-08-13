@@ -10,6 +10,7 @@ public class TargetTest : MonoBehaviour
 
     private void Update()
     {
-        navAgent.destination = target.transform.position;
+        if (navAgent.enabled)
+            navAgent.destination = target.transform.position;
     }
 }
