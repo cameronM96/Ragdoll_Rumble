@@ -14,6 +14,11 @@ public class AIDeck : MonoBehaviour
     public Card[] viewingDeck;
     public Queue<Card> currentDeck;
 
+    private void Start()
+    {
+        cardCollection = GetComponent<CardCollection>();
+    }
+
     private void OnEnable()
     {
         GameManager.InitialiseTheGame += Initialise;

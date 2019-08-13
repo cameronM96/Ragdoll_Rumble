@@ -37,7 +37,8 @@ public class StateController : MonoBehaviour
         baseStates = GetComponent<Base_Stats>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         aiController = GetComponent<AIController>();
-        returnPos = chest.position;
+        if (chest != null)
+            returnPos = chest.position;
 
         rbs = new Rigidbody[ragDollTransforms.Length];
         returnPoints = new Vector3[ragDollTransforms.Length];
@@ -77,7 +78,9 @@ public class StateController : MonoBehaviour
     private void InitialiseCardPhase()
     {
         aiActive = false;
-        TPose();
+        if (chest != null)
+            TPose();
+
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
         SetupAI();
