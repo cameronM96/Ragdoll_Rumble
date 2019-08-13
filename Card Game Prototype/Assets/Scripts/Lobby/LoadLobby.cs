@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadLobby : MonoBehaviour
 {
+    Player player;
+
     public int lobbySceneNumber = 12;
 
     public bool randomScene = false;
@@ -20,6 +23,25 @@ public class LoadLobby : MonoBehaviour
 
     public bool randomAIDeck;
     public List<Card> aiDeck;
+
+    private void Start()
+    {
+        GameObject playerObject = GameObject.FindGameObjectWithTag("PlayerProfile");
+        if (playerObject == null)
+            return;
+
+        player = playerObject.GetComponent<Player>();
+
+        if (player != null)
+        {
+            if (isCampaign)
+            {
+                GetComponent<Button>().enabled = player.CampaignProgress < campaignNumber;
+            }
+            else
+                GetComponent<Button>().enabled = true;
+        }
+    }
 
     public void LoadScene()
     {

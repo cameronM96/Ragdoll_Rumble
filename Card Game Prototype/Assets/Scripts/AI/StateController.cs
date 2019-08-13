@@ -83,7 +83,9 @@ public class StateController : MonoBehaviour
 
         transform.position = spawnPoint.position;
         transform.rotation = spawnPoint.rotation;
-        SetupAI();
+        if (navMeshAgent!= null)
+            SetupAI();
+
         TransitionToState(baseAIState);
     }
 
