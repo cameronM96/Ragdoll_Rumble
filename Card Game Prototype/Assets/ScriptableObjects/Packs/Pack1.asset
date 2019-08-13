@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iD: 18732
   packSize: 3
-  packName: Gentlemen's Pack
-  packImage: {fileID: 21300000, guid: efe689b9b4d378646a1bb5055f3c277b, type: 3}
+  packName: Gentlemen's Code
+  packImage: {fileID: 21300000, guid: 518c27baa8cdc254084bdfce3a1594f9, type: 3}
   coinCost: 500
   gemCost: 125
-  guaranteedSpecificCards: 1
+  guaranteedSpecificCards: 0
   gSpecificCards: []
   randomSpecificCards: 1
   guaranteedFromSet: 1
@@ -28,6 +28,17 @@ MonoBehaviour:
   - {fileID: 11400000, guid: babe08925040f384f8cbda542f7ada60, type: 2}
   - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
   - {fileID: 11400000, guid: bd898b796579c844eacdd65fe039eb86, type: 2}
+  - {fileID: 11400000, guid: 2483a00ea5a565043b98216a27c529e6, type: 2}
+  - {fileID: 11400000, guid: fa59c66637398b94d8b1c5982de67cfd, type: 2}
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
+  - {fileID: 11400000, guid: e1725b6c685971743b62280c9426745f, type: 2}
+  - {fileID: 11400000, guid: f3918799e0c19be4cabe91e3f693c324, type: 2}
+  - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
+  - {fileID: 11400000, guid: 1ff483092f70342448b64b265f66f242, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: 765296ee0aebe4d4285748ec40883062, type: 2}
+  - {fileID: 11400000, guid: a089e43f051bd244ca382e89149d46b4, type: 2}
   guaranteedRandom: 1
   numberOfRares: 0
   numberOfUncommons: 0

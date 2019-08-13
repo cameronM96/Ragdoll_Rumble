@@ -13,17 +13,32 @@ MonoBehaviour:
   m_Name: Pack4
   m_EditorClassIdentifier: 
   iD: 17912
-  packSize: 0
-  packName: 
-  packImage: {fileID: 0}
-  coinCost: 0
-  gemCost: 0
+  packSize: 3
+  packName: Knight's Oath
+  packImage: {fileID: 21300000, guid: 518c27baa8cdc254084bdfce3a1594f9, type: 3}
+  coinCost: 500
+  gemCost: 125
   guaranteedSpecificCards: 0
   gSpecificCards: []
-  randomSpecificCards: 0
-  guaranteedFromSet: 0
+  randomSpecificCards: 1
+  guaranteedFromSet: 3
   setName: 
-  rSpecificCards: []
+  rSpecificCards:
+  - {fileID: 11400000, guid: 9e2204f2bafdfe043b31ad1c143ffb4b, type: 2}
+  - {fileID: 11400000, guid: a13dcfdd0dd22f94293271b8aef33c58, type: 2}
+  - {fileID: 11400000, guid: aedcc4401acf80f459742240cd7b0469, type: 2}
+  - {fileID: 11400000, guid: f4a2beb4c3e649b429a5de6d36e8fd30, type: 2}
+  - {fileID: 11400000, guid: 6037cd61c97c35e41b0f5cbd96fe6154, type: 2}
+  - {fileID: 11400000, guid: f3918799e0c19be4cabe91e3f693c324, type: 2}
+  - {fileID: 11400000, guid: f1031885dc269ab40a7ee416417d5c28, type: 2}
+  - {fileID: 11400000, guid: fc36aab528b8cc0479577e24cd0af85c, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
+  - {fileID: 11400000, guid: 92278954f48a1664d93ff2546aaa6a0c, type: 2}
+  - {fileID: 11400000, guid: 55bea449da555564ba3486d5fd14aec5, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: 2eeb500181f67be4399679e389289d2a, type: 2}
+  - {fileID: 11400000, guid: 9772f1e27a6ab354692f56572497cdfe, type: 2}
   guaranteedRandom: 0
   numberOfRares: 0
   numberOfUncommons: 0

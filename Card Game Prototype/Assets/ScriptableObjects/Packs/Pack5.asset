@@ -13,17 +13,32 @@ MonoBehaviour:
   m_Name: Pack5
   m_EditorClassIdentifier: 
   iD: 15984
-  packSize: 0
-  packName: 
-  packImage: {fileID: 0}
-  coinCost: 0
-  gemCost: 0
+  packSize: 3
+  packName: The Lucky Few
+  packImage: {fileID: 21300000, guid: 137fd7d05d79f784eb8902aa8e818aa8, type: 3}
+  coinCost: 600
+  gemCost: 150
   guaranteedSpecificCards: 0
   gSpecificCards: []
-  randomSpecificCards: 0
-  guaranteedFromSet: 0
+  randomSpecificCards: 1
+  guaranteedFromSet: 3
   setName: 
-  rSpecificCards: []
+  rSpecificCards:
+  - {fileID: 11400000, guid: 92278954f48a1664d93ff2546aaa6a0c, type: 2}
+  - {fileID: 11400000, guid: f3918799e0c19be4cabe91e3f693c324, type: 2}
+  - {fileID: 11400000, guid: 765296ee0aebe4d4285748ec40883062, type: 2}
+  - {fileID: 11400000, guid: 55bea449da555564ba3486d5fd14aec5, type: 2}
+  - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
+  - {fileID: 11400000, guid: 2b57964905887f049ab57567c7f3c071, type: 2}
+  - {fileID: 11400000, guid: 2815f450bccf90c47a53253e9fb1bd4a, type: 2}
+  - {fileID: 11400000, guid: fc36aab528b8cc0479577e24cd0af85c, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
+  - {fileID: 11400000, guid: 9604436630d5cda4b9e6694891ea7d1f, type: 2}
+  - {fileID: 11400000, guid: d1c687c6f780e634db1105e3755f91ca, type: 2}
+  - {fileID: 11400000, guid: dabcb2110afcb5441842ede297e98d51, type: 2}
+  - {fileID: 11400000, guid: a089e43f051bd244ca382e89149d46b4, type: 2}
+  - {fileID: 11400000, guid: fa59c66637398b94d8b1c5982de67cfd, type: 2}
   guaranteedRandom: 0
   numberOfRares: 0
   numberOfUncommons: 0

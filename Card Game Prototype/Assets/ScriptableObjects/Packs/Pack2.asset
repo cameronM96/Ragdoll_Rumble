@@ -13,17 +13,32 @@ MonoBehaviour:
   m_Name: Pack2
   m_EditorClassIdentifier: 
   iD: 12750
-  packSize: 0
-  packName: 
-  packImage: {fileID: 0}
-  coinCost: 0
-  gemCost: 0
+  packSize: 3
+  packName: Shinobi Shadows
+  packImage: {fileID: 21300000, guid: cc94f49cc181c2b4b8db25e15401c41d, type: 3}
+  coinCost: 500
+  gemCost: 125
   guaranteedSpecificCards: 0
   gSpecificCards: []
-  randomSpecificCards: 0
-  guaranteedFromSet: 0
+  randomSpecificCards: 1
+  guaranteedFromSet: 3
   setName: 
-  rSpecificCards: []
+  rSpecificCards:
+  - {fileID: 11400000, guid: 105e82db40f74ac45ba9a3d7d637621e, type: 2}
+  - {fileID: 11400000, guid: ac9ebc6f65733e3498ebc23187061d81, type: 2}
+  - {fileID: 11400000, guid: 516d943e7f98e1b41ab047c66f85cbd0, type: 2}
+  - {fileID: 11400000, guid: f981c8ef41e41d94fb85b5df7f062656, type: 2}
+  - {fileID: 11400000, guid: b77591edbdc72694a9ce7ef800ff9243, type: 2}
+  - {fileID: 11400000, guid: 1922e492bcc08914cb47e50c72ebcb99, type: 2}
+  - {fileID: 11400000, guid: 2815f450bccf90c47a53253e9fb1bd4a, type: 2}
+  - {fileID: 11400000, guid: 2483a00ea5a565043b98216a27c529e6, type: 2}
+  - {fileID: 11400000, guid: f4a2beb4c3e649b429a5de6d36e8fd30, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: dabcb2110afcb5441842ede297e98d51, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
+  - {fileID: 11400000, guid: 765296ee0aebe4d4285748ec40883062, type: 2}
+  - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
   guaranteedRandom: 0
   numberOfRares: 0
   numberOfUncommons: 0

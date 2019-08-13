@@ -13,17 +13,32 @@ MonoBehaviour:
   m_Name: Pack3
   m_EditorClassIdentifier: 
   iD: 14298
-  packSize: 0
-  packName: 
-  packImage: {fileID: 0}
-  coinCost: 0
-  gemCost: 0
+  packSize: 3
+  packName: Dino's Roar
+  packImage: {fileID: 21300000, guid: 592213fde1b669f47b8d5379d8a971bd, type: 3}
+  coinCost: 500
+  gemCost: 125
   guaranteedSpecificCards: 0
   gSpecificCards: []
-  randomSpecificCards: 0
-  guaranteedFromSet: 0
+  randomSpecificCards: 1
+  guaranteedFromSet: 3
   setName: 
-  rSpecificCards: []
+  rSpecificCards:
+  - {fileID: 11400000, guid: 81d693b6769b0444db6e90fafe3d6662, type: 2}
+  - {fileID: 11400000, guid: c3a39515b838e0c4aad7a2f538cd6382, type: 2}
+  - {fileID: 11400000, guid: fbded0a941d7658458daf8fba9118f8e, type: 2}
+  - {fileID: 11400000, guid: 43b24d8d00f10f742817438c681692f8, type: 2}
+  - {fileID: 11400000, guid: 096ded6c90335a146b497ccffeee445a, type: 2}
+  - {fileID: 11400000, guid: f4a2beb4c3e649b429a5de6d36e8fd30, type: 2}
+  - {fileID: 11400000, guid: 2b57964905887f049ab57567c7f3c071, type: 2}
+  - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
+  - {fileID: 11400000, guid: 1ff483092f70342448b64b265f66f242, type: 2}
+  - {fileID: 11400000, guid: 92278954f48a1664d93ff2546aaa6a0c, type: 2}
+  - {fileID: 11400000, guid: 765296ee0aebe4d4285748ec40883062, type: 2}
+  - {fileID: 11400000, guid: f1031885dc269ab40a7ee416417d5c28, type: 2}
+  - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
+  - {fileID: 11400000, guid: 2eeb500181f67be4399679e389289d2a, type: 2}
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
   guaranteedRandom: 0
   numberOfRares: 0
   numberOfUncommons: 0
