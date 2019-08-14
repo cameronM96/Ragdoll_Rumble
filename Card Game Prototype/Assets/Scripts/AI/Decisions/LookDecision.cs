@@ -24,7 +24,15 @@ public class LookDecision : Decision
                 {
                     // Only add alive players
                     if (!memeber.GetComponent<Base_Stats>().dead)
-                        potentialTargets.Add(memeber.transform);
+                    {
+                        StateController targetController = memeber.GetComponent<StateController>();
+                        if (targetController?.chest != null)
+                        {
+                            potentialTargets.Add(targetController.chest);
+                        }
+                        else
+                            potentialTargets.Add(memeber.transform);
+                    }
                 }
             }
         }

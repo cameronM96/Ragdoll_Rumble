@@ -16,7 +16,7 @@ public class Deck : MonoBehaviour
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
-        StartCoroutine(EndOfFrame());
+        //StartCoroutine(EndOfFrame());
     }
 
     private void OnEnable()
@@ -48,7 +48,7 @@ public class Deck : MonoBehaviour
                     cards.Add(cardCollection.allCardIDDictionary[cardIDs[i]]);
                 }
                 else
-                    Debug.LogError("Unidentified card!");
+                    Debug.LogError("Unidentified card! Card ID: " + cardIDs[i] + "\n Owner: " + this.gameObject);
             }
         }
         else
@@ -70,6 +70,7 @@ public class Deck : MonoBehaviour
 
         // Let game manager know this player is ready
         GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        Debug.Log(transform.root.gameObject + " Initialising!");
         gm.InitialsePlayer();
     }
 
@@ -81,6 +82,7 @@ public class Deck : MonoBehaviour
 
     public void ShuffleDeck()
     {
+        Debug.Log("Shuffling Player Deck");
         foreach (GameObject card in deckOfCards)
         {
             Random.InitState(System.DateTime.Now.Millisecond);

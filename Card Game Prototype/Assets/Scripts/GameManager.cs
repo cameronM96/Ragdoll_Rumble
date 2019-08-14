@@ -91,7 +91,10 @@ public class GameManager : MonoBehaviour
         currentRound = 0;
 
         if (debugging)
+        {
             GameInfo.SelectedDeckName = "Starter Deck";
+            GameInfo.RandomAIDeck = true;
+        }
 
         StartCoroutine(StartGameDelay(gameStartDelay));
     }

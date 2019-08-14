@@ -32,6 +32,7 @@ public class UIManager : MonoBehaviour
     public Color endColor;
     public Text scoreCounter;
     public Slider[] healthBars;
+    public Text[] healthBarsText;
     public Color highHealthColor;
     public Color middleHealthColor;
     public Color lowHealthColor;
@@ -145,7 +146,9 @@ public class UIManager : MonoBehaviour
             }
 
             healthBars[0].value = (float)player.GetHealth() / player.maxHP;
+            healthBarsText[0].text = player.GetHealth() + "/" + player.maxHP;
             healthBars[1].value = (float)enemy.GetHealth() / enemy.maxHP;
+            healthBarsText[1].text = enemy.GetHealth() + "/" + enemy.maxHP;
         }
     }
 

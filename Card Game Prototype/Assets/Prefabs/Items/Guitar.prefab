@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 2611047164177170577}
   - component: {fileID: 834970809225237748}
   - component: {fileID: 8718031308551073506}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,11 +129,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8632093674448636241}
     m_Modifications:
-    - target: {fileID: 3202513188947993111, guid: 7410ad87b3a373d4f95d479aeb588968,
-        type: 3}
-      propertyPath: m_Name
-      value: acousticGuitar Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 1885536135106088964, guid: 7410ad87b3a373d4f95d479aeb588968,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -188,6 +183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3202513188947993111, guid: 7410ad87b3a373d4f95d479aeb588968,
+        type: 3}
+      propertyPath: m_Name
+      value: acousticGuitar Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7410ad87b3a373d4f95d479aeb588968, type: 3}

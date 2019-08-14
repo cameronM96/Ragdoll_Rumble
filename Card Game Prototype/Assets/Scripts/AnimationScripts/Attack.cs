@@ -20,9 +20,18 @@ public class Attack : MonoBehaviour
 
     public void AttackTarget(Transform newTarget)
     {
+        StopAllCoroutines();
+        GetComponent<SphereCollider>().enabled = true;
         target = newTarget;
         attacking = true;
         audioController.Attack();
+        StartCoroutine(colliderDisable());
+    }
+
+    IEnumerator colliderDisable()
+    {
+        yield return new WaitForSeconds(0.5f);
+        GetComponent<SphereCollider>().enabled = false;
     }
 
     private void Update()

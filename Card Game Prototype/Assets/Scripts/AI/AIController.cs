@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
+    Base_Stats bStats;
     // Controls animations, carries out AI actions (attacking, death, etc) which are driven by the StateController and Audio for player.
     public AudioSource audioSource;
     public AudioClip[] attackNoise;
@@ -15,11 +16,15 @@ public class AIController : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        bStats = GetComponent<Base_Stats>();
     }
 
     public void Attack()
     {
-        Debug.Log("" + this.tag + " is attacking!");
+        //Debug.Log("" + this.tag + " is attacking!");
+        if (bStats.dead)
+            return;
+
         if (attackNoise.Length > 0)
         {
             int index = Random.Range(0, attackNoise.Length - 1);
@@ -33,7 +38,9 @@ public class AIController : MonoBehaviour
 
     public void Hurt ()
     {
-        Debug.Log("" + this.tag + " was hurt!");
+        if (bStats.dead)
+            return;
+        //Debug.Log("" + this.tag + " was hurt!");
         if (hurtNoise.Length > 0)
         {
             int index = Random.Range(0, hurtNoise.Length - 1);
@@ -47,7 +54,7 @@ public class AIController : MonoBehaviour
 
     public void Die()
     {
-        Debug.Log("" + this.tag + " diededed!");
+        //Debug.Log("" + this.tag + " diededed!");
         if (deathNoise.Length > 0)
         {
             int index = Random.Range(0, deathNoise.Length - 1);
@@ -61,7 +68,7 @@ public class AIController : MonoBehaviour
 
     public void Ability(AudioClip abilityNoise)
     {
-        Debug.Log("" + this.tag + " was hit by ability!");
+        //Debug.Log("" + this.tag + " was hit by ability!");
         if (abilityNoise != null)
         {
             audioSource.clip = abilityNoise;
@@ -71,7 +78,7 @@ public class AIController : MonoBehaviour
 
     public void Victory()
     {
-        Debug.Log("(" + this.tag + ") Wins!");
+        //Debug.Log("(" + this.tag + ") Wins!");
         if (victoryNoise.Length > 0)
         {
             int index = Random.Range(0, victoryNoise.Length - 1);
@@ -85,7 +92,7 @@ public class AIController : MonoBehaviour
 
     public void Defeat ()
     {
-        Debug.Log("(" + this.tag + ") Loses!");
+        //Debug.Log("(" + this.tag + ") Loses!");
         if (defeatNoise.Length > 0)
         {
             int index = Random.Range(0, defeatNoise.Length - 1);

@@ -15,18 +15,20 @@ public class TempWeaponScript : MonoBehaviour
         ownerStats = owner.GetComponent<Base_Stats>();
 
         if (ownerStats == null)
-            Debug.Log("No Owner! WHO AM I?!");
+            Debug.Log("No Owner! WHO AM I?! Root: " + owner);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Whacked " + other.transform.root.gameObject.name + " !");
-        ownerStats.OnHit(other.transform.root.gameObject);
+        if (other.transform.root.gameObject != owner)
+            ownerStats.OnHit(other.transform.root.gameObject);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Whacked " + collision.transform.root.gameObject.name + " !");
-        ownerStats.OnHit(collision.transform.root.gameObject);
+        if (collision.transform.root.gameObject != owner)
+            ownerStats.OnHit(collision.transform.root.gameObject);
     }
 }

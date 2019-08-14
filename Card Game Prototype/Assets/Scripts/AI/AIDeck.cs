@@ -32,7 +32,7 @@ public class AIDeck : MonoBehaviour
     public void Initialise()
     {
         gameDeck = new List<Card>();
-        Debug.Log(GameInfo.AIDeck.Length);
+        Debug.Log(GameInfo.RandomAIDeck);
         // Create all the cards
         if (GameInfo.RandomAIDeck)
         {
@@ -44,6 +44,7 @@ public class AIDeck : MonoBehaviour
         }
         else
         {
+            Debug.Log(GameInfo.AIDeck);
             Debug.Log(GameInfo.AIDeck.Length);
             int[] cardIDs = GameInfo.AIDeck;
             for (int i = 0; i < cardIDs.Length; i++)
@@ -66,18 +67,19 @@ public class AIDeck : MonoBehaviour
             currentDeck.Enqueue(card);
 
         viewingDeck = currentDeck.ToArray();
+
+        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+        Debug.Log(transform.root.gameObject + " Initialising!");
+        gm.InitialsePlayer();
     }
 
     public void ShuffleDeck()
     {
-        Debug.Log(gameDeck.Count);
+        Debug.Log("Shuffling AI Deck");
         List<Card> cards = new List<Card>();
         foreach (Card card in gameDeck)
             cards.Add(card);
-        Debug.Log(cards.Count);
         gameDeck.Clear();
-        Debug.Log(gameDeck.Count);
-        Debug.Log(cards.Count);
 
         for (int i = 0; i < requiredDeckSize; i++)
         {

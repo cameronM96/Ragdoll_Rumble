@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
             DefaultDeckName = data.defaultDeckName;
         }
         else
-            NewProfile("New Player");
+            NewProfile("Player 1");
     }
 
     public void AddCardToLibrary (Card card)

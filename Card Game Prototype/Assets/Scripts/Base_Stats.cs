@@ -16,6 +16,7 @@ public class Base_Stats : MonoBehaviour
     public float speed = 20f;
     // Need to figure out how to turn this into an attackrate (as atkspeed increases, time between attack decrease)
     public float atkSpeed = 5;
+    public float atkSpeedCap = 100f;
 
     public float attackRange = 1f;
 
@@ -497,8 +498,11 @@ public class Base_Stats : MonoBehaviour
             atkSpeed += attackSpeedChange;
         }
 
-        if (atkSpeed < 1)
-            atkSpeed = 1;
+        if (atkSpeed < 0)
+            atkSpeed = 0;
+
+        if (atkSpeed > atkSpeedCap)
+            atkSpeed = atkSpeedCap;
     }
 
     public void ApplyCC(CC ccType, float duration)

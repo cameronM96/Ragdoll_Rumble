@@ -28,9 +28,12 @@ public class StateController : MonoBehaviour
     private Vector3[] returnPoints;
     private Quaternion[] returnRots;
     public Attack[] attackPoints;
+    public float attackSpeedScalar = 30f;
+    public float zeroAtkSpeed = 3.33f;
 
     private Vector3 returnPos;
     private bool aiActive = false;
+    private float attackTimer;
 
     private void Awake()
     {
@@ -80,9 +83,12 @@ public class StateController : MonoBehaviour
         aiActive = false;
         if (chest != null)
             TPose();
+        else
+        {
+            transform.position = spawnPoint.position;
+            transform.rotation = spawnPoint.rotation;
+        }
 
-        transform.position = spawnPoint.position;
-        transform.rotation = spawnPoint.rotation;
         if (navMeshAgent!= null)
             SetupAI();
 
@@ -109,6 +115,12 @@ public class StateController : MonoBehaviour
 
         if (currentState != null)
             currentState.UpdateState(this);
+
+        if (attackTimer > zeroAtkSpeed - (baseStates.atkSpeed / attackSpeedScalar))
+            attackTimer = zeroAtkSpeed - (baseStates.atkSpeed / attackSpeedScalar);
+
+        if (attackTimer > 0)
+            attackTimer -= Time.deltaTime;
     }
 
     private void OnDrawGizmos()
@@ -116,7 +128,10 @@ public class StateController : MonoBehaviour
         if (currentState != null)
         {
             Gizmos.color = currentState.sceneGizmoColor;
-            Gizmos.DrawWireSphere(this.transform.position, 5f);
+            if (chest != null)
+                Gizmos.DrawWireSphere(this.chest.position, reach - reachOffset);
+            else
+                Gizmos.DrawWireSphere(this.transform.position, reach);
         }
     }
 
@@ -139,9 +154,16 @@ public class StateController : MonoBehaviour
 
     public void Attack()
     {
-        Random.InitState(System.DateTime.Now.Millisecond);
-        int index = Random.Range(0, attackPoints.Length);
-        attackPoints[index].AttackTarget(chaseTarget);
+        if (attackTimer <= 0)
+        {
+            Debug.Log("Attack!");
+            Random.InitState(System.DateTime.Now.Millisecond);
+            int index = Random.Range(0, attackPoints.Length);
+            attackPoints[index].AttackTarget(chaseTarget);
+            attackTimer = zeroAtkSpeed - (baseStates.atkSpeed / attackSpeedScalar);
+            if (attackTimer < 0.1)
+                attackTimer = 0.1f;
+        }
     }
 
     private void OnExitState()
@@ -165,10 +187,11 @@ public class StateController : MonoBehaviour
 
     public void TPose()
     {
+        Debug.Log("Executing T pose");
         foreach (Rigidbody rb in rbs)
             rb.isKinematic = true;
 
-        chest.position = returnPos;
+        //chest.position = returnPos;
 
         for (int i = 0; i < ragDollTransforms.Length; i++)
         {
@@ -183,7 +206,7 @@ public class StateController : MonoBehaviour
         if (newReach - reachOffset > reach)
         {
             reach = newReach - reachOffset;
-            navMeshAgent.stoppingDistance = reach;
+            navMeshAgent.stoppingDistance = reach/4;
         }
     }
 }

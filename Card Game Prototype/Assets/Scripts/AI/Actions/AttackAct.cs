@@ -15,12 +15,23 @@ public class AttackAct : Activity
         // Attack if in attack range
         RaycastHit hit;
 
-        Debug.DrawRay(controller.transform.position, (controller.transform.forward.normalized * controller.baseStates.attackRange), Color.red);
-
-        if (Physics.SphereCast (controller.transform.position, controller.reach,controller.transform.forward,out hit,controller.baseStates.attackRange) 
-            && hit.collider.CompareTag(controller.chaseTarget.tag))
+        if (controller.chest != null)
         {
-            if (controller.CheckIfCountDownElapsed (controller.baseStates.atkSpeed))
+            Debug.DrawRay(controller.chest.position, (controller.chest.forward.normalized * controller.reach), Color.red);
+
+            if (Physics.SphereCast(controller.chest.position, controller.reach, controller.chest.forward, out hit, controller.reach))
+            {
+                // Attack function
+                controller.aiController.Attack();
+                controller.Attack();
+            }
+        }
+        else
+        {
+            Debug.DrawRay(controller.transform.position, (controller.transform.forward.normalized * controller.reach), Color.red);
+
+            if (Physics.SphereCast(controller.transform.position, controller.reach, controller.transform.forward, out hit, controller.reach)
+                && hit.collider.CompareTag(controller.chaseTarget.tag))
             {
                 // Attack function
                 controller.aiController.Attack();

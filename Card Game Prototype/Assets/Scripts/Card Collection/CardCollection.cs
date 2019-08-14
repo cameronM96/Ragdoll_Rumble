@@ -23,6 +23,8 @@ public class CardCollection : MonoBehaviour
     public float chanceOfRare = 5f;
     public float chanceOfUncommon = 35f;
 
+    public bool loaded = false;
+
     private void Start()
     {
         Instance = this;
@@ -115,6 +117,8 @@ public class CardCollection : MonoBehaviour
             }
         }
 
+        Debug.Log("Library Loaded");
+        loaded = true;
         LoadQuantityOfCardsFromPlayerPrefs();
     }
 
