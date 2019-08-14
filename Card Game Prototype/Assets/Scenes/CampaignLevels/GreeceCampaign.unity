@@ -519,7 +519,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1-1
+  m_Text: '2-1
+
+'
 --- !u!222 &193993726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -681,7 +683,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1-3
+  m_Text: 2-3
 --- !u!222 &400446538
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1129,6 +1131,8 @@ MonoBehaviour:
   campaignNumber: 6
   difficulty: 1
   rounds: 1
+  randomAIDeck: 0
+  aiDeck: []
 --- !u!1 &730729687
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,6 +1288,8 @@ MonoBehaviour:
   campaignNumber: 7
   difficulty: 1
   rounds: 1
+  randomAIDeck: 0
+  aiDeck: []
 --- !u!1 &795652312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,7 +1639,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1-4
+  m_Text: 2-4
 --- !u!222 &1176634584
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1797,6 +1803,8 @@ MonoBehaviour:
   campaignNumber: 8
   difficulty: 1
   rounds: 3
+  randomAIDeck: 0
+  aiDeck: []
 --- !u!1 &1246875864
 GameObject:
   m_ObjectHideFlags: 0
@@ -2073,6 +2081,8 @@ MonoBehaviour:
   campaignNumber: 5
   difficulty: 1
   rounds: 1
+  randomAIDeck: 0
+  aiDeck: []
 --- !u!1 &1316285457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2389,7 +2399,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1-2
+  m_Text: 2-2
 --- !u!222 &1746778305
 CanvasRenderer:
   m_ObjectHideFlags: 0
