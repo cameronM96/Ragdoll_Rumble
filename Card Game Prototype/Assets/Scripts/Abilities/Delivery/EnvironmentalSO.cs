@@ -10,12 +10,14 @@ public class EnvironmentalSO : DeliverySO
     public int numberOfProjectiles = 10;
     public bool destroyWhenTriggered = false;
     public float radiusOffset = 2f;
+    public float verticalOffset = 2f;
 
     private List<GameObject> targets = new List<GameObject>();
 
     public override void ApplyDelivery(GameObject target)
     {
         base.ApplyDelivery(target);
+        FindTargets();
 
         // Find Center
         Vector3 center = Vector3.zero;
@@ -26,7 +28,7 @@ public class EnvironmentalSO : DeliverySO
 
         center /= targets.Count;
 
-        float radius = radiusOffset;
+        float radius = -radiusOffset;
         float distance = 0f;
         foreach(GameObject unit in targets)
         {
@@ -36,9 +38,17 @@ public class EnvironmentalSO : DeliverySO
 
         radius += distance;
 
+        Debug.Log("Environmental Radius: " + radius);
+
         for (int i = 0; i < numberOfProjectiles; i++)
         {
-            GameObject newObject = Instantiate(templateObj, Random.insideUnitSphere * radius + center, Random.rotation);
+            GameObject newObject = Instantiate(templateObj);
+            Vector3 newPos = Random.insideUnitSphere * radius;
+            newPos.y = verticalOffset;
+            newObject.transform.position = newPos;
+            Random.InitState(System.DateTime.Now.Millisecond);
+            newObject.transform.Rotate(0, Random.Range(-180, 180), 0);
+            newObject.GetComponent<ApplyPhysics>().effects = ability.effects;
         }
     }
 

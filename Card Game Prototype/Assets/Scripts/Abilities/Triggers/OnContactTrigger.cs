@@ -8,11 +8,7 @@ public class OnContactTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        targetTrigger.ApplyEffect(other.gameObject);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        targetTrigger.ApplyEffect(collision.gameObject);
+        if (other.transform.root.tag == "Team 1" || other.transform.root.tag == "Team 2")
+            targetTrigger.ApplyEffect(other.gameObject);
     }
 }

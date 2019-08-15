@@ -9,18 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164cb0937785cbd4dbfdf94e20ac53d1, type: 3}
-  m_Name: Explosion
+  m_Script: {fileID: 11500000, guid: 42973660de36cd04d9aff28879371baa, type: 3}
+  m_Name: E_Rake
   m_EditorClassIdentifier: 
-  ccType: 0
-  duration: 0
+  ccType: 1
+  duration: 1
   value: 0
   statChange: 1
-  statChangeValue: 6
+  statChangeValue: 1
   changeCurrentHP: 0
   multipler: 0
-  particleEffect: {fileID: 100004, guid: f95ff734540a0d749be6571b6cb5b37f, type: 3}
-  effectLength: 0
-  viableTargetID: 2
-  radius: 5
-  aoeParticleEffect: {fileID: 0}
+  particleEffect: {fileID: 0}
+  effectLength: 1

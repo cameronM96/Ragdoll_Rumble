@@ -98,6 +98,7 @@ namespace EnumTypes
         None,
         Away,
         Towards,
+        Explosion,
         Custom
     }
 }

@@ -19,19 +19,19 @@ public class LookDecision : Decision
             string teamTag = "Team " + (i + 1);
             if (teamTag != controller.tag)
             {
-                GameObject[] teamMemebers = GameObject.FindGameObjectsWithTag(teamTag);
-                foreach (GameObject memeber in teamMemebers)
+                GameObject[] teamMembers = GameObject.FindGameObjectsWithTag(teamTag);
+                foreach (GameObject member in teamMembers)
                 {
                     // Only add alive players
-                    if (!memeber.GetComponent<Base_Stats>().dead)
+                    if (!member.GetComponent<Base_Stats>().dead)
                     {
-                        StateController targetController = memeber.GetComponent<StateController>();
+                        StateController targetController = member.GetComponent<StateController>();
                         if (targetController?.chest != null)
                         {
                             potentialTargets.Add(targetController.chest);
                         }
                         else
-                            potentialTargets.Add(memeber.transform);
+                            potentialTargets.Add(member.transform);
                     }
                 }
             }

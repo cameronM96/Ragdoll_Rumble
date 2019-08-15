@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8e1fcc8e358beb4e8d1d0ab380bb115, type: 3}
+  m_Name: Rake
+  m_EditorClassIdentifier: 
+  ability: {fileID: 0}
+  viableTargetID: 2
+  friendlyTag: Team 1
+  owner: {fileID: 0}
+  triggeringTarget: {fileID: 0}
+  lifeSpan: 0
+  templateObj: {fileID: 5798209676035441215, guid: 0c59934c8e4fa964380a74a1466dc016,
+    type: 3}
+  numberOfProjectiles: 10
+  destroyWhenTriggered: 0
+  radiusOffset: 2

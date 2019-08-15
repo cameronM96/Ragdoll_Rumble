@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188c0709f4681164c9849cc8d76bb18b, type: 3}
+  m_Name: Rakes
+  m_EditorClassIdentifier: 
+  abName: 
+  abDescription: 
+  triggerMethod: 0
+  onDamaged: {fileID: 0}
+  onHealth: {fileID: 0}
+  onTimer: {fileID: 0}
+  onButton: {fileID: 0}
+  deliveryMethod: {fileID: 11400000, guid: bc26713907bfc8c4a8ea56a191dc7744, type: 2}
+  effects:
+  - {fileID: 11400000, guid: 50e29d46a02326249b1da9d1a0b102e8, type: 2}
+  item: {fileID: 0}

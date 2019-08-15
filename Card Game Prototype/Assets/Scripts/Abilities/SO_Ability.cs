@@ -31,7 +31,7 @@ public class SO_Ability : ScriptableObject
         switch (triggerMethod)
         {
             case TriggerMethod.OnStart:
-                // Apply on Start effect (define what this means! On start of round or On card played?)
+                deliveryMethod.ApplyDelivery(targetPlayer.gameObject);
                 break;
             case TriggerMethod.OnHit:
                 targetPlayer.onHitEffectsList.Add(deliveryMethod);

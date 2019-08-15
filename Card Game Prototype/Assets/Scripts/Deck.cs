@@ -83,11 +83,11 @@ public class Deck : MonoBehaviour
     public void ShuffleDeck()
     {
         Debug.Log("Shuffling Player Deck");
-        foreach (GameObject card in deckOfCards)
+        foreach (Transform card in transform)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
-            int index = Random.Range(0, deckOfCards.Count);
-            card.transform.SetSiblingIndex(index);
+            int index = Random.Range(0, transform.childCount);
+            card.SetSiblingIndex(index);
         }
     }
 }

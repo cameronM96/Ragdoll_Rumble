@@ -200,6 +200,16 @@ public class StateController : MonoBehaviour
         }
     }
 
+    public void RagDoll()
+    {
+
+    }
+
+    public void UnRagDoll()
+    {
+
+    }
+
     // Increase attack range
     public void ChangeReach(float newReach)
     {
