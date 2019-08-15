@@ -117,16 +117,16 @@ public class ApplyPhysics : MonoBehaviour
         Debug.Log("LETS DO THIS!");
 
         Rigidbody rb;
-        Transform center;
-        center = target?.GetComponent<StateController>()?.chest;
+        Transform center = null;
+        //center = target?.GetComponent<StateController>()?.chest;
 
-        if (center == null)
-        {
+        //if (center == null)
+        //{
             rb = target.GetComponent<Rigidbody>();
             center = target.transform;
-        }
-        else
-            rb = target?.GetComponent<StateController>()?.chest?.GetComponent<Rigidbody>();
+        //}
+        //else
+        //    rb = target?.GetComponent<StateController>()?.chest?.GetComponent<Rigidbody>();
 
 
         if (rb == null)

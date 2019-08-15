@@ -25,12 +25,12 @@ public class LookDecision : Decision
                     // Only add alive players
                     if (!member.GetComponent<Base_Stats>().dead)
                     {
-                        StateController targetController = member.GetComponent<StateController>();
-                        if (targetController?.chest != null)
-                        {
-                            potentialTargets.Add(targetController.chest);
-                        }
-                        else
+                        //StateController targetController = member.GetComponent<StateController>();
+                        //if (targetController?.chest != null)
+                        //{
+                        //    potentialTargets.Add(targetController.chest);
+                        //}
+                        //else
                             potentialTargets.Add(member.transform);
                     }
                 }

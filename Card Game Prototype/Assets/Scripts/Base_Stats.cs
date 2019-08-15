@@ -67,6 +67,7 @@ public class Base_Stats : MonoBehaviour
                 stunned = false;
                 // Undo stun here
                 navAgent.speed = speed;
+                stateController.UnStun();
             }
         }
 
@@ -275,7 +276,6 @@ public class Base_Stats : MonoBehaviour
             gameManager.PlayerDied(this.gameObject);
 
             audioController.Die();
-
             StopAllCoroutines();
             //GetComponent<Collider>().enabled = false;
         }
@@ -519,6 +519,7 @@ public class Base_Stats : MonoBehaviour
                 stunned = true;
                 stunLength += duration;
                 navAgent.speed = 0f;
+                stateController.Stunned();
                 break;
             case CC.Snare:
                 snared = true;
@@ -558,9 +559,9 @@ public class Base_Stats : MonoBehaviour
     private void SpawnHitText(Color newColour, int value)
     {
         GameObject newHitText = Instantiate(hitText);
-        if (stateController.chest != null)
-            newHitText.transform.position = stateController.chest.position;
-        else
+        //if (stateController.chest != null)
+        //    newHitText.transform.position = stateController.chest.position;
+        //else
             newHitText.transform.position = this.transform.position;
 
         Text TextElement = newHitText.transform.GetChild(0).GetComponentInChildren<Text>();

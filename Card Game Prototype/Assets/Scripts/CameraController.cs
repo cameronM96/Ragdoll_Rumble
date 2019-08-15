@@ -256,9 +256,9 @@ public class CameraController : MonoBehaviour
                 // If member is NOT dead add to target
                 if (!member.GetComponent<Base_Stats>().dead)
                 {
-                    if (member?.GetComponent<StateController>()?.chest != null)
-                        targets.Add(member.GetComponent<StateController>().chest);
-                    else
+                    //if (member?.GetComponent<StateController>()?.chest != null)
+                    //    targets.Add(member.GetComponent<StateController>().chest);
+                    //else
                         targets.Add(member.transform);
                 }
             }

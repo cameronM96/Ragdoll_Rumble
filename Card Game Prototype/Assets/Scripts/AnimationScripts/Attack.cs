@@ -61,10 +61,10 @@ public class Attack : MonoBehaviour
             //    return;
             //}
 
-            Vector3 direction = target.position - transform.position;
-            direction.Normalize();
-            direction *= attackForceScalar;
-            rb.AddForce(direction,ForceMode.Impulse);
+            //Vector3 direction = target.position - transform.position;
+            //direction.Normalize();
+            //direction *= attackForceScalar;
+            //rb.AddForce(direction,ForceMode.Impulse);
             attacking = false;
             holstering = false;
             timer = 0;

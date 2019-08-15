@@ -14,29 +14,29 @@ public class AttackAct : Activity
     {
         // Attack if in attack range
 
-        if (controller.chest != null)
-        {
-            Vector3 targetPos = controller.chaseTarget.position;
-            targetPos.y = controller.chest.position.y;
-            Debug.DrawRay(controller.chest.position, targetPos, Color.red);
+        //if (controller.chest != null)
+        //{
+        //    Vector3 targetPos = controller.chaseTarget.position;
+        //    targetPos.y = controller.chest.position.y;
+        //    Debug.DrawRay(controller.chest.position, targetPos, Color.red);
 
-            if ((controller.chest.position - targetPos).sqrMagnitude > controller.reach * controller.reach)
-            {
-                // Attack function
-                controller.aiController.Attack();
-                controller.Attack();
-            }
-        }
-        else
-        {
+        //    if ((controller.chest.position - targetPos).sqrMagnitude > controller.reach * controller.reach)
+        //    {
+        //        // Attack function
+        //        controller.aiController.Attack();
+        //        controller.Attack();
+        //    }
+        //}
+        //else
+        //{
             Debug.DrawRay(controller.transform.position, (controller.transform.forward.normalized * controller.reach), Color.red);
 
-            if ((controller.transform.position - controller.chaseTarget.position).sqrMagnitude > controller.reach * controller.reach)
+            if ((controller.transform.position - controller.chaseTarget.position).sqrMagnitude < controller.reach * controller.reach)
             {
                 // Attack function
                 controller.aiController.Attack();
                 controller.Attack();
             }
-        }
+        //}
     }
 }

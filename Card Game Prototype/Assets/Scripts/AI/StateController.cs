@@ -13,9 +13,10 @@ public class StateController : MonoBehaviour
 
     public Base_Stats baseStates;
     public GameManager gameManager;
+    public Animator animController;
 
     public Transform spawnPoint;
-    public Transform chest;
+    //public Transform chest;
 
     [HideInInspector] public AIController aiController;
     public float reach;
@@ -24,6 +25,7 @@ public class StateController : MonoBehaviour
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public float stateTimeElapsed;
     public Transform[] ragDollTransforms;
+    public Rigidbody myRB;
     [HideInInspector] public Rigidbody[] rbs;
     private Vector3[] returnPoints;
     private Quaternion[] returnRots;
@@ -35,23 +37,16 @@ public class StateController : MonoBehaviour
     private bool aiActive = false;
     private float attackTimer;
 
+    public State[] allstates;
+
     private void Awake()
     {
         baseStates = GetComponent<Base_Stats>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         aiController = GetComponent<AIController>();
-        if (chest != null)
-            returnPos = chest.position;
-
-        rbs = new Rigidbody[ragDollTransforms.Length];
-        returnPoints = new Vector3[ragDollTransforms.Length];
-        returnRots = new Quaternion[ragDollTransforms.Length];
-        for (int i = 0; i < ragDollTransforms.Length; i++)
-        {
-            rbs[i] = ragDollTransforms[i]?.GetComponent<Rigidbody>();
-            returnPoints[i] = ragDollTransforms[i].position;
-            returnRots[i] = ragDollTransforms[i].rotation;
-        }
+        //if (chest != null)
+        //    returnPos = chest.position;
+        myRB = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
@@ -68,8 +63,8 @@ public class StateController : MonoBehaviour
 
     private void InitialiseCombatPhase ()
     {
-        foreach(Rigidbody rb in rbs) 
-            rb.isKinematic = false;
+        if (animController != null)
+            animController.SetBool("cardPhase", false);
 
         aiActive = true;
         baseStates.CalcMoveSpeed();
@@ -81,13 +76,15 @@ public class StateController : MonoBehaviour
     private void InitialiseCardPhase()
     {
         aiActive = false;
-        if (chest != null)
-            TPose();
-        else
+        if (animController != null)
         {
-            transform.position = spawnPoint.position;
-            transform.rotation = spawnPoint.rotation;
+            animController.SetBool("dead", false);
+            animController.SetBool("reset", true);
+            animController.SetBool("cardPhase", true);
         }
+
+        transform.position = spawnPoint.position;
+        transform.rotation = spawnPoint.rotation;
 
         if (navMeshAgent!= null)
             SetupAI();
@@ -121,6 +118,27 @@ public class StateController : MonoBehaviour
 
         if (attackTimer > 0)
             attackTimer -= Time.deltaTime;
+
+        if (animController != null)
+        {
+            if (currentState == allstates[0])
+            {
+                // Idle
+                if (animController != null)
+                    animController.SetBool("moving", false);
+            }
+            else if (currentState == allstates[1])
+            {
+                if (animController != null)
+                    animController.SetBool("moving", true);
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (animController != null)
+            animController.SetBool("reset", false);
     }
 
     private void OnDrawGizmos()
@@ -128,9 +146,9 @@ public class StateController : MonoBehaviour
         if (currentState != null)
         {
             Gizmos.color = currentState.sceneGizmoColor;
-            if (chest != null)
-                Gizmos.DrawWireSphere(this.chest.position, reach - reachOffset);
-            else
+            //if (chest != null)
+            //    Gizmos.DrawWireSphere(this.chest.position, reach - reachOffset);
+            //else
                 Gizmos.DrawWireSphere(this.transform.position, reach);
         }
     }
@@ -156,6 +174,9 @@ public class StateController : MonoBehaviour
     {
         if (attackTimer <= 0)
         {
+            if (animController != null)
+                animController.SetBool("attacking", true);
+
             Debug.Log("Attack!");
             Random.InitState(System.DateTime.Now.Millisecond);
             int index = Random.Range(0, attackPoints.Length);
@@ -164,6 +185,12 @@ public class StateController : MonoBehaviour
             if (attackTimer < 0.1)
                 attackTimer = 0.1f;
         }
+    }
+
+    public void EndAttack()
+    {
+        if (animController != null)
+            animController.SetBool("attacking", false);
     }
 
     private void OnExitState()
@@ -185,29 +212,36 @@ public class StateController : MonoBehaviour
         return false;
     }
 
-    public void TPose()
-    {
-        Debug.Log("Executing T pose");
-        foreach (Rigidbody rb in rbs)
-            rb.isKinematic = true;
-
-        //chest.position = returnPos;
-
-        for (int i = 0; i < ragDollTransforms.Length; i++)
-        {
-            ragDollTransforms[i].position = returnPoints[i];
-            ragDollTransforms[i].rotation = returnRots[i];
-        }
-    }
-
     public void RagDoll()
     {
-
+        if (animController != null)
+            animController.SetBool("ragDoll", true);
     }
 
     public void UnRagDoll()
     {
+        if (animController != null)
+            animController.SetBool("ragDoll", false);
+    }
 
+    public void Dead()
+    {
+        if (animController != null)
+            animController.SetBool("dead", true);
+
+        RagDoll();
+    }
+
+    public void Stunned()
+    {
+        if (animController != null)
+            animController.SetBool("stunned", true);
+    }
+
+    public void UnStun()
+    {
+        if (animController != null)
+            animController.SetBool("stunned", false);
     }
 
     // Increase attack range
