@@ -143,6 +143,7 @@ public class GameManager : MonoBehaviour
 
             if (!countDown10 && cardPhaseTimer < 10)
             {
+                announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 announcerAudioSource.clip = countDownNoise[1];
                 announcerAudioSource.Play();
                 countDown10 = true;
@@ -150,6 +151,7 @@ public class GameManager : MonoBehaviour
 
             if (!countDown &&  cardPhaseTimer < 5)
             {
+                announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 announcerAudioSource.clip = countDownNoise[0];
                 announcerAudioSource.Play();
                 countDown = true;
@@ -172,6 +174,7 @@ public class GameManager : MonoBehaviour
             combatPhaseTimer -= Time.deltaTime;
             if (!countDown30 && combatPhaseTimer < 30)
             {
+                announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 announcerAudioSource.clip = countDownNoise[2];
                 announcerAudioSource.Play();
                 countDown30 = true;
@@ -179,6 +182,7 @@ public class GameManager : MonoBehaviour
 
             if (!countDown10 && combatPhaseTimer < 10)
             {
+                announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 announcerAudioSource.clip = countDownNoise[1];
                 announcerAudioSource.Play();
                 countDown10 = true;
@@ -186,6 +190,7 @@ public class GameManager : MonoBehaviour
 
             if (!countDown && combatPhaseTimer < 5)
             {
+                announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 announcerAudioSource.clip = countDownNoise[0];
                 announcerAudioSource.Play();
                 countDown = true;
@@ -293,22 +298,26 @@ public class GameManager : MonoBehaviour
         if (winningTeam == 1)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
+            announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
             announcerAudioSource.clip = victoryNoise[Random.Range(0,victoryNoise.Length)];
             announcerAudioSource.Play();
         }
         else if (winningTeam == 2)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
+            announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
             announcerAudioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
             announcerAudioSource.Play();
         }
         else
         {
             Random.InitState(System.DateTime.Now.Millisecond);
+            announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
             announcerAudioSource.clip = draw[Random.Range(0, draw.Length)];
             announcerAudioSource.Play();
         }
 
+        musicAudioSource.volume = PlayerPreferances.Music * PlayerPreferances.Master;
         StartCoroutine(AudioFadeOut.FadeOut(musicAudioSource, 2f));
         // Check if game should end
         if (highestScore >= instaWinScore)
@@ -391,10 +400,12 @@ public class GameManager : MonoBehaviour
     IEnumerator CombatPhaseAudioHandler()
     {
         // Music
+        musicAudioSource.volume = PlayerPreferances.Music * PlayerPreferances.Master;
         musicAudioSource.clip = combatPhaseMusic;
         musicAudioSource.Play();
 
         // Announcer
+        announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
         if (currentRound - 1 < rounds.Length)
             announcerAudioSource.clip = rounds[currentRound - 1];
         else
@@ -454,12 +465,14 @@ public class GameManager : MonoBehaviour
         if (winningTeam == 1)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
+            announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
             announcerAudioSource.clip = victoryNoise[Random.Range(0, victoryNoise.Length)];
             announcerAudioSource.Play();
         }
         else
         {
             Random.InitState(System.DateTime.Now.Millisecond);
+            announcerAudioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
             announcerAudioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
             announcerAudioSource.Play();
         }

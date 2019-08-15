@@ -30,6 +30,7 @@ public class AIController : MonoBehaviour
             int index = Random.Range(0, attackNoise.Length - 1);
             if (attackNoise[index] != null)
             {
+                audioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 audioSource.clip = attackNoise[index];
                 audioSource.Play();
             }
@@ -46,6 +47,7 @@ public class AIController : MonoBehaviour
             int index = Random.Range(0, hurtNoise.Length - 1);
             if (hurtNoise[index] != null)
             {
+                audioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 audioSource.clip = hurtNoise[index];
                 audioSource.Play();
             }
@@ -60,6 +62,7 @@ public class AIController : MonoBehaviour
             int index = Random.Range(0, deathNoise.Length - 1);
             if (deathNoise[index] != null)
             {
+                audioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 audioSource.clip = deathNoise[index];
                 audioSource.Play();
             }
@@ -71,6 +74,7 @@ public class AIController : MonoBehaviour
         //Debug.Log("" + this.tag + " was hit by ability!");
         if (abilityNoise != null)
         {
+            audioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
             audioSource.clip = abilityNoise;
             audioSource.Play();
         }
@@ -84,6 +88,7 @@ public class AIController : MonoBehaviour
             int index = Random.Range(0, victoryNoise.Length - 1);
             if (victoryNoise[index] != null)
             {
+                audioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 audioSource.clip = victoryNoise[index];
                 audioSource.Play();
             }
@@ -98,6 +103,7 @@ public class AIController : MonoBehaviour
             int index = Random.Range(0, defeatNoise.Length - 1);
             if (defeatNoise[index] != null)
             {
+                audioSource.volume = PlayerPreferances.Vocals * PlayerPreferances.Master;
                 audioSource.clip = defeatNoise[index];
                 audioSource.Play();
             }
