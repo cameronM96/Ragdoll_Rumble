@@ -206,7 +206,7 @@ public class Base_Stats : MonoBehaviour
             // Taking Ability Damage (not reduced by armour)
             currentHP -= damage;
 
-            SpawnHitText(Color.blue, damage);
+            SpawnHitText(Color.red, damage);
 
             if (currentHP <= 0)
             {
@@ -558,7 +558,11 @@ public class Base_Stats : MonoBehaviour
     private void SpawnHitText(Color newColour, int value)
     {
         GameObject newHitText = Instantiate(hitText);
-        newHitText.transform.position = this.transform.position;
+        if (stateController.chest != null)
+            newHitText.transform.position = stateController.chest.position;
+        else
+            newHitText.transform.position = this.transform.position;
+
         Text TextElement = newHitText.transform.GetChild(0).GetComponentInChildren<Text>();
         TextElement.text = value.ToString();
         TextElement.color = newColour;

@@ -577,7 +577,7 @@ GameObject:
   - component: {fileID: 7101372141088789651}
   - component: {fileID: 7101372141088789660}
   m_Layer: 10
-  m_Name: RagdollTest2
+  m_Name: Player_Character
   m_TagString: Team 1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -633,7 +633,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.9
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -818,30 +818,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 7101372141088789649}
   attackNoise:
-  - {fileID: 8300000, guid: 5a58a5004e0817b48ab8294825fff991, type: 3}
-  - {fileID: 8300000, guid: 5a0bc374441a2e345b65f811fb030190, type: 3}
-  - {fileID: 8300000, guid: 9c197596f46a980428bf479638b3f6b2, type: 3}
-  - {fileID: 8300000, guid: 36665c31a4c1bd04f9b9e6fe961f9d23, type: 3}
-  - {fileID: 8300000, guid: fe50bd22751c16341adc8614a9a98b03, type: 3}
-  - {fileID: 8300000, guid: c0dda2d34fd2155429a566af69aba15b, type: 3}
-  - {fileID: 8300000, guid: 24cfd80b2180c5c479fdb4e1e0905adc, type: 3}
-  - {fileID: 8300000, guid: d4bf68b3cd996fb4d89f3822793f5d4f, type: 3}
+  - {fileID: 8300000, guid: 3734a506d3f10884aba21f80d48949b1, type: 3}
+  - {fileID: 8300000, guid: fe786ce953584224aa55469bd01685d9, type: 3}
+  - {fileID: 8300000, guid: c25c80802c0c5ce408bf52f9125440c8, type: 3}
+  - {fileID: 8300000, guid: 38131fb69454ac74c993bbf44ef39f2c, type: 3}
+  - {fileID: 8300000, guid: ca29b604858dd5f4eb20cfaa48189fdb, type: 3}
+  - {fileID: 8300000, guid: 8b6a1e47d7c33d242aadec032ac05e75, type: 3}
+  - {fileID: 8300000, guid: 362fd140cf8a8624bb50e92d66c98e6f, type: 3}
   hurtNoise:
-  - {fileID: 8300000, guid: 1e9eaaa553c2f8a4489ec1b2efdaa727, type: 3}
-  - {fileID: 8300000, guid: 21694501382956146b537a2bc4ba97e6, type: 3}
-  - {fileID: 8300000, guid: 9ea834d7d57655e4a8a9a35477f09820, type: 3}
-  - {fileID: 8300000, guid: fb2a936fc521caf48b2556bdba3c891a, type: 3}
-  - {fileID: 8300000, guid: 1cdd86c9bae74c3439bc5fbfe77616e4, type: 3}
+  - {fileID: 8300000, guid: 2a28f5849d080fe4eae69e50c46ad421, type: 3}
+  - {fileID: 8300000, guid: 3d60881539b714e458f7555ca96f89f8, type: 3}
+  - {fileID: 8300000, guid: bd42218e41871964ca8d09fa607c838c, type: 3}
+  - {fileID: 8300000, guid: 7f97e4c29c582b54991ec139fb2f26e4, type: 3}
+  - {fileID: 8300000, guid: d0d4423fab8323c4a830299f21f5c3a9, type: 3}
   deathNoise:
-  - {fileID: 8300000, guid: d80b0b9aa8353844fbacd80a6c5911bc, type: 3}
-  - {fileID: 8300000, guid: 4c3987202916f6449a21c4f3b52c6c1c, type: 3}
-  - {fileID: 8300000, guid: f60339501318e164681d3e1c26649db8, type: 3}
-  - {fileID: 8300000, guid: e380d05414d92bb4a9ba9a97a65a234c, type: 3}
-  - {fileID: 8300000, guid: e9a54cedbf070034bba6143d8dc208d6, type: 3}
-  - {fileID: 8300000, guid: 88aeed02acb19744fa51b9411991db24, type: 3}
-  - {fileID: 8300000, guid: e3c265c00d733864e94694992c6c445d, type: 3}
-  - {fileID: 8300000, guid: 84753e01e6b394f49826b8848a22b38d, type: 3}
-  - {fileID: 8300000, guid: e6ebd4546f4c70e44a1594a2b96b4ff3, type: 3}
+  - {fileID: 8300000, guid: d3ef52054654ded40a8beb67e42b6186, type: 3}
+  - {fileID: 8300000, guid: 2a343edbac81ce247a49c81ddb907221, type: 3}
+  - {fileID: 8300000, guid: 27a1dc4fd4543cd4f80794334dc5f6ed, type: 3}
+  - {fileID: 8300000, guid: bc115aa8955571049a3a6c31f15e9607, type: 3}
+  - {fileID: 8300000, guid: 9e55eb7a185304249a8fc90aa8e22e7f, type: 3}
+  - {fileID: 8300000, guid: 494af40698c3f3f4a80b69aac46d181e, type: 3}
+  - {fileID: 8300000, guid: 8870a6f8c6b399e4ab7b9312f2e0ebd3, type: 3}
+  - {fileID: 8300000, guid: 9aa06b2f510d2d14599b5f795089c29b, type: 3}
   victoryNoise:
   - {fileID: 8300000, guid: e16a59c2a56842c498d9aa38e23e12c7, type: 3}
   - {fileID: 8300000, guid: 7c4e639e58d35864ea8a772c74c836bf, type: 3}
@@ -853,13 +851,13 @@ MonoBehaviour:
   - {fileID: 8300000, guid: ca531fe125a8bc74ca406ec35f7cc497, type: 3}
   - {fileID: 8300000, guid: 17675c216e13f0c4b9c688ffebb18e90, type: 3}
   defeatNoise:
-  - {fileID: 8300000, guid: 070610e1c12aed24795bb389c81b7f86, type: 3}
-  - {fileID: 8300000, guid: 652f7fc186fc0474fb36cf2377d981d8, type: 3}
-  - {fileID: 8300000, guid: 4489b51a384bafa4687bb4116371f078, type: 3}
-  - {fileID: 8300000, guid: db2e2190ce1c42f43b5d168a88446c6e, type: 3}
-  - {fileID: 8300000, guid: 7198e520cde19ea4a97f6eb7935877cd, type: 3}
-  - {fileID: 8300000, guid: 1f65a6bb532b16c40bd372c26d708774, type: 3}
-  - {fileID: 8300000, guid: df4ea26c48661664f9770ead0350f263, type: 3}
+  - {fileID: 8300000, guid: 1d11eeb6749c5544ba2ca89b19f47190, type: 3}
+  - {fileID: 8300000, guid: eb5a31ce453ab6a41a8cbd93ba8de515, type: 3}
+  - {fileID: 8300000, guid: aa8861724cce69646a85a083d8f8b677, type: 3}
+  - {fileID: 8300000, guid: f8bc8115ce9a58744aa19d1715b36239, type: 3}
+  - {fileID: 8300000, guid: 4a00446b4b844754287f6e4ab689b18c, type: 3}
+  - {fileID: 8300000, guid: ff6221b982329dc438c9964b6020f020, type: 3}
+  - {fileID: 8300000, guid: 1deadc88e0aabce4fb4d70577333245b, type: 3}
 --- !u!1 &1315398031100912967
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,7 +3088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a72461e72c9c31c41b8cfaaf915210a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cF: {fileID: 7101372140269393335}
+  rb: {fileID: 0}
   desiredHeight: 0
   rayCastAddition: 2
   forceScalar: 100
@@ -3100,6 +3098,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   refBall: {fileID: 0}
+  keepRot: 0
+  rightHand: 0
+  sC: {fileID: 0}
+  rotForce: 0
 --- !u!114 &7101372140269393329
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,6 @@ public class AttackAct : Activity
     private void Attack(StateController controller)
     {
         // Attack if in attack range
-        RaycastHit hit;
 
         if (controller.chest != null)
         {

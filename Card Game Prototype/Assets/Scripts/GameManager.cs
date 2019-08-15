@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour
 
     public bool debugging = false;
 
-    public AudioSource audioSource;
+    public AudioSource announcerAudioSource;
+    public AudioSource musicAudioSource;
     public AudioClip[] victoryNoise;
     public AudioClip[] defeatNoise;
     public AudioClip[] draw;
@@ -74,6 +75,9 @@ public class GameManager : MonoBehaviour
     public AudioClip[] fightAnnounce;
     public AudioClip nextRoundAnnounce;
     public AudioClip[] rounds;
+    public AudioClip combatPhaseMusic;
+    public AudioClip transitionMusic;
+
 
     private bool countDown, countDown10, countDown30;
     private bool showingResults;
@@ -139,15 +143,15 @@ public class GameManager : MonoBehaviour
 
             if (!countDown10 && cardPhaseTimer < 10)
             {
-                audioSource.clip = countDownNoise[1];
-                audioSource.Play();
+                announcerAudioSource.clip = countDownNoise[1];
+                announcerAudioSource.Play();
                 countDown10 = true;
             }
 
             if (!countDown &&  cardPhaseTimer < 5)
             {
-                audioSource.clip = countDownNoise[0];
-                audioSource.Play();
+                announcerAudioSource.clip = countDownNoise[0];
+                announcerAudioSource.Play();
                 countDown = true;
             }
 
@@ -168,22 +172,22 @@ public class GameManager : MonoBehaviour
             combatPhaseTimer -= Time.deltaTime;
             if (!countDown30 && combatPhaseTimer < 30)
             {
-                audioSource.clip = countDownNoise[2];
-                audioSource.Play();
+                announcerAudioSource.clip = countDownNoise[2];
+                announcerAudioSource.Play();
                 countDown30 = true;
             }
 
             if (!countDown10 && combatPhaseTimer < 10)
             {
-                audioSource.clip = countDownNoise[1];
-                audioSource.Play();
+                announcerAudioSource.clip = countDownNoise[1];
+                announcerAudioSource.Play();
                 countDown10 = true;
             }
 
             if (!countDown && combatPhaseTimer < 5)
             {
-                audioSource.clip = countDownNoise[0];
-                audioSource.Play();
+                announcerAudioSource.clip = countDownNoise[0];
+                announcerAudioSource.Play();
                 countDown = true;
             }
 
@@ -217,6 +221,7 @@ public class GameManager : MonoBehaviour
                     }
                 }
 
+                roundWinner = -1;
                 // Check who wins
                 if (personHPPercent != -1 && aiHPPercent != -1 && aiHealth != -1 && personHealth != -1)
                 {
@@ -253,6 +258,8 @@ public class GameManager : MonoBehaviour
                 else
                     Debug.LogError("Was unable to find players health and was not able to determine a winner");
 
+                if (roundWinner > 0)
+                    ++teamScore[roundWinner - 1];
                 // End round
                 ShowRoundResults();
             }
@@ -286,22 +293,23 @@ public class GameManager : MonoBehaviour
         if (winningTeam == 1)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
-            audioSource.clip = victoryNoise[Random.Range(0,victoryNoise.Length)];
-            audioSource.Play();
+            announcerAudioSource.clip = victoryNoise[Random.Range(0,victoryNoise.Length)];
+            announcerAudioSource.Play();
         }
         else if (winningTeam == 2)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
-            audioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
-            audioSource.Play();
+            announcerAudioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
+            announcerAudioSource.Play();
         }
         else
         {
             Random.InitState(System.DateTime.Now.Millisecond);
-            audioSource.clip = draw[Random.Range(0, draw.Length)];
-            audioSource.Play();
+            announcerAudioSource.clip = draw[Random.Range(0, draw.Length)];
+            announcerAudioSource.Play();
         }
 
+        StartCoroutine(AudioFadeOut.FadeOut(musicAudioSource, 2f));
         // Check if game should end
         if (highestScore >= instaWinScore)
             EndTheGame();
@@ -368,13 +376,8 @@ public class GameManager : MonoBehaviour
         countDown30 = false;
         // Enter Combat Phase
         //Debug.Log("Beginning Combat Phase!");
-        if (currentRound - 1 < rounds.Length)
-            audioSource.clip = rounds[currentRound - 1];
-        else
-            audioSource.clip = nextRoundAnnounce;
-
-        audioSource.Play();
         // Get all alive Players
+        StartCoroutine(CombatPhaseAudioHandler());
         alivePlayersPerTeam = new int[numberOfTeams];
         for (int i = 0; i < numberOfTeams; i++)
             alivePlayersPerTeam[i] = GameObject.FindGameObjectsWithTag("Team " + (i + 1)).Length;
@@ -383,6 +386,28 @@ public class GameManager : MonoBehaviour
         combatPhaseTimer = combatPhaseLength;
         cardPhase = false;
         EnterCombatPhase?.Invoke();
+    }
+
+    IEnumerator CombatPhaseAudioHandler()
+    {
+        // Music
+        musicAudioSource.clip = combatPhaseMusic;
+        musicAudioSource.Play();
+
+        // Announcer
+        if (currentRound - 1 < rounds.Length)
+            announcerAudioSource.clip = rounds[currentRound - 1];
+        else
+            announcerAudioSource.clip = nextRoundAnnounce;
+
+        announcerAudioSource.Play();
+        yield return new WaitForSeconds(2f);
+        Random.InitState(System.DateTime.Now.Millisecond);
+        announcerAudioSource.clip = beginAnnounce[Random.Range(0, beginAnnounce.Length)];
+        announcerAudioSource.Play();
+        yield return new WaitForSeconds(1f);
+        announcerAudioSource.clip = fightAnnounce[Random.Range(0, fightAnnounce.Length)];
+        announcerAudioSource.Play();
     }
 
     public void PlayerDied (GameObject deadPlayer)
@@ -429,14 +454,14 @@ public class GameManager : MonoBehaviour
         if (winningTeam == 1)
         {
             Random.InitState(System.DateTime.Now.Millisecond);
-            audioSource.clip = victoryNoise[Random.Range(0, victoryNoise.Length)];
-            audioSource.Play();
+            announcerAudioSource.clip = victoryNoise[Random.Range(0, victoryNoise.Length)];
+            announcerAudioSource.Play();
         }
         else
         {
             Random.InitState(System.DateTime.Now.Millisecond);
-            audioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
-            audioSource.Play();
+            announcerAudioSource.clip = defeatNoise[Random.Range(0, defeatNoise.Length)];
+            announcerAudioSource.Play();
         }
         gameOver = true;
         EndGame?.Invoke();
