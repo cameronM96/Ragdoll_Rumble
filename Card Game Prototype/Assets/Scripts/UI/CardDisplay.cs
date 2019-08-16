@@ -28,6 +28,8 @@ public class CardDisplay : MonoBehaviour
     private bool reArrangeIcons;
 
     public float cardScalar = 1.5f;
+    public bool lobbyCard;
+    public float lobbyCardScalar;
 
     public void Initialise(Card newCard)
     {
@@ -144,7 +146,10 @@ public class CardDisplay : MonoBehaviour
                 rings[i].color = Color.grey;
         }
 
-        this.transform.localScale *= cardScalar;
+        if (lobbyCard)
+            this.transform.localScale *= lobbyCardScalar;
+        else
+            this.transform.localScale *= cardScalar;
     }
 
     public void PlayCard ()

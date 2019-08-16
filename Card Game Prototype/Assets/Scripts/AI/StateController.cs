@@ -126,17 +126,29 @@ public class StateController : MonoBehaviour
             {
                 // Idle
                 if (animController != null)
+                {
                     animController.SetBool("moving", false);
+                    if (!aiController.footStepSource.isPlaying)
+                        aiController.StopFootSteps();
+                }
             }
             else if (currentState == allstates[1])
             {
                 if (animController != null)
+                {
                     animController.SetBool("moving", true);
+                    if (!aiController.footStepSource.isPlaying)
+                        aiController.PlayFootSteps();
+                }
             }
             else if (currentState == allstates[2])
             {
                 if (animController != null)
+                {
                     animController.SetBool("moving", false);
+                    if (!aiController.footStepSource.isPlaying)
+                        aiController.StopFootSteps();
+                }
             }
         }
 
@@ -261,6 +273,7 @@ public class StateController : MonoBehaviour
         {
             Debug.Log("Hit target!");
             baseStates.OnHit(chaseTarget.root.gameObject);
+            aiController.WeaponEffects();
         }
     }
 

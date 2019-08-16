@@ -23,6 +23,7 @@ public class ApplyPhysics : MonoBehaviour
     public Effect[] effects;
     public AudioClip audioOnTrigger;
     private AudioSource aS;
+    public float audioDelay = 0;
 
     public GameObject triggerNotification;
     public Color on;
@@ -161,8 +162,8 @@ public class ApplyPhysics : MonoBehaviour
         //Debug.Log("Applying force to " + target);
         rb.AddForce(forceDirection * strength, ForceMode.Impulse);
 
-        aS.clip = audioOnTrigger;
-        aS.Play();
+        StartCoroutine(AudioDelay(audioDelay));
+
         if (particleEffect != null)
         {
             GameObject particle = Instantiate(particleEffect);
@@ -185,5 +186,12 @@ public class ApplyPhysics : MonoBehaviour
 
         if (oncePerRound)
             DisableObject();
+    }
+
+    IEnumerator AudioDelay(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        aS.clip = audioOnTrigger;
+        aS.Play();
     }
 }

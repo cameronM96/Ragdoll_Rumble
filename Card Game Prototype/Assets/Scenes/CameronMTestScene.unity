@@ -1193,6 +1193,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &170042977
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1520,6 +1522,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &187064957
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3397,6 +3401,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &474090312
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6534,6 +6540,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &929328149
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6688,6 +6696,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &956413627
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8132,6 +8142,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1192317397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8623,6 +8635,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1265294260
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9287,6 +9301,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1380734919
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9911,6 +9927,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1454119885
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10901,6 +10919,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1738012738
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11574,6 +11594,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1854054958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11916,6 +11938,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &1941281056
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12413,6 +12437,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &2018248212
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12429,6 +12455,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!4 &2031193785 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1312263502152109753, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+    type: 3}
+  m_PrefabInstance: {fileID: 5815975142891049858}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2053913342
 GameObject:
   m_ObjectHideFlags: 0
@@ -12561,6 +12593,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 0}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!54 &2053913348
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13640,6 +13674,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 626224797}
+    - target: {fileID: 5815975141738710839, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: rigBase
+      value: 
+      objectReference: {fileID: 2031193785}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee, type: 3}
 --- !u!1001 &7095100234854988880

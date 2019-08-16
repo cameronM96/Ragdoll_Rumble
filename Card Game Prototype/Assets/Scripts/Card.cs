@@ -36,6 +36,8 @@ public class Card : ScriptableObject
     public int coinCost;
     public int gemCost;
 
+    public AudioClip customSound;
+
     //[HideInInspector]
     public GameObject templateCard;
 
@@ -117,6 +119,9 @@ public class Card : ScriptableObject
             else
                 Debug.Log("Slots could not be found!");
         }
+
+        if (customSound != null)
+            bStats.gameObject.GetComponent<AIController>().AddWeaponAudio(customSound);
 
         bStats.UpdateStatDisplay();
     }

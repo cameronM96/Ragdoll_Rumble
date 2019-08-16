@@ -46,12 +46,16 @@ public class Base_Stats : MonoBehaviour
     private float snareLength;
     public NavMeshAgent navAgent;
 
+    public Transform rigBase;
+    public Transform[] myRig;
+
     private void Start()
     {
         stateController = GetComponent<StateController>();
         gameManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
         audioController = GetComponent<AIController>();
         gameManager.PlayerJoined();
+        GetMySkeleton();
 
         if (stateController != null)
             stateController.ChangeReach(attackRange);
@@ -564,5 +568,10 @@ public class Base_Stats : MonoBehaviour
         Text TextElement = newHitText.transform.GetChild(0).GetComponentInChildren<Text>();
         TextElement.text = value.ToString();
         TextElement.color = newColour;
+    }
+    public void GetMySkeleton()
+    {
+        if (rigBase != null)
+            myRig = rigBase.GetComponentsInChildren<Transform>();
     }
 }
