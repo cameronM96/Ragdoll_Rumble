@@ -15,7 +15,7 @@ public class Campaign : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
         for (int i = 0; i < campaignNumbers.Length; ++i)
         {
-            if (player.CampaignProgress + 1 < campaignNumbers[i])
+            if (player.CampaignProgress + 1 < campaignNumbers[i] && campaignButtons[i] != null)
                 campaignButtons[i].interactable = false;
         }
     }

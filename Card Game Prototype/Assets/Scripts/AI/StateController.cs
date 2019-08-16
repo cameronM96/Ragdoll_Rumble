@@ -255,7 +255,11 @@ public class StateController : MonoBehaviour
 
     public void RegesterAttack()
     {
-        baseStates.OnHit(chaseTarget.root.gameObject);
+        if (chaseTarget != null)
+        {
+            Debug.Log("Hit target!");
+            baseStates.OnHit(chaseTarget.root.gameObject);
+        }
     }
 
     // Increase attack range

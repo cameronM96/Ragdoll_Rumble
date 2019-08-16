@@ -9,7 +9,7 @@ public class ButtonAnimSequencer : MonoBehaviour
     {
         _animators = new List<Animator>(GetComponentsInChildren<Animator>());
 
-        StartCoroutine(DoAnim());
+        //StartCoroutine(DoAnim());
     }
 
     IEnumerator DoAnim()

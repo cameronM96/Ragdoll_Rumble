@@ -27,8 +27,6 @@ public class Base_Stats : MonoBehaviour
     public GameObject hitText;
 
     public Display_Base_Stats statDisplay;
-    private List<GameObject> hitList = new List<GameObject>();
-    public float hitInterval = 1;
 
     public List<OnTimer> onTimerList = new List<OnTimer>();
     public List<DeliverySO> onHitEffectsList = new List<DeliverySO>();
@@ -195,13 +193,6 @@ public class Base_Stats : MonoBehaviour
     }
 
     // *************************** In Combat Events ***************************
-    // Only lets the player hit someone once every x seconds
-    IEnumerator RecentlyHit (float hitDelay, GameObject hitTarget)
-    {
-        hitList.Add(hitTarget);
-        yield return new WaitForSeconds(hitDelay);
-        hitList.Remove(hitTarget);
-    }
 
     public void TakeDamage(int damage, bool ability, GameObject target)
     {
@@ -296,22 +287,17 @@ public class Base_Stats : MonoBehaviour
     public void OnHit(GameObject target)
     {
         // Don't hit same object multiple times in a single attack
-        if (!hitList.Contains(target))
+        // Deal damage if it is hurtable
+        if (target.GetComponent<Base_Stats>() != null)
+        target.GetComponent<Base_Stats>().TakeDamage(attack, false, target);
+
+        // Apply on hit effects
+        if (onHitEffectsList.Count > 0)
         {
-            StartCoroutine(RecentlyHit(hitInterval, target));
-
-            // Deal damage if it is hurtable
-            if (target.GetComponent<Base_Stats>() != null)
-            target.GetComponent<Base_Stats>().TakeDamage(attack, false, target);
-
-            // Apply on hit effects
-            if (onHitEffectsList.Count > 0)
+            foreach (DeliverySO deliveryMethod in onHitEffectsList)
             {
-                foreach (DeliverySO deliveryMethod in onHitEffectsList)
-                {
-                    deliveryMethod.triggeringTarget = target;
-                    deliveryMethod.ApplyDelivery(target);
-                }
+                deliveryMethod.triggeringTarget = target;
+                deliveryMethod.ApplyDelivery(target);
             }
         }
     }

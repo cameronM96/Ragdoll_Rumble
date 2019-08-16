@@ -8,11 +8,6 @@ public class StopAudio : MonoBehaviour
     void Start()
     {
         AudioContinue.Instance.gameObject.GetComponent<AudioSource>().Pause();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AudioContinue.Instance.gameObject.GetComponent<AudioListener>().enabled = false;
     }
 }

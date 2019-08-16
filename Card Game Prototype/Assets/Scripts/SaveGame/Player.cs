@@ -233,6 +233,8 @@ public class Player : MonoBehaviour
         int[] idArray = new int[starterDeck.Count];
         for (int i = 0; i < starterDeck.Count; i++)
         {
+            if (starterDeck[i] == null)
+                return;
             // Populate myCardLibrary
             if (myCards.ContainsKey(starterDeck[i].iD))
             {

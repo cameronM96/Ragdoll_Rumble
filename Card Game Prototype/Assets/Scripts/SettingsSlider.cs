@@ -5,10 +5,12 @@ using UnityEngine.UI;
 
 public class SettingsSlider : MonoBehaviour
 {
+    public delegate void SaveSettings();
+    public static event SaveSettings saveSettings;
+
     public Slider slider;
     public enum SliderTypes {None, Master, Vocals, Sfx, Music };
     public SliderTypes sliderType = SliderTypes.None;
-
 
     private void OnEnable()
     {
@@ -24,7 +26,7 @@ public class SettingsSlider : MonoBehaviour
     void Start()
     {
         if (slider == null)
-            slider.GetComponent<Slider>();
+            slider = GetComponent<Slider>();
 
         if (slider == null)
             return;
@@ -77,5 +79,6 @@ public class SettingsSlider : MonoBehaviour
     public void SavePrefs()
     {
         PlayerPreferances.SavePrefs();
+        saveSettings?.Invoke();
     }
 }

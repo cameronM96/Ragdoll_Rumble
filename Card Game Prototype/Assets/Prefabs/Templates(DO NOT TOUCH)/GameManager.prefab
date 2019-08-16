@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9044691412266487041}
   - component: {fileID: 9044691412266487054}
   - component: {fileID: 3995156313178206796}
+  - component: {fileID: 9044691413299521340}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameManager
@@ -66,8 +67,9 @@ MonoBehaviour:
   dominationReward: 100
   campaignReward: 300
   initialisedPlayers: 0
-  debugging: 0
-  audioSource: {fileID: 3995156313178206796}
+  debugging: 1
+  announcerAudioSource: {fileID: 3995156313178206796}
+  musicAudioSource: {fileID: 9044691413299521340}
   victoryNoise:
   - {fileID: 8300000, guid: 4f4585bf5ca05344eae27933940c60fb, type: 3}
   - {fileID: 8300000, guid: f06e57e27e5b4fd4783a41e5b0c7d778, type: 3}
@@ -89,6 +91,7 @@ MonoBehaviour:
   fightAnnounce:
   - {fileID: 8300000, guid: 8145e55e3ef289a46abde01d4fd80aae, type: 3}
   - {fileID: 8300000, guid: 9d0daff85da65d84b9094cadbac64c7e, type: 3}
+  - {fileID: 8300000, guid: bfd62ef5a3d6b854eadeff8bfd7ccbd0, type: 3}
   nextRoundAnnounce: {fileID: 8300000, guid: c7d2e30a2fd11504faf813eb6199a978, type: 3}
   rounds:
   - {fileID: 8300000, guid: 9dd009d3992fcc84980d52920a8ba919, type: 3}
@@ -101,6 +104,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7419620884ce9fe4ba36413234a19dce, type: 3}
   - {fileID: 8300000, guid: 0941149374c79514d9659b859a37252e, type: 3}
   - {fileID: 8300000, guid: 2dcd675d247245d45afd6537646c42ef, type: 3}
+  combatPhaseMusic: {fileID: 8300000, guid: 34cb8dbb869292f47b9b9d759d6e12c9, type: 3}
+  transitionMusic: {fileID: 8300000, guid: 7fb5c69050f670444810fd51824179c8, type: 3}
 --- !u!82 &3995156313178206796
 AudioSource:
   m_ObjectHideFlags: 0
@@ -113,6 +118,102 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &9044691413299521340
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9044691412266487055}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

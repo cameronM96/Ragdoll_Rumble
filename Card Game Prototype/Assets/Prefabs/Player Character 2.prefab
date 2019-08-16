@@ -164,6 +164,7 @@ MonoBehaviour:
   postAttackDelay: 1
   attacking: 0
   audioController: {fileID: 2012646202437992129}
+  myCollider: {fileID: 0}
 --- !u!114 &2012646202437992122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 7552455317218764716}
   ownerStats: {fileID: 2012646202437992119}
+  myCollider: {fileID: 0}
 --- !u!135 &6425999405310236231
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -200,7 +202,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341016378584878089}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
@@ -253,7 +255,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3cd70009fecb25d42a4b6da4c7493992, type: 2}
+  - {fileID: 2100000, guid: e281adeeee988be40ac757fab52e88bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -392,6 +394,7 @@ MonoBehaviour:
   postAttackDelay: 1
   attacking: 0
   audioController: {fileID: 2012646202437992129}
+  myCollider: {fileID: 0}
 --- !u!114 &2012646202437992127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -406,6 +409,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   owner: {fileID: 7552455317218764716}
   ownerStats: {fileID: 2012646202437992119}
+  myCollider: {fileID: 0}
 --- !u!114 &2012646202437992124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -428,7 +432,7 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2017022310315626511}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.1
@@ -1125,6 +1129,9 @@ GameObject:
   - component: {fileID: 2012646202437992119}
   - component: {fileID: 2012646202437992116}
   - component: {fileID: 2012646202437992129}
+  - component: {fileID: 427305213681888407}
+  - component: {fileID: 427305213681888408}
+  - component: {fileID: 427305213681888410}
   m_Layer: 11
   m_Name: Player Character 2
   m_TagString: Team 2
@@ -1314,14 +1321,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b521557a65900146b1de012c0c2b014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAI: 0
+  isAI: 1
   attack: 2
   armour: 0
   maxHP: 25
-  speed: 4
+  speed: 10
   atkSpeed: 40
   atkSpeedCap: 100
-  attackRange: 1.5
+  attackRange: 3
   currentHP: 0
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
@@ -1376,8 +1383,11 @@ MonoBehaviour:
   - {fileID: 2012646202437992117}
   attackSpeedScalar: 35
   zeroAtkSpeed: 3
+  moveSpeedScalar: 0.25
+  turnSpeed: 1
   allstates:
   - {fileID: 11400000, guid: e694cdaf319e8c449a9b958fd1fc1932, type: 2}
+  - {fileID: 11400000, guid: bcf8330b0f83d564cbe6bf14089dda32, type: 2}
   - {fileID: 11400000, guid: bcf8330b0f83d564cbe6bf14089dda32, type: 2}
 --- !u!114 &2012646202437992129
 MonoBehaviour:
@@ -1391,7 +1401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f0020da8fd35e478d3e2c2fbc16640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2012646202437992118}
   attackNoise:
   - {fileID: 8300000, guid: 3734a506d3f10884aba21f80d48949b1, type: 3}
   - {fileID: 8300000, guid: fe786ce953584224aa55469bd01685d9, type: 3}
@@ -1433,6 +1443,80 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4a00446b4b844754287f6e4ab689b18c, type: 3}
   - {fileID: 8300000, guid: ff6221b982329dc438c9964b6020f020, type: 3}
   - {fileID: 8300000, guid: 1deadc88e0aabce4fb4d70577333245b, type: 3}
+--- !u!114 &427305213681888407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552455317218764716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad4cfe07931375e46b9b917f10eaeb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardCollection: {fileID: 0}
+  gameDeck:
+  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
+  - {fileID: 11400000, guid: ea2a299dfb7844a4ab1b3a382f0e533d, type: 2}
+  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
+  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
+  - {fileID: 11400000, guid: 0b6d9136a5c984944b0cd05779f6cee6, type: 2}
+  - {fileID: 11400000, guid: f189257046fe6ee4f97cde5c75856055, type: 2}
+  - {fileID: 11400000, guid: 2803b736d515fad42a1b499c6e39edf9, type: 2}
+  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
+  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
+  - {fileID: 11400000, guid: df6b5d8ff2bfb6240b2e937034b6b7b3, type: 2}
+  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
+  - {fileID: 11400000, guid: 2803b736d515fad42a1b499c6e39edf9, type: 2}
+  - {fileID: 11400000, guid: f189257046fe6ee4f97cde5c75856055, type: 2}
+  - {fileID: 11400000, guid: 9daf44b5a86fe0140aacb2180ada7d53, type: 2}
+  - {fileID: 11400000, guid: 0644d3c846903aa4786dd7acf060ecb6, type: 2}
+  requiredDeckSize: 15
+  currentHand:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  viewingDeck: []
+--- !u!114 &427305213681888408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552455317218764716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fbd6f53dbccb9440afc6f4fb959985d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
+  bStats: {fileID: 2012646202437992119}
+  deck: {fileID: 427305213681888407}
+  handSize: 5
+  maxCardsPlayed: 5
+--- !u!114 &427305213681888410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7552455317218764716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d9664ae55f8164e85c2dfcca6f6511, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultNumberOfBasicCards: 15
+  commonCards: []
+  unCommonCards: []
+  rareCards: []
+  cardLibrary: {fileID: 11400000, guid: 1e605ac22370c2148b3fba1316b76e72, type: 2}
+  chanceOfRare: 5
+  chanceOfUncommon: 35
+  loaded: 0
 --- !u!1 &7637912894608726773
 GameObject:
   m_ObjectHideFlags: 0
