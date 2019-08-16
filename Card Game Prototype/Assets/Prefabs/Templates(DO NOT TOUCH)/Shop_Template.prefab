@@ -1183,6 +1183,7 @@ MonoBehaviour:
   columnValue: {x: 10, y: 35}
   yValue: -10
   rowValue: -20
+  cardScalar: 3
 --- !u!114 &5392130394296607559
 MonoBehaviour:
   m_ObjectHideFlags: 0
