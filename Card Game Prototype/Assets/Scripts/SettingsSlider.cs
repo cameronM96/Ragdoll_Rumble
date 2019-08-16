@@ -26,6 +26,9 @@ public class SettingsSlider : MonoBehaviour
         if (slider == null)
             slider.GetComponent<Slider>();
 
+        if (slider == null)
+            return;
+
         PlayerPreferances.LoadPrefs();
         switch (sliderType)
         {

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Gentlemen's Hat
   m_EditorClassIdentifier: 
-  iD: 14048
+  iD: 15842
   rarity: 2
   currentCardType: 2
   playableSlots: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: 6954170515751638682, guid: ec78d9fcb4fb0994986abbedb62ecbf6, type: 3}
+  item: {fileID: 8251075462886802325, guid: d9118062dab5f8b49a850be7c8456045, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

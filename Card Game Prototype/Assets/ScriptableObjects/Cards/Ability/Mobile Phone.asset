@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Mobile Phone
   m_EditorClassIdentifier: 
-  iD: 13086
+  iD: 16552
   rarity: 1
   currentCardType: 3
   playableSlots: -1
@@ -33,7 +33,7 @@ MonoBehaviour:
   abilityDescription: Stuns target for 2 seconds
   abilities:
   - {fileID: 11400000, guid: c40f4e7a1e3caac4f89b0dd553b57eae, type: 2}
-  item: {fileID: 0}
+  item: {fileID: 2718925714414032967, guid: 5ddf84115f7e45b4da729363854e2ea2, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

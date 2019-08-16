@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Dino Hat
   m_EditorClassIdentifier: 
-  iD: 13728
+  iD: 15684
   rarity: 3
   currentCardType: 2
   playableSlots: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: 1295111609486054186, guid: 7a863a8009740c64791136684d5e8cd5, type: 3}
+  item: {fileID: 1870439818549474710, guid: d5519418d94f23940aeee638819f9e4a, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

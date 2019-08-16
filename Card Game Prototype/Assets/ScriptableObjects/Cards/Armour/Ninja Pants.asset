@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Ninja Pants
   m_EditorClassIdentifier: 
-  iD: 14360
+  iD: 21834
   rarity: 2
   currentCardType: 2
   playableSlots: 8
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: 5228560047836151288, guid: 6d5e201b8bb37474fbcd791e991952b2, type: 3}
+  item: {fileID: 322603485229964390, guid: 3c8acc73962e43240807d4d5da8a2ee1, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

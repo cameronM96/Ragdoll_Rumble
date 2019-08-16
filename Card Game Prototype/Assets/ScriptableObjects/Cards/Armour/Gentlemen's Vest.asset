@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Gentlemen's Vest
   m_EditorClassIdentifier: 
-  iD: 16248
+  iD: 21740
   rarity: 2
   currentCardType: 2
   playableSlots: 2
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: 5754479335577654732, guid: d37a7eefea5dcc64c85d289a53892da6, type: 3}
+  item: {fileID: 8866778830415829221, guid: 94e93b391abc34041a2e1f2237f277df, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

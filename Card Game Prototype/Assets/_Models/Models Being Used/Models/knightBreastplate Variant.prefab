@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 2a04af0c1772390458f41db28660d1cd,
         type: 3}
       propertyPath: m_Name
-      value: knightBreastplate
+      value: knightBreastplate Variant
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 2a04af0c1772390458f41db28660d1cd,
         type: 3}
