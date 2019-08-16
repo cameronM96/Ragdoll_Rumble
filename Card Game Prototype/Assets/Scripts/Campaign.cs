@@ -16,7 +16,7 @@ public class Campaign : MonoBehaviour
         for (int i = 0; i < campaignNumbers.Length; ++i)
         {
             if (player.CampaignProgress + 1 < campaignNumbers[i] && campaignButtons[i] != null)
-                campaignButtons[i].interactable = false;
+                campaignButtons[i].interactable = true;
             else
                 campaignButtons[i].interactable = true;
         }
