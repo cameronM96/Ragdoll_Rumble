@@ -17,11 +17,19 @@ public class Attack : MonoBehaviour
     private float timer = 0f;
 
     public AIController audioController;
+    public Collider myCollider;
+
+    private void Start()
+    {
+        myCollider = GetComponent<Collider>();
+        myCollider.isTrigger = true;
+        myCollider.enabled = false;
+    }
 
     public void AttackTarget(Transform newTarget)
     {
         StopAllCoroutines();
-        GetComponent<SphereCollider>().enabled = true;
+        myCollider.enabled = true;
         target = newTarget;
         attacking = true;
         audioController.Attack();
@@ -31,7 +39,7 @@ public class Attack : MonoBehaviour
     IEnumerator colliderDisable()
     {
         yield return new WaitForSeconds(0.5f);
-        GetComponent<SphereCollider>().enabled = false;
+        myCollider.enabled = false;
     }
 
     private void Update()

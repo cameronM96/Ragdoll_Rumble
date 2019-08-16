@@ -6,6 +6,7 @@ using EnumTypes;
 public class ApplyPhysics : MonoBehaviour
 {
     public bool destroyOnImpact = false;
+    public bool oncePerRound = true;
     public float cooldown;
     private float timer;
     private bool ready;
@@ -157,7 +158,7 @@ public class ApplyPhysics : MonoBehaviour
                 break;
         }
         forceDirection.Normalize();
-        Debug.Log("Applying force to " + target);
+        //Debug.Log("Applying force to " + target);
         rb.AddForce(forceDirection * strength, ForceMode.Impulse);
 
         aS.clip = audioOnTrigger;
@@ -178,5 +179,11 @@ public class ApplyPhysics : MonoBehaviour
         {
             triggerNotification.GetComponent<MeshRenderer>().material.color = off;
         }
+
+        if (destroyOnImpact)
+            Destroy(this.gameObject);
+
+        if (oncePerRound)
+            DisableObject();
     }
 }

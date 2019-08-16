@@ -67,6 +67,10 @@ public class AICardSelector : MonoBehaviour
 
             GameObject[] slots = null;
             PlayableSlot chosenSlot = PlayableSlot.None;
+
+            if (chosenCard == null)
+                break;
+
             if (chosenCard.item != null)
             {
                 // Pick a random viable slot to play the card into
@@ -199,7 +203,7 @@ public class AICardSelector : MonoBehaviour
     {
         bool playable = false;
         // Check if player is allowed to play more cards
-        if (maxCardsThisRound > 0)
+        if (maxCardsThisRound > 0 && deck.currentHand.Count > 0)
         {
             --maxCardsThisRound;
             playable = true;

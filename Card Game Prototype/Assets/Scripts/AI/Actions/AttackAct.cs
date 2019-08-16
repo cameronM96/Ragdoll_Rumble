@@ -29,14 +29,19 @@ public class AttackAct : Activity
         //}
         //else
         //{
-            Debug.DrawRay(controller.transform.position, (controller.transform.forward.normalized * controller.reach), Color.red);
+        RaycastHit hit;
+        Debug.DrawRay(controller.transform.position, (controller.transform.forward.normalized * controller.reach), Color.red);
 
+        //if (Physics.SphereCast(controller.transform.position, controller.reach, controller.transform.forward, out hit, controller.reach)
+        //    && hit.collider.CompareTag(controller.chaseTarget.tag))
+        //{
             if ((controller.transform.position - controller.chaseTarget.position).sqrMagnitude < controller.reach * controller.reach)
             {
                 // Attack function
                 controller.aiController.Attack();
                 controller.Attack();
             }
+        //}
         //}
     }
 }

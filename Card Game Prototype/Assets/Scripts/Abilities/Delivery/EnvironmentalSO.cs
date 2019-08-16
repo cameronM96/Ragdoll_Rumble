@@ -37,16 +37,17 @@ public class EnvironmentalSO : DeliverySO
         }
 
         radius += distance;
-
+        Debug.Log("Environmental Center: "+center);
         Debug.Log("Environmental Radius: " + radius);
 
         for (int i = 0; i < numberOfProjectiles; i++)
         {
+            //Random.InitState(System.DateTime.Now.Millisecond);
             GameObject newObject = Instantiate(templateObj);
             Vector3 newPos = Random.insideUnitSphere * radius;
+            newPos += center;
             newPos.y = verticalOffset;
             newObject.transform.position = newPos;
-            Random.InitState(System.DateTime.Now.Millisecond);
             newObject.transform.Rotate(0, Random.Range(-180, 180), 0);
             newObject.GetComponent<ApplyPhysics>().effects = ability.effects;
         }

@@ -24,19 +24,17 @@ public class StateController : MonoBehaviour
     public NavMeshAgent navMeshAgent;
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public float stateTimeElapsed;
-    public Transform[] ragDollTransforms;
     public Rigidbody myRB;
-    [HideInInspector] public Rigidbody[] rbs;
-    private Vector3[] returnPoints;
-    private Quaternion[] returnRots;
     public Attack[] attackPoints;
     public float attackSpeedScalar = 30f;
     public float zeroAtkSpeed = 3.33f;
+    public float moveSpeedScalar = 0.25f;
 
     private Vector3 returnPos;
     private bool aiActive = false;
     private float attackTimer;
 
+    public float turnSpeed = 1f;
     public State[] allstates;
 
     private void Awake()
@@ -102,11 +100,12 @@ public class StateController : MonoBehaviour
 
     public void SetAISpeed (float speed)
     {
-        navMeshAgent.speed = speed;
+        navMeshAgent.speed = speed * moveSpeedScalar;
     }
 
     private void Update()
     {
+
         if (!aiActive)
             return;
 
@@ -132,13 +131,28 @@ public class StateController : MonoBehaviour
                 if (animController != null)
                     animController.SetBool("moving", true);
             }
+            else if (currentState == allstates[2])
+            {
+                if (animController != null)
+                    animController.SetBool("moving", false);
+            }
         }
+
+        FaceTarget(chaseTarget.position);
     }
 
     private void LateUpdate()
     {
         if (animController != null)
             animController.SetBool("reset", false);
+    }
+
+    private void FaceTarget(Vector3 destination)
+    {
+        Vector3 lookPos = destination - transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed);
     }
 
     private void OnDrawGizmos()
@@ -177,7 +191,7 @@ public class StateController : MonoBehaviour
             if (animController != null)
                 animController.SetBool("attacking", true);
 
-            Debug.Log("Attack!");
+            //Debug.Log("Attack!");
             Random.InitState(System.DateTime.Now.Millisecond);
             int index = Random.Range(0, attackPoints.Length);
             attackPoints[index].AttackTarget(chaseTarget);
@@ -235,7 +249,10 @@ public class StateController : MonoBehaviour
     public void Stunned()
     {
         if (animController != null)
+        {
             animController.SetBool("stunned", true);
+            animController.SetBool("applyStun", true);
+        }
     }
 
     public void UnStun()
@@ -244,13 +261,19 @@ public class StateController : MonoBehaviour
             animController.SetBool("stunned", false);
     }
 
+    public void UnApplyStun()
+    {
+        if (animController != null)
+            animController.SetBool("applyStun", false);
+    }
+
     // Increase attack range
     public void ChangeReach(float newReach)
     {
         if (newReach - reachOffset > reach)
         {
             reach = newReach - reachOffset;
-            navMeshAgent.stoppingDistance = reach/4;
+            navMeshAgent.stoppingDistance = reach;
         }
     }
 }

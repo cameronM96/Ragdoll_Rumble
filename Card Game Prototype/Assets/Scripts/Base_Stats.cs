@@ -40,6 +40,7 @@ public class Base_Stats : MonoBehaviour
     public StateController stateController;
     public AIController audioController;
     public GameObject[] slots;
+    private bool inCardPhase;
 
     [HideInInspector] public bool stunned = false;
     private float stunLength;
@@ -62,6 +63,7 @@ public class Base_Stats : MonoBehaviour
     {
         if(stunned)
         {
+            stunLength -= Time.deltaTime;
             if(stunLength <= 0)
             {
                 stunned = false;
@@ -103,6 +105,7 @@ public class Base_Stats : MonoBehaviour
 
     public void InitialiseCombatPhase()
     {
+        inCardPhase = false;
         //Debug.Log("Initialising Player for Combat Phase");
         // Save current Stats to set back to in cardphase (Stops in combat changes from being permanent
         storedBaseStats[0] = attack; 
@@ -113,7 +116,7 @@ public class Base_Stats : MonoBehaviour
 
         stunned = false;
         snared = false;
-        navAgent.speed = speed;
+        stateController.SetAISpeed(speed);
         // Unkill Player
         currentHP = maxHP;
         dead = false;
@@ -161,6 +164,7 @@ public class Base_Stats : MonoBehaviour
 
     public void InitialiseCardPhase()
     {
+        inCardPhase = true;
         StopAllCoroutines();
         //Debug.Log("Initialising Player to Card Phase");
         // Reload Saved stats (Reset stats back to end of last cardPhase)
@@ -201,6 +205,9 @@ public class Base_Stats : MonoBehaviour
 
     public void TakeDamage(int damage, bool ability, GameObject target)
     {
+        if (inCardPhase)
+            return;
+
         int damageTaken = 0;
         if (ability)
         {
@@ -267,6 +274,9 @@ public class Base_Stats : MonoBehaviour
     // Kill player
     public void Dead()
     {
+        if (inCardPhase)
+            return;
+
         if (!dead)
         {
             Debug.Log(this.gameObject.name + " has Died!");

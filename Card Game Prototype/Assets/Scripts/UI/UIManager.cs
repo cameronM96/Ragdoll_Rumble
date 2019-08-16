@@ -45,6 +45,10 @@ public class UIManager : MonoBehaviour
     public GameObject resultsWindow;
     public Text resultsWindowText;
 
+    // End Game
+    public Text endGameText;
+    public Text scoreBoard;
+
     [HideInInspector] public GameManager gameManager;
 
     private bool cardPhase = true;
@@ -155,8 +159,6 @@ public class UIManager : MonoBehaviour
     public void EndGame()
     {
         // Generate End Game Score
-        Text endGameText = endGameUI.transform.GetChild(0).GetComponent<Text>();
-        Text scoreBoard = endGameUI.transform.GetChild(2).GetComponent<Text>();
         endGameText.text = "Team " + (gameManager.winningTeam) + " is victorious!";
         var scoreInfo = gameManager.CalcScore("Team 1");
         scoreBoard.text = scoreInfo.scoreBoard;
@@ -264,6 +266,7 @@ public class UIManager : MonoBehaviour
     {
         int cardsLeft = cardSlot.transform.childCount;
 
+        Debug.Log("Dealing new hand!");
         // Deal left over cards back into deck
         for (int i = 0; i < cardsLeft; i++)
             cardSlot.transform.GetChild(0).SetParent(deck.transform);
