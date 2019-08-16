@@ -12,6 +12,8 @@ public class AIController : MonoBehaviour
     public AudioClip[] deathNoise;
     public AudioClip[] victoryNoise;
     public AudioClip[] defeatNoise;
+    public List<AudioClip> weaponAudio;
+    public AudioClip footSteps;
 
     private void Awake()
     {
@@ -95,7 +97,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-    public void Defeat ()
+    public void Defeat()
     {
         //Debug.Log("(" + this.tag + ") Loses!");
         if (defeatNoise.Length > 0)
@@ -108,5 +110,15 @@ public class AIController : MonoBehaviour
                 audioSource.Play();
             }
         }
+    }
+
+    public void WeaponEffects()
+    {
+
+    }
+
+    public void AddWeaponAudio()
+    {
+
     }
 }

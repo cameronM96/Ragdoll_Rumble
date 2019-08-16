@@ -79,6 +79,8 @@ public class StateController : MonoBehaviour
             animController.SetBool("dead", false);
             animController.SetBool("reset", true);
             animController.SetBool("cardPhase", true);
+            animController.SetBool("attacking", false);
+            animController.SetBool("stunned", false);
         }
 
         transform.position = spawnPoint.position;
