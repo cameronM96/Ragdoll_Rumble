@@ -19743,6 +19743,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 426254924}
+    - target: {fileID: 5815975141520740824, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: combatOffset.y
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee, type: 3}
 --- !u!114 &426254922 stripped
