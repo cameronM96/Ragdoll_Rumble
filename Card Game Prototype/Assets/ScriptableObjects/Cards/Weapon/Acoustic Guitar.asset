@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Acoustic Guitar
   m_EditorClassIdentifier: 
-  iD: 14226
+  iD: 17118
   rarity: 1
   currentCardType: 1
   playableSlots: 12
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 1
   abilityDescription: 
   abilities: []
-  item: {fileID: 4898700221819802091, guid: 66e558b5af3466740b8fe3e17e111004, type: 3}
+  item: {fileID: 6652829128831036026, guid: c116663728190624b8d1c135a99d4a0b, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

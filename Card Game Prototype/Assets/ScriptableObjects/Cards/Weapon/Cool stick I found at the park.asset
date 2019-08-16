@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Cool stick I found at the park
   m_EditorClassIdentifier: 
-  iD: 13076
+  iD: 19030
   rarity: 1
   currentCardType: 1
   playableSlots: 13
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 1
   abilityDescription: 
   abilities: []
-  item: {fileID: 7381053628621491558, guid: f3c0accd87bb2aa40bc8aa9ecd3b412a, type: 3}
+  item: {fileID: 8121013714314702161, guid: 33758baac24ca6644b8d1cd8944e97e0, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
