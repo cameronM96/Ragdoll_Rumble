@@ -169,6 +169,7 @@ public class LobbyManager : MonoBehaviour
         foreach (Card deckCard in currentDeck)
         {
             GameObject newDeckCard = Instantiate(cardTemplate, deckPanel.transform);
+            newDeckCard.GetComponent<CardDisplay>().lobbyCard = true;
             newDeckCard.GetComponent<CardDisplay>().Initialise(deckCard);
             newDeckCard.GetComponent<DeckCard_Draggable>().enabled = false;
         }

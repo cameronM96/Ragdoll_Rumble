@@ -381,6 +381,9 @@ MonoBehaviour:
   columnValue: {x: 10, y: 35}
   yValue: -10
   rowValue: -20
+  cardScalar: 3
+  lobbyCard: 0
+  lobbyCardScalar: 0
 --- !u!114 &4844281565309600364
 MonoBehaviour:
   m_ObjectHideFlags: 0
