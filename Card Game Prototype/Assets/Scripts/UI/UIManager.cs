@@ -273,13 +273,19 @@ public class UIManager : MonoBehaviour
         Debug.Log("Dealing new hand!");
         // Deal left over cards back into deck
         for (int i = 0; i < cardsLeft; i++)
+        {
+            cardSlot.transform.GetChild(0).gameObject.SetActive(true);
             cardSlot.transform.GetChild(0).SetParent(deck.transform);
+        }
 
         // Deal cards up to hand size
         for (int i = 0; i < handSize; i++)
         {
             if (deck.transform.childCount != 0)
+            {
+                deck.transform.GetChild(0).gameObject.SetActive(true);
                 deck.transform.GetChild(0).SetParent(cardSlot.transform);
+            }
         }
 
         numCardsLeft.text = "Deck\n" + deck.transform.childCount;

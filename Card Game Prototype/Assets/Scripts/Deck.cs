@@ -63,6 +63,7 @@ public class Deck : MonoBehaviour
                 deckOfCards.Add(newCard);
                 newCard.transform.position = this.transform.position;
                 newCard.transform.SetParent(this.transform);
+                newCard.SetActive(false);
             }
         }
 
