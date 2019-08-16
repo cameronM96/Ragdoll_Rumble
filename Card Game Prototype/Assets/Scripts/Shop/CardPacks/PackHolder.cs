@@ -14,6 +14,8 @@ public class PackHolder : MonoBehaviour
     public Text coinText;
     public Text gemText;
 
+    public float packScalar;
+
     public void Initialise(PackOfCards newPack)
     {
         pack = newPack;
@@ -21,6 +23,8 @@ public class PackHolder : MonoBehaviour
         packImage.sprite = pack.packImage;
         coinText.text = "" + pack.coinCost;
         gemText.text = "" + pack.gemCost;
+
+        transform.localScale *= packScalar;
     }
 
     public void PackSelected()

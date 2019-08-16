@@ -36,7 +36,7 @@ public class LoadLobby : MonoBehaviour
         {
             if (isCampaign)
             {
-                GetComponent<Button>().enabled = player.CampaignProgress < campaignNumber;
+                GetComponent<Button>().enabled = (player.CampaignProgress >= campaignNumber);
             }
             else
                 GetComponent<Button>().enabled = true;

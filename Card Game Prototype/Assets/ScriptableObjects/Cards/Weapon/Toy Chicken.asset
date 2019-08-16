@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Toy Chicken
   m_EditorClassIdentifier: 
-  iD: 13738
+  iD: 17994
   rarity: 1
   currentCardType: 1
   playableSlots: 13
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: -927199367670048503, guid: 7b1f377133556f34c816ae191c19aec0, type: 3}
+  item: {fileID: 1723542550674166015, guid: cf0c69a672923334bb146f0c6cc131c2, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

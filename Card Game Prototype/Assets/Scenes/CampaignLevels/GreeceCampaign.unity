@@ -852,7 +852,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 619534299}
   m_OnClick:
     m_PersistentCalls:
@@ -966,7 +966,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03213013, y: 0.06648963}
   m_AnchorMax: {x: 0.95386994, y: 0.9417021}
-  m_AnchoredPosition: {x: 4.4, y: -0.19999981}
+  m_AnchoredPosition: {x: 4.399994, y: -0.20000076}
   m_SizeDelta: {x: -5.6000004, y: -3.2000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &640172711
@@ -1007,7 +1007,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 640172712}
   m_OnClick:
     m_PersistentCalls:
@@ -1127,7 +1127,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 730729690}
   m_OnClick:
     m_PersistentCalls:
@@ -1407,7 +1407,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 982888052}
   m_OnClick:
     m_PersistentCalls:
@@ -1485,7 +1485,22 @@ MonoBehaviour:
   difficulty: 1
   rounds: 1
   randomAIDeck: 0
-  aiDeck: []
+  aiDeck:
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
+  - {fileID: 11400000, guid: e1725b6c685971743b62280c9426745f, type: 2}
+  - {fileID: 11400000, guid: 9772f1e27a6ab354692f56572497cdfe, type: 2}
+  - {fileID: 11400000, guid: 096ded6c90335a146b497ccffeee445a, type: 2}
+  - {fileID: 11400000, guid: a13dcfdd0dd22f94293271b8aef33c58, type: 2}
+  - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
+  - {fileID: 11400000, guid: 55bea449da555564ba3486d5fd14aec5, type: 2}
+  - {fileID: 11400000, guid: 55bea449da555564ba3486d5fd14aec5, type: 2}
+  - {fileID: 11400000, guid: 81d693b6769b0444db6e90fafe3d6662, type: 2}
+  - {fileID: 11400000, guid: c3a39515b838e0c4aad7a2f538cd6382, type: 2}
+  - {fileID: 11400000, guid: f1031885dc269ab40a7ee416417d5c28, type: 2}
+  - {fileID: 11400000, guid: 765296ee0aebe4d4285748ec40883062, type: 2}
 --- !u!1 &993264221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1720,7 +1735,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1199826741}
   m_OnClick:
     m_PersistentCalls:
@@ -1842,7 +1857,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1246875867}
   m_OnClick:
     m_PersistentCalls:
@@ -1920,7 +1935,22 @@ MonoBehaviour:
   difficulty: 1
   rounds: 1
   randomAIDeck: 0
-  aiDeck: []
+  aiDeck:
+  - {fileID: 11400000, guid: 55bea449da555564ba3486d5fd14aec5, type: 2}
+  - {fileID: 11400000, guid: 1ff483092f70342448b64b265f66f242, type: 2}
+  - {fileID: 11400000, guid: 1ff483092f70342448b64b265f66f242, type: 2}
+  - {fileID: 11400000, guid: 2b57964905887f049ab57567c7f3c071, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
+  - {fileID: 11400000, guid: 43b24d8d00f10f742817438c681692f8, type: 2}
+  - {fileID: 11400000, guid: 43b24d8d00f10f742817438c681692f8, type: 2}
+  - {fileID: 11400000, guid: 2483a00ea5a565043b98216a27c529e6, type: 2}
+  - {fileID: 11400000, guid: 516d943e7f98e1b41ab047c66f85cbd0, type: 2}
+  - {fileID: 11400000, guid: 096ded6c90335a146b497ccffeee445a, type: 2}
+  - {fileID: 11400000, guid: c3a39515b838e0c4aad7a2f538cd6382, type: 2}
+  - {fileID: 11400000, guid: f981c8ef41e41d94fb85b5df7f062656, type: 2}
 --- !u!1 &1258058206
 GameObject:
   m_ObjectHideFlags: 0
@@ -1997,7 +2027,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1258058209}
   m_OnClick:
     m_PersistentCalls:
@@ -2119,7 +2149,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1316285460}
   m_OnClick:
     m_PersistentCalls:
@@ -2197,7 +2227,22 @@ MonoBehaviour:
   difficulty: 1
   rounds: 1
   randomAIDeck: 0
-  aiDeck: []
+  aiDeck:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &1328465069
 GameObject:
   m_ObjectHideFlags: 0

@@ -367,6 +367,7 @@ MonoBehaviour:
   costValues: {fileID: 651714999923886986}
   coinText: {fileID: 5060145887488109915}
   gemText: {fileID: 6340368583354538861}
+  packScalar: 3
 --- !u!1 &4461429795031096677
 GameObject:
   m_ObjectHideFlags: 0
