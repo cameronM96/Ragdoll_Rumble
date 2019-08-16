@@ -37,20 +37,33 @@ public class SettingsSlider : MonoBehaviour
             case SliderTypes.None:
                 break;
             case SliderTypes.Master:
-                slider.value = PlayerPreferances.Master;
+                if (PlayerPreferances.Master != -1)
+                    slider.value = PlayerPreferances.Master;
+                else
+                    PlayerPreferances.Master = slider.value;
                 break;
             case SliderTypes.Vocals:
-                slider.value = PlayerPreferances.Vocals;
+                if (PlayerPreferances.Vocals != -1)
+                    slider.value = PlayerPreferances.Vocals;
+                else
+                    PlayerPreferances.Vocals = slider.value;
                 break;
             case SliderTypes.Sfx:
-                slider.value = PlayerPreferances.SFX;
+                if (PlayerPreferances.SFX != -1)
+                    slider.value = PlayerPreferances.SFX;
+                else
+                    PlayerPreferances.SFX = slider.value;
                 break;
             case SliderTypes.Music:
-                slider.value = PlayerPreferances.Music;
+                if (PlayerPreferances.Music != -1)
+                    slider.value = PlayerPreferances.Music;
+                else
+                    PlayerPreferances.Music = slider.value;
                 break;
             default:
                 break;
         }
+        PlayerPreferances.SavePrefs();
     }
 
     public void UpdateValue()

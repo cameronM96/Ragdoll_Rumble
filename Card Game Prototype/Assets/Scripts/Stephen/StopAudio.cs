@@ -7,7 +7,10 @@ public class StopAudio : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioContinue.Instance.gameObject.GetComponent<AudioSource>().Pause();
-        AudioContinue.Instance.gameObject.GetComponent<AudioListener>().enabled = false;
+        if (AudioContinue.Instance?.gameObject?.GetComponent<AudioSource>() != null)
+        {
+            AudioContinue.Instance.gameObject.GetComponent<AudioSource>().Pause();
+            AudioContinue.Instance.gameObject.GetComponent<AudioListener>().enabled = false;
+        }
     }
 }

@@ -507,6 +507,26 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1350055243}
+    - target: {fileID: 5815975141520740824, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: combatOffset.x
+      value: 12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815975141520740824, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: combatOffset.y
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815975141520740824, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: combatOffset.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5815975141520740824, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: cardOffset.x
+      value: 6.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee, type: 3}
 --- !u!114 &299325684 stripped

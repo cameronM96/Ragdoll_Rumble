@@ -15,10 +15,13 @@ public class Campaign : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
         for (int i = 0; i < campaignNumbers.Length; ++i)
         {
-            if (player.CampaignProgress + 1 < campaignNumbers[i] && campaignButtons[i] != null)
-                campaignButtons[i].interactable = true;
-            else
-                campaignButtons[i].interactable = true;
+            if (campaignButtons[i] != null)
+            {
+                if (player.CampaignProgress + 1 < campaignNumbers[i] && campaignButtons[i] != null)
+                    campaignButtons[i].interactable = true;
+                else
+                    campaignButtons[i].interactable = true;
+            }
         }
     }
 }

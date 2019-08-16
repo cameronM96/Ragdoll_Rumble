@@ -26,10 +26,25 @@ public static class PlayerPreferances
 
     public static void LoadPrefs()
     {
-        masterValue = PlayerPrefs.GetFloat(master);
-        musicValue = PlayerPrefs.GetFloat(music);
-        sfxValue = PlayerPrefs.GetFloat(sfx);
-        vocalsValue = PlayerPrefs.GetFloat(vocals);
+        if (PlayerPrefs.HasKey(master))
+            masterValue = PlayerPrefs.GetFloat(master);
+        else
+            masterValue = -1;
+
+        if (PlayerPrefs.HasKey(music))
+            musicValue = PlayerPrefs.GetFloat(music);
+        else
+            musicValue = -1;
+
+        if (PlayerPrefs.HasKey(sfx))
+            sfxValue = PlayerPrefs.GetFloat(sfx);
+        else
+            sfxValue = -1;
+
+        if (PlayerPrefs.HasKey(vocals))
+            vocalsValue = PlayerPrefs.GetFloat(vocals);
+        else
+            vocalsValue = -1;
     }
 
     public static float Master
