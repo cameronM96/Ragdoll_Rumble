@@ -55,6 +55,8 @@ public class UIManager : MonoBehaviour
     private int maxCardsThisRound = 0;
     [SerializeField] private int maxCardsPlayed = 5;
 
+    public GameObject loadingScreen;
+
     Base_Stats player;
     Base_Stats enemy;
 
@@ -238,6 +240,8 @@ public class UIManager : MonoBehaviour
         cardPhase = true;
         cardPhaseUI.SetActive(true);
         combatPhaseUI.SetActive(false);
+
+        loadingScreen.GetComponent<Animator>().SetBool("EndFade", true);
     }
 
     public void InitialiseCombatPhaseUI()

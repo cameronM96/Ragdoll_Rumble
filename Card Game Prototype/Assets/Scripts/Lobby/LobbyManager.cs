@@ -26,6 +26,10 @@ public class LobbyManager : MonoBehaviour
 
     private bool deckSelected = false;
 
+    public GameObject loadingScreen;
+    public Animator anim;
+    public float loadDelayValue = 1f;
+
     private void Start()
     {
         player = GameObject.FindGameObjectWithTag("PlayerProfile").GetComponent<Player>();
@@ -66,6 +70,13 @@ public class LobbyManager : MonoBehaviour
 
     public void LoadNextLevel ()
     {
+        anim.SetBool("StartFade", true);
+        StartCoroutine(LoadingDelay(loadDelayValue));
+    }
+
+    IEnumerator LoadingDelay(float waitTimer)
+    {
+        yield return new WaitForSeconds(waitTimer);
         if (!(GameInfo.NextLevelName == "" || GameInfo.NextLevelName == null))
             SceneManager.LoadScene(GameInfo.NextLevelName);
         else if (GameInfo.NextLevelNumb > -1)
