@@ -48,7 +48,7 @@ public class Deck : MonoBehaviour
                     cards.Add(cardCollection.allCardIDDictionary[cardIDs[i]]);
                 }
                 else
-                    Debug.LogError("Unidentified card! Card ID: " + cardIDs[i] + "\n Owner: " + this.gameObject);
+                    Debug.LogWarning("Unidentified card! Card ID: " + cardIDs[i] + "\n Owner: " + this.gameObject);
             }
         }
         else

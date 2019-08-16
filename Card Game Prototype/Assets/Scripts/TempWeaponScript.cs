@@ -21,26 +21,25 @@ public class TempWeaponScript : MonoBehaviour
         myCollider = GetComponent<Collider>();
         myCollider.isTrigger = true;
         myCollider.enabled = false;
-        StartCoroutine(colliderDisable());
     }
 
     private void OnTriggerEnter(Collider other)
     {
         //Debug.Log("Whacked " + other.transform.root.gameObject.name + " !");
-        if (other.transform.root.gameObject != owner)
-        {
-            ownerStats.OnHit(other.transform.root.gameObject);
-            myCollider.enabled = false;
-        }
+        //if (other.transform.root.gameObject != owner)
+        //{
+        //    ownerStats.OnHit(other.transform.root.gameObject);
+        //    myCollider.enabled = false;
+        //}
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //Debug.Log("Whacked " + collision.transform.root.gameObject.name + " !");
-        if (collision.transform.root.gameObject != owner)
-            ownerStats.OnHit(collision.transform.root.gameObject);
+        //if (collision.transform.root.gameObject != owner)
+        //    ownerStats.OnHit(collision.transform.root.gameObject);
     }
-    IEnumerator colliderDisable()
+    IEnumerator ColliderDisable()
     {
         yield return new WaitForSeconds(0.5f);
         myCollider.enabled = false;

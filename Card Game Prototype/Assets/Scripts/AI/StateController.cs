@@ -226,24 +226,10 @@ public class StateController : MonoBehaviour
         return false;
     }
 
-    public void RagDoll()
-    {
-        if (animController != null)
-            animController.SetBool("ragDoll", true);
-    }
-
-    public void UnRagDoll()
-    {
-        if (animController != null)
-            animController.SetBool("ragDoll", false);
-    }
-
     public void Dead()
     {
         if (animController != null)
             animController.SetBool("dead", true);
-
-        RagDoll();
     }
 
     public void Stunned()
@@ -265,6 +251,11 @@ public class StateController : MonoBehaviour
     {
         if (animController != null)
             animController.SetBool("applyStun", false);
+    }
+
+    public void RegesterAttack()
+    {
+        baseStates.OnHit(chaseTarget.root.gameObject);
     }
 
     // Increase attack range

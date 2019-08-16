@@ -33,10 +33,10 @@ public class Attack : MonoBehaviour
         target = newTarget;
         attacking = true;
         audioController.Attack();
-        StartCoroutine(colliderDisable());
+        StartCoroutine(ColliderDisable());
     }
 
-    IEnumerator colliderDisable()
+    IEnumerator ColliderDisable()
     {
         yield return new WaitForSeconds(0.5f);
         myCollider.enabled = false;

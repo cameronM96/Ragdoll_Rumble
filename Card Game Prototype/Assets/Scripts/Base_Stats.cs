@@ -284,6 +284,7 @@ public class Base_Stats : MonoBehaviour
             //GetComponent<Renderer>().material.color = Color.black;
 
             gameManager.PlayerDied(this.gameObject);
+            stateController.Dead();
 
             audioController.Die();
             StopAllCoroutines();

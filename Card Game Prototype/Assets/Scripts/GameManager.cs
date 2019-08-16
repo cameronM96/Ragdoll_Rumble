@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
 
     public void InitialsePlayer()
     {
+        Debug.Log("Initialising Character");
         ++initialisedPlayers;
         if (initialisedPlayers >= numbOfPlayers && !gameInitialised)
         {

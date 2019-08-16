@@ -14,6 +14,8 @@ public class AIDeck : MonoBehaviour
     public Card[] viewingDeck;
     public Queue<Card> currentDeck;
 
+    private bool initialised = false;
+
     private void Start()
     {
         cardCollection = GetComponent<CardCollection>();
@@ -31,46 +33,50 @@ public class AIDeck : MonoBehaviour
 
     public void Initialise()
     {
-        gameDeck = new List<Card>();
-        Debug.Log(GameInfo.RandomAIDeck);
-        // Create all the cards
-        if (GameInfo.RandomAIDeck)
+        if (!initialised)
         {
-            for (int i = 0; i < requiredDeckSize; i++)
+            initialised = true;
+            gameDeck = new List<Card>();
+            Debug.Log(GameInfo.RandomAIDeck);
+            // Create all the cards
+            if (GameInfo.RandomAIDeck)
             {
-                Random.InitState(System.DateTime.Now.Millisecond);
-                gameDeck.Add(cardCollection.GetRandomCard());
-            }
-        }
-        else
-        {
-            Debug.Log(GameInfo.AIDeck);
-            Debug.Log(GameInfo.AIDeck.Length);
-            int[] cardIDs = GameInfo.AIDeck;
-            for (int i = 0; i < cardIDs.Length; i++)
-            {
-                // Match Id with a card and add it to the current cards list and create it.
-                if (cardCollection.allCardIDDictionary.ContainsKey(cardIDs[i]))
+                for (int i = 0; i < requiredDeckSize; i++)
                 {
-                    gameDeck.Add(cardCollection.allCardIDDictionary[cardIDs[i]]);
+                    Random.InitState(System.DateTime.Now.Millisecond);
+                    gameDeck.Add(cardCollection.GetRandomCard());
                 }
-                else
-                    Debug.LogError("Unidentified card!");
+            }
+            else
+            {
+                Debug.Log(GameInfo.AIDeck);
+                Debug.Log(GameInfo.AIDeck.Length);
+                int[] cardIDs = GameInfo.AIDeck;
+                for (int i = 0; i < cardIDs.Length; i++)
+                {
+                    // Match Id with a card and add it to the current cards list and create it.
+                    if (cardCollection.allCardIDDictionary.ContainsKey(cardIDs[i]))
+                    {
+                        gameDeck.Add(cardCollection.allCardIDDictionary[cardIDs[i]]);
+                    }
+                    else
+                        Debug.LogError("Unidentified card!");
+                }
+
+                ShuffleDeck();
             }
 
-            ShuffleDeck();
+            currentDeck = new Queue<Card>();
+
+            foreach (Card card in gameDeck)
+                currentDeck.Enqueue(card);
+
+            viewingDeck = currentDeck.ToArray();
+
+            GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
+            Debug.Log(transform.root.gameObject + " Initialising!");
+            gm.InitialsePlayer();
         }
-
-        currentDeck = new Queue<Card>();
-
-        foreach (Card card in gameDeck)
-            currentDeck.Enqueue(card);
-
-        viewingDeck = currentDeck.ToArray();
-
-        GameManager gm = GameObject.FindGameObjectWithTag("GameManager").GetComponent<GameManager>();
-        Debug.Log(transform.root.gameObject + " Initialising!");
-        gm.InitialsePlayer();
     }
 
     public void ShuffleDeck()

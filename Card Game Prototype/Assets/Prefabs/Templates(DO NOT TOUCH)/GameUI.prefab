@@ -70,7 +70,7 @@ RectTransform:
   - {fileID: 3187249662226862427}
   - {fileID: 454022775123424786}
   m_Father: {fileID: 8348631375617226383}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1390,7 +1390,7 @@ RectTransform:
   - {fileID: 1951145063515763858}
   - {fileID: 9070290037376867341}
   m_Father: {fileID: 8348631375617226383}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -2287,7 +2287,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -7128,7 +7128,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 92278954f48a1664d93ff2546aaa6a0c, type: 2}
   - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
   - {fileID: 11400000, guid: 0e4a624f767029141b335bcd138deacc, type: 2}
-  - {fileID: 11400000, guid: bd898b796579c844eacdd65fe039eb86, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 9f589755ce0ecb543ae9f36254a2a320, type: 2}
   deckOfCards: []
 --- !u!1 &8348631375378492006
@@ -7295,8 +7295,8 @@ RectTransform:
   - {fileID: 8348631375172952751}
   - {fileID: 8348631374838263933}
   - {fileID: 2085492754195135585}
-  - {fileID: 136803816675952329}
   - {fileID: 5491837882840105584}
+  - {fileID: 136803816675952329}
   - {fileID: 7137171925062228205}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -7412,6 +7412,8 @@ MonoBehaviour:
     type: 3}
   resultsWindow: {fileID: 218904958006877647}
   resultsWindowText: {fileID: 3721768438710094701}
+  endGameText: {fileID: 5823582716669120269}
+  scoreBoard: {fileID: 639605689684958297}
   gameManager: {fileID: 0}
   maxCardsPlayed: 0
 --- !u!1 &8348631375704290802
@@ -8826,8 +8828,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 450, y: 350}
+  m_AnchoredPosition: {x: 0, y: -101}
+  m_SizeDelta: {x: 450, y: 83.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1491376981161894448
 CanvasRenderer:
@@ -8858,13 +8860,13 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 33935907ad2806243ad4c1b31129e917, type: 3}
     m_FontSize: 14
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
