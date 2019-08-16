@@ -19743,6 +19743,11 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 426254924}
+    - target: {fileID: 5815975141738710849, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
+        type: 3}
+      propertyPath: footSteps
+      value: 
+      objectReference: {fileID: 8300000, guid: e21d55d26e551c74381308ff0b2fbd3d, type: 3}
     - target: {fileID: 5815975141520740824, guid: bde7fb1f35a8e1d4f8f23ea2c4bc0eee,
         type: 3}
       propertyPath: combatOffset.y
@@ -36470,11 +36475,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5493476723750089948, guid: 31b6a3dd00d29e74c8a90172adf86df7,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5493476723750089949, guid: 31b6a3dd00d29e74c8a90172adf86df7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -36529,6 +36529,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493476723750089948, guid: 31b6a3dd00d29e74c8a90172adf86df7,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b6a3dd00d29e74c8a90172adf86df7, type: 3}
@@ -55459,11 +55464,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5493476723750089948, guid: 31b6a3dd00d29e74c8a90172adf86df7,
-        type: 3}
-      propertyPath: m_Name
-      value: SpawnPoint (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5493476723750089949, guid: 31b6a3dd00d29e74c8a90172adf86df7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55518,6 +55518,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5493476723750089948, guid: 31b6a3dd00d29e74c8a90172adf86df7,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnPoint (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31b6a3dd00d29e74c8a90172adf86df7, type: 3}
@@ -93432,6 +93437,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1114317121}
+    - target: {fileID: 2012646202437992129, guid: 35b0dc6b8c130b540bf93d7ee9f4b83a,
+        type: 3}
+      propertyPath: footSteps
+      value: 
+      objectReference: {fileID: 8300000, guid: e21d55d26e551c74381308ff0b2fbd3d, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35b0dc6b8c130b540bf93d7ee9f4b83a, type: 3}
 --- !u!1 &2042179110

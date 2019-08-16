@@ -465,7 +465,6 @@ MonoBehaviour:
   dead: 0
   hitText: {fileID: 4165925513139780187, guid: 676bb661e16f0f84cbf44f78bdff7e61, type: 3}
   statDisplay: {fileID: 0}
-  hitInterval: 1
   onTimerList: []
   onHitEffectsList: []
   onGetHitEffectsList: []
@@ -484,6 +483,8 @@ MonoBehaviour:
   stunned: 0
   snared: 0
   navAgent: {fileID: 5815975141738710833}
+  rigBase: {fileID: 0}
+  myRig: []
 --- !u!114 &5815975141738710836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -533,7 +534,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7f0020da8fd35e478d3e2c2fbc16640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 5815975141738710838}
+  vocalSource: {fileID: 0}
+  effectsSource: {fileID: 0}
+  footStepSource: {fileID: 0}
   attackNoise:
   - {fileID: 8300000, guid: 3734a506d3f10884aba21f80d48949b1, type: 3}
   - {fileID: 8300000, guid: fe786ce953584224aa55469bd01685d9, type: 3}
@@ -575,6 +578,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4a00446b4b844754287f6e4ab689b18c, type: 3}
   - {fileID: 8300000, guid: ff6221b982329dc438c9964b6020f020, type: 3}
   - {fileID: 8300000, guid: 1deadc88e0aabce4fb4d70577333245b, type: 3}
+  weaponAudio:
+  - {fileID: 8300000, guid: f49760bf29fbe604eb70eb91c3c7f7ff, type: 3}
+  - {fileID: 8300000, guid: 36b2ee799ec929940a7b534a1b7fc2c7, type: 3}
+  - {fileID: 8300000, guid: 56ff425ce044ac045a4cffcb83955236, type: 3}
+  - {fileID: 8300000, guid: 0b631945692ad8146b3aa4ca12569938, type: 3}
+  footSteps: {fileID: 0}
 --- !u!1 &2600736370641017668
 GameObject:
   m_ObjectHideFlags: 0
