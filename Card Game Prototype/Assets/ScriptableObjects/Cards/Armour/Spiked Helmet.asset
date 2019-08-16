@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Spiked Helmet
   m_EditorClassIdentifier: 
-  iD: 13736
+  iD: 15540
   rarity: 2
   currentCardType: 2
   playableSlots: 1
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: 1847328229451260564, guid: ce42f377c8d964944adbe3b1833ce5d0, type: 3}
+  item: {fileID: 8440125855364755854, guid: 9461b10798c35ce4b9202ca8666b73b6, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,

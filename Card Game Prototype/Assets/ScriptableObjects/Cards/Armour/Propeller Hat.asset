@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6548d910923615c43a02cfde21479027, type: 3}
   m_Name: Propeller Hat
   m_EditorClassIdentifier: 
-  iD: 13734
+  iD: 20182
   rarity: 2
   currentCardType: 2
   playableSlots: 5
@@ -32,7 +32,7 @@ MonoBehaviour:
   atkSpeed: 0
   abilityDescription: 
   abilities: []
-  item: {fileID: 8929018821980840820, guid: 3133bf2345cd0e9488c54c4f4019acbd, type: 3}
+  item: {fileID: 1936318673991219557, guid: bb0ae0daeb7f1dd48a7c90507444a226, type: 3}
   coinCost: 0
   gemCost: 0
   templateCard: {fileID: 2374550111916289344, guid: aac29b8849b80a344ada6ccc6981e1d0,
