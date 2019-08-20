@@ -930,7 +930,22 @@ MonoBehaviour:
   difficulty: 1
   rounds: 3
   randomAIDeck: 0
-  aiDeck: []
+  aiDeck:
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
+  - {fileID: 11400000, guid: c3a39515b838e0c4aad7a2f538cd6382, type: 2}
+  - {fileID: 11400000, guid: fbded0a941d7658458daf8fba9118f8e, type: 2}
+  - {fileID: 11400000, guid: 9e2204f2bafdfe043b31ad1c143ffb4b, type: 2}
+  - {fileID: 11400000, guid: a13dcfdd0dd22f94293271b8aef33c58, type: 2}
+  - {fileID: 11400000, guid: f4a2beb4c3e649b429a5de6d36e8fd30, type: 2}
+  - {fileID: 11400000, guid: f3918799e0c19be4cabe91e3f693c324, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
+  - {fileID: 11400000, guid: 55bea449da555564ba3486d5fd14aec5, type: 2}
+  - {fileID: 11400000, guid: 92278954f48a1664d93ff2546aaa6a0c, type: 2}
+  - {fileID: 11400000, guid: 1ff483092f70342448b64b265f66f242, type: 2}
+  - {fileID: 11400000, guid: 9e2204f2bafdfe043b31ad1c143ffb4b, type: 2}
+  - {fileID: 11400000, guid: a13dcfdd0dd22f94293271b8aef33c58, type: 2}
 --- !u!1 &640172709
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +981,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.03213013, y: 0.06648963}
   m_AnchorMax: {x: 0.95386994, y: 0.9417021}
-  m_AnchoredPosition: {x: 4.399994, y: -0.20000076}
+  m_AnchoredPosition: {x: 4.399994, y: -0.19999695}
   m_SizeDelta: {x: -5.6000004, y: -3.2000008}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &640172711
@@ -1488,7 +1503,7 @@ MonoBehaviour:
   aiDeck:
   - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
   - {fileID: 11400000, guid: e1725b6c685971743b62280c9426745f, type: 2}
-  - {fileID: 11400000, guid: 9772f1e27a6ab354692f56572497cdfe, type: 2}
+  - {fileID: 11400000, guid: 0e4a624f767029141b335bcd138deacc, type: 2}
   - {fileID: 11400000, guid: 096ded6c90335a146b497ccffeee445a, type: 2}
   - {fileID: 11400000, guid: a13dcfdd0dd22f94293271b8aef33c58, type: 2}
   - {fileID: 11400000, guid: 7481c914fb09d554996763cb26bad6e9, type: 2}
@@ -2228,21 +2243,21 @@ MonoBehaviour:
   rounds: 1
   randomAIDeck: 0
   aiDeck:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
+  - {fileID: 11400000, guid: c141d0b535fff1943802db3e3c247868, type: 2}
+  - {fileID: 11400000, guid: a13dcfdd0dd22f94293271b8aef33c58, type: 2}
+  - {fileID: 11400000, guid: e1725b6c685971743b62280c9426745f, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: dc82f0c644b820c44afd91d5ecd9dc03, type: 2}
+  - {fileID: 11400000, guid: 0e4a624f767029141b335bcd138deacc, type: 2}
+  - {fileID: 11400000, guid: f1031885dc269ab40a7ee416417d5c28, type: 2}
+  - {fileID: 11400000, guid: f6c8c6cbe95213e44b35cc1cc6d495c4, type: 2}
+  - {fileID: 11400000, guid: f3918799e0c19be4cabe91e3f693c324, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
+  - {fileID: 11400000, guid: 765296ee0aebe4d4285748ec40883062, type: 2}
+  - {fileID: 11400000, guid: 096ded6c90335a146b497ccffeee445a, type: 2}
+  - {fileID: 11400000, guid: d1c687c6f780e634db1105e3755f91ca, type: 2}
+  - {fileID: 11400000, guid: 6b43f6c6660c085469b7ced241744f9a, type: 2}
 --- !u!1 &1328465069
 GameObject:
   m_ObjectHideFlags: 0
