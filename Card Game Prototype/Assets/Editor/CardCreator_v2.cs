@@ -33,6 +33,7 @@ public class CardCreator_v2 : EditorWindow
     public GameObject item;
 
     private CardCreationWindowDefaultValues defaultValues;
+    private CardLibrary cardLibrary;
 
     private Card loadedCard;
 
@@ -73,6 +74,11 @@ public class CardCreator_v2 : EditorWindow
         GameObject defaultValuesObject = (GameObject)AssetDatabase.LoadAssetAtPath(
             "Assets/Prefabs/Templates(DO NOT TOUCH)/CardCreationWindowDefaults.prefab", typeof(GameObject));
         defaultValues = defaultValuesObject.GetComponent<CardCreationWindowDefaultValues>();
+        Object cardLibraryObject = (Object)AssetDatabase.LoadAssetAtPath(
+            "Assets/ScriptableObjects/Cards/CardLibrary.asset", typeof(Object));
+        cardLibrary = cardLibraryObject as CardLibrary;
+        if (cardLibrary == null)
+            Debug.LogWarning("Unable to load Card Library");
         //Debug.Log(defaultValues);
 
         // Set up Preview Camera
@@ -536,6 +542,29 @@ public class CardCreator_v2 : EditorWindow
         newCard.artwork = artwork;
         newCard.background = background;
 
+        // Set rarity
+        Sprite rarityImage = null;
+        switch (rarity)
+        {
+            case Rarity.None:
+                rarityImage = null;
+                break;
+            case Rarity.Common:
+                rarityImage = defaultValues.rarity[0];
+                break;
+            case Rarity.Uncommon:
+                rarityImage = defaultValues.rarity[1];
+                break;
+            case Rarity.Rare:
+                rarityImage = defaultValues.rarity[2];
+                break;
+            default:
+                Debug.Log("Unknown rarity");
+                break;
+        }
+
+        newCard.rarityImage = rarityImage;
+
         // Card Modifiers
         newCard.attack = attack;
         newCard.armour = armour;
@@ -567,6 +596,8 @@ public class CardCreator_v2 : EditorWindow
 
         EditorUtility.DisplayDialog("Card  Created!", "Card was successfully created!", "ok");
         Debug.Log(newCard.cardName + " was created!");
+
+        cardLibrary.AddCardToLibrary(newCard);
     }
 
     private void UpdateCard(Card card)
