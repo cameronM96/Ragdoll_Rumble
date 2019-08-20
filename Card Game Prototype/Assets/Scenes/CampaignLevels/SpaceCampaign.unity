@@ -1739,7 +1739,7 @@ MonoBehaviour:
   randomAIDeck: 0
   aiDeck:
   - {fileID: 11400000, guid: d7131ca6c9a0b99459f0a48d41514ccb, type: 2}
-  - {fileID: 11400000, guid: fa59c66637398b94d8b1c5982de67cfd, type: 2}
+  - {fileID: 11400000, guid: 0cb298c9ac4d529489655481183568ca, type: 2}
   - {fileID: 11400000, guid: f4a2beb4c3e649b429a5de6d36e8fd30, type: 2}
   - {fileID: 11400000, guid: d1c687c6f780e634db1105e3755f91ca, type: 2}
   - {fileID: 11400000, guid: f6c8c6cbe95213e44b35cc1cc6d495c4, type: 2}

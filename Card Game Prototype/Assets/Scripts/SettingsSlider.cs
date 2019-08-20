@@ -87,6 +87,8 @@ public class SettingsSlider : MonoBehaviour
             default:
                 break;
         }
+
+        SavePrefs();
     }
 
     public void SavePrefs()

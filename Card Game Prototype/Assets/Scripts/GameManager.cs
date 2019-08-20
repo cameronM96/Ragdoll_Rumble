@@ -76,8 +76,8 @@ public class GameManager : MonoBehaviour
     public AudioClip nextRoundAnnounce;
     public AudioClip[] rounds;
     public AudioClip combatPhaseMusic;
+    public AudioClip cardPhaseMusic;
     public AudioClip transitionMusic;
-
 
     private bool countDown, countDown10, countDown30;
     private bool showingResults;
@@ -342,6 +342,12 @@ public class GameManager : MonoBehaviour
         countDown = false;
         countDown10 = false;
         countDown30 = false;
+
+        //// Music
+        //musicAudioSource.volume = PlayerPreferances.Music * PlayerPreferances.Master;
+        //musicAudioSource.clip = cardPhaseMusic;
+        //musicAudioSource.Play();
+
         // Find score that will win game
         int instaWinScore = numberOfRounds / 2;
         if (numberOfRounds % 2 != 0)
@@ -401,6 +407,7 @@ public class GameManager : MonoBehaviour
     IEnumerator CombatPhaseAudioHandler()
     {
         // Music
+        musicAudioSource.Stop();
         musicAudioSource.volume = PlayerPreferances.Music * PlayerPreferances.Master;
         musicAudioSource.clip = combatPhaseMusic;
         musicAudioSource.Play();

@@ -133,7 +133,7 @@ public class AIController : MonoBehaviour
 
     public void PlayFootSteps()
     {
-        if (footSteps == null)
+        if (true)
             return;
 
         footStepSource.volume = PlayerPreferances.SFX * PlayerPreferances.Master;
