@@ -33,6 +33,7 @@ public class CardCreator_v2 : EditorWindow
     public GameObject item;
 
     private CardCreationWindowDefaultValues defaultValues;
+    private CardLibrary cardLibrary;
 
     private Card loadedCard;
 
@@ -73,6 +74,13 @@ public class CardCreator_v2 : EditorWindow
         GameObject defaultValuesObject = (GameObject)AssetDatabase.LoadAssetAtPath(
             "Assets/Prefabs/Templates(DO NOT TOUCH)/CardCreationWindowDefaults.prefab", typeof(GameObject));
         defaultValues = defaultValuesObject.GetComponent<CardCreationWindowDefaultValues>();
+        cardLibrary = (CardLibrary)AssetDatabase.LoadAssetAtPath(
+            "Assets/ScriptableObjects/Cards/CardLibrary.asset", typeof(CardLibrary));
+        if (cardLibrary == null)
+            Debug.LogWarning("Unable to load Library!");
+        else
+            Debug.Log("Library Successfully loaded");
+
         //Debug.Log(defaultValues);
 
         // Set up Preview Camera
@@ -122,6 +130,11 @@ public class CardCreator_v2 : EditorWindow
 
     public void Update()
     {
+        if (EditorApplication.isPlaying)
+        {
+            this.Close();
+        }
+
         if (previewCamera != null && renderTexture.width > 0 && renderTexture.height > 0)
         {
             previewCamera.targetTexture = renderTexture;
@@ -536,6 +549,29 @@ public class CardCreator_v2 : EditorWindow
         newCard.artwork = artwork;
         newCard.background = background;
 
+        // Rarity
+        Sprite rarityImage = null;
+        switch (rarity)
+        {
+            case Rarity.None:
+                rarityImage = null;
+                break;
+            case Rarity.Common:
+                rarityImage = defaultValues.rarity[0];
+                break;
+            case Rarity.Uncommon:
+                rarityImage = defaultValues.rarity[1];
+                break;
+            case Rarity.Rare:
+                rarityImage = defaultValues.rarity[2];
+                break;
+            default:
+                Debug.Log("Unknown rarity");
+                break;
+        }
+        if (rarityImage != null)
+            newCard.rarityImage = rarityImage;
+
         // Card Modifiers
         newCard.attack = attack;
         newCard.armour = armour;
@@ -567,6 +603,9 @@ public class CardCreator_v2 : EditorWindow
 
         EditorUtility.DisplayDialog("Card  Created!", "Card was successfully created!", "ok");
         Debug.Log(newCard.cardName + " was created!");
+
+        if (cardLibrary != null)
+            cardLibrary.AddCardToLibrary(newCard);
     }
 
     private void UpdateCard(Card card)
